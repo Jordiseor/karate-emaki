@@ -24,3 +24,5 @@
 - 2026-11-09 · Animador (tramo A) · zenkutsu escenas 1–4 (14 s). Paso torpe y salto P1→P2 simplificados.
 - 2026-11-09 · Animador (tramo B) · zenkutsu escenas 5–8 (16 s). Giro de cámara plano en la 7.
 - 2026-11-09 · Sensei · Revisa las 8 escenas de zenkutsu: válidas para v1. Pasa a montaje.
+- 2026-11-09 · Editor · Reel zenkutsu-estabilidad montado (30 s, sonido propio con golpes por cifra, sin voz) y portada.
+- 2026-11-09 · Sensei · Revisión final zenkutsu OK. Las 2 piezas de la semana en aprobación de Jorge.

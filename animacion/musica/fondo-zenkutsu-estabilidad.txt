@@ -1,0 +1,9 @@
+Fondo sonoro "fondo-zenkutsu-estabilidad.wav" (30 s, 44,1 kHz mono) para la pieza 2026-11-09-zenkutsu-estabilidad. Obra propia de KARATE EMAKI, sintetizada con ffmpeg (lavfi/aevalsrc); sin samples ni material de terceros. Licencia: obra propia, uso libre para la cuenta.
+Capas:
+1. pulso-vivo.wav: pulso.wav (tambor grave de 48 Hz, ver fondo-nombre-shotokan.txt) acelerado x1,5 con atempo (un golpe cada 1 s en lugar de 1,5 s), x0,5.
+2. ambiente.wav reutilizado tal cual (tono tenue), x0,2.
+3. golpe-caida.wav: golpe seco grave (seno que baja de 160 a 70 Hz + armonico 400 Hz, caida exponencial rapida), en t = 9,3 s (la figura cae, escena 3), x0,8:
+   aevalsrc='(1.0*sin(2*PI*(70+90*exp(-25*t))*t)+0.3*sin(2*PI*400*t)*exp(-40*t))*exp(-7*t)' -af lowpass=f=1800
+4. golpe-cifra.wav: golpe seco mas corto y agudo (seno 200->120 Hz + clic 700 Hz) colocado cuando llega cada cifra: 8,4 s (8 grados), 16,6 s (26 grados), 21,0 s (30 grados), x0,7:
+   aevalsrc='(0.9*sin(2*PI*(120+80*exp(-50*t))*t)+0.25*sin(2*PI*700*t)*exp(-60*t))*exp(-14*t)' -af lowpass=f=3000
+Mezcla: amix sin normalizar, fundido final 27,5-30 s, limitador 0,8. Volumen bajo para que luego entre la voz.
