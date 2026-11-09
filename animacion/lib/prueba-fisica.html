@@ -1,0 +1,69 @@
+<!doctype html><meta charset="utf-8"><title>Prueba de física</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style>
+<canvas id="c"></canvas>
+<script src="../marca.js"></script><script src="../sumie.js"></script><script src="../personaje/karateka.js"></script>
+<script src="../fisica.js"></script><script src="../personaje/karateka-frontal.js"></script>
+<script>
+// Hoja de contactos de las poses de la pieza zenkutsu y de los elementos de física.
+// node animacion/render.mjs animacion/lib/prueba-fisica.html --t 0 --png fisica.png   (t = 0..1 mueve la inclinación de las dos últimas celdas)
+const ctx = EMAKI.lienzo(), K = EMAKI.karateka, Fi = EMAKI.fisica, Kf = EMAKI.karatekaFrontal, U = EMAKI.util;
+const S = 0.62, CX = [270, 810], SUELO = [530, 1140, 1750];
+function rot(txt, x, y) { EMAKI.texto(ctx, { lineas: txt, size: 40, peso: 700, x, y, maxW: 520 }); }
+window.render = function (t) {
+  EMAKI.fondoPapel(ctx);
+  const celda = (i) => ({ x: CX[i % 2], suelo: SUELO[Math.floor(i / 2)] });
+  // 1 · P1 + punto rojo + base + empuje
+  { const c = celda(0), o = { x: c.x, suelo: c.suelo, escala: S };
+    const g = Fi.figura(ctx, 'pies-juntos', o);
+    Fi.cara(ctx, g.cabeza, 40 * S, { expresion: 'reto' });
+    Fi.baseApoyo(ctx, { x0: g.base.x0, x1: g.base.x1, suelo: g.suelo });
+    Fi.centroMasas(ctx, g.cdm, { suelo: g.suelo });
+    Fi.flecha(ctx, { x: g.cadera[0] - 60, y: g.cadera[1], ang: 0, largo: 200, vibra: 4, t });
+    rot('P1 pies juntos · ' + g.vuelco.toFixed(1) + '°', c.x, c.suelo + 55); }
+  // 2 · P2 + base de 4 pies en celdas
+  { const c = celda(1), o = { x: c.x + 20, suelo: c.suelo, escala: S };
+    const g = Fi.figura(ctx, 'zenkutsu-alto', o);
+    Fi.baseApoyo(ctx, { x0: g.base.x0, x1: g.base.x1, suelo: g.suelo, celdas: 4 });
+    Fi.centroMasas(ctx, g.cdm, { suelo: g.suelo });
+    Fi.etiqueta(ctx, { texto: 'centro de masas', x: c.x - 120, y: c.suelo - 470, hacia: g.cdm, size: 48 });
+    rot('P2 alto · ' + (g.baseM / Fi.PIE_M).toFixed(1) + ' pies · ' + g.vuelco.toFixed(1) + '°', c.x, c.suelo + 55); }
+  // 3 · P3 bajo con el fantasma de P2 y la flechita hacia abajo
+  { const c = celda(2), o = { x: c.x + 20, suelo: c.suelo, escala: S, anclaPunta: c.x + 220 };
+    const g2 = Fi.geometria('zenkutsu-alto', o);
+    K.dibujar; Fi.figura(ctx, 'zenkutsu-alto', Object.assign({ estilo: 'fantasma', alpha: 0.35, color: '#8A847A' }, o));
+    { const m = Fi.poseAltura(0.5); Fi.figura(ctx, m.pose, Object.assign({ estilo: 'fantasma', alpha: 0.5, modelo: m.modelo }, o)); }
+    const g = Fi.figura(ctx, 'zenkutsu-bajo', o);
+    Fi.baseApoyo(ctx, { x0: g.base.x0, x1: g.base.x1, suelo: g.suelo, celdas: 4 });
+    Fi.centroMasas(ctx, g2.cdm, { vertical: false, alpha: 0.3 });
+    Fi.centroMasas(ctx, g.cdm, { suelo: g.suelo });
+    Fi.flecha(ctx, { x: g.cdm[0] + 60, y: g.cdm[1] + (g2.cdm[1] - g.cdm[1]) * 0.0 + 8, ang: 90, largo: 80, grosor: 12, color: '#C8102E' });
+    rot('P3 bajo · ' + g.vuelco.toFixed(1) + '° · ' + g.alturaCadera_m.toFixed(2) + ' m', c.x, c.suelo + 55); }
+  // 4 · P4 frontal con base lateral y empuje de costado
+  { const c = celda(3), o = { x: c.x, suelo: c.suelo, escala: S };
+    const g = Kf.dibujar(ctx, Fi.poseFrontal('zenkutsu-frontal'), o);
+    Fi.cara(ctx, g.cabeza, g.cabezaR, { expresion: 'cejas' });
+    Fi.baseApoyo(ctx, { x0: g.base.x0, x1: g.base.x1, suelo: g.suelo, celdas: 1 });
+    const cdm = [c.x, c.suelo - 0.9 * Fi.PPM * S];
+    Fi.centroMasas(ctx, cdm, { suelo: g.suelo });
+    Fi.flecha(ctx, { x: c.x - 120, y: cdm[1] - 40, ang: 0, largo: 180, vibra: 3, t });
+    rot('P4 frontal · ' + ((g.base.x1 - g.base.x0) / (Fi.PPM * S)).toFixed(2) + ' m', c.x, c.suelo + 55); }
+  // 5 · P2 inclinada como bloque rígido sobre la punta del pie
+  { const c = celda(4), o = { x: c.x - 40, suelo: c.suelo, escala: S }, g = Fi.geometria('zenkutsu-alto', o), th = g.vuelco * U.prog(t, 0, 1);
+    Fi.baseApoyo(ctx, { x0: g.base.x0, x1: g.base.x1, suelo: g.suelo, celdas: 4, alerta: { t: th >= g.vuelco - 0.01 ? 1 : 0, t0: 0.5 } });
+    Fi.inclinar(ctx, g.pivote, th, 1, () => Fi.figura(ctx, 'zenkutsu-alto', o));
+    Fi.arco(ctx, g.pivote, { desde: -8, hasta: 0, radio: 120, texto: '≈8°', gris: true, size: 48, ejes: false, separacion: 40, dx: -50 });
+    Fi.arco(ctx, g.pivote, { desde: -g.vuelco, hasta: -g.vuelco + th, radio: 170, texto: '≈' + Math.round(g.vuelco) + '°', size: 64, ejes: true, dx: -60 });
+    const p = Fi.girarPunto(g.cdm, g.pivote, th, 1);
+    Fi.centroMasas(ctx, p, { suelo: g.suelo });
+    rot('P2 inclinada ' + th.toFixed(1) + '°', c.x, c.suelo + 55); }
+  // 6 · P1 inclinada hasta caer de la base (parpadeo)
+  { const c = celda(5), o = { x: c.x, suelo: c.suelo, escala: S }, g = Fi.geometria('pies-juntos', o), th = g.vuelco;
+    Fi.baseApoyo(ctx, { x0: g.base.x0, x1: g.base.x1, suelo: g.suelo, alerta: { t: 0.5, t0: 0.3, dur: 0.6, hz: 5 } });
+    Fi.inclinar(ctx, g.pivote, th, 1, () => Fi.figura(ctx, 'pies-juntos', o));
+    Fi.arco(ctx, g.pivote, { desde: -g.vuelco, hasta: 0, radio: 200, texto: '≈8°', size: 64, dx: -50 });
+    Fi.centroMasas(ctx, Fi.girarPunto(g.cdm, g.pivote, th, 1), { suelo: g.suelo });
+    rot('P1 inclinada ' + th.toFixed(1) + '°', c.x, c.suelo + 55); }
+  Fi.nota(ctx, 1, 1840);
+  function F_M() { return Fi.PIE; }
+};
+</script>

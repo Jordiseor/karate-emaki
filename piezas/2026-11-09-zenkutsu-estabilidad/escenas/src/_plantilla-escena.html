@@ -1,0 +1,32 @@
+<!--#cabecera-->
+<title>Plantilla de escena · zenkutsu-estabilidad</title>
+<script>
+// PLANTILLA: copia este fichero a escena-NN.html y sustituye el contenido de render(t). No la renderices tal cual.
+// Esta plantilla = escena 5 resumida: P2 con base de 4 pies, empuje que inclina el cuerpo como bloque hasta ≈26°, arco rojo y cifra.
+// t es SIEMPRE el tiempo local de la escena (0 = primer fotograma de la escena). Nada de Math.random() ni Date.
+window.DURACION = 4;
+const E = EMAKI, U = E.util, Fi = E.fisica, C = E.marca.color, ctx = E.lienzo();
+const G = Fi.geometria('zenkutsu-alto', PIEZA.opc());         // geometría "de reposo": base, pivote, punto rojo, ángulo de vuelco
+const VUELCO = G.vuelco;                                       // ≈26,2° (se muestra «≈26°»)
+window.render = function (t) {
+  E.fondoPapel(ctx);
+  // 1) progreso del empuje: 0→1 entre 0,8 y 2,6 s; aguanta; vuelve a su sitio entre 3,0 y 3,8 s
+  const sube = U.easeInOut(U.prog(t, 0.8, 2.6)), baja = U.easeInOut(U.prog(t, 3.0, 3.8));
+  const theta = VUELCO * (sube - baja);
+  // 2) base de apoyo (fija: no gira con el cuerpo), 4 celdas de «pie»
+  Fi.baseApoyo(ctx, { x0: G.base.x0, x1: G.base.x1, suelo: G.suelo, celdas: 4 });
+  // 3) figura rígida girada sobre la punta del pie delantero (también devuelve el punto rojo ya girado)
+  const { cdm } = PIEZA.inclinada(ctx, 'zenkutsu-alto', theta);
+  // 4) punto rojo + vertical (la vertical es del MUNDO: no gira)
+  Fi.centroMasas(ctx, cdm, { suelo: G.suelo });
+  // 5) arco de ángulo (de -VUELCO a -VUELCO+theta, medido desde la vertical; + = delante) y cifra
+  Fi.arco(ctx, G.pivote, { desde: -VUELCO, hasta: -VUELCO + theta, radio: 190, texto: '≈26°', size: 72, dx: -70 });
+  // 6) flecha de empuje: entra por detrás de la espalda a la altura de la cadera y acompaña al cuerpo
+  const x = U.lerp(G.cdm[0] - 330, cdm[0] - 330, 1);
+  Fi.flecha(ctx, { x: cdm[0] - 120, y: cdm[1], ang: 0, largo: 260, prog: U.easeOut(U.prog(t, 0.3, 0.8)) * (1 - U.prog(t, 2.6, 3.0)), vibra: t < 0.8 ? 5 : 0, t });
+  void x;
+  // 7) texto (arriba, ≥64 px) y letra pequeña fija
+  E.tarjeta(ctx, t, { t0: 0.2, lineas: ['Hacia delante: [r]≈26°[/r]'], size: 84, x: 540, y: PIEZA.TEXTO_Y });
+  Fi.nota(ctx, 1, PIEZA.NOTA_Y);
+};
+</script>

@@ -7,7 +7,7 @@
 const ctx = EMAKI.lienzo(), K = EMAKI.karateka;
 window.render = function () {
   EMAKI.fondoPapel(ctx);
-  const nombres = Object.keys(K.poses);
+  const nombres = Object.keys(K.poses).filter((n) => !/frontal/.test(n)); // las frontales se ven en prueba-fisica.html
   nombres.forEach((n, i) => {
     const x = 270 + (i % 2) * 540, suelo = 850 + Math.floor(i / 2) * 800;
     K.dibujar(ctx, K.poses[n], { x, suelo, escala: 0.8 });

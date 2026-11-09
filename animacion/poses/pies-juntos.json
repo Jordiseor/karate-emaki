@@ -1,0 +1,13 @@
+{
+  "nombre": "P1 · pies juntos (perfil)",
+  "descripcion": "Perfil mirando a la derecha. Piernas rectas y verticales (0°), pies juntos (en perfil se ven como uno solo). Tronco vertical (0°), cabeza recta. Puños cerrados apoyados en la cadera (hikite a los dos lados), codos atrás ≈30° respecto al tronco. Base de apoyo = 1 pie (≈0,26 m, 15 % de 1,70 m).",
+  "revision_dosier": "Cumple el storyboard (P1). Cálculo del modelo: CdM centrado sobre el pie, 0,90 m -> arctan(0,13/0,90) ≈ 8°.",
+  "modelo": { "pies": 1, "alturaCdM_m": 0.90, "reparto": 0.5, "talonesPies": 0, "basePies": 1 },
+  "angulos": {
+    "torso": 0, "cuello": 0,
+    "hombroCerca": -30, "codoCerca": 75,
+    "hombroLejos": -30, "codoLejos": 75,
+    "caderaCerca": 0, "rodillaCerca": 0, "pieCerca": 0,
+    "caderaLejos": 0, "rodillaLejos": 0, "pieLejos": 0
+  }
+}

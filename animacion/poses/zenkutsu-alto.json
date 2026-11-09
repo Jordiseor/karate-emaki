@@ -1,0 +1,13 @@
+{
+  "nombre": "P2 · zenkutsu-dachi alto (perfil)",
+  "descripcion": "Perfil mirando a la derecha. Pierna delantera (cercana): espinilla VERTICAL (0°) con la rodilla justo sobre el pie, muslo ≈43,5° respecto a la vertical. Pierna trasera (lejana) RECTA (rodilla bloqueada), ≈30,5° respecto a la vertical, pie plano con el talón en el suelo (lo resuelve 'auto'). Tronco vertical (0°), cabeza recta. Brazo delantero en gedan-barai, puño trasero en hikite. Talones separados 3 pies (0,78 m), base total 4 pies (≈1,02 m). Reparto 60/40: punto rojo al 60 % del camino del pie trasero al delantero.",
+  "revision_dosier": "Cumple: espinilla vertical, pierna trasera recta, talones a 3 pies (base 4 pies), reparto 60/40, CdM 0,90 m -> arctan(0,44/0,90) ≈ 26°. DESVIACIÓN: el storyboard decía muslo ≈50° y trasera ≈25°, pero con muslo 205 px, tibia 200 px, espinilla vertical y pierna trasera recta, esos dos ángulos no cierran con talones a 3 pies (dan 3,3 pies). Los ángulos de aquí se han resuelto para cumplir las restricciones (cadera a 0,82 m del suelo).",
+  "modelo": { "pies": 2, "alturaCdM_m": 0.90, "reparto": 0.6, "talonesPies": 3, "basePies": 4 },
+  "angulos": {
+    "torso": 0, "cuello": 0,
+    "hombroCerca": 30, "codoCerca": 6,
+    "hombroLejos": -35, "codoLejos": 84,
+    "caderaCerca": 43.5, "rodillaCerca": 43.5, "pieCerca": 0,
+    "caderaLejos": "auto", "rodillaLejos": 0, "pieLejos": 0
+  }
+}

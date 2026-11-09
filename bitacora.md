@@ -19,3 +19,5 @@
 - 2026-11-09 · Sensei · Revisa las escenas de Shotokan (hoja de contactos): bien para v1. Pasa a montaje (Editor, sonnet). Zenkutsu: jefe de animación (sonnet) prepara poses y plan; después 2 tramos en paralelo.
 - 2026-11-09 · Editor · Reel nombre-shotokan montado (30 s, sonido propio, sin voz) y portada.
 - 2026-11-09 · Sensei · Revisión final OK; corrige subtítulo de portada. Pasa a aprobación de Jorge.
+- 2026-11-09 · Animador (jefe) · zenkutsu: poses P1–P4, fisica.js, karateka frontal, plan de 2 tramos. Dudas para Jorge en el resumen.
+- 2026-11-09 · Sensei · Lanza tramo A (1–4) y tramo B (5–8) en paralelo, sonnet.

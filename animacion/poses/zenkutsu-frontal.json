@@ -1,0 +1,12 @@
+{
+  "nombre": "P4 · zenkutsu-dachi frontal",
+  "vista": "frontal",
+  "descripcion": "Vista de frente (se dibuja con EMAKI.karatekaFrontal, NO con EMAKI.karateka). P2 visto de cara: pies separados 1 ancho de hombros (0,41 m entre centros), tronco vertical, mirada a cámara. Cadera a la misma altura que P2 (0,82 m). Pierna delantera (a la derecha de la pantalla: es la izquierda del karateka) con la rodilla encima del pie; trasera recta. Brazo izquierdo en gedan-barai, derecho en hikite. Las medidas están en metros del modelo (1,70 m).",
+  "revision_dosier": "Cumple el storyboard (P4): base lateral = 1 ancho de hombros entre centros de pies (0,51 m entre bordes exteriores, ≈15-16° de margen lateral, cifra que NO se muestra en pantalla).",
+  "modelo": { "alturaCdM_m": 0.90, "reparto": 0.5, "baseLateral_m": 0.51 },
+  "angulos": {
+    "alturaCadera_m": 0.82, "separacionPies_m": 0.41, "anchoPelvis_m": 0.30, "anchoHombros_m": 0.41,
+    "brazoIzq": { "hombro": 12, "codo": 4, "escorzo": 1 },
+    "brazoDer": { "hombro": 8, "codo": 45, "escorzo": 0.55 }
+  }
+}

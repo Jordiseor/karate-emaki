@@ -1,0 +1,13 @@
+{
+  "nombre": "P3 · zenkutsu-dachi bajo (perfil)",
+  "descripcion": "Igual que P2 con los pies EXACTAMENTE en el mismo sitio (talones a 3 pies, base 4 pies): la cadera baja ≈9 cm (de 0,82 a 0,73 m). Muslo delantero ≈52,6° y espinilla delantera inclinada ≈23° (rodilla adelantada ≈17 cm sobre el tobillo, justo sobre la punta del pie). Pierna trasera recta, ≈40° respecto a la vertical. Tronco vertical. Punto rojo a 0,75 m.",
+  "revision_dosier": "DESVIACIÓN PARA JORGE: el storyboard pide 'misma base + espinilla vertical + cadera 15 cm más baja + trasera recta', y eso es geométricamente imposible con estas proporciones (con la espinilla vertical y los pies quietos la cadera no puede bajar). Se ha mantenido misma base y trasera recta y se ha dejado que la espinilla se incline ≈23° (rodilla sobre la punta del pie, sin pasarla). El punto rojo SÍ baja los 0,15 m del modelo (0,90 -> 0,75 m), así que el arco sigue dando ≈30°; la cadera dibujada baja solo ≈9 cm.",
+  "modelo": { "pies": 2, "alturaCdM_m": 0.75, "reparto": 0.6, "talonesPies": 3, "basePies": 4 },
+  "angulos": {
+    "torso": 0, "cuello": 0,
+    "hombroCerca": 30, "codoCerca": 6,
+    "hombroLejos": -35, "codoLejos": 84,
+    "caderaCerca": 52.6, "rodillaCerca": 75.6, "pieCerca": 0,
+    "caderaLejos": "auto", "rodillaLejos": 0, "pieLejos": 0
+  }
+}
