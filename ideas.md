@@ -24,7 +24,7 @@ Ninguna todavía: las no elegidas siguen en las propuestas.
 - De qué va: Shōtō (松濤, «olas de pino», el rumor del viento entre los pinos) era el seudónimo con el que Gichin Funakoshi firmaba sus poemas, y kan (館) significa «casa» o «sala». Sus alumnos colgaron el cartel «Shōtō-kan» en la entrada del dōjō, y el nombre de la sala acabó siendo el nombre del estilo.
 - Por qué funciona: casi todo practicante dice «Shotokan» a diario sin saber que repite la firma de un poeta.
 - Animación: pinos en sumi-e que se mecen, un pincel escribe 松濤 y luego 館, y el cartel se cuelga sobre la puerta de un dōjō esquemático.
-- Dato a verificar: significado de 松濤 y uso como seudónimo poético de Funakoshi; que fueron los alumnos quienes pusieron el cartel; año y lugar del primer dōjō (las fuentes dicen Mejiro 1936, otra dice Zoshigaya 1937).
+- Dato a verificar: significado de 松濤 y uso como seudónimo poético de Funakoshi; que fueron los alumnos quienes pusieron el cartel; año y lugar del primer dōjō. VERIFICADO (dosier 9 nov): inaugurado en 1939 en Zōshigaya, Tokio; 1936 es el año de la asociación Shōtōkai, no del edificio.
 
 ### El maestro que hacía de conserje
 - Pilar: Historia
@@ -84,7 +84,7 @@ Ninguna todavía: las no elegidas siguen en las propuestas.
 - Pilar: Historia
 - Formato: interactivo (línea temporal)
 - Gancho (primeros 3 s): «En 1921 un príncipe vio karate en un castillo. En 1957 el Shotokan ya estaba en medio mundo. Pasa el dedo.»
-- De qué va: una línea temporal que se recorre con el dedo, con un hito por pantalla: demostración ante el príncipe heredero Hirohito en el castillo de Shuri (1921), llegada de Funakoshi a Tokio (1922), terremoto de Kantō (1923), reunión de Naha y primer dōjō Shotokan (1936), bombardeo del dōjō y muerte de su hijo Yoshitaka (1945), el karate en las universidades durante la ocupación, fundación de la JKA (año a verificar) y muerte de Funakoshi (1957). Puede crecer después con la llegada a Europa y a España.
+- De qué va: una línea temporal que se recorre con el dedo, con un hito por pantalla: demostración ante el príncipe heredero Hirohito en el castillo de Shuri (1921), llegada de Funakoshi a Tokio (1922), terremoto de Kantō (1923), reunión de Naha (1936), primer dōjō Shotokan (1939, verificado), bombardeo del dōjō y muerte de su hijo Yoshitaka (1945), el karate en las universidades durante la ocupación, fundación de la JKA (año a verificar) y muerte de Funakoshi (1957). Puede crecer después con la llegada a Europa y a España.
 - Por qué funciona: ordena en un solo sitio el contexto que las demás piezas de historia cuentan sueltas, y cada reel puede enlazar a su hito.
 - Animación: un rollo horizontal en sumi-e; cada hito se ilumina en rojo al llegar a él, con una ilustración pequeña (castillo, barco, llamas, cartel del dōjō).
 - Dato a verificar: todas las fechas; que karate siguió enseñándose en universidades durante la ocupación mientras judo y kendō estaban restringidos; año de fundación de la JKA; fecha de muerte de Funakoshi (se dice 26 de abril de 1957).
