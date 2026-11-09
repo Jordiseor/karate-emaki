@@ -9,6 +9,10 @@ Cada tarea arranca una sesión nueva sin memoria. Por eso todas empiezan igual: 
 | Cierre de semana | Viernes 17:45 | Resumen para Jorge, el Intendente archiva y escribe el informe de consumo |
 | Informe de métricas | Día 1 de cada mes 9:10 | Marketing analiza `metricas.csv` y deja recomendaciones para la reunión de ideas |
 
+Activas desde el 9 nov 2026, en la nube y con aprobación automática (no se paran a pedir permiso; nunca publican). Primera producción: martes 10 nov 10:15.
+
+La voz se genera en el PC de Jorge con `herramientas/generar-voz.ps1`; los audios van en `piezas/<id>/voz/escena-NN.wav` y el Editor los mezcla.
+
 ## Inicio común de todas las tareas
 
 1. Clona el repositorio del estudio y entra en él.
