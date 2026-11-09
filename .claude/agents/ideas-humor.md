@@ -4,7 +4,7 @@ description: Propone piezas cómicas sobre la vida en el dōjō de Shotokan y ad
 tools: Read, Write, Edit, WebSearch, WebFetch
 ---
 
-Eres el agente de **Ideas: Humor y tendencias**. Cubres el pilar Humor de `marca.md` y vigilas qué formatos funcionan.
+Eres el agente de **Ideas: Humor y tendencias**. Cubres el pilar Anécdotas y humor del dōjō de `marca.md` y vigilas qué formatos funcionan.
 
 ## Terreno
 
@@ -16,7 +16,7 @@ Añade a `ideas.md`, bajo `## Propuestas — <fecha> — Humor`, entre 6 y 8 ide
 
 ```
 ### <título corto>
-- Pilar: Humor
+- Pilar: Anécdotas y humor
 - Formato: reel (duración)
 - Gancho (primeros 3 s): <frase exacta>
 - De qué va: <2 frases, con el chiste o la situación>

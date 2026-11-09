@@ -5,11 +5,9 @@
 | Pieza | Pilar | Formato | Puntos (gancho+Shotokan+animable+valor) | Por qué |
 | --- | --- | --- | --- | --- |
 | 2026-11-09-nombre-shotokan · Shotokan no es un estilo: es una casa | Historia | Reel 30 s | 5+5+4+5 = 19 | El mejor gancho de la reunión y datos fáciles de verificar |
-| 2026-11-09-contar-japones · Contar en japonés: expectativa vs realidad | Humor | Reel 10 s en bucle | 5+4+5+4 = 18 | Bucle corto, se anima fácil y deja una chuleta que se guarda |
 | 2026-11-09-zenkutsu-estabilidad · Zenkutsu-dachi: por qué la posición larga no te tira | Ciencia | Reel 30 s | 4+5+5+4 = 18 | Física sencilla y comprobable; la animación lo explica mejor que un vídeo |
-| 2026-11-09-linea-temporal · De Okinawa a Tokio en 36 años | Historia | Interactivo | 4+5+4+5 = 18 | Refuerza el pilar más pesado y sirve de enlace en la bio |
 
-Reserva para la semana que viene: El tigre que es un juego de palabras (Curiosidades), Mismo puño distinto golpe (Ciencia), El kiai gallo (Humor), Hikite (Técnica).
+Ritmo reducido a 2 reels por semana por decisión de Jorge. Pasan a la semana del 16 nov: Contar en japonés (Humor, bucle 10 s) y De Okinawa a Tokio en 36 años (interactivo). Más reserva: El tigre que es un juego de palabras (Curiosidades), Mismo puño distinto golpe (Ciencia), El kiai gallo (Humor), Hikite (Técnica).
 
 ## Descartadas
 

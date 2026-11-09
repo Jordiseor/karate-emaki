@@ -1,6 +1,6 @@
 # Estudio de Karate — instrucciones comunes a todos los agentes
 
-Este repositorio es la "oficina" de un equipo de agentes que lleva una cuenta de reels animados e interactivos sobre **karate Shotokan**. El dueño es Jorge (karateka, estudiante de Física). Jorge no graba nada: todo el contenido es animado.
+Este repositorio es la "oficina" de un equipo de agentes que lleva **KARATE EMAKI**, una cuenta de reels animados e interactivos sobre karate (base Shotokan). El dueño es Jorge (karateka, estudiante de Física). Jorge no graba nada: todo el contenido es animado.
 
 Antes de hacer cualquier cosa, lee `marca.md` (la biblia de marca). Manda sobre cualquier otra idea que tengas.
 
@@ -10,8 +10,8 @@ Antes de hacer cualquier cosa, lee `marca.md` (la biblia de marca). Manda sobre 
 | --- | --- | --- |
 | Sensei | `.claude/agents/sensei.md` | Orquesta, elige ideas, mueve el tablero, pide aprobación a Jorge |
 | Ideas: Historia | `.claude/agents/ideas-historia.md` | Historia del Shotokan y del karate, curiosidades |
-| Ideas: Técnica | `.claude/agents/ideas-tecnica.md` | Técnica Shotokan, errores comunes, física del golpe |
-| Ideas: Humor | `.claude/agents/ideas-humor.md` | Piezas cómicas y formatos en tendencia |
+| Ideas: Técnica | `.claude/agents/ideas-tecnica.md` | Técnica, competición, errores comunes, física del golpe |
+| Ideas: Humor | `.claude/agents/ideas-humor.md` | Anécdotas del dōjō, humor y formatos en tendencia |
 | Investigador | `.claude/agents/investigador.md` | Verifica datos, cita fuentes, escribe el dosier |
 | Guionista | `.claude/agents/guionista.md` | Guion, storyboard, locución y textos en pantalla |
 | Animador | `.claude/agents/animador.md` | Anima las escenas del reel |
