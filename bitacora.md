@@ -10,3 +10,5 @@
 - 2026-11-09 · Sensei · nombre-shotokan pasa a storyboard (Guionista).
 - 2026-11-09 · Guionista · Storyboard nombre-shotokan: 30 s, 9 escenas; avisa de locución ajustada (≈93 palabras).
 - 2026-11-09 · Sensei · nombre-shotokan pasa a animación. Entorno sin motor de voz: el Editor montará sin locución hasta que haya TTS.
+- 2026-11-09 · Investigador · Dosier zenkutsu-estabilidad: ≈8° pies juntos, ≈26° delante en zenkutsu, ≈30° bajando cadera; de lado ≈15–18°. Corrige el planteamiento de la idea (base talón-punta, CdM adelantado 60/40).
+- 2026-11-09 · Sensei · zenkutsu-estabilidad pasa a storyboard (Guionista).
