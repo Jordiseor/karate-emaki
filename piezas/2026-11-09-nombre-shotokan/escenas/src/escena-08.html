@@ -1,0 +1,43 @@
+<!--#cabecera-->
+<title>Escena 8 · Nunca bautizó su estilo</title>
+<script>
+// 23–27 s (4 s). Fondo papel. Funakoshi (silueta de pie) escribe 空手 con el pincel. A su alrededor brotan solos,
+// poco a poco, carteles «SHOTOKAN» que le apuntan; él no los firma (sigue escribiendo 空手).
+window.DURACION = 4;
+const E = EMAKI, U = E.util, S = E.sumie, C = E.marca.color, ctx = E.lienzo();
+// carteles: brotan solos, poco a poco, y apuntan hacia él (dentro de la zona segura)
+const FX = 560, FY = 1560;
+const CARTELES = [
+  { x: 840, y: 1420, t: 1.0 }, { x: 860, y: 1150, t: 1.45 }, { x: 820, y: 890, t: 1.85 },
+  { x: 560, y: 660, t: 2.2 }, { x: 900, y: 650, t: 2.5 }, { x: 290, y: 1460, t: 2.75 },
+];
+function cartel(c, t) {
+  const p = U.easeBack(U.prog(t, c.t, c.t + 0.35)); if (p <= 0) return;
+  const objetivo = [FX, FY - 360], izq = objetivo[0] < c.x; // la punta mira hacia él
+  const ang = U.clamp(Math.atan2(objetivo[1] - c.y, Math.abs(objetivo[0] - c.x)), -0.3, 0.3) * (izq ? -1 : 1);
+  const w = 330, h = 92, poste = Math.min(150, FY - c.y - h / 2);
+  ctx.save(); ctx.translate(c.x, c.y); ctx.scale(p, p);
+  ctx.fillStyle = C.tinta; ctx.fillRect(-6, 0, 12, Math.max(0, poste));
+  ctx.rotate(ang); if (izq) ctx.scale(-1, 1);
+  ctx.fillStyle = '#C9B48E'; ctx.strokeStyle = C.tinta; ctx.lineWidth = 6; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(-w / 2, -h / 2); ctx.lineTo(w / 2 - 44, -h / 2); ctx.lineTo(w / 2, 0); ctx.lineTo(w / 2 - 44, h / 2); ctx.lineTo(-w / 2, h / 2); ctx.closePath(); ctx.fill(); ctx.stroke();
+  if (izq) ctx.scale(-1, 1);
+  ctx.font = `900 50px ${E.marca.fuente.titulo}`; ctx.fillStyle = C.tinta; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('SHOTOKAN', izq ? 18 : -18, 3);
+  ctx.restore();
+}
+window.render = function (t) {
+  E.fondoPapel(ctx);
+  S.pincel(ctx, [[40, FY + 2], [540, FY - 4], [1040, FY + 2]], { ancho: 9, semilla: 4, alpha: 0.7 });
+  // papel grande en el suelo donde escribe
+  ctx.save(); ctx.fillStyle = '#FBF8F1'; ctx.strokeStyle = 'rgba(26,26,26,0.35)'; ctx.lineWidth = 3;
+  ctx.fillRect(110, 820, 300, 520); ctx.strokeRect(110, 820, 300, 520); ctx.restore();
+  // 空手 (karate), en tinta, vertical, escrito poco a poco
+  S.kanji(ctx, '空手', 260, 1080, 220, { prog: U.prog(t, 0.2, 2.6), color: C.tinta, vertical: true, separacion: 230 });
+  // Funakoshi de pie a la derecha del papel (mira a la izquierda), pincel en el papel
+  const fase = U.prog(t, 0.2, 2.6), mano = [Math.sin(fase * 18) * 10, 20 + Math.cos(fase * 11) * 8];
+  S.funakoshiPie(ctx, FX, FY, 0.68, { dir: -1, brazo: 0.55, mano });
+  CARTELES.forEach((c) => cartel(c, t));
+  E.tarjeta(ctx, t, { t0: 0.15, lineas: ['Él nunca bautizó', 'su estilo'], size: 104, y: PIEZA.textoY });
+};
+</script>

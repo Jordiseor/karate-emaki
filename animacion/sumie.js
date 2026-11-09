@@ -274,8 +274,8 @@
     ctx.lineWidth = 24; ctx.beginPath(); ctx.moveTo(ex, ey); ctx.lineTo(hx, hy); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(ex - 20, ey - 10); ctx.quadraticCurveTo(ex - 10, ey + 60, ex + 30, ey + 40); ctx.lineTo(ex + 20, ey); ctx.fill(); // manga
     ctx.beginPath(); ctx.arc(hx, hy, 14, 0, Math.PI * 2); ctx.fill();
-    ctx.lineWidth = 7; ctx.beginPath(); ctx.moveTo(hx - 6, hy - 40); ctx.lineTo(hx + 8, hy + 45); ctx.stroke();
+    if (o.pincel !== false) { ctx.lineWidth = 7; ctx.beginPath(); ctx.moveTo(hx - 6, hy - 40); ctx.lineTo(hx + 8, hy + 45); ctx.stroke(); }
     ctx.restore();
-    return { punta: [x + dir * s * (hx + 8), y + s * (hy + 45)] };
+    return { mano: [x + dir * s * hx, y + s * hy], punta: [x + dir * s * (hx + 8), y + s * (hy + 45)] };
   };
 })();

@@ -15,3 +15,5 @@
 - 2026-11-09 · Guionista · Storyboard zenkutsu-estabilidad: 30 s, 8 escenas, poses P1–P4 por ángulos; nota para Marketing sobre comentario fijado.
 - 2026-11-09 · Sensei · zenkutsu en cola de animación hasta que el Animador termine la base y Shotokan.
 - 2026-11-09 · Sensei · Jorge pide un equipo más dinámico: trabajo largo repartido entre varios agentes (animación por tramos), nuevo agente Intendente (ahorro de tokens, modelo por tarea), y tareas programadas (preparadas en programacion.md, pendientes de repositorio).
+- 2026-11-09 · Animador · nombre-shotokan: 9 escenas (30 s) y base de animación (karateka, poses, sumi-e, render). Kanji tipográficos, sin trazado real de pincel.
+- 2026-11-09 · Sensei · Revisa las escenas de Shotokan (hoja de contactos): bien para v1. Pasa a montaje (Editor, sonnet). Zenkutsu: jefe de animación (sonnet) prepara poses y plan; después 2 tramos en paralelo.

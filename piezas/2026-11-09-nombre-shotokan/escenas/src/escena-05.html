@@ -1,0 +1,53 @@
+<!--#cabecera-->
+<title>Escena 5 · 1939, Tokio, un dōjō</title>
+<script>
+// 13–17 s (4 s). Calle de Tokio en sumi-e simplificado. La casa toma volumen; alumnos (siluetas) levantan una viga
+// junto a la silueta de Funakoshi. Sobre la puerta, un rótulo de madera vacío.
+window.DURACION = 4;
+const E = EMAKI, U = E.util, S = E.sumie, K = E.karateka, C = E.marca.color, ctx = E.lienzo(), CASA = PIEZA.casa;
+const cx = 540, by = 1440, an = 640; // casa algo más pequeña para que quepan los personajes
+function calle(t) { // tejados lejanos de la calle, en aguada
+  const r = U.rng(77);
+  for (let i = 0; i < 6; i++) { const x = -60 + i * 220 + r() * 40, w = 170 + r() * 60, y = 1180 + r() * 30;
+    ctx.save(); ctx.globalAlpha = 0.16 * U.prog(t, 0, 0.6); ctx.fillStyle = C.tinta;
+    ctx.beginPath(); ctx.moveTo(x - 20, y); ctx.lineTo(x + w * 0.2, y - 55); ctx.lineTo(x + w * 0.8, y - 55); ctx.lineTo(x + w + 20, y); ctx.closePath(); ctx.fill();
+    ctx.globalAlpha *= 0.6; ctx.fillRect(x, y, w, 90); ctx.restore(); }
+}
+window.render = function (t) {
+  E.fondoPapel(ctx);
+  S.montes(ctx, 1150, { alto: 110, alpha: 0.1, semilla: 8 });
+  calle(t);
+  // volumen: aguada de muros y tejado que se llena
+  const vol = U.easeInOut(U.prog(t, 0.2, 1.6));
+  const P = (u, v) => [cx + u * an, by + v * an];
+  ctx.save(); ctx.globalAlpha = 0.85 * vol; ctx.fillStyle = '#E9E1D2';
+  let q = [P(-0.40, 0), P(0.40, 0), P(0.40, -0.40), P(-0.40, -0.40)]; ctx.beginPath(); q.forEach((p, i) => (i ? ctx.lineTo(...p) : ctx.moveTo(...p))); ctx.fill();
+  ctx.globalAlpha = 0.9 * vol; ctx.fillStyle = C.tinta;
+  q = [P(-0.56, -0.47), P(-0.5, -0.44), P(0.5, -0.44), P(0.56, -0.47), P(0.27, -0.75), P(-0.27, -0.75)]; ctx.beginPath(); q.forEach((p, i) => (i ? ctx.lineTo(...p) : ctx.moveTo(...p))); ctx.closePath(); ctx.fill();
+  ctx.globalAlpha = 0.25 * vol; ctx.fillRect(...P(-0.13, -0.25), 0.26 * an, 0.25 * an); // hueco de la puerta
+  ctx.restore();
+  S.casa(ctx, cx, by, an, { pincel: true, ancho: 10, seco: 0.2 });
+  // vigas verticales que se levantan (la casa "se construye")
+  for (let k = 0; k < 4; k++) { const u = -0.3 + k * 0.2, h = U.easeOut(U.prog(t, 0.3 + k * 0.15, 0.9 + k * 0.15));
+    S.pincel(ctx, [P(u, 0), P(u, -0.40 * h)], { ancho: 8, semilla: 600 + k, alpha: 0.6, cola: 0.05, entrada: 0.02, seco: 0.1 }); }
+  // rótulo de madera vacío sobre la puerta
+  const R = S.casaRotulo, rr = U.easeBack(U.prog(t, 1.4, 1.9));
+  if (rr > 0) { const [rx, ry] = P(R.x, R.y); ctx.save(); ctx.translate(rx, ry); ctx.scale(rr, rr);
+    ctx.fillStyle = '#C9B48E'; ctx.strokeStyle = C.tinta; ctx.lineWidth = 6; ctx.beginPath(); ctx.rect(-R.w * an / 2, -R.h * an / 2, R.w * an, R.h * an); ctx.fill(); ctx.stroke(); ctx.restore(); }
+  // alumnos (siluetas) levantando una viga a la izquierda, y otro a la derecha
+  const lev = 0.5 + 0.5 * Math.sin(Math.min(t, 3.2) * 2.2 - 1.5);
+  const poseL = K.mezclar(K.poses.yoi, K.poses['brazos-arriba'], 0.55 + 0.45 * lev);
+  const a1 = K.dibujar(ctx, poseL, { x: 180, suelo: 1555, escala: 0.42, estilo: 'silueta', dir: 1 });
+  const a2 = K.dibujar(ctx, poseL, { x: 330, suelo: 1555, escala: 0.42, estilo: 'silueta', dir: -1 });
+  // viga horizontal sobre sus manos
+  const yv = Math.min(a1.manoCerca[1], a2.manoCerca[1]) - 12;
+  S.pincel(ctx, [[90, yv + 6], [255, yv], [420, yv + 4]], { ancho: 22, semilla: 610, cola: 0.05, entrada: 0.05, seco: 0.4 });
+  const a3 = K.dibujar(ctx, K.mezclar(K.poses.yoi, K.poses['brazos-arriba'], 0.6 - 0.3 * lev), { x: 960, suelo: 1555, escala: 0.42, estilo: 'silueta', dir: -1 });
+  // Funakoshi de pie (silueta plana, sin rostro) junto a la casa
+  S.funakoshiPie(ctx, 780, 1555, 0.64, { brazo: 0.15 + 0.1 * Math.sin(t * 2), dir: -1, pincel: false });
+  // suelo
+  S.pincel(ctx, [[40, 1556], [540, 1550], [1040, 1556]], { ancho: 9, semilla: 4, alpha: 0.7 });
+  E.tarjeta(ctx, t, { t0: 0.1, lineas: ['[r]1939[/r] · Tokio', 'un dōjō'], size: [120, 104], y: PIEZA.textoY });
+  E.tarjeta(ctx, t, { t0: 0.5, lineas: ['(sala de práctica)'], size: 60, peso: 600, y: PIEZA.textoY + 250 });
+};
+</script>
