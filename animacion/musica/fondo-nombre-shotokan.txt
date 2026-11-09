@@ -1,0 +1,8 @@
+Fondo sonoro "fondo-nombre-shotokan.wav" (30 s, 44,1 kHz mono). Obra propia de KARATE EMAKI, sintetizada desde cero con ffmpeg (lavfi/aevalsrc); sin samples ni material de terceros. Licencia: obra propia, uso libre para la cuenta.
+Capas (ficheros intermedios pulso.wav, ambiente.wav, golpe.wav en esta carpeta):
+1. pulso.wav: tambor grave suave cada 1,5 s (seno de 48 Hz con caída exponencial, acentuado cada 3 s, lowpass 140 Hz):
+   aevalsrc='0.9*sin(2*PI*48*mod(t,1.5))*exp(-5*mod(t,1.5))*(0.6+0.4*lt(mod(t,3),1.5))':s=44100:d=30 -af lowpass=f=140
+2. ambiente.wav: tono tenue (110, 164,81 y 220,5 Hz, modulado lento, lowpass 600, fundido de entrada y salida):
+   aevalsrc='(0.5*sin(2*PI*110*t)+0.35*sin(2*PI*164.81*t)+0.25*sin(2*PI*220.5*t))*(0.7+0.3*sin(2*PI*0.1*t))'
+3. golpe.wav: golpe de madera/tambor corto para la escena 4 (seno que baja de 300 a 180 Hz + armónico, caída rápida), colocado en t = 11 s.
+Mezcla: pulso x0.5, ambiente x0.22, golpe x0.9 (adelay 11000), amix sin normalizar, fundido final 27,5-30 s, limitador 0,8 (level=disabled). Volumen bajo para que luego entre la voz.
