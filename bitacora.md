@@ -26,3 +26,4 @@
 - 2026-11-09 · Sensei · Revisa las 8 escenas de zenkutsu: válidas para v1. Pasa a montaje.
 - 2026-11-09 · Editor · Reel zenkutsu-estabilidad montado (30 s, sonido propio con golpes por cifra, sin voz) y portada.
 - 2026-11-09 · Sensei · Revisión final zenkutsu OK. Las 2 piezas de la semana en aprobación de Jorge.
+- 2026-11-09 · Sensei · Jorge aprueba zenkutsu (pasa a Marketing) y pide cambios en Shotokan: añadir la voz. La voz se genera en el PC de Jorge con herramientas/generar-voz.ps1 (voz de Windows).
