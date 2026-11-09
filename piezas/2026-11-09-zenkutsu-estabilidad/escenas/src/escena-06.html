@@ -1,0 +1,31 @@
+<!--#cabecera-->
+<title>Escena 6 · zenkutsu-estabilidad</title>
+<script>
+// ESCENA 6 (18-22 s): P2 -> P3 con los pies quietos, el punto rojo baja; empuje hasta ≈30°; fantasma gris de ≈26°.
+window.DURACION = 4;
+const E = EMAKI, U = E.util, Fi = E.fisica, ctx = E.lienzo();
+const G2 = Fi.geometria('zenkutsu-alto', PIEZA.opc()), G3 = Fi.geometria('zenkutsu-bajo', PIEZA.opc());
+const V26 = G2.vuelco, V30 = G3.vuelco;
+window.render = function (t) {
+  E.fondoPapel(ctx);
+  const f = U.easeInOut(U.prog(t, 0.2, 1.3));
+  const sube = U.easeInOut(U.prog(t, 1.6, 3.0)), baja = U.easeInOut(U.prog(t, 3.3, 3.9));
+  const tiembla = 0.4 * Math.sin((t - 3.0) * 2 * Math.PI * 9) * U.prog(t, 3.0, 3.1) * (1 - U.prog(t, 3.2, 3.3));
+  const theta = V30 * (sube - baja) + (t > 3.0 && t < 3.3 ? tiembla : 0);
+  const m = Fi.poseAltura(f), o = PIEZA.opc({ modelo: m.modelo }), g = Fi.geometria(m.pose, o);
+  Fi.baseApoyo(ctx, { x0: G2.base.x0, x1: G2.base.x1, suelo: G2.suelo, celdas: 4 });
+  Fi.inclinar(ctx, g.pivote, theta, 1, () => Fi.figura(ctx, m.pose, o));
+  const cdm = Fi.girarPunto(g.cdm, g.pivote, theta, 1);
+  Fi.centroMasas(ctx, cdm, { suelo: G2.suelo });
+  // flechita roja hacia abajo junto al punto mientras baja
+  const fa = U.easeOut(U.prog(t, 0.15, 0.5)) * (1 - U.prog(t, 1.3, 1.6));
+  Fi.flecha(ctx, { x: cdm[0] + 95, y: cdm[1] + 70, ang: 90, largo: 80, grosor: 11, prog: fa });
+  // fantasma gris de ≈26° (escena 5) y arco rojo de ≈30°
+  const gh = U.easeOut(U.prog(t, 1.8, 2.3)) * (1 - U.prog(t, 3.5, 3.9));
+  Fi.arco(ctx, G2.pivote, { desde: -V26, hasta: 0, radio: 600, gris: true, texto: '≈26°', size: 56, ejes: false, alpha: 0.85 * gh, dx: -170, separacion: 40 });
+  Fi.arco(ctx, G2.pivote, { desde: -V30, hasta: -V30 + theta, radio: 190, texto: '≈30°', size: 72, dx: -110, alpha: U.clamp(theta / 3) * (1 - U.prog(t, 3.6, 3.95)) });
+  Fi.flecha(ctx, { x: cdm[0] - 120, y: cdm[1], ang: 0, largo: 260, prog: U.easeOut(U.prog(t, 1.4, 1.9)) * (1 - U.prog(t, 3.0, 3.3)), vibra: t < 1.8 && t > 1.4 ? 5 : 0, t });
+  E.tarjeta(ctx, t, { t0: 0.1, lineas: ['Cadera baja: [r]≈30°[/r]'], size: 84, x: 540, y: PIEZA.TEXTO_Y });
+  Fi.nota(ctx, 1, PIEZA.NOTA_Y);
+};
+</script>

@@ -1,0 +1,29 @@
+<!--#cabecera-->
+<title>Escena 4 · zenkutsu-dachi</title>
+<script>
+window.DURACION = 4;
+const E = EMAKI, U = E.util, Fi = E.fisica, K = E.karateka, C = E.marca.color, ctx = E.lienzo();
+const G1 = Fi.geometria('pies-juntos', PIEZA.opc()), G2 = Fi.geometria('zenkutsu-alto', PIEZA.opc());
+const P1 = K.poses['pies-juntos'], P2 = K.poses['zenkutsu-alto'];
+window.render = function (t) {
+  E.fondoPapel(ctx);
+  // salto ágil P1 -> P2 entre 0,6 y 0,9 s (la punta del pie delantero no se mueve: anclaPunta)
+  const f = U.easeOut(U.prog(t, 0.6, 0.9));
+  const salto = -48 * Math.sin(Math.PI * f);
+  // base: de 1 pie a ~4 pies hacia atrás (x1 fija); 4 marcas al llegar
+  const b = U.easeInOut(U.prog(t, 0.95, 1.5));
+  Fi.baseApoyo(ctx, { x0: U.lerp(G1.base.x0, G2.base.x0, b), x1: G2.base.x1, suelo: G2.suelo, celdas: b >= 1 ? 4 : 1 });
+  ctx.save(); ctx.translate(0, salto);
+  if (f <= 0) Fi.figura(ctx, 'pies-juntos', PIEZA.opc());
+  else if (f >= 1) Fi.figura(ctx, 'zenkutsu-alto', PIEZA.opc());
+  else Fi.figura(ctx, K.mezclar(P1, P2, f), PIEZA.opc({ modelo: { pies: 2, alturaCdM_m: 0.9, reparto: 0.5 } }));
+  ctx.restore();
+  // punto rojo: de la cadera de P1 al sitio adelantado de P2 (60/40) y su vertical a plomo
+  const cdm = [U.lerp(G1.cdm[0], G2.cdm[0], f), U.lerp(G1.cdm[1], G2.cdm[1], f) + salto];
+  Fi.centroMasas(ctx, cdm, { suelo: G2.suelo, prog: t < 0.6 ? 1 : (f < 1 ? 1 : 1), rebote: false });
+  // texto: nombre grande y aclaración debajo
+  E.tarjeta(ctx, t, { t0: 0.3, lineas: ['Zenkutsu-dachi'], size: 92, x: 540, y: PIEZA.TEXTO_Y });
+  E.texto(ctx, { lineas: '(posición adelantada)', size: 58, peso: 500, x: 540, y: PIEZA.TEXTO_Y + 120, alpha: U.easeOut(U.prog(t, 0.7, 1.2)) });
+  Fi.nota(ctx, 1, PIEZA.NOTA_Y);
+};
+</script>

@@ -1,0 +1,42 @@
+<!--#cabecera-->
+<title>Escena 3 · pies juntos, ocho grados</title>
+<script>
+window.DURACION = 3;
+const E = EMAKI, U = E.util, Fi = E.fisica, K = E.karateka, C = E.marca.color, ctx = E.lienzo();
+const G = Fi.geometria('pies-juntos', PIEZA.opc());
+const V = G.vuelco;                                    // ≈8,2°
+const P1 = K.poses['pies-juntos'], PZ = K.poses['zenkutsu-dachi'];
+const FALL = 17;                                       // inclinación máxima de la "caída" (°)
+// Paso torpe (dibujado aquí, no está en la biblioteca): mezcla P1 -> zenkutsu-dachi con la pierna trasera fija en el suelo
+function paso(f) {
+  const pose = K.mezclar(P1, PZ, f);
+  const g0 = Fi.geometria(pose, PIEZA.opc({ anclaPunta: null, x: 540 }));
+  const dx = G.base.x0 - g0.base.x0;
+  const o = PIEZA.opc({ anclaPunta: null, x: 540 + dx });
+  return { pose, o, g: Fi.geometria(pose, o) };
+}
+window.render = function (t) {
+  E.fondoPapel(ctx);
+  const sube = U.easeInOut(U.prog(t, 0.4, 1.4));
+  const cae = U.easeIn ? U.easeIn(U.prog(t, 1.9, 2.3)) : Math.pow(U.prog(t, 1.9, 2.3), 2);
+  const tf = U.prog(t, 2.3, 2.95);
+  let theta, g, pose, o;
+  if (t < 2.3) { theta = V * sube + (FALL - V) * cae; pose = 'pies-juntos'; o = PIEZA.opc(); g = G; }
+  else {
+    const f = 0.62 * U.easeOut(tf), p = paso(f); pose = p.pose; o = p.o; g = p.g;
+    theta = FALL * (1 - U.easeOut(tf)) + Math.sin(tf * Math.PI * 3) * 2.2 * (1 - tf);
+  }
+  Fi.baseApoyo(ctx, { x0: G.base.x0, x1: G.base.x1, suelo: G.suelo, alerta: { t, t0: 1.4, dur: 0.5, hz: 5 } });
+  Fi.inclinar(ctx, g.pivote, theta, 1, () => Fi.figura(ctx, pose, o));
+  const cdm = Fi.girarPunto(G.cdm, g.pivote, theta, 1);
+  Fi.centroMasas(ctx, t < 2.3 ? cdm : Fi.girarPunto([G.cdm[0] + (g.pivote[0] - G.pivote[0]) * 0.5, G.cdm[1]], g.pivote, theta, 1), { suelo: G.suelo });
+  // arco hasta 8,2° y se queda congelado; se apaga al caer
+  const aA = 1 - U.prog(t, 1.95, 2.25);
+  Fi.arco(ctx, G.pivote, { desde: -V, hasta: -V + Math.min(theta, V), radio: 190, texto: '≈8°', size: 72, dx: -70, alpha: aA * U.prog(t, 0.45, 0.7) });
+  // flecha de empuje que acompaña al cuerpo
+  const fl = U.easeOut(U.prog(t, 0.1, 0.4)) * (1 - U.prog(t, 1.9, 2.2));
+  Fi.flecha(ctx, { x: cdm[0] - 120, y: cdm[1], ang: 0, largo: 260, prog: fl });
+  E.tarjeta(ctx, t, { t0: 0.1, lineas: ['Pies juntos: [r]≈8°[/r]'], size: 84, x: 540, y: PIEZA.TEXTO_Y });
+  Fi.nota(ctx, 1, PIEZA.NOTA_Y);
+};
+</script>

@@ -1,0 +1,29 @@
+<!--#cabecera-->
+<title>Escena 7 · zenkutsu-estabilidad</title>
+<script>
+// ESCENA 7 (22-26 s): P2 -> giro de cámara 90° (1,5 s) -> P4 frontal; la base se encoge a un ancho de hombros; empuje lateral y tambaleo. Sin cifra.
+window.DURACION = 4;
+const E = EMAKI, U = E.util, Fi = E.fisica, Kf = E.karatekaFrontal, ctx = E.lienzo();
+const G = Fi.geometria('zenkutsu-alto', PIEZA.opc());
+const POSE = Fi.poseFrontal('zenkutsu-frontal');
+const gF = Kf.dibujar(ctx, POSE, PIEZA.opcFrontal({ alpha: 0 }));
+const CDM_F = [PIEZA.CENTRO_X, PIEZA.SUELO - 0.9 * Fi.PPM * PIEZA.ESCALA];
+window.render = function (t) {
+  E.fondoPapel(ctx);
+  const p = U.easeInOut(U.prog(t, 0.5, 2.0));
+  // base: del rectángulo de perfil (4 pies) al ancho de los pies de frente, a lo largo del giro (es del mundo: no se comprime con el giro)
+  const x0 = U.lerp(G.base.x0, gF.base.x0, p), x1 = U.lerp(G.base.x1, gF.base.x1, p);
+  Fi.baseApoyo(ctx, { x0, x1, suelo: PIEZA.SUELO, celdas: p < 0.5 ? 4 : (p < 0.85 ? 3 : 2) });
+  // empuje lateral: la flecha entra por la derecha y vibra; la figura se bambolea (tambaleo en px) y vuelve
+  const tfl = U.easeOut(U.prog(t, 2.2, 2.7)), bam = Math.sin(U.prog(t, 2.7, 3.6) * Math.PI) * (-1);
+  const pose = Object.assign({}, POSE, { tambaleo: 26 * bam * (t > 2.7 ? 1 : 0) });
+  Fi.giroCamara(ctx, p, () => Fi.figura(ctx, 'zenkutsu-alto', PIEZA.opc()), () => Kf.dibujar(ctx, pose, PIEZA.opcFrontal()), { x: 540 });
+  // punto rojo (a 0,90 m): su x pasa del reparto 60/40 del perfil al centro de la vista frontal
+  const cdm = [U.lerp(G.cdm[0], CDM_F[0], p) + (p >= 1 ? pose.tambaleo * 0.5 : 0), G.cdm[1]];
+  Fi.centroMasas(ctx, cdm, { suelo: PIEZA.SUELO });
+  Fi.flecha(ctx, { x: cdm[0] + 120 + (p >= 1 ? pose.tambaleo * 0.5 : 0), y: cdm[1] - 40, ang: 180, largo: 260, prog: tfl * (1 - U.prog(t, 3.5, 3.8)), vibra: t < 2.7 ? 5 : 0, t });
+  // la flecha de la derecha apunta a la izquierda: su punta queda a la derecha del cuerpo, así que la colocamos con la cola más a la derecha
+  E.tarjeta(ctx, t, { t0: 0.2, lineas: ['De lado, la base', 'es estrecha'], size: 84, x: 540, y: PIEZA.TEXTO_Y });
+  Fi.nota(ctx, 1, PIEZA.NOTA_Y);
+};
+</script>

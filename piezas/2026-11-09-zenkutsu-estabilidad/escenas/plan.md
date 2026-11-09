@@ -50,4 +50,16 @@ Empalmes (no dependen entre tramos): A termina en 4 con `zenkutsu-alto` en repos
 
 ## Pendiente para la biblioteca (lo rellenan los tramos)
 
-- (vacío)
+- (vacío) Tramo A: (sin apuntar por este tramo)
+### Pendiente para la biblioteca (tramo B)
+- Arco fantasma gris (8° en la 5, 26° en la 6): se dibuja con `arco({gris:true, desde:-V, hasta:0, radio:600})` delante de la figura y la cruza; faltaría una variante que se dibuje detrás o con radio propio de comparación.
+- Giro de cámara (7): `giroCamara` colapsa la figura a una línea fina a mitad del giro (cos); falta un truco de «medio giro» con ancho mínimo. El punto rojo y la base se dibujan fuera del giro y se interpolan a mano (x del punto: 60/40 de perfil -> centro de frontal).
+- Tres flechas de la 8: «delante/detrás» resueltas con diagonales desde la izquierda; falta flecha en escorzo (hacia/desde cámara).
+- Etiqueta del arco: `arco` muestra la cifra aunque el arco mida 0°; en la 5 y la 6 se oculta con `alpha = clamp(theta/3)`.
+
+### Pendiente para la biblioteca (tramo A)
+
+- Paso torpe de la escena 3 (`paso(f)` en `src/escena-03.html`): mezcla `pies-juntos` -> `zenkutsu-dachi` (f hasta 0,62) con la pierna trasera fija (se corrige `x` para que `base.x0` no se mueva) y el cuerpo girando sobre la punta delantera. Podría ser una función `Fi.paso` o una pose `paso-torpe`.
+- Salto P1 -> P2 de la escena 4: `K.mezclar` + `translate(0, -48*sin(pi*f))`; durante la mezcla se pasa un `modelo` provisional a `Fi.figura`. Candidato a `Fi.salto(ctx, a, b, f)`.
+- `Fi.etiqueta` choca con la figura si el texto va a la izquierda; en la escena 2 la etiqueta «centro de masas» se dibuja a mano (2 líneas + `Fi.flecha` de tinta). Sería útil una opción de etiqueta en dos líneas.
+- `Fi.cara('reto')` queda centrada en la cabeza; en la escena 1 se desplaza `dx: 18` para que mire a cámara.

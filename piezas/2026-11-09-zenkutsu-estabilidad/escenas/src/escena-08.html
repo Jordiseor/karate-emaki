@@ -1,0 +1,31 @@
+<!--#cabecera-->
+<title>Escena 8 · zenkutsu-estabilidad</title>
+<script>
+// ESCENA 8 (26-30 s): plano final frontal P4, cejas levantadas, 3 flechas (delante, detrás, costado). Congelar el final (--congelar 1): todo queda hecho a t≈2,7 s.
+window.DURACION = 4;
+const E = EMAKI, U = E.util, Fi = E.fisica, Kf = E.karatekaFrontal, K = E.karateka, ctx = E.lienzo();
+const POSE = Fi.poseFrontal('zenkutsu-frontal');
+const g0 = Kf.dibujar(ctx, POSE, PIEZA.opcFrontal({ alpha: 0 }));
+const RC = K.medidas.cabezaR * PIEZA.ESCALA;
+window.render = function (t) {
+  E.fondoPapel(ctx);
+  Fi.baseApoyo(ctx, { x0: g0.base.x0, x1: g0.base.x1, suelo: PIEZA.SUELO, celdas: 2 });
+  const g = Kf.dibujar(ctx, POSE, PIEZA.opcFrontal());
+  Fi.cara(ctx, g.cabeza, RC, { expresion: t < 0.5 ? 'neutra' : 'cejas' });
+  const cy = PIEZA.SUELO - 0.9 * Fi.PPM * PIEZA.ESCALA, cdm = [PIEZA.CENTRO_X, cy];
+  Fi.centroMasas(ctx, cdm, { suelo: PIEZA.SUELO });
+  // tres flechas que apuntan al centro, entran escalonadas y vibran sin empujar
+  const dist = 120, pr = (t0) => U.easeOut(U.prog(t, t0, t0 + 0.5));
+  const A = [ // [ángulo canvas de la flecha, t0]
+    [180, 0.5],   // costado: viene de la derecha
+    [-35, 1.1],   // delante: viene de abajo-izquierda hacia el centro (hacia cámara/arriba)
+    [35, 1.7],    // detrás: viene de arriba-izquierda
+  ];
+  A.forEach(([ang, t0]) => {
+    const r = ang * Math.PI / 180, p = pr(t0);
+    Fi.flecha(ctx, { x: cdm[0] - Math.cos(r) * (dist + 40), y: cdm[1] - Math.sin(r) * (dist + 40), ang, largo: 250, prog: p, vibra: p >= 1 ? 6 : 0, t });
+  });
+  E.tarjeta(ctx, t, { t0: 0.1, lineas: ['¿Por dónde', 'me empujarías tú?'], size: 84, x: 540, y: PIEZA.TEXTO_Y });
+  Fi.nota(ctx, 1, PIEZA.NOTA_Y);
+};
+</script>

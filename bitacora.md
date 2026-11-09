@@ -21,3 +21,4 @@
 - 2026-11-09 · Sensei · Revisión final OK; corrige subtítulo de portada. Pasa a aprobación de Jorge.
 - 2026-11-09 · Animador (jefe) · zenkutsu: poses P1–P4, fisica.js, karateka frontal, plan de 2 tramos. Dudas para Jorge en el resumen.
 - 2026-11-09 · Sensei · Lanza tramo A (1–4) y tramo B (5–8) en paralelo, sonnet.
+- 2026-11-09 · Animador (tramo A) · zenkutsu escenas 1–4 (14 s). Paso torpe y salto P1→P2 simplificados.
