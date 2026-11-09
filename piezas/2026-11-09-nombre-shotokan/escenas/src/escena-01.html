@@ -1,0 +1,44 @@
+<!--#cabecera-->
+<title>Escena 1 · Shotokan es una casa</title>
+<script>
+// 0–3 s. Karateka en kamae; «SHOTOKAN» sale del cinturón, flota y sus letras se convierten en el contorno de una casa.
+window.DURACION = 3;
+const E = EMAKI, U = E.util, S = E.sumie, K = E.karateka, C = E.marca.color, ctx = E.lienzo();
+const CASA = PIEZA.casa, PAL = 'SHOTOKAN';
+const segs = S.casaPuntos(CASA.x, CASA.y, CASA.ancho);
+function remuestrear(pts, N) { const out = []; for (let i = 0; i < N; i++) { const q = S.recortar(pts, i / (N - 1)); out.push(q[q.length - 1]); } return out; }
+const segsR = segs.map((s) => remuestrear(s, 24));
+const T_MORF = 1.5; // empieza el paso letras → casa
+window.render = function (t) {
+  E.fondoPapel(ctx);
+  const resp = Math.sin(t * 2.4) * 1.2;
+  const pose = Object.assign({}, K.poses.kamae, { torso: K.poses.kamae.torso + resp * 0.6 });
+  const nudo = K.dibujar(document.createElement('canvas').getContext('2d'), pose, { x: 520, suelo: 1500, escala: 0.8 }).nudo;
+  // palabra: sale del nudo y sube (0.15–0.95 s)
+  const sube = U.easeInOut(U.prog(t, 0.15, 0.95));
+  const yW = U.lerp(nudo[1], 740, sube), xW = U.lerp(nudo[0], 540, sube), size = U.lerp(24, 150, sube);
+  ctx.font = `900 ${size}px ${E.marca.fuente.titulo}`;
+  const anchos = [...PAL].map((ch) => ctx.measureText(ch).width), esp = size * 0.04;
+  const tot = anchos.reduce((a, b) => a + b, 0) + (PAL.length - 1) * esp;
+  const letras = []; let x = xW - tot / 2;
+  [...PAL].forEach((ch, i) => { const ond = Math.sin(t * 5 + i * 0.8) * 6 * sube; letras.push({ ch, x, y: yW + ond, c: [x + anchos[i] / 2, yW + ond] }); x += anchos[i] + esp; });
+  const morf = (i) => U.easeInOut(U.prog(t, T_MORF + i * 0.07, T_MORF + 0.7 + i * 0.07));
+  // 1) trazos de la casa (detrás del karateka)
+  S.pincel(ctx, [[90, 1500], [540, 1496], [990, 1502]], { ancho: 7, semilla: 3, alpha: 0.5, cola: 0.3 });
+  segsR.forEach((sr, i) => {
+    const m = morf(i); if (m <= 0) return;
+    const [cx, cy] = letras[Math.min(i, PAL.length - 1)].c;
+    const pts = sr.map((p, k) => [U.lerp(cx + (k / (sr.length - 1) - 0.5) * size * 0.5, p[0], m), U.lerp(cy, p[1], m)]);
+    S.pincel(ctx, pts, { ancho: U.lerp(18, 11, m), semilla: 200 + i, cola: 0.15, entrada: 0.05, seco: 0.25 });
+  });
+  // 2) karateka
+  K.dibujar(ctx, pose, { x: 520, suelo: 1500, escala: 0.8 });
+  // 3) letras (delante), se desvanecen al convertirse en trazo
+  ctx.save(); ctx.font = `900 ${size}px ${E.marca.fuente.titulo}`; ctx.textBaseline = 'middle'; ctx.fillStyle = C.tinta;
+  letras.forEach((l, i) => { ctx.globalAlpha = 1 - U.clamp(morf(i) * 2.5); if (ctx.globalAlpha > 0) ctx.fillText(l.ch, l.x, l.y); });
+  ctx.restore();
+  // 4) textos
+  E.tarjeta(ctx, t, { t0: 0.05, t1: 1.55, lineas: ['Shotokan', 'no es un estilo…'], size: 104, y: PIEZA.textoY });
+  E.tarjeta(ctx, t, { t0: 1.55, lineas: ['…es una casa.'], size: 124, y: PIEZA.textoY + 40 });
+};
+</script>

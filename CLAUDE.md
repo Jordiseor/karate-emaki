@@ -18,6 +18,7 @@ Antes de hacer cualquier cosa, lee `marca.md` (la biblia de marca). Manda sobre 
 | Interactivos | `.claude/agents/interactivos.md` | Páginas web interactivas |
 | Editor | `.claude/agents/editor.md` | Monta escenas, voz, música, subtítulos, portada |
 | Marketing | `.claude/agents/marketing.md` | Copys, hashtags, calendario, métricas |
+| Intendente | `.claude/agents/intendente.md` | Ahorro de tokens: modelo por tarea, límites, consumo |
 
 ## Dónde vive cada cosa
 
@@ -29,6 +30,10 @@ tablero.md               copia local del tablero (la oficina web es la versión 
 piezas/<id>/             todo lo de una pieza: dosier.md, guion.md, storyboard.md, escenas/, final/
 animacion/               biblioteca: personaje, poses, estilos reutilizables
 metricas.csv             datos de rendimiento por pieza
+presupuesto.md           modelo y límites por tipo de encargo (Intendente)
+consumo.csv              tokens y tiempo de cada encargo terminado
+programacion.md          tareas programadas: cuándo se ejecutan y qué hacen
+archivo/                 ideas y bitácora antiguas
 ```
 
 Identificador de pieza: `AAAA-MM-DD-slug` (fecha en que el Sensei la elige).
@@ -43,6 +48,8 @@ Una pieza solo avanza cuando el entregable de su estado existe en `piezas/<id>/`
 
 1. Nadie publica, responde en redes ni gasta dinero. Eso lo hace Jorge.
 2. Nada de datos sin fuente: si el Investigador no lo ha verificado, no sale en pantalla.
-3. Cada agente escribe solo en sus ficheros y deja una línea en `bitacora.md`: fecha, agente, qué hizo.
+3. Cada agente escribe solo en los ficheros que le asigna el Sensei. La bitácora, el banco de fuentes y el tablero los escribe solo el Sensei, porque varios agentes trabajan a la vez.
 4. Si algo no se puede hacer, se dice en la bitácora y se avisa al Sensei; no se inventa.
 5. Todo en español de España. Términos japoneses en rōmaji con traducción la primera vez.
+
+6. Ahorra: lee solo la sección que necesitas, no pegues ficheros enteros en tus respuestas y respeta los límites de `presupuesto.md`.

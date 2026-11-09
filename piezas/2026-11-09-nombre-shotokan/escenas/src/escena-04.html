@@ -1,0 +1,21 @@
+<!--#cabecera-->
+<title>Escena 4 · Kan, casa</title>
+<script>
+// 11–13 s (2 s). Un solo trazo: aparece 館 a la derecha de 松濤 y detrás se dibuja el contorno de la casa de la escena 1.
+window.DURACION = 2;
+const E = EMAKI, U = E.util, S = E.sumie, C = E.marca.color, ctx = E.lienzo(), CASA = PIEZA.casa;
+window.render = function (t) {
+  E.fondoPapel(ctx);
+  // casa detrás (tinta, rápida)
+  S.casa(ctx, CASA.x, CASA.y, CASA.ancho, { prog: U.easeInOut(U.prog(t, 0.25, 1.1)), pincel: true, ancho: 11, alpha: 0.9 });
+  // 松濤 ya escrito se desliza a la izquierda; 館 aparece de un trazo (0.05–0.45 s) con un pequeño golpe de escala
+  const y = 1080, sz = 250, paso = 262, d = U.easeOut(U.prog(t, 0, 0.3));
+  S.kanji(ctx, '松濤', 540 - paso / 2 * d, y, sz, { color: C.rojo, halo: true, separacion: paso });
+  const pk = U.prog(t, 0.05, 0.45), golpe = 1 + 0.1 * Math.sin(Math.PI * U.prog(t, 0.4, 0.7));
+  ctx.save(); ctx.translate(540 + paso, y); ctx.scale(golpe, golpe); S.kanji(ctx, '館', 0, 0, sz, { prog: pk, color: C.rojo, halo: true }); ctx.restore();
+  // salpicadura de tinta del trazo
+  if (t > 0.42) for (let k = 0; k < 6; k++) { const r = U.rng(k + 9), a = r() * 6.28, dd = 150 + r() * 70 + U.prog(t, 0.42, 0.7) * 30;
+    ctx.save(); ctx.globalAlpha = 0.8 * (1 - U.prog(t, 1.2, 2)); ctx.fillStyle = C.rojo; ctx.beginPath(); ctx.arc(540 + paso + Math.cos(a) * dd, y + Math.sin(a) * dd, 3 + r() * 6, 0, 7); ctx.fill(); ctx.restore(); }
+  E.tarjeta(ctx, t, { t0: 0.25, entrada: 0.2, lineas: ['[r]館[/r] kan = casa'], size: 120, y: PIEZA.textoY + 20 });
+};
+</script>

@@ -1,0 +1,11 @@
+{
+  "nombre": "brazos arriba (levantar una viga / colgar un cartel)",
+  "descripcion": "De pie, piernas algo abiertas, los dos brazos por encima de la cabeza con los codos un poco flexionados.",
+  "angulos": {
+    "torso": -3, "cuello": -10,
+    "hombroCerca": 165, "codoCerca": 12,
+    "hombroLejos": 160, "codoLejos": 15,
+    "caderaCerca": 12, "rodillaCerca": 6, "pieCerca": 0,
+    "caderaLejos": -12, "rodillaLejos": 4, "pieLejos": 0
+  }
+}

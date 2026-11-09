@@ -14,3 +14,4 @@
 - 2026-11-09 · Sensei · zenkutsu-estabilidad pasa a storyboard (Guionista).
 - 2026-11-09 · Guionista · Storyboard zenkutsu-estabilidad: 30 s, 8 escenas, poses P1–P4 por ángulos; nota para Marketing sobre comentario fijado.
 - 2026-11-09 · Sensei · zenkutsu en cola de animación hasta que el Animador termine la base y Shotokan.
+- 2026-11-09 · Sensei · Jorge pide un equipo más dinámico: trabajo largo repartido entre varios agentes (animación por tramos), nuevo agente Intendente (ahorro de tokens, modelo por tarea), y tareas programadas (preparadas en programacion.md, pendientes de repositorio).

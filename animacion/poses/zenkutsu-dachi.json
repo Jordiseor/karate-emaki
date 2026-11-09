@@ -1,0 +1,18 @@
+{
+  "nombre": "zenkutsu-dachi (posición adelantada)",
+  "descripcion": "Perfil mirando a la derecha. Rodilla delantera flexionada y vertical sobre el pie (tibia casi vertical), pierna trasera recta con el pie plano. Unos 60/40 del peso delante. Brazos en gedan-barai cercano y hikite lejano.",
+  "angulos": {
+    "torso": 0,
+    "cuello": 0,
+    "hombroCerca": 30,
+    "codoCerca": 4,
+    "hombroLejos": -35,
+    "codoLejos": 115,
+    "caderaCerca": 62,
+    "rodillaCerca": 66,
+    "pieCerca": 0,
+    "caderaLejos": "auto",
+    "rodillaLejos": 0,
+    "pieLejos": 0
+  }
+}

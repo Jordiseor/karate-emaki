@@ -1,0 +1,29 @@
+<!doctype html><meta charset="utf-8">
+<style>html,body{margin:0;background:#F4EFE6;overflow:hidden}canvas{display:block}</style>
+<canvas id="c"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script src="../../../../animacion/sumie.js"></script>
+<script src="../../../../animacion/personaje/karateka.js"></script>
+<script src="comun.js"></script>
+
+<title>Escena 2 · Shōtō, olas de pino</title>
+<script>
+// 3–8 s (5 s). Pinos de tinta; el pincel traza 松濤 en rojo; abajo, silueta de Funakoshi sentado escribiendo.
+window.DURACION = 5;
+const E = EMAKI, U = E.util, S = E.sumie, C = E.marca.color, ctx = E.lienzo();
+window.render = function (t) {
+  E.fondoPapel(ctx);
+  // transición de entrada: lavado de papel que se retira (viene de la escena 1)
+  S.montes(ctx, 1180, { alto: 120, alpha: 0.12 * U.prog(t, 0, 0.8), semilla: 5 });
+  S.pino(ctx, 170, 1330, 760, { t, semilla: 11, inclina: 1, prog: U.easeOut(U.prog(t, 0.0, 1.3)), alpha: 0.95 });
+  S.pino(ctx, 930, 1250, 600, { t: t + 2, semilla: 23, inclina: -1, prog: U.easeOut(U.prog(t, 0.3, 1.6)), alpha: 0.55, ramas: 4 });
+  // suelo / tatami
+  S.pincel(ctx, [[60, 1530], [560, 1524], [1020, 1530]], { ancho: 9, semilla: 4, alpha: 0.6, prog: U.easeOut(U.prog(t, 0.2, 1.0)) });
+  // kanji 松濤 (rojo) en grande, a pincel
+  S.kanji(ctx, '松濤', 540, 760, 330, { prog: U.prog(t, 0.6, 2.2), color: C.rojo, halo: true });
+  // Funakoshi: silueta plana sin rostro, entra con fundido
+  S.funakoshiSentado(ctx, 330, 1528, 1.25, { escribir: t * 0.7, alpha: U.easeOut(U.prog(t, 1.2, 2.0)) });
+  // texto
+  E.tarjeta(ctx, t, { t0: 1.4, lineas: ['[r]松濤[/r] Shōtō', '= olas de pino'], size: [104, 92], y: PIEZA.textoY });
+};
+</script>

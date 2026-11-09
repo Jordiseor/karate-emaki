@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><title>Prueba de poses</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style>
+<canvas id="c"></canvas>
+<script src="../marca.js"></script><script src="../sumie.js"></script><script src="../personaje/karateka.js"></script>
+<script>
+// Hoja de pruebas: dibuja todas las poses de la biblioteca en rejilla. node animacion/render.mjs animacion/lib/prueba-poses.html --t 0 --png poses.png
+const ctx = EMAKI.lienzo(), K = EMAKI.karateka;
+window.render = function () {
+  EMAKI.fondoPapel(ctx);
+  const nombres = Object.keys(K.poses);
+  nombres.forEach((n, i) => {
+    const x = 270 + (i % 2) * 540, suelo = 850 + Math.floor(i / 2) * 800;
+    K.dibujar(ctx, K.poses[n], { x, suelo, escala: 0.8 });
+    EMAKI.texto(ctx, { lineas: n, size: 48, x, y: suelo + 20, peso: 700 });
+  });
+};
+</script>

@@ -1,0 +1,18 @@
+{
+  "nombre": "kamae (hidari, guardia de kumite en zenkutsu-dachi corto)",
+  "descripcion": "Perfil mirando a la derecha. Pierna izquierda (cercana) delante con la rodilla sobre el pie; pierna derecha (lejana) detrás, recta, talón en el suelo. Tronco en hanmi casi vertical. Puño adelantado (izquierdo) a la altura del hombro, codo ligeramente flexionado; puño trasero (derecho) delante del plexo solar.",
+  "angulos": {
+    "torso": 4,
+    "cuello": -4,
+    "hombroCerca": 70,
+    "codoCerca": 28,
+    "hombroLejos": 30,
+    "codoLejos": 105,
+    "caderaCerca": 36,
+    "rodillaCerca": 44,
+    "pieCerca": 0,
+    "caderaLejos": "auto",
+    "rodillaLejos": 0,
+    "pieLejos": 0
+  }
+}
