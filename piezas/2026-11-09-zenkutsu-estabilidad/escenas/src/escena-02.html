@@ -1,0 +1,24 @@
+<!--#cabecera-->
+<title>Escena 2 · centro de masas</title>
+<script>
+window.DURACION = 4;
+const E = EMAKI, U = E.util, Fi = E.fisica, C = E.marca.color, ctx = E.lienzo();
+const G = Fi.geometria('pies-juntos', PIEZA.opc());
+const ZC = [G.pivote[0], PIEZA.SUELO];            // el zoom se ancla en la punta del pie (suelo)
+window.render = function (t) {
+  E.fondoPapel(ctx);
+  const z = 1 + 0.25 * U.easeInOut(U.prog(t, 0, 3.6));
+  const T = (p) => [ZC[0] + (p[0] - ZC[0]) * z, ZC[1] + (p[1] - ZC[1]) * z];
+  ctx.save(); ctx.translate(ZC[0], ZC[1]); ctx.scale(z, z); ctx.translate(-ZC[0], -ZC[1]);
+  // base: 1 pie, se dibuja de izquierda a derecha
+  Fi.baseApoyo(ctx, { x0: G.base.x0, x1: G.base.x1, suelo: G.suelo, prog: U.easeOut(U.prog(t, 1.9, 2.8)) });
+  Fi.figura(ctx, 'pies-juntos', PIEZA.opc());
+  Fi.centroMasas(ctx, G.cdm, { suelo: G.suelo, punto: U.prog(t, 0.5, 1.1), prog: U.prog(t, 1.2, 2.1) });
+  ctx.restore();
+  const c = T(G.cdm);
+  const al = U.easeOut(U.prog(t, 0.9, 1.4));
+  E.texto(ctx, { lineas: ['centro', 'de masas'], size: 56, peso: 900, x: 850, y: 960, alpha: al });
+  Fi.flecha(ctx, { x: c[0] + 34, y: c[1] + 30, ang: -150, largo: 140, grosor: 7, color: C.tinta, alpha: al });
+  Fi.nota(ctx, U.prog(t, 0.2, 0.8), PIEZA.NOTA_Y);
+};
+</script>

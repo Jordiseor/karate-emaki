@@ -1,0 +1,19 @@
+<!--#cabecera-->
+<title>Escena 1 · gancho</title>
+<script>
+window.DURACION = 3;
+const E = EMAKI, U = E.util, Fi = E.fisica, C = E.marca.color, ctx = E.lienzo();
+const G = Fi.geometria('pies-juntos', PIEZA.opc());
+window.render = function (t) {
+  E.fondoPapel(ctx);
+  Fi.baseApoyo(ctx, { x0: G.base.x0, x1: G.base.x1, suelo: G.suelo, alpha: 0.9 });
+  // respiración mínima para que no sea una foto
+  const resp = Math.sin(t * 2 * Math.PI * 0.8) * 2;
+  const g = Fi.figura(ctx, 'pies-juntos', PIEZA.opc({ suelo: PIEZA.SUELO }));
+  Fi.cara(ctx, [g.cabeza[0] + 0, g.cabeza[1] + resp * 0], 40 * PIEZA.ESCALA, { expresion: 'reto', dx: 18 });
+  // flecha: entra por detrás a la altura de la cadera y vibra sin empujar
+  const ent = U.easeOut(U.prog(t, 0.25, 0.8));
+  Fi.flecha(ctx, { x: g.cadera[0] - 70, y: g.cadera[1], ang: 0, largo: 300, prog: ent, vibra: t > 0.8 ? 7 : 0, t });
+  E.tarjeta(ctx, t, { t0: 0.1, lineas: ['Empújame hacia delante.', '¿Cómo aguanto [r]más[/r]?'], size: 76, x: 540, y: PIEZA.TEXTO_Y });
+};
+</script>
