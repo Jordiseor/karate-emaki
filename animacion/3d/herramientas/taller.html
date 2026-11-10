@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Taller 3D</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../marca.js"></script>
+<script type="module">
+// Taller de revisión: cada t entero es una vista fija (pose + cámara). Ver herramientas/taller.sh
+import { crearEscenario } from '../escenario.js';
+import { Karateka3D, cargarPoses } from '../karateka3d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5 });
+const k = new Karateka3D({ cinturon: new URLSearchParams(location.search).get('cinturon') || 'negro' });
+esc.escena.add(k.raiz);
+const P = cargarPoses();
+// [pose, rumbo del personaje, cámara {centro, distancia, azimut, elevacion, fov}, rótulo]
+const VISTAS = [
+  ['zenkutsu-dachi', 90, { centro: [0, 0.85, 0], distancia: 7, azimut: 0, elevacion: 2, fov: 26 }, 'zenkutsu · perfil'],
+  ['zenkutsu-dachi', 55, { centro: [0, 0.85, 0], distancia: 7, azimut: 10, elevacion: 4, fov: 26 }, 'zenkutsu · 3/4'],
+  ['yoi', 20, { centro: [0, 0.9, 0], distancia: 7, azimut: 0, elevacion: 3, fov: 26 }, 'yoi · frente'],
+  ['yoi', 20, { centro: [0, 1.6, 0], distancia: 2.0, azimut: 0, elevacion: 2, fov: 26 }, 'cabeza · frente'],
+  ['yoi', 60, { centro: [0, 1.6, 0], distancia: 2.0, azimut: 0, elevacion: 8, fov: 26 }, 'cabeza · 3/4'],
+  ['kamae', 60, { centro: [0, 0.9, 0], distancia: 7, azimut: 0, elevacion: 3, fov: 26 }, 'kamae'],
+  ['pies-juntos', 15, { centro: [0, 0.9, 0], distancia: 7, azimut: 0, elevacion: 3, fov: 26 }, 'pies juntos'],
+  ['gedan-barai-prep', 30, { centro: [0, 0.9, 0], distancia: 7, azimut: 0, elevacion: 3, fov: 26 }, 'preparación'],
+  ['yoi', 200, { centro: [0, 1.2, 0], distancia: 4, azimut: 0, elevacion: 6, fov: 26 }, 'espalda'],
+];
+window.DURACION = VISTAS.length;
+window.render = (t) => {
+  const [pose, rumbo, cam, rot] = VISTAS[Math.min(VISTAS.length - 1, Math.floor(t))];
+  k.colocar(0, 0, rumbo).aplicarPose(P[pose]);
+  k.cara({ sonrisa: t % 1 > 0.5 ? 0.8 : 0.2, parpadeo: 0 });
+  esc.orbita(cam);
+  esc.dibujar(ctx, { grano: false });
+  EMAKI.texto(ctx, { lineas: rot, size: 60, y: 120 });
+  const m = k.medidas();
+  EMAKI.texto(ctx, { lineas: `base ${m.base.toFixed(2)} m · espinilla ${m.espinillaI.toFixed(0)}°`, size: 48, y: 1800, peso: 600 });
+};
+</script></body></html>

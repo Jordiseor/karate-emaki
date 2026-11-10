@@ -1,0 +1,63 @@
+{
+ "nombre": "pies-juntos",
+ "descripcion": "Pies juntos (heisoku-dachi): pies paralelos tocándose, piernas rectas, brazos relajados a los lados con las manos abiertas. Base mínima (P1 de los reels de física).",
+ "cadera": {},
+ "tronco": {},
+ "cabeza": {},
+ "manoI": 1,
+ "manoD": 1,
+ "brazoI": {
+  "adelante": 2,
+  "abre": 7,
+  "gira": 0
+ },
+ "brazoD": {
+  "adelante": 2,
+  "abre": 7,
+  "gira": 0
+ },
+ "codoI": 10,
+ "codoD": 10,
+ "piernaI": {
+  "adelante": 0,
+  "abre": -2.9,
+  "gira": 2
+ },
+ "rodillaI": 0,
+ "tobilloI": {
+  "flex": 0.1,
+  "ladeo": 2.9
+ },
+ "piernaD": {
+  "adelante": 0,
+  "abre": -2.9,
+  "gira": 2
+ },
+ "rodillaD": 0,
+ "tobilloD": {
+  "flex": 0.1,
+  "ladeo": 2.9
+ },
+ "medidas": {
+  "base_m": 0.243,
+  "espinillaI_grados": 2.9,
+  "espinillaD_grados": 2.9,
+  "tronco_vertical_grados": 0,
+  "altura_cadera_m": 0.954,
+  "puno_I": [
+   0.226,
+   0.768,
+   0.071
+  ],
+  "puno_D": [
+   -0.226,
+   0.768,
+   0.071
+  ],
+  "rodilla_I": [
+   0.071,
+   0.484,
+   0
+  ]
+ }
+}

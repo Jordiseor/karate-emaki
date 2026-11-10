@@ -1,0 +1,77 @@
+{
+ "nombre": "kamae",
+ "descripcion": "Kamae de kumite (hidari): pie izquierdo delante, guardia corta y ágil (≈0,5 m entre tobillos), rodillas flexionadas, pie trasero a ≈45°; caderas medio de lado; puño izquierdo adelantado a la altura de la barbilla con el codo abajo, puño derecho delante del plexo solar.",
+ "cadera": {
+  "giro": -35
+ },
+ "tronco": {
+  "giro": -5,
+  "inclina": 3
+ },
+ "cabeza": {
+  "giro": 38,
+  "inclina": -2
+ },
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {
+  "gira": -70
+ },
+ "munecaD": {
+  "gira": -80
+ },
+ "piernaI": {
+  "adelante": 19.9,
+  "abre": 16.3,
+  "gira": 35.9
+ },
+ "rodillaI": 24,
+ "tobilloI": {
+  "flex": -1.5,
+  "ladeo": -0.9
+ },
+ "piernaD": {
+  "adelante": -1.4,
+  "abre": 11.9,
+  "gira": 10.1
+ },
+ "rodillaD": 20,
+ "tobilloD": {
+  "flex": 19.3,
+  "ladeo": -11.9
+ },
+ "brazoI": {
+  "adelante": 32.9,
+  "abre": 30.5,
+  "gira": 21.8
+ },
+ "codoI": 108.9,
+ "brazoD": {
+  "adelante": 22.2,
+  "abre": -11.1,
+  "gira": -66.7
+ },
+ "codoD": 98.1,
+ "medidas": {
+  "base_m": 0.726,
+  "espinillaI_grados": 1.7,
+  "espinillaD_grados": 22.6,
+  "tronco_vertical_grados": 3,
+  "altura_cadera_m": 0.915,
+  "puno_I": [
+   0.071,
+   1.327,
+   0.438
+  ],
+  "puno_D": [
+   -0.003,
+   1.158,
+   0.236
+  ],
+  "rodilla_I": [
+   0.093,
+   0.485,
+   0.228
+  ]
+ }
+}

@@ -1,0 +1,76 @@
+{
+ "nombre": "zenkutsu-dachi",
+ "descripcion": "Hidari zenkutsu-dachi con gedan-barai (pie izquierdo delante). Base ≈1 m (≈4 pies) de talón trasero a punta delantera y anchura de caderas; espinilla delantera vertical (rodilla sobre el tobillo, apuntando como el pie); pierna trasera recta con el pie a ≈30° y el talón en el suelo; tronco vertical; caderas en hanmi (≈45°). Brazo izquierdo casi extendido, puño a dos puños por encima de la rodilla delantera y algo por fuera; puño derecho en hikite en la cadera, palma arriba, codo atrás.",
+ "cadera": {
+  "giro": -42
+ },
+ "tronco": {
+  "giro": -3
+ },
+ "cabeza": {
+  "giro": 43,
+  "inclina": 2
+ },
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {
+  "gira": -60,
+  "flex": 0
+ },
+ "munecaD": {
+  "gira": 90
+ },
+ "piernaI": {
+  "adelante": 30.3,
+  "abre": 26.7,
+  "gira": 35.6
+ },
+ "rodillaI": 39.5,
+ "tobilloI": {
+  "flex": 0,
+  "ladeo": -1.2
+ },
+ "piernaD": {
+  "adelante": -18.3,
+  "abre": 21.2,
+  "gira": -3.1
+ },
+ "rodillaD": 0,
+ "tobilloD": {
+  "flex": 20.5,
+  "ladeo": -19
+ },
+ "brazoI": {
+  "adelante": 11.1,
+  "abre": 16.5,
+  "gira": 26.1
+ },
+ "brazoD": {
+  "adelante": -61.8,
+  "abre": 3,
+  "gira": -0.1
+ },
+ "codoD": 116.3,
+ "medidas": {
+  "base_m": 0.995,
+  "espinillaI_grados": 1.2,
+  "espinillaD_grados": 27.7,
+  "tronco_vertical_grados": 0,
+  "altura_cadera_m": 0.861,
+  "puno_I": [
+   0.151,
+   0.698,
+   0.299
+  ],
+  "puno_D": [
+   -0.118,
+   0.93,
+   -0.115
+  ],
+  "rodilla_I": [
+   0.082,
+   0.485,
+   0.322
+  ]
+ }
+}

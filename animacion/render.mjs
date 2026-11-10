@@ -9,7 +9,9 @@
 //        [--congelar 0.5]              (repite el último fotograma N segundos dentro de la duración)
 // El HTML puede fijar window.DURACION en lugar de --dur.
 // Si la página tiene <canvas id="c">, se captura con canvas.toDataURL (rápido); si no, con captura de pantalla (SVG/DOM).
-// Las poses de animacion/poses/*.json se inyectan como window.EMAKI_POSES antes de cargar la página.
+// Las poses de animacion/poses/*.json se inyectan como window.EMAKI_POSES antes de cargar la página
+// (y las 3D de animacion/3d/poses/*.json como window.EMAKI_POSES3D). window.render(t) puede ser async:
+// se espera a que la promesa se resuelva antes de capturar.
 import { createRequire } from 'module';
 import { spawn } from 'child_process';
 import fs from 'fs';
@@ -33,13 +35,21 @@ const out = opt('out', null), png = opt('png', null), tSolo = opt('t', null), co
 const poses = {};
 const dirPoses = path.join(AQUI, 'poses');
 if (fs.existsSync(dirPoses)) for (const f of fs.readdirSync(dirPoses)) if (f.endsWith('.json')) poses[f.replace(/\.json$/, '')] = JSON.parse(fs.readFileSync(path.join(dirPoses, f), 'utf8'));
+// Poses 3D (animacion/3d/poses/*.json) → window.EMAKI_POSES3D
+const poses3d = {};
+const dirPoses3d = path.join(AQUI, '3d', 'poses');
+if (fs.existsSync(dirPoses3d)) for (const f of fs.readdirSync(dirPoses3d)) if (f.endsWith('.json')) poses3d[f.replace(/\.json$/, '')] = JSON.parse(fs.readFileSync(path.join(dirPoses3d, f), 'utf8'));
 
-const browser = await pw.chromium.launch({ executablePath: CHROME, args: ['--allow-file-access-from-files', '--font-render-hinting=none'] });
+const browser = await pw.chromium.launch({ executablePath: CHROME, args: ['--allow-file-access-from-files', '--font-render-hinting=none',
+  // WebGL por software (SwiftShader) para las escenas 3D; no afecta a las 2D
+  '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--use-angle=swiftshader'] });
 const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
 page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') console.error('[página]', m.text()); });
 page.on('pageerror', (e) => { console.error('[error JS]', e.message); process.exitCode = 2; });
-await page.addInitScript((p) => { window.EMAKI_POSES = p; }, poses);
+await page.addInitScript(([p, p3]) => { window.EMAKI_POSES = p; window.EMAKI_POSES3D = p3; }, [poses, poses3d]);
 await page.goto(pathToFileURL(path.resolve(html)).href);
+// las escenas 3D (módulos ES) definen window.render después del evento load: esperar a que exista
+await page.waitForFunction(() => typeof window.render === 'function', null, { timeout: 60000 });
 await page.evaluate(() => document.fonts.ready);
 await page.evaluate(async () => { if (window.preparar) await window.preparar(); });
 const dur = Number(opt('dur', 0)) || (await page.evaluate(() => window.DURACION || 0));

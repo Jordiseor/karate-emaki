@@ -1,0 +1,74 @@
+{
+ "nombre": "gedan-barai-prep",
+ "descripcion": "Preparación del gedan-barai izquierdo: puño izquierdo junto a la oreja derecha (palma hacia la oreja), brazo derecho extendido hacia abajo y al frente cruzando el cuerpo. Se usa como paso intermedio entre yoi y zenkutsu-dachi con gedan-barai.",
+ "cadera": {
+  "giro": -10
+ },
+ "tronco": {
+  "giro": 8
+ },
+ "cabeza": {
+  "giro": 2
+ },
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {
+  "gira": 80
+ },
+ "munecaD": {
+  "gira": -60
+ },
+ "piernaI": {
+  "adelante": 2.2,
+  "abre": 6.6,
+  "gira": 27.7
+ },
+ "rodillaI": 5,
+ "tobilloI": {
+  "flex": -0.1,
+  "ladeo": -4.8
+ },
+ "piernaD": {
+  "adelante": 2.2,
+  "abre": 6.6,
+  "gira": 27.7
+ },
+ "rodillaD": 5,
+ "tobilloD": {
+  "flex": -0.1,
+  "ladeo": -4.8
+ },
+ "brazoI": {
+  "adelante": 100,
+  "abre": -20.3,
+  "gira": -45
+ },
+ "brazoD": {
+  "adelante": 43.5,
+  "abre": -25.8,
+  "gira": 2.6
+ },
+ "codoI": 99.5,
+ "medidas": {
+  "base_m": 0.28,
+  "espinillaI_grados": 4.8,
+  "espinillaD_grados": 4.8,
+  "tronco_vertical_grados": 0,
+  "altura_cadera_m": 0.951,
+  "puno_I": [
+   -0.115,
+   1.545,
+   0.094
+  ],
+  "puno_D": [
+   0.076,
+   0.95,
+   0.353
+  ],
+  "rodilla_I": [
+   0.134,
+   0.484,
+   0.04
+  ]
+ }
+}

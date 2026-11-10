@@ -1,0 +1,1 @@
+{ "type": "module", "private": true, "description": "Biblioteca 3D de KARATE EMAKI (solo para que node trate los .js como módulos ES)" }
