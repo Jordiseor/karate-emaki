@@ -43,3 +43,7 @@ Modelo simplificado: cuerpo rígido, sin pasos ni músculos, adulto de 1,70 m. E
 
 Jueves 12 de noviembre de 2026, 19:30 (hora de Madrid).
 Por qué: es la primera publicación de la cuenta, así que no hay datos propios de audiencia todavía; entre semana y al final de la tarde es una apuesta razonable para validar con las métricas del primer mes.
+
+## Crédito de la voz (añadir al final de la descripción en las tres redes)
+
+Voz sintética: Piper TTS, modelo es_ES-sharvard (corpus Sharvard, https://datashare.ed.ac.uk/handle/10283/574), licencia CC BY 3.0.

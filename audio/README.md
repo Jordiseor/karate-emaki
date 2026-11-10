@@ -11,7 +11,7 @@ Instalación: `herramientas/instalar-voz.sh [dir]` (por defecto `/tmp/tts`; idem
 
 Atribución a incluir (descripción/créditos de cada pieza con voz sharvard): «Voz sintética: Piper TTS, modelo es_ES-sharvard (basado en el corpus Harvard Sentences en español), CC BY 3.0». Comprobar el texto exacto de crédito con la ficha del modelo antes de publicar. Motor Piper: MIT.
 
-Voz por defecto: `sharvard-m`, provisional hasta que Jorge escuche `audio/muestras/` (muestra-davefx.mp3, muestra-sharvard-hombre.mp3, muestra-sharvard-mujer.mp3). Si prefiere cero obligaciones de licencia, `davefx`.
+Voz por defecto: `sharvard-m` (sharvard hombre), **elegida por Jorge el 10 nov 2026** tras escuchar las tres muestras de `audio/muestras/`. Toda pieza con esta voz lleva el crédito de arriba en la descripción.
 
 ## Medidas de las muestras (no puedo escuchar: son proxies, decide el oído de Jorge)
 | Voz | Centroide | Graves 100-300 Hz vs 2-5 kHz | Sibilancia 6-9 kHz | Suelo de ruido |
