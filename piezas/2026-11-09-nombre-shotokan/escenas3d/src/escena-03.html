@@ -1,0 +1,24 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import { crearEscenario, util as U } from '../../../../animacion/3d/escenario.js';
+import { ambiente, crearColina, crearMarDePinos } from '../../../../animacion/3d/historia3d.js';
+import { overlay } from '../../../../animacion/3d/overlay2d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5, fondo: 'degradado' });
+ambiente(esc, 'atardecer', { suelo: false });
+const col = crearColina({ pinos: 10, sinPinosEn: [[0, 3, 3.5]] }); esc.escena.add(col.raiz);
+const mar = crearMarDePinos({}); esc.escena.add(mar.raiz);
+window.DURACION = 3;
+window.render = (t) => {
+  const s = U.easeInOut(U.prog(t, 0.6, 2.6));
+  const arriba = s > 0.5;
+  col.raiz.visible = !arriba; mar.raiz.visible = arriba;
+  col.viento(t, { fuerza: 1 + s });
+  mar.actualizar(t, { amplitud: 0.7, olas: U.prog(t, 1.5, 2.8) * 0.6 });
+  if (!arriba) esc.orbita({ centro: [0, 2.4, -3], distancia: 22, azimut: 10, elevacion: U.lerp(7, 20, s * 2), fov: 34 });
+  else esc.mirar([0, U.lerp(7, 16, s), U.lerp(24, 22, s)], [0, 0, -4], 40);
+  esc.dibujar(ctx);
+  overlay.tarjeta(ctx, t, { lineas: ['Viento entre pinos','que suena a mar'], t0: 0.2, t1: 3.2, size: 80, abajo: true, color: '#F4EFE6', sombra: '#1A1A1A' });
+};
+</script></body></html>

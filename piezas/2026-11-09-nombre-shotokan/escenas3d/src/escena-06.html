@@ -1,0 +1,27 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import { crearEscenario, util as U } from "../../../../animacion/3d/escenario.js";
+import { cargarPoses, mezclar } from "../../../../animacion/3d/karateka3d.js";
+import { overlay } from "../../../../animacion/3d/overlay2d.js";
+import * as H from "../../../../animacion/3d/historia3d.js";
+import * as H2 from "../../../../animacion/3d/historia2d.js";
+const ctx = document.getElementById("c").getContext("2d");
+const esc = crearEscenario({ escala: 0.5, fondo: "degradado" });
+H.ambiente(esc, "calle");
+const P = cargarPoses();
+const casa = H.crearCasa({ rotulo: "" }); esc.escena.add(casa.raiz);
+const a = H.crearAlumno(1, { peinado: "corto" }), b = H.crearAlumno(2, { peinado: "mono" }); esc.escena.add(a.raiz, b.raiz);
+window.DURACION = 4;
+window.render = (t) => {
+  casa.construir(1).puerta(0.15);
+  casa.escribirRotulo("松濤館", U.prog(t, 1.2, 3.2));
+  const f = U.easeInOut(U.prog(t, 0.1, 0.9));
+  a.colocar(-0.7, 2.75, 180).aplicarPose(mezclar(P.neutra, P["brazos-arriba"], f)); b.colocar(0.7, 2.75, 180).aplicarPose(mezclar(P.neutra, P["brazos-arriba"], f));
+  a.cara({ sonrisa: 0.4 }); b.cara({ sonrisa: 0.4 });
+  esc.orbita({ centro: [0, 2.0, 2.4], distancia: 7.5, azimut: 8, elevacion: 4, fov: 32 });
+  esc.dibujar(ctx);
+  H2.pergamino(ctx, t, { t0: -1, t1: 0.01 });
+  overlay.tarjeta(ctx, t, { lineas: ["[r]松濤館[/r]:", "la casa de Shōtō"], t0: 0.4, size: 84, abajo: true });
+};
+</script></body></html>

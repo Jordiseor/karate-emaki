@@ -1,0 +1,32 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import { crearEscenario, util as U } from "../../../../animacion/3d/escenario.js";
+import { cargarPoses, mezclar } from "../../../../animacion/3d/karateka3d.js";
+import { overlay } from "../../../../animacion/3d/overlay2d.js";
+import * as H from "../../../../animacion/3d/historia3d.js";
+import * as H2 from "../../../../animacion/3d/historia2d.js";
+const ctx = document.getElementById("c").getContext("2d");
+const esc = crearEscenario({ escala: 0.5, fondo: "degradado" });
+H.ambiente(esc, "calle");
+const P = cargarPoses();
+const calle = H.crearCalle({ porLado: 2 }); esc.escena.add(calle.raiz);
+const casa = H.crearCasa({ rotulo: "" }); esc.escena.add(casa.raiz);
+const al = [0, 1, 2, 3].map((i) => { const k = H.crearAlumno(i); esc.escena.add(k.raiz); return k; });
+const v1 = H.crearViga({ largo: 3.2 }), v2 = H.crearViga({ largo: 2.4 }); esc.escena.add(v1.raiz, v2.raiz);
+const m = H.anadirMaestro(esc, H.crearMaestro({}));
+window.DURACION = 4.5;
+window.render = (t) => {
+  casa.construir(U.easeInOut(U.prog(t, 0.2, 4.2)));
+  const d = Math.sin(t * 2.2) * 0.04, s = t * 0.18;
+  al[0].colocar(-2.2 + s, 4.0, 90).aplicarPose(P["cargar-viga"]); al[1].colocar(-0.6 + s, 4.0, 90).aplicarPose(P["cargar-viga"]);
+  v1.entre(v1.apoyo(al[0]), v1.apoyo(al[1]));
+  al[2].colocar(2.4 - s, 4.6, -60).aplicarPose(P["cargar-viga"]); v2.alHombro(al[2], 0.3);
+  al[3].colocar(-3.2, 3.4, 30).aplicarPose(mezclar(P.neutra, P.kamae, U.easeInOut(U.prog(t, 0.2, 1))));
+  for (const k of al) k.cara({ sonrisa: 0.4 });
+  m.colocar(1.0, 5.6, 170).pose(P, "maestro-manos-atras");
+  esc.orbita({ centro: [0, 2.0, 3.0], distancia: 17, azimut: 8, elevacion: 9, fov: 32 });
+  esc.dibujar(ctx);
+  overlay.titulo(ctx, t, { lineas: ["[r]1939[/r] · Tokio", "un dōjō (sala de práctica)"], t0: 0.2, size: 72 });
+};
+</script></body></html>

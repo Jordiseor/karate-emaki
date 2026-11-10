@@ -11,3 +11,5 @@ Escena 9 (27-30 s): Cada vez que dices Shotokan, nombras una casa que ya no exis
 Nota: si la voz pasa de 30 s, acelerar un 5 % antes de recortar; no quitar el "Cuentan que". El fondo sonoro deja hueco: golpe de madera en 11 s (escena 4).
 
 Voz añadida el 10 nov 2026 con Piper (voz es-carlfm, dominio público), ritmo 0,85, mediante herramientas/generar-voz.py, que contiene el texto exacto locutado. Recortes para caber en 30 s: escena 7 «En el cuarenta y cinco, ardió en los bombardeos»; escena 8 sin «Pero»; escena 9 «Dices Shotokan y nombras una casa que ya no existe». Copia sin voz: reel-sin-voz.mp4.
+
+Versión 3D (10 nov 2026): reel de 35 s, tiempos y texto locutado en voz/guion-voz.json; voz sharvard hombre (CC BY 3.0: crédito obligatorio en la descripción), ritmo 1,15x. Texto original completo salvo la escena 7 («…ardió en los bombardeos», sin «de Tokio»). La versión 2D queda en final/2d/.

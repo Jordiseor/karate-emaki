@@ -1,0 +1,1 @@
+Fondo sonoro "fondo-shotokan-3d.wav" (35 s) para la versión 3D de 2026-11-09-nombre-shotokan. Obra propia: mismas capas sintetizadas que fondo-nombre-shotokan.txt (pulso x0,5 y ambiente x0,22 en bucle), golpe de madera x0,9 recolocado en 12,5 s (entra 館, escena 4). Fundido final 32,5-35 s, limitador 0,8.

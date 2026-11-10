@@ -1,0 +1,25 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import { crearEscenario, util as U } from '../../../../animacion/3d/escenario.js';
+import { Karateka3D, cargarPoses } from '../../../../animacion/3d/karateka3d.js';
+import { crearCasa } from '../../../../animacion/3d/historia3d.js';
+import { overlay } from '../../../../animacion/3d/overlay2d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5 });
+const k = new Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz);
+const P = cargarPoses();
+const casa = crearCasa({ escala: 0.42 }); casa.modo('fantasma'); casa.colocar(0, -2.2); esc.escena.add(casa.raiz);
+window.DURACION = 3.5;
+k.colocar(0, 0.6, 0);
+window.render = (t) => {
+  k.aplicarPose(P.kamae);
+  k.cara({ sonrisa: 0.45, parpadeo: U.parpadeo(t, [1.2]), cejas: 0.3 });
+  casa.contorno({ dibujar: U.easeInOut(U.prog(t, 1.5, 2.6)) });
+  const s = U.easeInOut(U.prog(t, 1.4, 3.5));
+  esc.orbita({ centro: [0, U.lerp(1.2, 1.6, s), -0.5], distancia: U.lerp(8, 10.5, s), azimut: 0, elevacion: U.lerp(4, 9, s), fov: 30 });
+  esc.dibujar(ctx);
+  overlay.tarjeta(ctx, t, { lineas: ['Shotokan no es','un estilo…'], t0: 0.1, t1: 1.9, size: 84 });
+  overlay.tarjeta(ctx, t, { lineas: '…es una casa.', t0: 2.0, t1: 3.6, size: 96 });
+};
+</script></body></html>
