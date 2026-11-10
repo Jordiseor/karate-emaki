@@ -18,3 +18,6 @@ fecha,agente,pieza,modelo,tokens,usos_herramientas,minutos
 2026-11-10,sensei,voz y mezcla (2 reels),fable,60000,14,12
 2026-11-10,modelador-3d,base 3D (dos encargos),opus,340000,110,35
 2026-11-10,sonido,voces y herramienta de voz,sonnet,59358,27,15.7
+2026-11-10,animador-tramo-A,zenkutsu-estabilidad (3D),sonnet,62995,24,15.6
+2026-11-10,animador-tramo-B,zenkutsu-estabilidad (3D),sonnet,91622,39,18.8
+2026-11-10,sensei,zenkutsu 3D: revisión y montaje,fable,150000,40,30

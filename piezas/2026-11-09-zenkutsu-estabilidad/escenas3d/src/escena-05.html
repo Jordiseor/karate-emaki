@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Escena 3D</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import { crearEscenario, util as U } from '../../../../animacion/3d/escenario.js';
+import { Karateka3D, cargarPoses, mezclar } from '../../../../animacion/3d/karateka3d.js';
+import { Diagrama3D } from '../../../../animacion/3d/diagrama3d.js';
+import { overlay } from '../../../../animacion/3d/overlay2d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5 });
+const k = new Karateka3D({ cinturon: 'negro' });
+esc.escena.add(k.raiz);
+const P = cargarPoses();
+const d = new Diagrama3D(esc, k);
+window.DURACION = 4;
+// Escena 5: empuje hacia delante desde zenkutsu; aguanta ≈26° temblando; fantasma 8°
+k.colocar(-0.05, 0, 90).aplicarPose(P['zenkutsu-dachi']);
+d.ajustarVuelco(26);
+window.render = (t) => {
+  const sube = U.easeInOut(U.prog(t, 0.7, 2.1)), baja = U.easeInOut(U.prog(t, 3.0, 3.8));
+  const hold = U.prog(t, 2.1, 2.3) * (1 - U.prog(t, 2.9, 3.1));
+  const esf = Math.min(1, sube * 1.2) * (1 - baja);
+  const inc = 26 * sube * (1 - baja) - hold * (0.7 * Math.sin(t * 38) + 0.4 * Math.sin(t * 23 + 1)) * 0.9;
+  k.aplicarPose(P['zenkutsu-dachi'], { inclinar: inc });
+  const ceja = -0.8 * esf + 0.9 * U.prog(t, 3.5, 3.8);
+  k.cara({ parpadeo: U.parpadeo(t, [0.4, 3.45]), cejas: ceja, sonrisa: 0.1 * (1 - esf) });
+  esc.orbita({ centro: [0.12, 0.86, 0], distancia: 7.2, azimut: 0, elevacion: 3, fov: 26 });
+  d.limpiar();
+  d.base({ alerta: 0.65 * U.prog(inc, 21, 26) * (1 - baja) });
+  const c = d.cdm();
+  const piv = d.pivote();
+  d.arco({ centro: piv, desde: 0, angulo: 8, radio: 0.62, texto: '8°', relleno: 0.05, color: '#8A847A', distTexto: 1.0, desplazaTexto: [100, -25], tamTexto: 56 });
+  const fm = 1 - U.prog(t, 0.7, 1.0);
+  if (fm > 0.01) d.arco({ centro: piv, desde: 0, hasta: c, radio: 0.42, texto: fm > 0.99 ? '26°' : '', distTexto: 1.0, desplazaTexto: [150, -35], tamTexto: 80, alfa: fm });
+  if (inc > 0.8 && t < 3.3) d.arco({ centro: piv, desde: 0, angulo: inc, radio: 0.42, texto: (hold > 0.5 && t < 3.0) ? '26°' : '', distTexto: 1.0, desplazaTexto: [150, -35], tamTexto: 80 });
+  const cx = k.punto('cadera').x;
+  if (t > 0.3 && t < 3.4) d.flecha({ desde: [cx - 1.15, 1.25, 0], hacia: [cx - 0.5, 1.25, 0], crecer: U.easeOut(U.prog(t, 0.3, 0.7)), alfa: 1 - U.prog(t, 3.0, 3.4) });
+  esc.dibujar(ctx);
+  d.dibujar2D(ctx);
+  overlay.titulo(ctx, t, { lineas: 'Hacia delante: [r]≈26°[/r]', t0: -1, size: 96 });
+  overlay.letraPequena(ctx, 'Modelo simplificado: cuerpo rígido');
+};
+</script></body></html>

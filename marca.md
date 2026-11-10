@@ -28,14 +28,16 @@ Mezcla de didáctico y divertido. Como un sempai que sabe mucho y no se lo tiene
 
 ## Estilo visual
 
-- Figura esquemática 2D: karateka de líneas limpias con karategi blanco y cinturón de color según la pieza.
-- Fondo liso de tono papel (#F4EFE6), tinta negra (#1A1A1A), acento rojo (#C8102E) para golpes, flechas y datos clave.
+Cambio pedido por Jorge el 10 nov 2026: de figura esquemática 2D a **3D cercano**.
+
+- Karateka 3D tipo figura de arcilla o vinilo: cabeza algo grande, cara sencilla y expresiva, karategi blanco y cinturón de color según la pieza. Biblioteca en `animacion/3d/` (el diseño aprobado no se cambia sin permiso de Jorge).
+- Dōjō cálido de madera con luz suave; tono papel (#F4EFE6) de ambiente, tinta negra (#1A1A1A) para textos, acento rojo (#C8102E) solo para golpes, flechas y datos clave.
 - Tipografía: sans-serif gruesa para títulos, legible en móvil; mínimo 48 px en un vídeo de 1080×1920.
-- Escenas de historia: estilo de grabado o sumi-e simplificado, sin retratos realistas de personas reales.
+- Escenas de historia: figuras estilizadas o siluetas, sin retratos realistas de personas reales (adaptación a 3D pendiente; la biblioteca 2D de sumi-e sigue disponible).
 
 ## Voz
 
-Las dos cosas en cada reel: textos en pantalla (mucha gente ve sin sonido) y locución sintética en español de España. Los textos resumen; la voz cuenta. Música libre de derechos o de la biblioteca de cada red.
+Las dos cosas en cada reel: textos en pantalla (mucha gente ve sin sonido) y locución sintética en español de España, cálida y tranquila (voz y cadena en `audio/README.md`). Los textos resumen; la voz cuenta. Música libre de derechos o de la biblioteca de cada red.
 
 ## Estructura de un reel
 

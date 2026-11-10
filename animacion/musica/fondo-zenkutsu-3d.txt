@@ -1,0 +1,1 @@
+Fondo sonoro "fondo-zenkutsu-3d.wav" (31 s) para la versión 3D de 2026-11-09-zenkutsu-estabilidad. Obra propia, mismas capas sintetizadas que fondo-zenkutsu-estabilidad.txt (pulso-vivo x0,5, ambiente x0,2 en bucle), con golpes recolocados: cifra 8° en 9,0 s, caída en 9,9 s, cifra 26° en 17,1 s, cifra 30° en 22,0 s. Fundido final 28,5-31 s, limitador 0,8.
