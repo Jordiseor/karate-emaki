@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Escena 3D — plantilla</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<!-- RUTAS: esta plantilla vive en animacion/3d/. Si copias el fichero a piezas/<id>/escenas/src/, cambia
+     '../marca.js' por '../../../../animacion/marca.js' y './' por '../../../../animacion/3d/' en los import. -->
+<script src="../marca.js"></script>
+<script type="module">
+import { crearEscenario, util as U } from './escenario.js';
+import { Karateka3D, cargarPoses, mezclar } from './karateka3d.js';
+import { Diagrama3D } from './diagrama3d.js';
+import { overlay } from './overlay2d.js';
+
+// ---------- montaje (una vez) ----------
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5 });            // dōjō de madera; { suelo: 'tatami' } o { fondo: 'degradado' }
+const k = new Karateka3D({ cinturon: 'negro' });        // blanco, amarillo, naranja, verde, azul, morado, marron, negro, rojo
+esc.escena.add(k.raiz);
+const P = cargarPoses();                                // P.yoi, P['zenkutsu-dachi'], P['zenkutsu-bajo'], P['pies-juntos'], P.kamae, P['gedan-barai-prep'], P.neutra
+const d = new Diagrama3D(esc, k);                       // diagramas de física (si no los usas, bórralo)
+window.DURACION = 4;                                    // segundos
+
+k.colocar(0, 0, 90);                                    // x, z (m) y rumbo (90 = mira a la derecha de la pantalla en perfil)
+
+// ---------- cada fotograma: SOLO depende de t ----------
+window.render = (t) => {
+  // 1) pose: de pies juntos a zenkutsu entre 0,5 y 1,5 s
+  const f = U.easeInOut(U.prog(t, 0.5, 1.5));
+  k.aplicarPose(mezclar(P['pies-juntos'], P['zenkutsu-dachi'], f));
+  k.cara({ parpadeo: U.parpadeo(t, [2.2]), sonrisa: 0.3 });
+
+  // 2) cámara: perfil
+  esc.orbita({ centro: [0.1, 0.95, 0], distancia: 7.2, azimut: 0, elevacion: 3, fov: 26 });
+
+  // 3) diagrama 3D (opcional): siempre limpiar() primero
+  d.limpiar();
+  d.cdm({ alfa: U.prog(t, 2, 2.3) });
+  d.base({ alfa: U.prog(t, 2, 2.3) });
+
+  // 4) dibujar 3D + capa 2D
+  esc.dibujar(ctx);
+  d.dibujar2D(ctx);
+  overlay.titulo(ctx, t, { lineas: 'Título de la escena', t0: 0.2 });
+};
+</script></body></html>

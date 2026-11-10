@@ -54,6 +54,16 @@
  "codoD": 98.1,
  "medidas": {
   "base_m": 0.726,
+  "musloI_grados": 25.5,
+  "plantaI_talon_punta_y": [
+   0,
+   0
+  ],
+  "plantaD_talon_punta_y": [
+   0,
+   0
+  ],
+  "ancho_tobillos_m": 0.199,
   "espinillaI_grados": 1.7,
   "espinillaD_grados": 22.6,
   "tronco_vertical_grados": 3,

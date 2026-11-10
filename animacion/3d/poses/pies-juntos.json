@@ -40,6 +40,16 @@
  },
  "medidas": {
   "base_m": 0.243,
+  "musloI_grados": 2.9,
+  "plantaI_talon_punta_y": [
+   0,
+   0
+  ],
+  "plantaD_talon_punta_y": [
+   0,
+   0
+  ],
+  "ancho_tobillos_m": 0.101,
   "espinillaI_grados": 2.9,
   "espinillaD_grados": 2.9,
   "tronco_vertical_grados": 0,

@@ -1,0 +1,47 @@
+{
+ "pieza": "2026-11-09-zenkutsu-estabilidad",
+ "duracion": 30,
+ "nota": "Grafía adaptada para pronunciar (Shoto, doyo, senkutsu dachi, Guichin). Texto editorial en final/locucion.txt.",
+ "escenas": [
+  {
+   "n": 1,
+   "inicio": 0,
+   "texto": "Empújame hacia delante. ¿En qué posición aguanto más?"
+  },
+  {
+   "n": 2,
+   "inicio": 3,
+   "texto": "Tu centro de masas, el punto rojo: si cae entre tus pies, aguantas."
+  },
+  {
+   "n": 3,
+   "inicio": 7,
+   "texto": "Pies juntos: ocho grados... y fuera."
+  },
+  {
+   "n": 4,
+   "inicio": 10,
+   "texto": "En senkutsu dachi, la posición adelantada, la base pasa de un metro."
+  },
+  {
+   "n": 5,
+   "inicio": 14,
+   "texto": "Hacia delante, ahora aguantas hasta unos veintiséis grados."
+  },
+  {
+   "n": 6,
+   "inicio": 18,
+   "texto": "Y si bajas la cadera, el punto rojo baja y llegas a unos treinta."
+  },
+  {
+   "n": 7,
+   "inicio": 22,
+   "texto": "Pero gira la cámara. De lado, la base es estrecha y aguantas menos."
+  },
+  {
+   "n": 8,
+   "inicio": 26,
+   "texto": "¿Por dónde me empujarías tú?"
+  }
+ ]
+}

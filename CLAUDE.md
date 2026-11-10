@@ -16,6 +16,8 @@ Antes de hacer cualquier cosa, lee `marca.md` (la biblia de marca). Manda sobre 
 | Guionista | `.claude/agents/guionista.md` | Guion, storyboard, locución y textos en pantalla |
 | Animador | `.claude/agents/animador.md` | Anima las escenas del reel |
 | Interactivos | `.claude/agents/interactivos.md` | Páginas web interactivas |
+| Modelador 3D | `.claude/agents/modelador-3d.md` | Personaje, poses, escenarios y render 3D (`animacion/3d/`) |
+| Sonido | `.claude/agents/sonido.md` | Voz sintética, música libre y mezcla (`audio/`, `herramientas/voz.py`) |
 | Editor | `.claude/agents/editor.md` | Monta escenas, voz, música, subtítulos, portada |
 | Marketing | `.claude/agents/marketing.md` | Copys, hashtags, calendario, métricas |
 | Intendente | `.claude/agents/intendente.md` | Ahorro de tokens: modelo por tarea, límites, consumo |
@@ -28,7 +30,8 @@ ideas.md                 banco de ideas: propuestas, elegidas, descartadas
 fuentes.md               fuentes verificadas y su fiabilidad
 tablero.md               copia local del tablero (la oficina web es la versión viva)
 piezas/<id>/             todo lo de una pieza: dosier.md, guion.md, storyboard.md, escenas/, final/
-animacion/               biblioteca: personaje, poses, estilos reutilizables
+animacion/               biblioteca: personaje, poses, estilos reutilizables (3D en animacion/3d/)
+audio/                   voces, licencias, cadena de sonido y muestras
 metricas.csv             datos de rendimiento por pieza
 presupuesto.md           modelo y límites por tipo de encargo (Intendente)
 consumo.csv              tokens y tiempo de cada encargo terminado

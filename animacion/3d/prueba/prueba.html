@@ -14,8 +14,8 @@ esc.escena.add(k.raiz);
 const P = cargarPoses();
 window.DURACION = 4.5;
 
-// El karateka avanza hacia la derecha de la pantalla (78°), con el pecho medio de cara a la cámara; el pie derecho (el de atrás) no se mueve al dar el paso.
-const RUMBO = 78;
+// El karateka avanza en diagonal hacia la derecha y hacia la cámara (62°), vista de 3/4 casi de perfil (se lee bien la posición); el pie derecho (el de atrás) no se mueve al dar el paso.
+const RUMBO = 62;
 k.colocar(0, 0, RUMBO).aplicarPose(P.yoi);
 const pieD = k.punto('tobilloD');
 const ANCLA = { pie: 'D', x: pieD.x, z: pieD.z };
@@ -40,7 +40,7 @@ function poseEn(t) {
   const nod = Math.sin(Math.PI * U.prog(t, 2.55, 3.15)) * 6;
   // … y al final mira a cámara un momento (gesto amable)
   const mira = U.suave(U.prog(t, 2.35, 2.8)) + 0.9 * (1 - U.suave(U.prog(t, 0.45, 0.85))); // también al empezar, en yoi
-  p.cabeza = { giro: U.lerp(P.yoi.cabeza?.giro || 0, P['zenkutsu-dachi'].cabeza.giro, fp) - 34 * mira, inclina: (P['zenkutsu-dachi'].cabeza.inclina || 0) * fp + nod, ladeo: -6 * mira };
+  p.cabeza = { giro: U.lerp(P.yoi.cabeza?.giro || 0, P['zenkutsu-dachi'].cabeza?.giro ?? 0, fp) - 34 * mira, inclina: (P['zenkutsu-dachi'].cabeza?.inclina || 0) * fp + nod, ladeo: -6 * mira };
   // caídas del cinturón: se balancean con el paso y tras el golpe
   const tg = t - T.golpe[1];
   const cinta = { x: -14 * arco + (tg > 0 ? 9 * Math.exp(-tg * 3.5) * Math.sin(tg * 13) : 0), z: tg > 0 ? -6 * Math.exp(-tg * 3) * Math.sin(tg * 11 + 1) : 0 };
@@ -50,7 +50,9 @@ function poseEn(t) {
 function camara(t) {
   const f = U.suave(U.prog(t, 0, window.DURACION));
   const fx = U.suave(U.prog(t, 0.5, 1.9));
-  esc.orbita({ centro: [U.lerp(0.12, 0.42, fx), 1.0, 0.0], distancia: U.lerp(7.7, 7.0, f), azimut: U.lerp(10, 0, f), elevacion: U.lerp(5, 3, f), fov: 26 });
+  // la cámara sigue a la cadera (suave porque la pose lo es): el personaje queda centrado durante el paso
+  const e = poseEn(t); k.aplicarPose(e.p, e.op); const c = k.punto('cadera'); void fx;
+  esc.orbita({ centro: [c.x, 1.1, c.z * 0.5], distancia: U.lerp(7.4, 6.8, f), azimut: U.lerp(12, 4, f), elevacion: U.lerp(5, 3, f), fov: 26 });
 }
 
 // rastro rojo del puño durante el gedan-barai (acento de golpe)
@@ -78,6 +80,6 @@ window.render = (t) => {
   esc.dibujar(ctx);
   rastro(t);
   k.aplicarPose(e.p, e.op);
-  EMAKI.tarjeta(ctx, t, { t0: 0.15, lineas: ['¿Por qué aguanta', 'el zenkutsu?'], size: 96, y: 300, sombra: 'rgba(244,239,230,0.95)' });
+  EMAKI.tarjeta(ctx, t, { t0: 0.15, lineas: ['¿Por qué aguanta', 'el zenkutsu?'], size: 96, y: 270, sombra: 'rgba(244,239,230,0.95)' });
 };
 </script></body></html>

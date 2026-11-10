@@ -9,4 +9,7 @@ Escena 7 (22-26 s): Pero gira la cámara. De lado, la base es estrecha y aguanta
 Escena 8 (26-30 s): ¿Por dónde me empujarías tú?
 Nota: si la voz no cabe, recortar primero «Por eso es larga y baja.». Golpes del fondo sonoro: 8,4 s (cifra 8°), 9,3 s (caída), 16,6 s (cifra 26°), 21,0 s (cifra 30°).
 
-Voz añadida el 10 nov 2026 con Piper (voz es-carlfm, dominio público), ritmo 0,85, mediante herramientas/generar-voz.py, que contiene el texto exacto locutado. Recortes para caber en 30 s: escena 2 «El punto rojo es tu centro de masas. Si su vertical cae entre tus pies, sigues de pie»; escena 3 «Pies juntos: ocho grados… y fuera»; escena 6 sin «Por eso es larga y baja». Copia sin voz: reel-sin-voz.mp4.
+Voz regenerada el 10 nov 2026 con Piper (es_ES-sharvard-medium, hablante 0 = hombre; CC BY 3.0, atribuir) mediante herramientas/voz.py. Texto exacto locutado (grafía adaptada) en voz/guion-voz.json. length_scale 0,87 (1,15x, tope), noise_scale 0,6, noise_w 0,8. Esta voz es más lenta que la anterior, por eso hay más recortes.
+Recortes: escena 2 «Tu centro de masas, el punto rojo: si cae entre tus pies, aguantas» (sin «su vertical»); escena 3 «Pies juntos: ocho grados... y fuera»; escena 6 sin «Por eso es larga y baja»; escena 7 «...y aguantas menos» (sin «bastante»). «senkutsu dachi» se escribe así solo para la pronunciación.
+Desfases de entrada respecto al inicio de escena: +0,12 / +0,36 / +0,47 / +0,06 / +0,14 / +0,06 / +0,06 / +0,20 s (máx. 0,5). La voz termina en 27,7 s.
+Mezcla: voz -16 LUFS por escena; fondo +3 dB entre frases y -9,8 dB con ducking mientras habla (voz 14,9 dB por encima); reel -16,1 LUFS integrados, pico real -1,3 dBFS. Los golpes del fondo a 8,4 y 9,3 s caen bajo la voz y quedan atenuados. Copia sin voz: reel-sin-voz.mp4.

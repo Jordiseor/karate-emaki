@@ -1,76 +1,78 @@
 {
  "nombre": "zenkutsu-dachi",
- "descripcion": "Hidari zenkutsu-dachi con gedan-barai (pie izquierdo delante). Base ≈1 m (≈4 pies) de talón trasero a punta delantera y anchura de caderas; espinilla delantera vertical (rodilla sobre el tobillo, apuntando como el pie); pierna trasera recta con el pie a ≈30° y el talón en el suelo; tronco vertical; caderas en hanmi (≈45°). Brazo izquierdo casi extendido, puño a dos puños por encima de la rodilla delantera y algo por fuera; puño derecho en hikite en la cadera, palma arriba, codo atrás.",
- "cadera": {
-  "giro": -42
- },
- "tronco": {
-  "giro": -3
- },
- "cabeza": {
-  "giro": 43,
-  "inclina": 2
- },
+ "descripcion": "Hidari zenkutsu-dachi con gedan-barai (pie izquierdo delante), Shotokan. Rodilla delantera flexionada con la espinilla vertical (rodilla sobre el tobillo), muslo delantero a 50° de la vertical; pierna trasera recta con el talón en el suelo y la punta ≈30° hacia fuera; pies planos; tronco vertical; caderas al frente; tobillos a ≈0,23 m en lateral (anchura de caderas) y base ≈1 m (≈4 pies) de talón trasero a punta delantera. Gedan-barai con el brazo izquierdo (puño a un palmo sobre la rodilla delantera, algo por fuera) e hikite derecho en la cadera, palma arriba.",
+ "cadera": {},
+ "tronco": {},
+ "cabeza": {},
  "manoI": 0,
  "manoD": 0,
  "munecaI": {
-  "gira": -60,
-  "flex": 0
+  "gira": -64
  },
  "munecaD": {
-  "gira": 90
+  "gira": 94
  },
  "piernaI": {
-  "adelante": 30.3,
-  "abre": 26.7,
-  "gira": 35.6
+  "adelante": 50,
+  "abre": 0,
+  "gira": 0
  },
- "rodillaI": 39.5,
+ "rodillaI": 50,
  "tobilloI": {
   "flex": 0,
-  "ladeo": -1.2
+  "ladeo": 0
  },
  "piernaD": {
-  "adelante": -18.3,
-  "abre": 21.2,
-  "gira": -3.1
+  "adelante": -34.6,
+  "abre": 3.2,
+  "gira": 36.5
  },
  "rodillaD": 0,
  "tobilloD": {
-  "flex": 20.5,
-  "ladeo": -19
+  "flex": 27.6,
+  "ladeo": -22
  },
  "brazoI": {
-  "adelante": 11.1,
-  "abre": 16.5,
-  "gira": 26.1
+  "adelante": 37.3,
+  "abre": -0.5,
+  "gira": 4.2
  },
  "brazoD": {
-  "adelante": -61.8,
-  "abre": 3,
-  "gira": -0.1
+  "adelante": -59,
+  "abre": 5.6,
+  "gira": -0.4
  },
- "codoD": 116.3,
+ "codoD": 115,
  "medidas": {
-  "base_m": 0.995,
-  "espinillaI_grados": 1.2,
-  "espinillaD_grados": 27.7,
+  "base_m": 1.014,
+  "musloI_grados": 50,
+  "plantaI_talon_punta_y": [
+   0,
+   0
+  ],
+  "plantaD_talon_punta_y": [
+   0,
+   0
+  ],
+  "ancho_tobillos_m": 0.23,
+  "espinillaI_grados": 0,
+  "espinillaD_grados": 34.7,
   "tronco_vertical_grados": 0,
-  "altura_cadera_m": 0.861,
+  "altura_cadera_m": 0.809,
   "puno_I": [
-   0.151,
-   0.698,
-   0.299
+   0.153,
+   0.728,
+   0.342
   ],
   "puno_D": [
-   -0.118,
-   0.93,
-   -0.115
+   -0.17,
+   0.873,
+   0.014
   ],
   "rodilla_I": [
-   0.082,
+   0.092,
    0.485,
-   0.322
+   0.314
   ]
  }
 }

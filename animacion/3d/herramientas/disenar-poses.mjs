@@ -95,6 +95,20 @@ function resolverBrazo(pose, L, obj) {
   if (obj.codo == null) pose['codo' + L] = r.x[3];
   return r.f;
 }
+// gira la muñeca (eje del antebrazo) para que la palma mire hacia 'normal' (Vector3 del mundo)
+// La palma del puño mira, en el marco de la muñeca, hacia -s·X (s = +1 izquierda, -1 derecha).
+function orientarPalma(pose, L, h, normal) {
+  const s = L === 'I' ? 1 : -1; let mejor = null;
+  for (let g = -180; g <= 180; g += 2) {
+    const p = structuredClone(pose); p['muneca' + L] = { ...(p['muneca' + L] || {}), gira: g };
+    k.aplicarPose(p, { suelo: false, altura: h / 100 });
+    const q = k.j['muneca' + L].getWorldQuaternion(new THREE.Quaternion());
+    const n = V(-s, 0, 0).applyQuaternion(q), c = n.dot(normal);
+    if (!mejor || c > mejor.c) mejor = { g, c };
+  }
+  pose['muneca' + L] = { ...(pose['muneca' + L] || {}), gira: mejor.g };
+  return mejor.c;
+}
 function redondear(p) {
   const o = {};
   for (const key in p) { const v = p[key]; o[key] = typeof v === 'number' ? r1(v) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([a, b]) => [a, typeof b === 'number' ? r1(b) : b])) : v; }
@@ -104,7 +118,9 @@ function informe(nombre, p, h) {
   k.aplicarPose(p, { suelo: true });
   const m = k.medidas();
   const mano = (L) => k.punto('mano' + L), kn = (L) => k.punto('rodilla' + L);
-  return { base_m: +m.base.toFixed(3), espinillaI_grados: +m.espinillaI.toFixed(1), espinillaD_grados: +m.espinillaD.toFixed(1), tronco_vertical_grados: +m.troncoVertical.toFixed(1), altura_cadera_m: +m.alturaCadera.toFixed(3),
+  const muslo = (L) => { const a = k.punto('rodilla' + L), b = W(k.j['pierna' + L]); return +(Math.atan2(Math.hypot(a.x - b.x, a.z - b.z), b.y - a.y) / D2R).toFixed(1); };
+  const planta = (L) => ['talon', 'punta'].map((q) => +k.punto(q + L).y.toFixed(3));
+  return { base_m: +m.base.toFixed(3), musloI_grados: muslo('I'), plantaI_talon_punta_y: planta('I'), plantaD_talon_punta_y: planta('D'), ancho_tobillos_m: +Math.abs(k.punto('tobilloI').x - k.punto('tobilloD').x).toFixed(3), espinillaI_grados: +m.espinillaI.toFixed(1), espinillaD_grados: +m.espinillaD.toFixed(1), tronco_vertical_grados: +m.troncoVertical.toFixed(1), altura_cadera_m: +m.alturaCadera.toFixed(3),
     puno_I: mano('I').toArray().map((x) => +x.toFixed(3)), puno_D: mano('D').toArray().map((x) => +x.toFixed(3)), rodilla_I: kn('I').toArray().map((x) => +x.toFixed(3)) };
 }
 
@@ -126,28 +142,47 @@ POSES['pies-juntos'] = () => {
   return { p: L.p, h: L.h, desc: 'Pies juntos (heisoku-dachi): pies paralelos tocándose, piernas rectas, brazos relajados a los lados con las manos abiertas. Base mínima (P1 de los reels de física).' };
 };
 // ---------- zenkutsu-dachi con gedan-barai (hidari: pie izquierdo delante) ----------
-POSES['zenkutsu-dachi'] = () => {
-  const base = { cadera: { giro: -42 }, tronco: { giro: -3 }, cabeza: { giro: 43, inclina: 2 }, manoI: 0, manoD: 0, munecaI: { gira: -60, flex: 0 }, munecaD: { gira: 90 } };
-  // base 1 m (talón trasero → punta delantera): el tobillo delantero va ≈0,76 m por delante del trasero
-  let best = null;
-  for (const dz of [0.74, 0.76, 0.78, 0.8]) {
-    const L = resolverPiernas(base, { rodillas: { I: null, D: 0 }, dx: 0.22, dz, yaw: { I: 0, D: -32 }, espinillaVertical: 'I', h0: -15 });
-    const m = (k.aplicarPose(L.p, { suelo: true }), k.medidas());
-    const err = Math.abs(m.base - 1.0) + L.coste;
-    if (!best || err < best.err) best = { L, err, m };
-  }
-  const { L } = best, p = L.p;
-  k.aplicarPose(p, { suelo: false, altura: L.h / 100 });
+// Pierna delantera analítica: muslo a 'muslo'° de la vertical, rodilla flexionada lo mismo → espinilla vertical
+// (rodilla sobre el tobillo), tobillo a 0 → pie plano mirando al frente. La altura de la cadera sale de ahí.
+// Pierna trasera: recta (rodilla 0), se resuelve para que el tobillo llegue al suelo con el pie plano (talón apoyado)
+// y la punta girada ≈30° hacia fuera. Caderas y tronco al frente y verticales.
+const ANCHO_TOBILLOS = 0.23; // separación lateral entre tobillos ≈ anchura de caderas (las articulaciones están a 0,184)
+function zenkutsu(muslo, { nombre, desc }) {
+  const p = { cadera: {}, tronco: {}, cabeza: {}, manoI: 0, manoD: 0, munecaI: { gira: -75 }, munecaD: { gira: 90 } };
+  p.piernaI = { adelante: muslo, abre: 0, gira: 0 };
+  p.rodillaI = muslo; p.tobilloI = { flex: 0, ladeo: 0 };
+  // altura de la cadera para que el tobillo delantero quede a su altura: articulación de cadera = tobillo + espinilla + muslo·cos
+  const hCadera = MEDIDAS.tobillo + MEDIDAS.espinilla + MEDIDAS.muslo * Math.cos(muslo * D2R) + MEDIDAS.pelvis;
+  const h = hCadera - MEDIDAS.caderaY;
+  // el pie delantero va recto delante de su cadera; la anchura de caderas la completa el pie trasero
+  // pierna trasera recta
+  const coste = (v) => {
+    p.piernaD = { adelante: v[0], abre: v[1], gira: v[2] }; p.rodillaD = 0; p.tobilloD = { flex: v[3], ladeo: v[4] };
+    k.aplicarPose(p, { suelo: false, altura: h });
+    const a = W(k.j.tobilloD), e = ejePie('D');
+    let c = (a.y - MEDIDAS.tobillo) ** 2 * 4000 + (a.x - (MEDIDAS.caderaX - ANCHO_TOBILLOS)) ** 2 * 400;
+    c += (1 - e.arriba.y) * 400 + d2(e.delante, dir(-30)) * 20;
+    c += a.z > 0 ? a.z * a.z * 1000 : 0;
+    return c;
+  };
+  const r = optimizar(coste, [-35, 5, -10, 30, 0], 8);
+  coste(r.x);
+  k.aplicarPose(p, { suelo: false, altura: h });
   const rod = W(k.j.rodillaI);
-  // gedan-barai: puño ≈ 2 puños por encima de la rodilla delantera, un poco por fuera; brazo casi recto
-  resolverBrazo(p, 'I', { h: L.h, mano: V(rod.x + 0.07, rod.y + 0.2, rod.z - 0.02), codo: 12, codoDir: V(0.55, -0.6, 0.55).normalize(), pesoCodo: 0.5, x0: [40, 25, 0] });
-  // hikite: puño en la cadera derecha, palma arriba, codo hacia atrás
+  // gedan-barai: brazo izquierdo casi recto, puño a un palmo (≈0,2 m) sobre la rodilla delantera y un poco por fuera del muslo
+  resolverBrazo(p, 'I', { h: h * 100, mano: V(rod.x + 0.06, rod.y + 0.2, rod.z + 0.06), codo: 8, codoDir: V(0.35, -0.75, 0.55).normalize(), pesoCodo: 0.5, x0: [35, 15, 0] });
+  // hikite: puño en la cadera derecha (sobre el cinturón), palma arriba, codo hacia atrás
   const cad = k.j.cadera; cad.updateMatrixWorld(true);
-  const hik = V(-0.165, 0.065, 0.0).applyMatrix4(cad.matrixWorld);
-  const atras = V(0, 0, -1).applyQuaternion(cad.getWorldQuaternion(new THREE.Quaternion())); atras.y = -0.25; atras.normalize();
-  resolverBrazo(p, 'D', { h: L.h, mano: hik, codoDir: atras, pesoCodo: 3, x0: [-30, 10, 0, 100] });
-  return { p, h: L.h, desc: 'Hidari zenkutsu-dachi con gedan-barai (pie izquierdo delante). Base ≈1 m (≈4 pies) de talón trasero a punta delantera y anchura de caderas; espinilla delantera vertical (rodilla sobre el tobillo, apuntando como el pie); pierna trasera recta con el pie a ≈30° y el talón en el suelo; tronco vertical; caderas en hanmi (≈45°). Brazo izquierdo casi extendido, puño a dos puños por encima de la rodilla delantera y algo por fuera; puño derecho en hikite en la cadera, palma arriba, codo atrás.' };
-};
+  const hik = V(-0.17, 0.06, 0.02).applyMatrix4(cad.matrixWorld);
+  resolverBrazo(p, 'D', { h: h * 100, mano: hik, codoDir: V(-0.1, -0.3, -1).normalize(), pesoCodo: 3, x0: [-30, 10, 0, 100] });
+  // palmas: hikite palma arriba; gedan-barai palma hacia abajo y hacia el muslo (dorso del puño hacia fuera)
+  const cD = orientarPalma(p, 'D', h * 100, V(0, 1, 0));
+  const cI = orientarPalma(p, 'I', h * 100, V(-0.35, -1, 0).normalize());
+  console.log('  palmas (coseno con el objetivo): hikite', cD.toFixed(2), 'gedan-barai', cI.toFixed(2));
+  return { p, h: h * 100, desc, nombre };
+}
+POSES['zenkutsu-dachi'] = () => zenkutsu(50, { desc: 'Hidari zenkutsu-dachi con gedan-barai (pie izquierdo delante), Shotokan. Rodilla delantera flexionada con la espinilla vertical (rodilla sobre el tobillo), muslo delantero a 50° de la vertical; pierna trasera recta con el talón en el suelo y la punta ≈30° hacia fuera; pies planos; tronco vertical; caderas al frente; tobillos a ≈0,23 m en lateral (anchura de caderas) y base ≈1 m (≈4 pies) de talón trasero a punta delantera. Gedan-barai con el brazo izquierdo (puño a un palmo sobre la rodilla delantera, algo por fuera) e hikite derecho en la cadera, palma arriba.' });
+POSES['zenkutsu-bajo'] = () => zenkutsu(70, { desc: 'Zenkutsu-dachi bajo: misma posición (hidari, gedan-barai e hikite) con la cadera más baja: muslo delantero a ≈70° de la vertical, espinilla vertical, pierna trasera recta con el talón en el suelo. Al bajar con la pierna trasera recta la base crece (≈1,2 m de talón a punta).' });
 // ---------- kamae (kumite, hidari) ----------
 POSES.kamae = () => {
   const base = { cadera: { giro: -35 }, tronco: { giro: -5, inclina: 3 }, cabeza: { giro: 38, inclina: -2 }, manoI: 0, manoD: 0, munecaI: { gira: -70 }, munecaD: { gira: -80 } };
@@ -171,7 +206,7 @@ POSES['gedan-barai-prep'] = (yoi) => {
 };
 
 const pedidas = process.argv.slice(2);
-const orden = ['yoi', 'pies-juntos', 'zenkutsu-dachi', 'kamae', 'gedan-barai-prep'].filter((n) => !pedidas.length || pedidas.includes(n));
+const orden = ['yoi', 'pies-juntos', 'zenkutsu-dachi', 'zenkutsu-bajo', 'kamae', 'gedan-barai-prep'].filter((n) => !pedidas.length || pedidas.includes(n));
 fs.mkdirSync(DIR, { recursive: true });
 let yoi = null;
 for (const n of orden) {

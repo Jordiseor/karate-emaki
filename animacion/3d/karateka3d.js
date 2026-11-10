@@ -470,7 +470,8 @@ export class Karateka3D {
 
   // ---------------- pose ----------------
   // op: { suelo: true (apoya el pie más bajo en y=0), ancla: {pie:'I'|'D', x, z} (deja ese tobillo en ese punto del mundo),
-  //       cinta: {x, z} balanceo de las caídas del cinturón (grados), altura: m extra de la cadera }
+  //       cinta: {x, z} balanceo de las caídas del cinturón (grados), altura: m extra de la cadera,
+  //       inclinar: grados (cuerpo rígido alrededor de la punta del pie delantero; ver inclinar()), ladoInclinar, pivote }
   aplicarPose(p, op = {}) {
     const j = this.j, r = (v) => (v || 0) * D2R;
     this.pose = p;
@@ -508,8 +509,12 @@ export class Karateka3D {
       this.raiz.position.x += op.ancla.x - w.x; this.raiz.position.z += op.ancla.z - w.z;
       this.raiz.updateMatrixWorld(true);
     }
+    this._cinta = op.cinta;
     this._colas(op.cinta);
     this._sombras();
+    this._pivote = null;
+    this._apoyo = this.apoyo(); // huella en el suelo antes de inclinar (la usa diagrama3d.js para la base)
+    if (op.inclinar) this.inclinar(op.inclinar, { lado: op.ladoInclinar, pivote: op.pivote });
     return this;
   }
   // las caídas del cinturón cuelgan en vertical (compensan la inclinación de la cadera) + balanceo opcional
@@ -522,27 +527,76 @@ export class Karateka3D {
     g.quaternion.copy(qw.invert().multiply(qy).multiply(sw));
     void qp; g.updateMatrixWorld(true);
   }
+  // Sombras de contacto: se calculan en coordenadas del MUNDO (siempre planas sobre el suelo, aunque el cuerpo esté inclinado)
+  // y se convierten al marco de la raíz.
   _sombras() {
     const S = this.sombras, inv = new THREE.Matrix4().copy(this.raiz.matrixWorld).invert();
+    const pon = (m, x, z, ang, sx, sz, y = 0.002) => {
+      m.matrixAutoUpdate = false;
+      const w = new THREE.Matrix4().compose(V3(x, y, z), new THREE.Quaternion().setFromAxisAngle(V3(0, 1, 0), ang), V3(sx, 1, sz));
+      m.matrix.multiplyMatrices(inv, w); m.matrixWorldNeedsUpdate = true;
+    };
+    const centros = {};
     for (const L of ['I', 'D']) {
       const t = this.j['tobillo' + L];
       const talon = PUNTOS_PLANTA[0].clone().applyMatrix4(t.matrixWorld), punta = PUNTOS_PLANTA[1].clone().applyMatrix4(t.matrixWorld);
-      const c = talon.clone().add(punta).multiplyScalar(0.5);
+      const c = talon.clone().add(punta).multiplyScalar(0.5); centros[L] = c;
       const h = Math.max(0, Math.min(talon.y, punta.y));
       const ang = Math.atan2(punta.x - talon.x, punta.z - talon.z);
-      const m = S[L]; const lc = c.clone(); lc.y = 0.002; lc.applyMatrix4(inv); m.position.copy(lc);
-      m.rotation.set(0, ang - this.base.rumbo * D2R, 0);
-      const k = 1 + h * 2.5; m.scale.set(0.085 * k, 1, 0.19 * k);
+      const k = 1 + h * 2.5, m = S[L];
+      pon(m, c.x, c.z, ang, 0.085 * k, 0.19 * k);
       m.material.opacity = 0.75 * Math.max(0, 1 - h / 0.3);
       m.visible = h < 0.3;
     }
     // sombra difusa del cuerpo bajo la cadera
-    const cad = V3(0, 0, 0).applyMatrix4(this.j.cadera.matrixWorld); cad.y = 0.0015; cad.applyMatrix4(inv);
-    const pI = S.I.position, pD = S.D.position;
-    S.cuerpo.position.set((cad.x * 2 + pI.x + pD.x) / 4, 0.0015, (cad.z * 2 + pI.z + pD.z) / 4);
+    const cad = V3(0, 0, 0).applyMatrix4(this.j.cadera.matrixWorld), pI = centros.I, pD = centros.D;
     const sep = Math.hypot(pI.x - pD.x, pI.z - pD.z);
-    S.cuerpo.rotation.set(0, Math.atan2(pI.x - pD.x, pI.z - pD.z), 0);
-    S.cuerpo.scale.set(0.3, 1, 0.3 + sep * 0.55); S.cuerpo.material.opacity = 0.38;
+    pon(S.cuerpo, (cad.x * 2 + pI.x + pD.x) / 4, (cad.z * 2 + pI.z + pD.z) / 4, Math.atan2(pI.x - pD.x, pI.z - pD.z), 0.3, 0.3 + sep * 0.55, 0.0015);
+    S.cuerpo.material.opacity = 0.38;
+    this.raiz.updateMatrixWorld(true);
+  }
+
+  // Puntos de las plantas (mundo) que tocan el suelo (y < 2 cm): talón, punta y bordes del antepié de cada pie
+  apoyo(tol = 0.02) {
+    const loc = [V3(0, -M.tobillo, -0.058), V3(0, -M.tobillo, 0.185), V3(0.045, -M.tobillo, 0.09), V3(-0.045, -M.tobillo, 0.09)];
+    const pts = [];
+    for (const L of ['I', 'D']) for (const q of loc) { const w = q.clone().applyMatrix4(this.j['tobillo' + L].matrixWorld); if (w.y < tol) pts.push(w); }
+    return pts.length ? pts : ['I', 'D'].map((L) => this.punto('tobillo' + L));
+  }
+  // Pie que va delante (el que tiene la punta más adelantada en la dirección del rumbo): 'I' o 'D'
+  pieDelantero() {
+    const fw = V3(Math.sin(this.base.rumbo * D2R), 0, Math.cos(this.base.rumbo * D2R));
+    return this.punto('puntaI').dot(fw) >= this.punto('puntaD').dot(fw) ? 'I' : 'D';
+  }
+  // Inclina el cuerpo ENTERO como un sólido rígido alrededor de un eje horizontal que pasa por la punta del pie delantero
+  // (o del pie / punto que digas). grados > 0 = hacia delante (hacia donde mira), < 0 = hacia atrás.
+  // lado: 0 = vuelco delante-atrás; 90 = vuelco hacia su izquierda (pivota en el borde exterior… usa pivote para elegirlo).
+  // Se llama DESPUÉS de aplicarPose (o con aplicarPose(p, {inclinar: g})). Devuelve el pivote (Vector3).
+  inclinar(grados = 0, o = {}) {
+    const lado = (o.lado || 0) * D2R, rumbo = this.base.rumbo * D2R + lado;
+    const fw = V3(Math.sin(rumbo), 0, Math.cos(rumbo));
+    let piv = o.pivote;
+    if (!piv) {
+      if (o.lado) { // vuelco lateral: el punto de los pies más alejado en esa dirección
+        const pts = ['I', 'D'].flatMap((L) => ['talon', 'punta'].map((q) => this.punto(q + L)));
+        piv = pts.reduce((a, b) => (b.dot(fw) > a.dot(fw) ? b : a));
+      } else {
+        // vuelco delante/detrás: punta del pie delantero (grados > 0) o talón del trasero (grados < 0)
+        const L = this.pieDelantero(), Lt = L === 'I' ? 'D' : 'I';
+        piv = grados >= 0 ? this.punto('punta' + L) : this.punto('talon' + Lt);
+      }
+    }
+    piv = piv.clone(); piv.y = 0;
+    this._pivote = piv;
+    if (!grados) return piv;
+    const eje = V3(0, 1, 0).cross(fw).normalize();
+    const q = new THREE.Quaternion().setFromAxisAngle(eje, grados * D2R);
+    this.raiz.position.sub(piv).applyQuaternion(q).add(piv);
+    this.raiz.quaternion.premultiply(q);
+    this.raiz.updateMatrixWorld(true);
+    this._colas(this._cinta); // las caídas del cinturón siguen colgando en vertical
+    this._sombras();
+    return piv;
   }
 
   // ---------------- cara ----------------
@@ -662,7 +716,7 @@ export function espejo(p) {
   return o;
 }
 // Carga las poses 3D. render.mjs las inyecta en window.EMAKI_POSES3D; si no (navegador normal), las pide por XHR.
-export function cargarPoses(nombres = ['yoi', 'kamae', 'zenkutsu-dachi', 'pies-juntos', 'gedan-barai-prep']) {
+export function cargarPoses(nombres = ['yoi', 'kamae', 'zenkutsu-dachi', 'zenkutsu-bajo', 'pies-juntos', 'gedan-barai-prep']) {
   const P = Object.assign({}, (typeof window !== 'undefined' && window.EMAKI_POSES3D) || {});
   for (const n of nombres) if (!P[n] && typeof XMLHttpRequest !== 'undefined') {
     try { const x = new XMLHttpRequest(); x.open('GET', new URL('./poses/' + n + '.json', import.meta.url).href, false); x.send(); if (x.status === 200 || x.status === 0) P[n] = JSON.parse(x.responseText); } catch (e) { console.warn('pose 3D no encontrada', n); }

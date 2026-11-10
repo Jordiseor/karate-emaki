@@ -1,0 +1,78 @@
+{
+ "nombre": "zenkutsu-bajo",
+ "descripcion": "Zenkutsu-dachi bajo: misma posición (hidari, gedan-barai e hikite) con la cadera más baja: muslo delantero a ≈70° de la vertical, espinilla vertical, pierna trasera recta con el talón en el suelo. Al bajar con la pierna trasera recta la base crece (≈1,2 m de talón a punta).",
+ "cadera": {},
+ "tronco": {},
+ "cabeza": {},
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {
+  "gira": -68
+ },
+ "munecaD": {
+  "gira": 94
+ },
+ "piernaI": {
+  "adelante": 70,
+  "abre": 0,
+  "gira": 0
+ },
+ "rodillaI": 70,
+ "tobilloI": {
+  "flex": 0,
+  "ladeo": 0
+ },
+ "piernaD": {
+  "adelante": -47.8,
+  "abre": 3.2,
+  "gira": 42.6
+ },
+ "rodillaD": 0,
+ "tobilloD": {
+  "flex": 37.8,
+  "ladeo": -31.9
+ },
+ "brazoI": {
+  "adelante": 50.4,
+  "abre": -0.5,
+  "gira": 2.8
+ },
+ "brazoD": {
+  "adelante": -59,
+  "abre": 5.6,
+  "gira": -0.4
+ },
+ "codoD": 115,
+ "medidas": {
+  "base_m": 1.227,
+  "musloI_grados": 70,
+  "plantaI_talon_punta_y": [
+   0,
+   0
+  ],
+  "plantaD_talon_punta_y": [
+   0,
+   0
+  ],
+  "ancho_tobillos_m": 0.23,
+  "espinillaI_grados": 0,
+  "espinillaD_grados": 47.9,
+  "tronco_vertical_grados": 0,
+  "altura_cadera_m": 0.685,
+  "puno_I": [
+   0.153,
+   0.693,
+   0.435
+  ],
+  "puno_D": [
+   -0.17,
+   0.749,
+   0.014
+  ],
+  "rodilla_I": [
+   0.092,
+   0.485,
+   0.385
+  ]
+ }
+}

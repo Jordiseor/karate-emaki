@@ -1,0 +1,52 @@
+{
+ "pieza": "2026-11-09-nombre-shotokan",
+ "duracion": 30,
+ "nota": "Grafía adaptada para pronunciar (Shoto, doyo, senkutsu dachi, Guichin). Texto editorial en final/locucion.txt.",
+ "escenas": [
+  {
+   "n": 1,
+   "inicio": 0,
+   "texto": "Shotokan no es el nombre de un estilo. Es una casa."
+  },
+  {
+   "n": 2,
+   "inicio": 3,
+   "texto": "Shoto, olas de pino, era el seudónimo con que Guichin Funakoshi firmaba sus poemas."
+  },
+  {
+   "n": 3,
+   "inicio": 8,
+   "texto": "El viento en los pinos, que suena a mar."
+  },
+  {
+   "n": 4,
+   "inicio": 11,
+   "texto": "Y kan significa casa."
+  },
+  {
+   "n": 5,
+   "inicio": 13,
+   "texto": "En mil novecientos treinta y nueve, Funakoshi y sus alumnos abren un doyo en Tokio."
+  },
+  {
+   "n": 6,
+   "inicio": 17,
+   "texto": "Cuentan que sus alumnos colgaron el cartel: la casa de Shoto."
+  },
+  {
+   "n": 7,
+   "inicio": 20,
+   "texto": "En el cuarenta y cinco, ardió en los bombardeos."
+  },
+  {
+   "n": 8,
+   "inicio": 23,
+   "texto": "Funakoshi nunca bautizó su karate. El mundo lo llamó como aquel doyo."
+  },
+  {
+   "n": 9,
+   "inicio": 27,
+   "texto": "Dices Shotokan y nombras una casa que ya no existe."
+  }
+ ]
+}
