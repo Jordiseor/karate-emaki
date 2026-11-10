@@ -29,3 +29,4 @@
 - 2026-11-09 · Sensei · Jorge aprueba zenkutsu (pasa a Marketing) y pide cambios en Shotokan: añadir la voz. La voz se genera en el PC de Jorge con herramientas/generar-voz.ps1 (voz de Windows).
 - 2026-11-09 · Marketing · Copys de zenkutsu (IG, TikTok, Shorts, 8 hashtags, comentario fijado); propone jueves 12 nov 19:30. Calendario 9–22 nov.
 - 2026-11-09 · Sensei · Estudio subido a GitHub (Jordiseor/karate-emaki). 4 tareas programadas activas: ideas (lun 8:45), producción (L–V 10:15), cierre (vie 17:45), métricas (día 1, 9:10).
+- 2026-11-10 · Sensei · Producción: buzón vacío, sin audios en piezas/*/voz/. Shotokan sigue en montaje (espera voz) y zenkutsu programada para el jue 12 sin voz. Ninguna pieza avanza; no se lanza ningún agente.
