@@ -8,3 +8,5 @@ Escena 6 (18-22 s): Y si bajas la cadera, el punto rojo baja y llegas a unos tre
 Escena 7 (22-26 s): Pero gira la cámara. De lado, la base es estrecha y aguantas bastante menos.
 Escena 8 (26-30 s): ¿Por dónde me empujarías tú?
 Nota: si la voz no cabe, recortar primero «Por eso es larga y baja.». Golpes del fondo sonoro: 8,4 s (cifra 8°), 9,3 s (caída), 16,6 s (cifra 26°), 21,0 s (cifra 30°).
+
+Voz añadida el 10 nov 2026 con Piper (voz es-carlfm, dominio público), ritmo 0,85, mediante herramientas/generar-voz.py, que contiene el texto exacto locutado. Recortes para caber en 30 s: escena 2 «El punto rojo es tu centro de masas. Si su vertical cae entre tus pies, sigues de pie»; escena 3 «Pies juntos: ocho grados… y fuera»; escena 6 sin «Por eso es larga y baja». Copia sin voz: reel-sin-voz.mp4.

@@ -4,8 +4,8 @@ Hora de Madrid. Ritmo de arranque: 2 reels por semana. Un interactivo cada 2 sem
 
 | Fecha | Hora | Pieza | Pilar | Estado |
 | --- | --- | --- | --- | --- |
-| Jue 12 nov | 19:30 | Zenkutsu-dachi: por qué la posición larga no te tira (`2026-11-09-zenkutsu-estabilidad`) | Ciencia | Aprobada por Jorge; pendiente de publicar por Jorge |
-| Sáb 14 nov | 19:30 | «Shotokan no es un estilo: es una casa» | Historia (propuesto) | Pendiente de voz; no producida |
+| Jue 12 nov | 19:30 | Zenkutsu-dachi: por qué la posición larga no te tira (`2026-11-09-zenkutsu-estabilidad`) | Ciencia | Con voz; pendiente de que Jorge apruebe la voz y publique |
+| Sáb 14 nov | 19:30 | «Shotokan no es un estilo: es una casa» | Historia (propuesto) | Con voz; en aprobación de Jorge |
 | Mar 17 nov | 19:30 | Por asignar en la reunión de ideas | Técnica (propuesto) | Sin pieza |
 | Sáb 21 nov | 19:30 | Por asignar en la reunión de ideas | Anécdotas y humor del dōjō (propuesto) | Sin pieza |
 

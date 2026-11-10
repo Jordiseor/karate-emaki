@@ -30,3 +30,4 @@
 - 2026-11-09 · Marketing · Copys de zenkutsu (IG, TikTok, Shorts, 8 hashtags, comentario fijado); propone jueves 12 nov 19:30. Calendario 9–22 nov.
 - 2026-11-09 · Sensei · Estudio subido a GitHub (Jordiseor/karate-emaki). 4 tareas programadas activas: ideas (lun 8:45), producción (L–V 10:15), cierre (vie 17:45), métricas (día 1, 9:10).
 - 2026-11-10 · Sensei · Producción: buzón vacío, sin audios en piezas/*/voz/. Shotokan sigue en montaje (espera voz) y zenkutsu programada para el jue 12 sin voz. Ninguna pieza avanza; no se lanza ningún agente.
+- 2026-11-10 · Sensei · Jorge autoriza generar la voz en la nube. Piper con voz es-carlfm (dominio público, calidad baja 16 kHz); script herramientas/generar-voz.py. Voz mezclada en los 2 reels (ritmo 0,85; recortes menores de locución anotados en locucion.txt; copia sin voz en final/reel-sin-voz.mp4). Mezcla hecha por el Sensei, sin lanzar al Editor. Nadie ha escuchado el resultado: las 2 piezas van a aprobación de Jorge.
