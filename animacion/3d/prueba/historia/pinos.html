@@ -1,0 +1,14 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../marca.js"></script>
+<script type="module">
+import { ctx, escenario, ambiente, crearColina } from './base.js';
+const esc = escenario({ fondo: 'degradado' });
+ambiente(esc, 'atardecer', { suelo: false });
+const col = crearColina({ pinos: 10, sinPinosEn: [[0, 3, 3.5]] }); esc.escena.add(col.raiz);
+window.DURACION = 3;
+window.render = (t) => {
+  col.viento(t, { fuerza: 1 });
+  esc.orbita({ centro: [0, 2.4, -3], distancia: 22, azimut: 10, elevacion: 7, fov: 34 });
+  esc.dibujar(ctx);
+};
+</script></body></html>

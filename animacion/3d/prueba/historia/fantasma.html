@@ -1,0 +1,19 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../marca.js"></script>
+<script type="module">
+import { ctx, escenario, crearCasa, Karateka3D, cargarPoses, U } from './base.js';
+const esc = escenario({});
+const k = new Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz);
+const P = cargarPoses();
+const casa = crearCasa({ escala: 0.42 }); casa.modo('fantasma'); esc.escena.add(casa.raiz);
+casa.colocar(0, -2.2);
+import { crearMaqueta } from './base.js';
+const maq = crearMaqueta({ rotulo: '松濤館' }); maq.colocar(1.3, 0.9, -20); esc.escena.add(maq.raiz);
+window.DURACION = 3;
+window.render = (t) => {
+  k.colocar(0, 0.6, 0).aplicarPose(P.kamae); k.cara({ sonrisa: 0.45 });
+  casa.contorno({ dibujar: U.clamp(t / 2) }); maq.pop(U.clamp(t - 1.6));
+  esc.orbita({ centro: [0, 1.45, -0.8], distancia: 9.5, azimut: 0, elevacion: 8, fov: 30 });
+  esc.dibujar(ctx);
+};
+</script></body></html>

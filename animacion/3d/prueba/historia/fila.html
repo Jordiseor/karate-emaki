@@ -1,0 +1,20 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../marca.js"></script>
+<script type="module">
+import { ctx, escenario, crearCasa, crearFila, Karateka3D, cargarPoses, mezclar, H2, U } from './base.js';
+const esc = escenario({ fondo: 'degradado' });
+const P = cargarPoses();
+esc.escena.fog.near = 12; esc.escena.fog.far = 45;
+const casa = crearCasa({}); casa.modo('fantasma').colocar(0, -9.5); esc.escena.add(casa.raiz);
+const fila = crearFila(esc, { n: 12, columnas: 4, origen: [0, -1.6], iguales: true });
+const k = new Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz);
+window.DURACION = 3;
+window.render = (t) => {
+  fila.pose(P, (i) => mezclar(P['pies-juntos'], P.rei, U.clamp(Math.sin((t - i * 0.05) * 2) * 0.5 + 0.5)));
+  k.colocar(0, 0.6, 0).aplicarPose(P.kamae); k.cara({ sonrisa: 0.5 });
+  esc.orbita({ centro: [0, 2.4, -3], distancia: 13, azimut: 0, elevacion: 9, fov: 34 });
+  esc.dibujar(ctx);
+  const p = esc.proyectar(new (k.raiz.position.constructor)(0, 6.2, -9.5));
+  H2.kanji(ctx, '松濤館', 540, Math.max(420, p.y), 190, { halo: 0.7 });
+};
+</script></body></html>

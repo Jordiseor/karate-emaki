@@ -1,0 +1,53 @@
+{
+ "nombre": "cargar-viga",
+ "descripcion": "Cargar una viga sobre el hombro DERECHO con las dos manos: la viga va hacia delante (eje +Z del personaje) a ≈1,52 m de altura y x ≈ −0,17. Con historia3d: viga.alHombro(k).",
+ "cadera": {},
+ "piernaI": {
+  "adelante": 2.2,
+  "abre": 6.6,
+  "gira": 27.7
+ },
+ "rodillaI": 5,
+ "tobilloI": {
+  "flex": -0.1,
+  "ladeo": -4.8
+ },
+ "piernaD": {
+  "adelante": 2.2,
+  "abre": 6.6,
+  "gira": 27.7
+ },
+ "rodillaD": 5,
+ "tobilloD": {
+  "flex": -0.1,
+  "ladeo": -4.8
+ },
+ "tronco": {
+  "inclina": 2,
+  "ladeo": 4
+ },
+ "cabeza": {
+  "ladeo": 9,
+  "giro": 4
+ },
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {
+  "gira": -20
+ },
+ "munecaD": {
+  "gira": 20
+ },
+ "brazoD": {
+  "adelante": 56.3,
+  "abre": 18.3,
+  "gira": 5.1
+ },
+ "codoD": 130,
+ "brazoI": {
+  "adelante": 86.8,
+  "abre": -22.9,
+  "gira": -47.2
+ },
+ "codoI": 43.5
+}

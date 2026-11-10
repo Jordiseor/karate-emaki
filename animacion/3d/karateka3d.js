@@ -176,6 +176,46 @@ function materiales(o) {
   return { gi, giV, giDoble, piel, mejilla, pelo, ojo, brillo, ceja, boca, cint, sombra };
 }
 
+// ---------- peinados alternativos (alumnos, el maestro) ----------
+// 'corto', 'rapado', 'flequillo', 'melena', 'mono' (corto + moño).
+// El peinado por defecto ('normal') NO pasa por aquí: se construye igual que el diseño aprobado.
+export const PEINADOS = ['normal', 'corto', 'rapado', 'flequillo', 'melena', 'mono'];
+function peloAlternativo(tipo, sup) {
+  const yTop = 0.171;
+  const cfg = {
+    corto: { linea: (p, c) => 0.045 + (c > 0 ? 0.062 : 0.125) * c - sstep(0.45, 0.85, c) * (0.01 + 0.012 * Math.pow(0.5 + 0.5 * Math.cos(p * 9), 2)) - gauss(Math.abs(p), 1.3, 0.12) * 0.03,
+      grosor: (p, y) => 0.012 + 0.002 * Math.sin(p * 9 + y * 40) + 0.007 * sstep(0.06, 0.17, y) },
+    rapado: { linea: (p, c) => 0.055 + (c > 0 ? 0.05 : 0.115) * c - gauss(Math.abs(p), 1.3, 0.12) * 0.02, grosor: () => 0.0055 },
+    flequillo: { linea: (p, c) => (c > 0.55 ? 0.072 : 0.02 + (c > 0 ? 0.08 : 0.12) * c) - gauss(Math.abs(p), 1.3, 0.12) * 0.03,
+      grosor: (p, y) => 0.02 + 0.012 * sstep(0.06, 0.17, y) + 0.002 * Math.sin(p * 24) },
+    melena: { linea: (p, c) => (c > 0.6 ? 0.07 + 0.012 * Math.cos(p * 14) : -0.085 + 0.02 * c),
+      grosor: (p, y) => 0.022 + 0.01 * sstep(0.0, -0.08, y) + 0.01 * sstep(0.06, 0.17, y) + 0.002 * Math.sin(p * 11 + y * 30) },
+  };
+  const C = cfg[tipo === 'mono' ? 'corto' : tipo] || cfg.corto;
+  const pA = -Math.PI, pB = Math.PI;
+  const NU = 96, NV = 26, pos = [], idx = [];
+  for (let i = 0; i <= NU; i++) {
+    const phi = pA + (i / NU) * (pB - pA), c = Math.cos(phi), y0 = C.linea(phi, c);
+    for (let k = 0; k <= NV; k++) {
+      let p;
+      if (k < 4) { const f = Math.sin((k / 4) * Math.PI / 2); p = sup(phi, y0, C.grosor(phi, y0) * f + 0.001); p.y -= 0.004 * Math.sin(f * Math.PI); }
+      else {
+        const v = (k - 4) / (NV - 4), y = y0 + (yTop - y0) * (1 - Math.pow(1 - v, 1.4));
+        p = v >= 1 ? V3(0, yTop + C.grosor(0, yTop), 0) : sup(phi, y, C.grosor(phi, y));
+      }
+      pos.push(p.x, p.y, p.z);
+    }
+  }
+  for (let i = 0; i < NU; i++) for (let k = 0; k < NV; k++) { const a = i * (NV + 1) + k, b = a + NV + 1; idx.push(a, b, a + 1, b, b + 1, a + 1); }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setIndex(idx); g.computeVertexNormals();
+  {
+    const nr = g.attributes.normal, a = V3(0, 0, 0), b = V3(0, 0, 0);
+    for (let k = 0; k <= NV; k++) { const i0 = k, i1 = NU * (NV + 1) + k; a.fromBufferAttribute(nr, i0); b.fromBufferAttribute(nr, i1); a.add(b).normalize(); nr.setXYZ(i0, a.x, a.y, a.z); nr.setXYZ(i1, a.x, a.y, a.z); }
+    for (let i = 0; i <= NU; i++) nr.setXYZ(i * (NV + 1) + NV, 0, 1, 0);
+  }
+  return g;
+}
+
 function grupo(padre, x = 0, y = 0, z = 0, nombre = '') { const g = new THREE.Group(); g.position.set(x, y, z); g.name = nombre; padre.add(g); return g; }
 
 // ---------- el personaje ----------
@@ -352,7 +392,9 @@ export class Karateka3D {
       this.bocaAbierta = new THREE.Mesh(new THREE.SphereGeometry(1, 20, 12, 0, Math.PI * 2, Math.PI / 2, Math.PI / 2), mt.boca);
       this.bocaAbierta.scale.set(0.024, 0.02, 0.006); this.bocaAbierta.position.set(0, 0.004, 0.0); this.boca.add(this.bocaAbierta);
       // pelo: superficie pegada al perfil de la cabeza (grosor de arcilla), con flequillo en picos y canto redondeado
-      {
+      const peinado = this.o.peinado || 'normal';
+      if (peinado !== 'normal') { P.pelo = malla(peloAlternativo(peinado, sup), mt.pelo, hg, 'pelo'); if (peinado === 'mono') { P.mono = malla(new THREE.SphereGeometry(0.058, 20, 14), mt.pelo, hg, 'mono'); P.mono.position.copy(sup(Math.PI, 0.125, 0.045)); P.mono.scale.set(1, 0.9, 0.85); } }
+      else {
         const linea = (phi) => { // altura de la raíz del pelo según el ángulo
           const c = Math.cos(phi), frente = sstep(0.45, 0.85, c);
           const picos = Math.pow(0.5 + 0.5 * Math.cos((phi + 0.12) * 10.5), 1.6);
@@ -387,9 +429,11 @@ export class Karateka3D {
         for (let i = 0; i <= NU; i++) nr.setXYZ(i * (NV + 1) + NV, 0, 1, 0);
         P.pelo = malla(g, mt.pelo, hg, 'pelo');
       }
-      // remolino de arriba
-      const rem = new THREE.TubeGeometry(new THREE.CatmullRomCurve3([V3(0, 0, 0), V3(0.004, 0.025, 0.006), V3(0.018, 0.042, 0.022), V3(0.038, 0.042, 0.036)]), 16, 0.0085, 8);
-      P.remolino = malla(rem, mt.pelo, hg, 'remolino'); P.remolino.position.set(-0.03, 0.192, -0.02);
+      // remolino de arriba (solo con el peinado por defecto)
+      if (peinado === 'normal') {
+        const rem = new THREE.TubeGeometry(new THREE.CatmullRomCurve3([V3(0, 0, 0), V3(0.004, 0.025, 0.006), V3(0.018, 0.042, 0.022), V3(0.038, 0.042, 0.036)]), 16, 0.0085, 8);
+        P.remolino = malla(rem, mt.pelo, hg, 'remolino'); P.remolino.position.set(-0.03, 0.192, -0.02);
+      }
       this.rostro = [...this.ojos.map((e) => e.g), ...this.cejas.map((e) => e.g), P.nariz, this.boca];
     }
 
@@ -716,7 +760,7 @@ export function espejo(p) {
   return o;
 }
 // Carga las poses 3D. render.mjs las inyecta en window.EMAKI_POSES3D; si no (navegador normal), las pide por XHR.
-export function cargarPoses(nombres = ['yoi', 'kamae', 'zenkutsu-dachi', 'zenkutsu-bajo', 'pies-juntos', 'gedan-barai-prep']) {
+export function cargarPoses(nombres = ['yoi', 'kamae', 'zenkutsu-dachi', 'zenkutsu-bajo', 'pies-juntos', 'gedan-barai-prep', 'zenkutsu-bajo-misma-base', 'rei', 'cargar-viga', 'brazos-arriba', 'maestro-seiza-pincel', 'maestro-pie-escribiendo', 'maestro-manos-atras']) {
   const P = Object.assign({}, (typeof window !== 'undefined' && window.EMAKI_POSES3D) || {});
   for (const n of nombres) if (!P[n] && typeof XMLHttpRequest !== 'undefined') {
     try { const x = new XMLHttpRequest(); x.open('GET', new URL('./poses/' + n + '.json', import.meta.url).href, false); x.send(); if (x.status === 200 || x.status === 0) P[n] = JSON.parse(x.responseText); } catch (e) { console.warn('pose 3D no encontrada', n); }

@@ -1,0 +1,51 @@
+{
+ "nombre": "rei",
+ "descripcion": "Rei (saludo de pie): pies juntos, tronco inclinado 30° hacia delante, manos abiertas resbalando por la parte delantera de los muslos. Para animar el saludo: mezclar(P[\"pies-juntos\"], P.rei, f).",
+ "cadera": {},
+ "tronco": {
+  "inclina": 30
+ },
+ "cabeza": {
+  "inclina": 8
+ },
+ "manoI": 1,
+ "manoD": 1,
+ "brazoI": {
+  "adelante": 39.4,
+  "abre": 16.5,
+  "gira": -90.5
+ },
+ "brazoD": {
+  "adelante": 39.4,
+  "abre": 16.5,
+  "gira": -90.5
+ },
+ "codoI": 40.6,
+ "codoD": 40.6,
+ "piernaI": {
+  "adelante": 0,
+  "abre": -2.9,
+  "gira": 2
+ },
+ "rodillaI": 0,
+ "tobilloI": {
+  "flex": 0.1,
+  "ladeo": 2.9
+ },
+ "piernaD": {
+  "adelante": 0,
+  "abre": -2.9,
+  "gira": 2
+ },
+ "rodillaD": 0,
+ "tobilloD": {
+  "flex": 0.1,
+  "ladeo": 2.9
+ },
+ "munecaI": {
+  "flex": -5
+ },
+ "munecaD": {
+  "flex": -5
+ }
+}

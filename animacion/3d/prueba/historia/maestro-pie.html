@@ -1,0 +1,18 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../marca.js"></script>
+<script type="module">
+import { ctx, escenario, crearMaestro, anadirMaestro, crearPapelColgado, crearCartel, cargarPoses, U } from './base.js';
+const esc = escenario({});
+const P = cargarPoses();
+const m = anadirMaestro(esc, crearMaestro({}));
+const papel = crearPapelColgado({ texto: '空手' }); esc.escena.add(papel.raiz);
+const carteles = [[-1.7, 0.6, 'flecha'], [1.8, 0.2, 'madera'], [-1.4, -1.6, 'papel'], [1.5, -1.8, 'flecha']].map(([x, z, tipo], i) => { const c = crearCartel({ tipo, semilla: i }); c.colocar(x, z); esc.escena.add(c.raiz); return c; });
+window.DURACION = 3;
+window.render = (t) => {
+  m.colocar(0, 0.3, 180).pose(P, 'maestro-pie-escribiendo', { escribir: t });
+  papel.colocar(0, -0.32, 0).escribir(U.clamp(t / 2));
+  carteles.forEach((c, i) => { c.pop(U.clamp((t - 0.3 * i) / 0.6)); if (i % 2 === 0 || i === 3) c.apuntar(0, 0.3); });
+  esc.orbita({ centro: [0, 1.2, -0.3], distancia: 8.6, azimut: 28, elevacion: 8, fov: 30 });
+  esc.dibujar(ctx);
+};
+</script></body></html>

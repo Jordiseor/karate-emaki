@@ -1,0 +1,48 @@
+{
+ "nombre": "maestro-pie-escribiendo",
+ "descripcion": "El maestro de pie escribiendo en un papel colgado (a ≈0,6 m delante, centro a ≈1,4 m): pincel en la mano derecha, mano izquierda a la espalda.",
+ "cadera": {},
+ "piernaI": {
+  "adelante": 0,
+  "abre": -2.9,
+  "gira": 2
+ },
+ "rodillaI": 0,
+ "tobilloI": {
+  "flex": 0.1,
+  "ladeo": 2.9
+ },
+ "piernaD": {
+  "adelante": 0,
+  "abre": -2.9,
+  "gira": 2
+ },
+ "rodillaD": 0,
+ "tobilloD": {
+  "flex": 0.1,
+  "ladeo": 2.9
+ },
+ "tronco": {
+  "inclina": 3
+ },
+ "cabeza": {
+  "inclina": 4
+ },
+ "manoI": 0,
+ "manoD": 0,
+ "munecaD": {
+  "flex": 10
+ },
+ "brazoD": {
+  "adelante": 82,
+  "abre": 13.8,
+  "gira": -44.4
+ },
+ "codoD": 58,
+ "brazoI": {
+  "adelante": -41.5,
+  "abre": 28.2,
+  "gira": -76.4
+ },
+ "codoI": 89
+}

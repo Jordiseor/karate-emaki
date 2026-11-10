@@ -1,0 +1,17 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../marca.js"></script>
+<script type="module">
+import { ctx, escenario, ambiente, crearCasa, H2, U } from './base.js';
+const esc = escenario({ fondo: 'degradado' });
+ambiente(esc, 'noche');
+const casa = crearCasa({ rotulo: '松濤館' }); esc.escena.add(casa.raiz);
+window.DURACION = 3;
+window.render = (t) => {
+  const f = U.clamp(t / 2);
+  casa.modo('solido').arder(f * 0.8).luzInterior(0.4);
+  esc.orbita({ centro: [0, 2.0, 0], distancia: 21, azimut: 15, elevacion: 7, fov: 30 });
+  esc.dibujar(ctx);
+  H2.resplandor(ctx, f * 0.75, t);
+  H2.pavesas(ctx, t, { n: 50, intensidad: f });
+};
+</script></body></html>

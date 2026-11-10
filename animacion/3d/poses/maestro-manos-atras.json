@@ -1,0 +1,45 @@
+{
+ "nombre": "maestro-manos-atras",
+ "descripcion": "El maestro de pie, quieto, con las manos juntas a la espalda (mano derecha en puño dentro de la izquierda).",
+ "cadera": {},
+ "piernaI": {
+  "adelante": 0,
+  "abre": -2.9,
+  "gira": 2
+ },
+ "rodillaI": 0,
+ "tobilloI": {
+  "flex": 0.1,
+  "ladeo": 2.9
+ },
+ "piernaD": {
+  "adelante": 0,
+  "abre": -2.9,
+  "gira": 2
+ },
+ "rodillaD": 0,
+ "tobilloD": {
+  "flex": 0.1,
+  "ladeo": 2.9
+ },
+ "tronco": {
+  "inclina": 2
+ },
+ "cabeza": {
+  "inclina": 3
+ },
+ "manoI": 1,
+ "manoD": 0,
+ "brazoD": {
+  "adelante": -41.1,
+  "abre": 24.5,
+  "gira": -76.2
+ },
+ "codoD": 82.9,
+ "brazoI": {
+  "adelante": -42.4,
+  "abre": 26.6,
+  "gira": -77.2
+ },
+ "codoI": 84.4
+}

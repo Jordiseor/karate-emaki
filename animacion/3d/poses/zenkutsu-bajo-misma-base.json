@@ -1,0 +1,46 @@
+{
+ "nombre": "zenkutsu-bajo-misma-base",
+ "descripcion": "Zenkutsu-dachi bajo con la MISMA base que zenkutsu-dachi (≈1 m): la cadera baja doblando más la rodilla delantera (espinilla adelantada) en vez de alargar la postura. Ángulos dados por el Sensei; resto como zenkutsu-dachi.",
+ "cadera": {},
+ "tronco": {},
+ "cabeza": {},
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {
+  "gira": -64
+ },
+ "munecaD": {
+  "gira": 94
+ },
+ "piernaI": {
+  "adelante": 62.6,
+  "abre": 0,
+  "gira": 0
+ },
+ "rodillaI": 86.7,
+ "tobilloI": {
+  "flex": 20.4,
+  "ladeo": 0
+ },
+ "piernaD": {
+  "adelante": -45.4,
+  "abre": 3.2,
+  "gira": 36.5
+ },
+ "rodillaD": 0.1,
+ "tobilloD": {
+  "flex": 36.1,
+  "ladeo": -22
+ },
+ "brazoI": {
+  "adelante": 37.3,
+  "abre": -0.5,
+  "gira": 4.2
+ },
+ "brazoD": {
+  "adelante": -59,
+  "abre": 5.6,
+  "gira": -0.4
+ },
+ "codoD": 115
+}

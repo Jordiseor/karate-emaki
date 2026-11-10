@@ -1,0 +1,25 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../marca.js"></script>
+<script type="module">
+import { ctx, escenario, ambiente, crearCasa, crearCalle, crearAlumno, crearViga, crearMaestro, anadirMaestro, cargarPoses, U } from './base.js';
+const esc = escenario({ fondo: 'degradado' });
+ambiente(esc, 'calle');
+const calle = crearCalle({ porLado: 2 }); esc.escena.add(calle.raiz);
+const casa = crearCasa({}); esc.escena.add(casa.raiz);
+const P = cargarPoses();
+const al = [0, 1, 2, 3].map((i) => { const k = crearAlumno(i); esc.escena.add(k.raiz); return k; });
+const v1 = crearViga({ largo: 3.2 }), v2 = crearViga({ largo: 2.4 }); esc.escena.add(v1.raiz, v2.raiz);
+const m = anadirMaestro(esc, crearMaestro({}));
+window.DURACION = 3;
+window.render = (t) => {
+  casa.construir(0.5);
+  al[0].colocar(-1.6, 4.0, 90).aplicarPose(P['cargar-viga']); al[1].colocar(0.0, 4.0, 90).aplicarPose(P['cargar-viga']);
+  v1.entre(v1.apoyo(al[0]), v1.apoyo(al[1]));
+  al[2].colocar(2.2, 4.6, -60).aplicarPose(P['cargar-viga']); v2.alHombro(al[2], 0.3);
+  al[3].colocar(-3.2, 3.4, 30).aplicarPose(P.kamae);
+  for (const k of al) k.cara({ sonrisa: 0.4 });
+  m.colocar(1.0, 5.6, 170).pose(P, 'maestro-manos-atras');
+  esc.orbita({ centro: [0, 1.6, 3.2], distancia: 12.5, azimut: 8, elevacion: 9, fov: 32 });
+  esc.dibujar(ctx);
+};
+</script></body></html>

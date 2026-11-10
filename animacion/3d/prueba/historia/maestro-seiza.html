@@ -1,0 +1,20 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../marca.js"></script>
+<script type="module">
+import { ctx, escenario, ambiente, crearColina, crearMaestro, anadirMaestro, crearMesita, cargarPoses, H2, U } from './base.js';
+const esc = escenario({ fondo: 'degradado' });
+ambiente(esc, 'atardecer', { suelo: false });
+const col = crearColina({ pinos: 9 }); esc.escena.add(col.raiz);
+const P = cargarPoses();
+const m = anadirMaestro(esc, crearMaestro({}));
+const mesa = crearMesita({ texto: '松濤' }); esc.escena.add(mesa.raiz);
+window.DURACION = 3;
+window.render = (t) => {
+  col.viento(t);
+  m.colocar(0, 0, 180).pose(P, 'maestro-seiza-pincel', { escribir: t });
+  mesa.colocar(0, -0.55, 180).escribir(U.clamp(t / 2));
+  esc.orbita({ centro: [0, 0.75, -0.3], distancia: 3.6, azimut: 12, elevacion: 14, fov: 34 });
+  esc.dibujar(ctx);
+  H2.kanji(ctx, '松濤', 540, 560, 300, { prog: U.clamp(t / 2.5) });
+};
+</script></body></html>

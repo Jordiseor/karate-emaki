@@ -1,0 +1,48 @@
+{
+ "nombre": "brazos-arriba",
+ "descripcion": "Brazos arriba para colgar o levantar un rótulo: manos abiertas a ≈1,84 m (brazos casi estirados), a 0,44 m entre sí; mirada arriba.",
+ "cadera": {},
+ "piernaI": {
+  "adelante": 2.2,
+  "abre": 6.6,
+  "gira": 27.7
+ },
+ "rodillaI": 5,
+ "tobilloI": {
+  "flex": -0.1,
+  "ladeo": -4.8
+ },
+ "piernaD": {
+  "adelante": 2.2,
+  "abre": 6.6,
+  "gira": 27.7
+ },
+ "rodillaD": 5,
+ "tobilloD": {
+  "flex": -0.1,
+  "ladeo": -4.8
+ },
+ "cabeza": {
+  "inclina": -14
+ },
+ "manoI": 1,
+ "manoD": 1,
+ "munecaI": {
+  "flex": 10
+ },
+ "munecaD": {
+  "flex": 10
+ },
+ "brazoI": {
+  "adelante": 165,
+  "abre": 23.3,
+  "gira": -90
+ },
+ "codoI": 30.4,
+ "brazoD": {
+  "adelante": 165,
+  "abre": 23.3,
+  "gira": -90
+ },
+ "codoD": 30.4
+}

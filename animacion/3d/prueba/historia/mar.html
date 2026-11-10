@@ -1,0 +1,14 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../marca.js"></script>
+<script type="module">
+import { ctx, escenario, ambiente, crearMarDePinos } from './base.js';
+const esc = escenario({ fondo: 'degradado' });
+ambiente(esc, 'atardecer', { suelo: false });
+const mar = crearMarDePinos({}); esc.escena.add(mar.raiz);
+window.DURACION = 3;
+window.render = (t) => {
+  mar.actualizar(t, { amplitud: 0.7, olas: t > 1.5 ? 0.6 : 0 });
+  esc.mirar([0, 16, 22], [0, 0, -4], 40);
+  esc.dibujar(ctx);
+};
+</script></body></html>

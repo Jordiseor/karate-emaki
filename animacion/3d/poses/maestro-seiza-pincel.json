@@ -1,0 +1,54 @@
+{
+ "nombre": "maestro-seiza-pincel",
+ "descripcion": "El maestro en seiza ante la mesita baja (tablero a 0,33 m, centro a 0,55 m delante): mano derecha con el pincel sobre el papel, mano izquierda abierta sujetando el papel. Aplicar con { suelo:false, altura: -0.62 } (lo hace crearMaestro).",
+ "piernaI": {
+  "adelante": 72,
+  "abre": 8,
+  "gira": 0
+ },
+ "piernaD": {
+  "adelante": 72,
+  "abre": 8,
+  "gira": 0
+ },
+ "rodillaI": 162,
+ "rodillaD": 162,
+ "tobilloI": {
+  "flex": -90
+ },
+ "tobilloD": {
+  "flex": -90
+ },
+ "cadera": {},
+ "tronco": {
+  "inclina": 10
+ },
+ "cabeza": {
+  "inclina": 16
+ },
+ "manoI": 1,
+ "manoD": 0,
+ "munecaD": {
+  "flex": 15,
+  "gira": 10
+ },
+ "munecaI": {
+  "flex": 25
+ },
+ "brazoD": {
+  "adelante": 54.3,
+  "abre": 11.9,
+  "gira": -54.6
+ },
+ "codoD": 44.7,
+ "brazoI": {
+  "adelante": 43.8,
+  "abre": 20.7,
+  "gira": -41.6
+ },
+ "codoI": 40.1,
+ "aplicar": {
+  "suelo": false,
+  "altura": -0.62
+ }
+}
