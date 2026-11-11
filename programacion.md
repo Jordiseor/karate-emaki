@@ -26,7 +26,7 @@ La voz se genera en el PC de Jorge con `herramientas/generar-voz.ps1`; los audio
 Cuando Jorge aprueba una pieza y Marketing tiene `final/copy.md`, el Sensei la programa en Metricool (herramientas `mcp__Metricool_Social_Media_Management__*`, marca `8028366`, zona Europe/Madrid):
 - Reel de Instagram (`instagramData.type: REEL`, `isAiGenerated: true` por la voz sintética), `autoPublish: true`, a la fecha y hora de `calendario.md`.
 - Vídeo y portada desde el repositorio público: `https://raw.githubusercontent.com/Jordiseor/karate-emaki/main/piezas/<id>/final/reel.mp4` y `portada.png` (haz push antes de programar).
-- Texto: sección «Instagram Reels» + hashtags + crédito de la voz. Primer comentario: «Comentario fijado».
+- Texto: sección «Instagram Reels» + hashtags, sin crédito de la voz (Jorge no lo quiere en el texto: el crédito CC BY va en `CREDITOS.md`, enlazado desde el perfil). Primer comentario: «Comentario fijado».
 - Apunta el id y el `plannerUrl` de Metricool en `piezas/<id>/final/publicacion.md` y pon la pieza en `programada`. Comprueba con `getScheduledPosts` que sigue pendiente.
 - Tras la fecha, pásala a `publicada`. TikTok y YouTube, cuando Jorge los conecte.
 

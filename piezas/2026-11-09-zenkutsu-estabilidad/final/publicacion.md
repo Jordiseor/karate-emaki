@@ -6,3 +6,4 @@
 - Planificador: https://app.metricool.com/planner/calendar?blogId=8028366&openWithPostUuid=3874312337634575832
 - Texto: copy.md (Instagram + hashtags + crédito de la voz); primer comentario: «Comentario fijado»
 - Programado por el Sensei el 11 nov 2026 tras la aprobación de Jorge
+- PUBLICADO el mié 11 nov 2026 a las 10:50 como prueba pedida por Jorge: https://www.instagram.com/reel/DfmMwyhAbW3/ (Metricool id 424200389). El texto lleva todavía la línea de la voz sintética.

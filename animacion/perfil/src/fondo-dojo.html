@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Perfil: fondo dōjō</title>
+<style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script type="module">
+import { crearEscenario } from '../../3d/escenario.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5, fondo: 'dojo' });
+window.DURACION = 1;
+window.render = () => { esc.orbita({ centro: [0, 1.25, 0], distancia: 3.3, azimut: 0, elevacion: 2, fov: 26 }); esc.dibujar(ctx, { grano: false }); };
+</script></body></html>

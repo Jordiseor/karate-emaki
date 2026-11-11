@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Perfil: cabeza riendo</title>
+<style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script type="module">
+import { crearEscenario } from '../../3d/escenario.js';
+import { Karateka3D, cargarPoses } from '../../3d/karateka3d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 1, fondo: 'degradado' });
+const k = new Karateka3D({ cinturon: 'negro' });
+esc.escena.add(k.raiz);
+const P = cargarPoses();
+window.DURACION = 1;
+esc.suelo.visible = false; esc.escena.fog = null;
+k.colocar(0, 0, -14).aplicarPose(P.yoi);
+k.cara({ sonrisa: 1, cejas: 0.9, parpadeo: 0.8 });
+window.render = (t) => {
+  esc.escena.background = new esc.THREE.Color(t < 0.5 ? '#000000' : '#ffffff');
+  esc.orbita({ centro: [0, 1.6, 0], distancia: 2.6, azimut: 0, elevacion: 2, fov: 26 });
+  esc.dibujar(ctx, { vineta: false, grano: false });
+};
+</script></body></html>
