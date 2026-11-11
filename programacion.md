@@ -19,6 +19,7 @@ La voz se genera en el PC de Jorge con `herramientas/generar-voz.ps1`; los audio
 2. Lee `CLAUDE.md`, `marca.md`, `.claude/agents/sensei.md` y `presupuesto.md`.
 3. Lee el buzón de la oficina: mensajes con `estado: pendiente`. Atiende los que puedas en esta tarea y contesta en su campo `respuesta`, poniendo `estado: respondido`.
 4. Mira en la oficina las piezas en `aprobacion` con `decision` puesta por Jorge: si `aprobada`, pásala a `programada` y lanza a Marketing; si `cambios`, devuélvela al estado que pida su comentario.
+5. Lee también la colección `candidatas` y aplica la sección «Huecos libres» (abajo). En la reunión de los lunes, además, sube a `candidatas` las 6 mejores ideas que no se elijan, para que Jorge vaya descartando.
 
 ## Huecos libres (producción, desde el 11 nov 2026)
 
