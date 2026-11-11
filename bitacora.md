@@ -48,3 +48,4 @@
 - 2026-11-11 · Sensei · Prueba pedida por Jorge: zenkutsu adelantado y publicado en Instagram a las 10:50 vía Metricool (https://www.instagram.com/reel/DfmMwyhAbW3/). Funciona. El jueves 12 queda libre.
 - 2026-11-11 · Sensei · Jorge no quiere el crédito de la voz en los textos: quitado de Shotokan; el crédito CC BY pasa a CREDITOS.md.
 - 2026-11-11 · Modelador 3D · Kit de perfil en animacion/perfil/: foto (karateka sonriente sobre disco rojo), alternativa con dōjō y 5 portadas de destacados. Guía de configuración en animacion/perfil/README.md.
+- 2026-11-11 · Sensei · Jorge borra el reel de zenkutsu y quiere mejorar el guion de los dos reels. Shotokan pasa a borrador en Metricool. Ambas piezas vuelven a storyboard. La cuenta se abrirá con una presentación.
