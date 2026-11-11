@@ -1,0 +1,24 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 3 (4,6-7,4 s): rollo abierto con cuatro marcos vacíos que se trazan de uno en uno; el karateka, pequeño abajo, señala con la mano abierta.
+import { ctx, crearEscenario, Karateka3D, cargarPoses, mezclar, crearRollo, U } from './base-A.js';
+const esc = crearEscenario({ escala: 0.5 });
+const P = cargarPoses(); esc.escena.fog.near = 40; esc.escena.fog.far = 200;
+const k = new Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz);
+const rollo = crearRollo();
+window.DURACION = 2.8;
+const N = P.neutra;
+const señala = { ...N, brazoD: { ...N.brazoD, adelante: 150, abre: 25 }, codoD: 0, manoD: 1 };
+window.render = (t) => {
+  const e = U.easeInOut(U.prog(t, 0.0, 0.5));
+  k.colocar(0, 0, 0).aplicarPose(mezclar(N, señala, e));
+  k.cara({ sonrisa: 0.7, cejas: 0.3, mirada: [0, 0.6], parpadeo: U.parpadeo(t, [1.7]) });
+  const pan = U.lerp(-0.35, 0.35, U.prog(t, 0, 2.8));
+  esc.orbita({ centro: [pan, 5.4, 0], distancia: 25, azimut: pan * 8, elevacion: 3, fov: 26 });
+  esc.dibujar(ctx);
+  const sh = [0.7, 1.4, 2.1];
+  const m = (i) => ({ marco: i === 0 ? U.prog(t, 0.05, 0.5) : U.prog(t, sh[i - 1] + 0.2, sh[i - 1] + 0.65) });
+  rollo.dibujar(ctx, { abierto: 1, avance: rollo.avance(t, sh), centrar: 1, vinetas: [m(0), m(1), m(2), m(3)] });
+};
+</script></body></html>

@@ -1,0 +1,28 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 7 (13,7–15,8 s): fila de 6 en la ventana del rollo, etiqueta «Dōjō». Kiai colectivo a 0,8 (= 14,5 s); empuje al último
+// (1,3–1,8); su bocadillo «¡Ki-ai-iii…!» se quiebra en 2,02 (= 15,72 s). Entra con el desplazamiento de 0,25 s de la viñeta.
+import { crearToma, bocadillo, bocadilloRoto, U, T_KIAI, T_GALLO, DUR7 } from './comun-c.js';
+import { crearRollo } from '../../../../animacion/3d/rollo2d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const toma = crearToma(), rollo = crearRollo();
+window.DURACION = DUR7;
+window.render = (t) => {
+  const vineta = (c) => {
+    toma.escena(c, t);
+    const kb = U.easeBack(U.prog(t, T_KIAI, T_KIAI + 0.12));
+    if (t > T_KIAI && t < 1.45) { c.save(); c.globalAlpha = 1 - U.prog(t, 1.3, 1.45); bocadillo(c, 540, 470, 560 * kb, 330 * kb, '¡KIAI!', { size: 130 * kb, tt: t, temblor: 0.3 }); c.restore(); }
+    if (t > 1.7) {
+      const h = toma.cabeza(t);
+      const g = U.easeBack(U.prog(t, 1.7, 1.85));
+      const bx = 540, by = 540, w = 820 * g, hh = 300 * g;
+      if (t < T_GALLO) bocadillo(c, bx, by, w, hh, '¡Ki-ai-iii…!', { size: 100 * g, tt: t, temblor: 0.5 + 2.5 * U.prog(t, 1.75, T_GALLO) });
+      else bocadilloRoto(c, bx, by, w, hh, '¡Ki-ai-iii…!', U.prog(t, T_GALLO, T_GALLO + 0.5), { size: 100, tt: T_GALLO, temblor: 3 });
+    }
+  };
+  window.EMAKI.fondoPapel(ctx);
+  rollo.dibujar(ctx, { abierto: 1, avance: rollo.avance(t, [0]), centrar: 1, vinetas: [null, vineta] });
+  rollo.etiqueta(ctx, 'Dōjō', { prog: U.prog(t, 0.15, 0.4), alfa: 1 - U.prog(t, 0.7, 0.85) });
+};
+</script></body></html>

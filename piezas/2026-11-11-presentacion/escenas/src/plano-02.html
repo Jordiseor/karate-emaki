@@ -1,0 +1,29 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 2 (2,0-4,6 s): del suelo sale el rollo y se desenrolla ante el karateka; kanji 絵巻 + EMAKI. Empuje 1,0 -> 1,15.
+import { ctx, crearEscenario, Karateka3D, cargarPoses, crearRollo, H2, U } from './base-A.js';
+const esc = crearEscenario({ escala: 0.5 });
+const P = cargarPoses();
+const k = new Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz);
+const rollo = crearRollo();
+const cv = document.createElement('canvas'); cv.width = 1080; cv.height = 1920; const c2 = cv.getContext('2d');
+window.DURACION = 2.6;
+window.render = (t) => {
+  k.colocar(0, 0, 0).aplicarPose(P['pies-juntos']); k.cara({ sonrisa: 0.5, cejas: 0.3, parpadeo: U.parpadeo(t, [1.2]) });
+  esc.orbita({ centro: [0, 0.95, 0], distancia: 7, elevacion: 3, fov: 26 });
+  esc.dibujar(c2);
+  const sube = U.easeOut(U.prog(t, 0.0, 0.55));
+  const abierto = U.easeInOut(U.prog(t, 0.45, 1.5));
+  rollo.dibujar(c2, { abierto, avance: 0, centrar: 1, escala: U.lerp(0.5, 1, sube), y: (1 - sube) * 800, vinetas: [null] });
+  const p = U.prog(t, 1.2, 2.2);
+  if (p > 0) {
+    H2.kanji(c2, '絵巻', 540, 760, 360, { prog: p, color: '#1A1A1A' });
+    c2.save(); c2.globalAlpha = U.easeOut(U.prog(t, 1.9, 2.2));
+    c2.font = '900 120px ' + window.EMAKI.marca.fuente.titulo; c2.fillStyle = '#1A1A1A'; c2.textAlign = 'center'; c2.fillText('EMAKI', 540, 1130);
+    c2.restore();
+  }
+  const z = 1 + 0.15 * U.prog(t, 0, 2.6);
+  ctx.save(); ctx.translate(540, 960); ctx.scale(z, z); ctx.translate(-540, -960); ctx.drawImage(cv, 0, 0); ctx.restore();
+};
+</script></body></html>
