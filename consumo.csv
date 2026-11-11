@@ -33,3 +33,9 @@ fecha,agente,pieza,modelo,tokens,usos_herramientas,minutos
 2026-11-11,modelador-3d,kit de perfil de Instagram,sonnet,67580,26,3.7
 2026-11-11,investigador,presentacion (dosier),sonnet,16361,9,0.7
 2026-11-11,guionista,presentacion (storyboard),sonnet,43111,8,1.7
+2026-11-11,modelador-3d,presentacion (rollo, logo 3D, kiai),opus,198622,88,24
+2026-11-11,sonido,presentacion (voz, sfx, musica),sonnet,49464,16,4.1
+2026-11-11,animador-tramo-A,presentacion (planos 1-3),sonnet,65977,21,21.4
+2026-11-11,animador-tramo-B,presentacion (planos 4-6),sonnet,85665,30,23.3
+2026-11-11,animador-tramo-C,presentacion (planos 7-9),sonnet,91956,44,23.8
+2026-11-11,editor,presentacion (montaje),sonnet,38727,13,2.1

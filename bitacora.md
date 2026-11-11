@@ -52,3 +52,8 @@
 - 2026-11-11 · Sensei · Jorge prioriza el reel de presentación (pieza 2026-11-11-presentacion); zenkutsu y Shotokan después (sus storyboards v2 ya están escritos).
 - 2026-11-11 · Investigador · Dosier de la presentación: emaki = rollo japonés ilustrado que cuenta una historia (Britannica, Kotobank).
 - 2026-11-11 · Guionista · Storyboard de la presentación: 20 s, 9 planos, 43 palabras, pilares en viñetas dentro de un rollo, bucle cara→cara.
+- 2026-11-11 · Modelador 3D · Presentación: rollo de papel 2D, cara del logo en 3D (fotograma 0 = foto de perfil), poses de kiai, caras de kiai/gallo/de reojo, kanji 絵巻.
+- 2026-11-11 · Sonido · Presentación: voz sharvard en 9 planos (1,05–1,15x), kiai y gallo sintetizados, música propia (taiko y shamisen, bucle), mezcla −16,2 LUFS.
+- 2026-11-11 · Animador (tramos A, B, C) · Presentación: 9 planos (20,2 s). Plano 3 con el karateka en el suelo bajo el rollo; cordón del rollo morado.
+- 2026-11-11 · Editor · Reel de presentación montado (20,2 s), fundido 6→7, sin subtítulos quemados, portada con «KARATE EMAKI».
+- 2026-11-11 · Sensei · Revisión: emaki (Britannica, Kotobank) y ≈26° (dosier zenkutsu); sin personas reales; música y efectos propios; nadie ha escuchado el audio. Pasa a aprobación de Jorge.
