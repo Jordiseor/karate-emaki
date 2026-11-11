@@ -1,0 +1,2 @@
+Chatterbox Multilingual (Resemble AI, MIT). Voz de serie. expresividad=0.5 cfg=0.4 tomas=2.
+fNN-tK.wav = frase NN, toma K. muestra-completa-t1.wav = toma 1 de todas con pausas.

@@ -44,3 +44,22 @@ Mono 48 kHz 16 bit, 20,2 s. Música con ducking (-12 dB bajo voz, +3 dB libre; a
 ## Licencias
 - Efectos, música y scripts: propios, creados para esta pieza, sin derechos de terceros.
 - Voz: Piper TTS, modelo es_ES-sharvard (CC BY 3.0). El crédito NO va en los textos de las publicaciones: está en `CREDITOS.md`. Motor Piper: MIT.
+
+## Voz Chatterbox (`voz/chatterbox/fNN.wav`, `mezcla-chatterbox.wav`, `final/reel-chatterbox.mp4`)
+Tomas de Jorge (`voz-chatterbox/`, Chatterbox Multilingual, expresividad 0,5, cfg 0,4). Cortes calculados fuera (silencedetect -40 dB); aquí se comprobó la envolvente (ventana de 60 ms alrededor del corte <= -45 dB) y, si no era silencio, se movió al silencio más cercano (<= 0,15 s). Todos los cortes se movieron entre 0 y 0,04 s. Se quitó el silencio inicial (> 0,05 s) hasta 20 ms antes del arranque; fundido de entrada 5 ms, de salida 30 ms; 24 kHz -> 48 kHz; cada frase a ≈ -20 dBFS RMS (la mezcla se normaliza después). Scripts: `voz-chatterbox.py`, `mezclar-chatterbox.py` (misma música, efectos y ducking que `mezclar.py`).
+
+| Frase | Toma | Corte pedido (s) | Corte real (s) | Entra (s) | Dura (s) | Acaba (s) |
+| --- | --- | --- | --- | --- | --- | --- |
+| f01 | t2 | 1,19 | 1,215 | 0,10 | 1,15 | 1,25 |
+| f02 | t2 | 4,14 | 4,175 | 2,10 | 4,09 | 6,19 |
+| f03 | t2 | 1,00 | 1,04 | 7,50 | 1,04 | 8,54 |
+| f04 | t2 | 1,67 | 1,71 | 9,60 | 1,62 | 11,22 |
+| f05 | t1 | 1,70 | 1,74 | 11,70 | 1,69 | 13,39 |
+| f06 | t1 | 0,63 | 0,645 | 13,78 | 0,65 | 14,43 (kiai 14,50) |
+| f07 | t2 | 0,90 | 0,935 | 14,85 | 0,85 | 15,70 (gallo 15,72) |
+| f08 | t2 | 2,13 | 2,17 | 15,95 | 2,08 | 18,03 (pisa 0,03 s el plano 9) |
+| f09 | t2 | 0,47 | 0,495 | 18,25 | 0,50 | 18,75 |
+
+Niveles medidos (ffmpeg ebur128): mezcla mono -16,2 LUFS, pico real -1,3 dBFS, voz 14,0 dB sobre la música mientras habla, 20,2 s exactos (969 600 muestras). `reel-chatterbox.mp4`: vídeo copiado de `reel.mp4`, AAC 192 kbps 48 kHz estéreo (mono duplicado, -3 dB por canal por el upmix: -16,2 LUFS, pico real -4,2 dBFS). `mezcla-guia.wav` y `reel.mp4` no se han tocado.
+Licencia: Chatterbox, MIT, Resemble AI. Voz de serie, sin clonar a nadie: no requiere crédito (el crédito de sharvard no aplica a esta versión).
+Sin escuchar: nadie ha oído nada. Los cortes son a ciegas: Jorge debe comprobar que ninguna frase queda cortada (sobre todo f02, f05, f08, de cola larga) ni con sonidos extra o balbuceo, que f06 no pisa el kiai de 14,50 y que f07 no pisa el gallo de 15,72.

@@ -59,3 +59,4 @@
 - 2026-11-11 · Sensei · Revisión: emaki (Britannica, Kotobank) y ≈26° (dosier zenkutsu); sin personas reales; música y efectos propios; nadie ha escuchado el audio. Pasa a aprobación de Jorge.
 - 2026-11-11 · Sonido · Muestras de voces más naturales: Kokoro (alex, santa, dora) y Piper sin acelerar. Chatterbox bloqueado por la red en la nube.
 - 2026-11-11 · Sensei · A Jorge no le convence ninguna voz. Elige Chatterbox Multilingual (MIT) en su PC: herramientas/voz-chatterbox.ps1 + voz-chatterbox.py (2 tomas por frase, pausas naturales). La presentación espera su audio.
+- 2026-11-11 · Sonido · Voz Chatterbox (generada en el PC de Jorge) recortada a ciegas tras el balbuceo final y mezclada: final/reel-chatterbox.mp4 (−16,2 LUFS). Nadie la ha escuchado.
