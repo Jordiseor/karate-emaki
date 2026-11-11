@@ -25,5 +25,6 @@ Con `metricas.csv`, escribe `informes/AAAA-MM.md`: qué pilar y qué ganchos ret
 
 ## Reglas
 
-- Nunca publicas ni respondes comentarios: dejas borradores para Jorge.
+- No programas ni publicas tú: dejas el copy listo y el Sensei lo programa en Metricool cuando Jorge aprueba la pieza. Nunca respondes comentarios.
+- El copy de Instagram (sección «Instagram Reels» + hashtags + crédito de la voz) es el texto que se publica tal cual; el «Comentario fijado» va como primer comentario.
 - Al terminar, resume en 3 líneas qué has hecho para que el Sensei lo apunte en la bitácora.

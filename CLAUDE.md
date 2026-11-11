@@ -49,7 +49,7 @@ Una pieza solo avanza cuando el entregable de su estado existe en `piezas/<id>/`
 
 ## Reglas para todos
 
-1. Nadie publica, responde en redes ni gasta dinero. Eso lo hace Jorge.
+1. Solo se programa en redes lo que Jorge ha aprobado en la oficina: el Sensei lo programa en Metricool (marca 8028366, Instagram @karate_emaki) con el copy de Marketing. Nadie responde comentarios, cambia el perfil ni gasta dinero (nada de promociones): eso lo hace Jorge.
 2. Nada de datos sin fuente: si el Investigador no lo ha verificado, no sale en pantalla.
 3. Cada agente escribe solo en los ficheros que le asigna el Sensei. La bitácora, el banco de fuentes y el tablero los escribe solo el Sensei, porque varios agentes trabajan a la vez.
 4. Si algo no se puede hacer, se dice en la bitácora y se avisa al Sensei; no se inventa.

@@ -9,7 +9,7 @@ Cada tarea arranca una sesión nueva sin memoria. Por eso todas empiezan igual: 
 | Cierre de semana | Viernes 17:45 | Resumen para Jorge, el Intendente archiva y escribe el informe de consumo |
 | Informe de métricas | Día 1 de cada mes 9:10 | Marketing analiza `metricas.csv` y deja recomendaciones para la reunión de ideas |
 
-Activas desde el 9 nov 2026, en la nube y con aprobación automática (no se paran a pedir permiso; nunca publican). Primera producción: martes 10 nov 10:15.
+Activas desde el 9 nov 2026, en la nube y con aprobación automática (no se paran a pedir permiso; solo programan en Metricool piezas ya aprobadas por Jorge). Primera producción: martes 10 nov 10:15.
 
 La voz se genera en el PC de Jorge con `herramientas/generar-voz.ps1`; los audios van en `piezas/<id>/voz/escena-NN.wav` y el Editor los mezcla.
 
@@ -20,6 +20,15 @@ La voz se genera en el PC de Jorge con `herramientas/generar-voz.ps1`; los audio
 3. Lee el buzón de la oficina: mensajes con `estado: pendiente`. Atiende los que puedas en esta tarea y contesta en su campo `respuesta`, poniendo `estado: respondido`.
 4. Mira en la oficina las piezas en `aprobacion` con `decision` puesta por Jorge: si `aprobada`, pásala a `programada` y lanza a Marketing; si `cambios`, devuélvela al estado que pida su comentario.
 5. Lee también la colección `candidatas` y aplica la sección «Huecos libres» (abajo). En la reunión de los lunes, además, sube a `candidatas` las 6 mejores ideas que no se elijan, para que Jorge vaya descartando.
+
+## Publicar con Metricool (desde el 11 nov 2026)
+
+Cuando Jorge aprueba una pieza y Marketing tiene `final/copy.md`, el Sensei la programa en Metricool (herramientas `mcp__Metricool_Social_Media_Management__*`, marca `8028366`, zona Europe/Madrid):
+- Reel de Instagram (`instagramData.type: REEL`, `isAiGenerated: true` por la voz sintética), `autoPublish: true`, a la fecha y hora de `calendario.md`.
+- Vídeo y portada desde el repositorio público: `https://raw.githubusercontent.com/Jordiseor/karate-emaki/main/piezas/<id>/final/reel.mp4` y `portada.png` (haz push antes de programar).
+- Texto: sección «Instagram Reels» + hashtags + crédito de la voz. Primer comentario: «Comentario fijado».
+- Apunta el id y el `plannerUrl` de Metricool en `piezas/<id>/final/publicacion.md` y pon la pieza en `programada`. Comprueba con `getScheduledPosts` que sigue pendiente.
+- Tras la fecha, pásala a `publicada`. TikTok y YouTube, cuando Jorge los conecte.
 
 ## Huecos libres (producción, desde el 11 nov 2026)
 
@@ -34,4 +43,4 @@ Si en las próximas 2 semanas de `calendario.md` hay un hueco sin pieza (o falta
 1. Pon a cada agente en la oficina como `trabajando` mientras trabaja y como `en espera` al terminar, con su última tarea.
 2. Añade a `bitacora.md` y a `bitacora/registro` lo que ha pasado (en la oficina, solo las últimas 20 entradas).
 3. Apunta cada encargo en `consumo.csv`.
-4. Commit y push al repositorio. Nunca publiques en redes ni respondas comentarios.
+4. Commit y push al repositorio. Nunca respondas comentarios ni toques el perfil.
