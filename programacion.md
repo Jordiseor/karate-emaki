@@ -20,6 +20,14 @@ La voz se genera en el PC de Jorge con `herramientas/generar-voz.ps1`; los audio
 3. Lee el buzón de la oficina: mensajes con `estado: pendiente`. Atiende los que puedas en esta tarea y contesta en su campo `respuesta`, poniendo `estado: respondido`.
 4. Mira en la oficina las piezas en `aprobacion` con `decision` puesta por Jorge: si `aprobada`, pásala a `programada` y lanza a Marketing; si `cambios`, devuélvela al estado que pida su comentario.
 
+## Huecos libres (producción, desde el 11 nov 2026)
+
+Si en las próximas 2 semanas de `calendario.md` hay un hueco sin pieza (o falta el interactivo de la quincena), la producción no se queda parada:
+1. Lee la colección `candidatas` de la oficina. Las que Jorge marcó `voto: descartada` pasan a «Descartadas» en `ideas.md` y se borran de la oficina.
+2. Para cada hueco, elige la candidata de más puntos que encaje con el pilar del hueco; antes las de `voto: gusta`. Si una candidata lleva al menos un día en la oficina sin voto, también vale. Crea `piezas/<id>/`, ponla en `investigacion` y lanza al Investigador ese mismo día. Bórrala de `candidatas`.
+3. Si quedan menos de 4 candidatas sin descartar, puntúa más ideas del banco y súbelas (titulo, pilar, formato, puntos, hueco, gancho, porque, voto vacío). Si el banco se queda sin ideas buenas, lanza a los 3 agentes de ideas (sonnet, 8 búsquedas) sin esperar al lunes.
+4. Elegir no es aprobar: Jorge sigue aprobando cada reel terminado.
+
 ## Cierre común
 
 1. Pon a cada agente en la oficina como `trabajando` mientras trabaja y como `en espera` al terminar, con su última tarea.

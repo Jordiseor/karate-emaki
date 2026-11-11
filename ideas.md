@@ -9,6 +9,19 @@
 
 Ritmo reducido a 2 reels por semana por decisión de Jorge. Pasan a la semana del 16 nov: Contar en japonés (Humor, bucle 10 s) y De Okinawa a Tokio en 36 años (interactivo). Más reserva: El tigre que es un juego de palabras (Curiosidades), Mismo puño distinto golpe (Ciencia), El kiai gallo (Humor), Hikite (Técnica).
 
+## Candidatas en la oficina — 11 nov 2026
+
+Para los huecos del mar 17 (Técnica/Ciencia), sáb 21 (Humor) y el interactivo de la quincena. Jorge descarta en la oficina; la producción del 12 nov elige entre las que queden.
+
+| Candidata | Pilar | Puntos | Hueco |
+| --- | --- | --- | --- |
+| Hikite: el brazo que vuelve también golpea | Técnica | 4+5+5+4 = 18 | mar 17 |
+| Mismo puño, distinto golpe | Ciencia | 5+4+5+4 = 18 | mar 17 |
+| Contar en japonés: expectativa vs realidad | Humor | 4+5+5+4 = 18 | sáb 21 |
+| El kiai gallo | Humor | 5+4+5+3 = 17 | sáb 21 |
+| El tigre es un juego de palabras | Curiosidades | 5+5+4+4 = 18 | reserva |
+| De Okinawa a Tokio en 36 años | Historia (interactivo) | 4+5+4+5 = 18 | interactivo |
+
 ## Descartadas
 
 Ninguna todavía: las no elegidas siguen en las propuestas.
