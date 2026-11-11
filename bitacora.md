@@ -57,3 +57,5 @@
 - 2026-11-11 · Animador (tramos A, B, C) · Presentación: 9 planos (20,2 s). Plano 3 con el karateka en el suelo bajo el rollo; cordón del rollo morado.
 - 2026-11-11 · Editor · Reel de presentación montado (20,2 s), fundido 6→7, sin subtítulos quemados, portada con «KARATE EMAKI».
 - 2026-11-11 · Sensei · Revisión: emaki (Britannica, Kotobank) y ≈26° (dosier zenkutsu); sin personas reales; música y efectos propios; nadie ha escuchado el audio. Pasa a aprobación de Jorge.
+- 2026-11-11 · Sonido · Muestras de voces más naturales: Kokoro (alex, santa, dora) y Piper sin acelerar. Chatterbox bloqueado por la red en la nube.
+- 2026-11-11 · Sensei · A Jorge no le convence ninguna voz. Elige Chatterbox Multilingual (MIT) en su PC: herramientas/voz-chatterbox.ps1 + voz-chatterbox.py (2 tomas por frase, pausas naturales). La presentación espera su audio.
