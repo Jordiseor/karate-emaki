@@ -15,7 +15,7 @@ $py = $null
 try { & py -3.11 --version *> $null; if ($LASTEXITCODE -eq 0) { $py = "py -3.11" } } catch {}
 if (-not $py) {
   Write-Host "Falta Python 3.11. Lo instalo con winget..." -ForegroundColor Yellow
-  winget install -e --id Python.Python.3.11 --accept-source-agreements --accept-package-agreements
+  winget install -e --id Python.Python.3.11 --source winget --accept-source-agreements --accept-package-agreements
   Write-Host "Cierra esta ventana y vuelve a ejecutar el script." -ForegroundColor Cyan
   Read-Host "Pulsa Enter para salir"; exit 0
 }
