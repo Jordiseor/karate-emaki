@@ -1,0 +1,24 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../marca.js"></script>
+<script type="module">
+// Plano 7: fila de 6 (2 × 3) en yoi → kiai con choku-zuki; el de delante a la derecha (i = 2) suelta un kiai «gallo»
+// tarde y el resto lo mira de reojo.
+import { ctx, crearEscenario, cargarPoses, mezclar, CARAS, mezclarCara, U } from './base.js';
+import { crearFila } from '../../historia3d.js';
+const esc = crearEscenario({ escala: 0.5 });
+const P = cargarPoses();
+const fila = crearFila(esc, { n: 6, columnas: 3, separacion: [0.82, 1.1], origen: [0, 0] });
+const GALLO = 2;
+window.DURACION = 2;
+window.render = (t) => {
+  const golpe = U.easeOut(U.prog(t, 0.3, 0.42)), golpeG = U.easeOut(U.prog(t, 0.95, 1.07));
+  const reojo = U.prog(t, 1.25, 1.4);
+  fila.pose(P, (i) => mezclar(P.yoi, P['choku-zuki-kiai'], i === GALLO ? golpeG : golpe));
+  fila.miembros.forEach((k, i) => {
+    if (i === GALLO) k.cara(t < 0.95 ? { sonrisa: 0.1 } : mezclarCara(CARAS.kiai, CARAS.gallo, U.prog(t, 1.1, 1.3)));
+    else k.cara(mezclarCara(t < 0.3 ? {} : mezclarCara({}, CARAS.kiai, U.prog(t, 0.3, 0.4) * (1 - U.prog(t, 0.8, 0.95))), { ...CARAS.deReojo, mirada: [1, 0] }, reojo));
+  });
+  esc.orbita({ centro: [0, 1.05, -0.5], distancia: 8.8, azimut: 0, elevacion: 5, fov: 26 });
+  esc.dibujar(ctx);
+};
+</script></body></html>

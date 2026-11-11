@@ -1,0 +1,96 @@
+{
+ "duracion": 20.2,
+ "escenas": [
+  {
+   "n": 1,
+   "inicio": 0.0,
+   "texto": "Pasa, que empezamos.",
+   "inicio_voz": 0.06,
+   "duracion": 1.32,
+   "fin_voz": 1.38,
+   "fin_plano": 2.0,
+   "ritmo_length_scale": 0.92
+  },
+  {
+   "n": 2,
+   "inicio": 2.0,
+   "texto": "Un e-ma-ki es un rollo japonés ilustrado",
+   "inicio_voz": 2.06,
+   "duracion": 2.45,
+   "fin_voz": 4.51,
+   "fin_plano": 4.6,
+   "ritmo_length_scale": 0.87
+  },
+  {
+   "n": 3,
+   "inicio": 4.6,
+   "texto": "que cuenta una historia, escena a escena.",
+   "inicio_voz": 4.66,
+   "duracion": 2.31,
+   "fin_voz": 6.97,
+   "fin_plano": 7.4,
+   "ritmo_length_scale": 0.9
+  },
+  {
+   "n": 4,
+   "inicio": 7.4,
+   "texto": "De dónde viene todo.",
+   "inicio_voz": 7.46,
+   "duracion": 1.15,
+   "fin_voz": 8.61,
+   "fin_plano": 9.5,
+   "ritmo_length_scale": 0.92
+  },
+  {
+   "n": 5,
+   "inicio": 9.5,
+   "texto": "La técnica, paso a paso.",
+   "inicio_voz": 9.56,
+   "duracion": 1.64,
+   "fin_voz": 11.2,
+   "fin_plano": 11.6,
+   "ritmo_length_scale": 0.92
+  },
+  {
+   "n": 6,
+   "inicio": 11.6,
+   "texto": "Y la física: ¿cuánto aguantas?",
+   "inicio_voz": 11.66,
+   "duracion": 1.92,
+   "fin_voz": 13.58,
+   "fin_plano": 13.7,
+   "ritmo_length_scale": 0.92
+  },
+  {
+   "n": 7,
+   "inicio": 13.7,
+   "texto": "Y el do-yo. Con sus gallos.",
+   "inicio_voz": 13.76,
+   "duracion": 1.99,
+   "fin_voz": 15.75,
+   "fin_plano": 15.8,
+   "ritmo_length_scale": 0.9
+  },
+  {
+   "n": 8,
+   "inicio": 15.8,
+   "texto": "Karate contado escena a escena.",
+   "inicio_voz": 15.86,
+   "duracion": 1.78,
+   "fin_voz": 17.64,
+   "fin_plano": 18.0,
+   "ritmo_length_scale": 0.92
+  },
+  {
+   "n": 9,
+   "inicio": 18.0,
+   "texto": "¿Te quedas?",
+   "inicio_voz": 18.06,
+   "duracion": 0.61,
+   "fin_voz": 18.67,
+   "fin_plano": 20.2,
+   "ritmo_length_scale": 0.95
+  }
+ ],
+ "nota": "inicio = corte del plano; inicio_voz = donde entra el wav; plano 7 = \"Y el do-yo.\" + 0,4 s de hueco para el kiai + \"Con sus gallos.\""
+}

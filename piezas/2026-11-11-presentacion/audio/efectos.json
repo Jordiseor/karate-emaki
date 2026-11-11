@@ -1,0 +1,11 @@
+[
+{"fichero":"sfx-papel-desenrolla","t":2.05,"db":-10,"nota":"plano 2, rollo se desenrolla; golpe de madera al final hacia 3,5 s"},
+{"fichero":"sfx-vineta-desliza","t":7.40,"db":-14,"nota":"plano 4"},
+{"fichero":"sfx-vineta-desliza","t":9.50,"db":-14,"nota":"plano 5"},
+{"fichero":"sfx-vineta-desliza","t":11.60,"db":-14,"nota":"plano 6"},
+{"fichero":"sfx-vineta-desliza","t":13.70,"db":-14,"nota":"plano 7"},
+{"fichero":"sfx-kiai-colectivo","t":14.50,"db":-6,"nota":"plano 7, corte al kiai"},
+{"fichero":"sfx-kiai-gallo","t":15.72,"db":-8,"nota":"plano 7, gallo tras la voz; la cola cruza el corte al 8"},
+{"fichero":"sfx-rollo-cierra","t":15.85,"db":-10,"nota":"plano 8, rollo se cierra; golpe de madera hacia 17,1 s"},
+{"fichero":"sfx-logo-acento","t":18.00,"db":-9,"nota":"plano 9, logo"}
+]

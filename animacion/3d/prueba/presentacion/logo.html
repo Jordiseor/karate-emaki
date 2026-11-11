@@ -1,0 +1,24 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../marca.js"></script>
+<script type="module">
+// Plano 1: fotograma 0 = cara del logo; 0,3–0,9 s el disco se va como un sol y la cámara retrocede; rei.
+import { ctx, crearEscenario, Karateka3D, cargarPoses, mezclar, crearLogo, U } from './base.js';
+const esc = crearEscenario({ escala: 1 });
+const P = cargarPoses();
+const k = new Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz);
+const logo = crearLogo(esc, k);
+window.DURACION = 2;
+window.render = (t) => {
+  const f = U.prog(t, 0.3, 0.9);
+  logo.personaje(P);
+  if (t > 0.3) { // rumbo 12 → 0 y de yoi a pies juntos → rei
+    const g = U.easeInOut(f);
+    k.colocar(0, 0, 12 * (1 - g));
+    const r = Math.sin(Math.PI * U.prog(t, 1.0, 1.8));
+    k.aplicarPose(mezclar(mezclar(P.yoi, P['pies-juntos'], g), P.rei, r));
+    k.cara({ sonrisa: 0.85 - 0.5 * r, cejas: 0.35, parpadeo: U.parpadeo(t, [1.85]) });
+  }
+  logo.actualizar(f);
+  logo.dibujar(ctx, f);
+};
+</script></body></html>

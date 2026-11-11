@@ -1,0 +1,16 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../marca.js"></script>
+<script type="module">
+// Caras (de izquierda a derecha y de arriba abajo): logo · kiai · gallo · de reojo · guiño · neutra.
+// Caras nuevas (cara() con grito / torcida / asimetria / guino): normal · kiai · gallo · de reojo · guiño (2 × 2 + 1)
+import { ctx, crearEscenario, Karateka3D, cargarPoses, CARAS, U } from './base.js';
+const esc = crearEscenario({ escala: 0.5, fondo: 'degradado' });
+const P = cargarPoses();
+const caras = [CARAS.logo, CARAS.kiai, CARAS.gallo, CARAS.deReojo, { sonrisa: 0.85, cejas: 0.35, guino: 1 }, {}];
+const ks = caras.map((c, i) => { const k = new Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz); const f = Math.floor(i / 2); k.colocar((i % 2) * 0.6 - 0.3, f * 0.6, 0).aplicarPose(P.yoi, { suelo: false, altura: -f * 0.56 }); k.cara(c); return k; });
+window.DURACION = 1;
+window.render = () => {
+  esc.orbita({ centro: [0, 1.0, 0.6], distancia: 5.4, azimut: 0, elevacion: 0, fov: 22 });
+  esc.dibujar(ctx);
+};
+</script></body></html>

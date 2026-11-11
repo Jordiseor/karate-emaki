@@ -391,6 +391,12 @@ export class Karateka3D {
       this.boca.add(this.bocaArco);
       this.bocaAbierta = new THREE.Mesh(new THREE.SphereGeometry(1, 20, 12, 0, Math.PI * 2, Math.PI / 2, Math.PI / 2), mt.boca);
       this.bocaAbierta.scale.set(0.024, 0.02, 0.006); this.bocaAbierta.position.set(0, 0.004, 0.0); this.boca.add(this.bocaAbierta);
+      // boca de grito (kiai): óvalo oscuro con lengua; solo se ve con cara({ grito > 0 })
+      this.bocaGrito = new THREE.Group(); this.bocaGrito.visible = false; this.boca.add(this.bocaGrito);
+      const og = new THREE.Mesh(new THREE.SphereGeometry(1, 24, 14), new THREE.MeshStandardMaterial({ color: '#4A1A17', roughness: 0.6 }));
+      og.scale.set(1, 1, 0.3); this.bocaGrito.add(og);
+      const lengua = new THREE.Mesh(new THREE.SphereGeometry(1, 16, 10), new THREE.MeshStandardMaterial({ color: '#C2665E', roughness: 0.55 }));
+      lengua.scale.set(0.62, 0.34, 0.3); lengua.position.set(0, -0.6, 0.12); this.bocaGrito.add(lengua);
       // pelo: superficie pegada al perfil de la cabeza (grosor de arcilla), con flequillo en picos y canto redondeado
       const peinado = this.o.peinado || 'normal';
       if (peinado !== 'normal') { P.pelo = malla(peloAlternativo(peinado, sup), mt.pelo, hg, 'pelo'); if (peinado === 'mono') { P.mono = malla(new THREE.SphereGeometry(0.058, 20, 14), mt.pelo, hg, 'mono'); P.mono.position.copy(sup(Math.PI, 0.125, 0.045)); P.mono.scale.set(1, 0.9, 0.85); } }
@@ -645,24 +651,38 @@ export class Karateka3D {
 
   // ---------------- cara ----------------
   // {parpadeo: 0 abiertos → 1 cerrados, sonrisa: 0 suave → 1 abierta, cejas: -1 (ceño) .. 0 .. 1 (alzadas), mirada: [x, y] (-1..1)}
+  // Extras (presentación; si no se pasan, la cara es la de siempre): grito 0..1 (boca de kiai), torcida -1..1 (boca
+  // ladeada), asimetria -1..1 (una ceja más alta que otra), guino 0..1 (cierra solo el ojo derecho del personaje),
+  // ojos 0..1 (ojos muy abiertos). Las cejas por encima de ≈0,6 se esconden bajo el flequillo.
   cara(c = {}) {
-    const cierre = Math.max(0, Math.min(1, c.parpadeo || 0)), mir = c.mirada || [0, 0];
+    const cierre0 = Math.max(0, Math.min(1, c.parpadeo || 0)), mir = c.mirada || [0, 0], gu = Math.max(0, Math.min(1, c.guino || 0));
     for (const e of this.ojos) {
-      e.o.scale.y = 0.03 * (1 - 0.88 * cierre); e.o.position.y = -0.006 * cierre;
+      const cierre = e.s < 0 ? Math.max(cierre0, gu) : cierre0;
+      const oj = 1 + 0.3 * Math.max(0, Math.min(1, c.ojos || 0)); // ojos muy abiertos (sorpresa); 0 = como siempre
+      e.o.scale.y = 0.03 * oj * (1 - 0.88 * cierre); e.o.position.y = -0.006 * cierre; e.o.scale.x = 0.0215 * oj;
       e.o.position.x = mir[0] * 0.004 * e.s * 0 + mir[0] * 0.004; e.o.position.y += mir[1] * 0.004;
       e.b1.visible = e.b2.visible = cierre < 0.5;
       e.b1.position.set(-0.0065 + mir[0] * 0.004, 0.011 + mir[1] * 0.004, 0.0095);
     }
-    const cj = c.cejas || 0;
+    const as = c.asimetria || 0;
     for (const e of this.cejas) {
+      const cj = (c.cejas || 0) + e.s * as, cierre = e.s < 0 ? Math.max(cierre0, gu) : cierre0;
       e.g.position.copy(e.base); e.g.translateY(0.008 * cj - 0.004 * cierre);
       e.c.rotation.z = Math.PI / 2 + e.s * (0.12 * cj - 0.05);
     }
-    const so = Math.max(0, Math.min(1, c.sonrisa || 0));
+    const so = Math.max(0, Math.min(1, c.sonrisa || 0)), gr = Math.max(0, Math.min(1, c.grito || 0)), tc = Math.max(-1, Math.min(1, c.torcida || 0));
     this.bocaArco.scale.set(1 + 0.25 * so, 1 + 0.15 * so, 1);
-    this.bocaArco.visible = so < 0.55;
-    this.bocaAbierta.visible = so >= 0.55;
+    this.bocaArco.visible = so < 0.55 && gr < 0.15;
+    this.bocaAbierta.visible = so >= 0.55 && gr < 0.15;
     this.bocaAbierta.scale.set(0.022 + 0.008 * so, 0.017 + 0.006 * so, 0.006);
+    this.bocaGrito.visible = gr >= 0.15;
+    if (this.bocaGrito.visible) {
+      this.bocaGrito.scale.set(0.017 + 0.011 * gr - 0.005 * Math.abs(tc), 0.012 + 0.03 * gr, 0.02);
+      this.bocaGrito.position.set(0.016 * tc, -0.004 - 0.008 * gr + 0.004 * Math.abs(tc), 0.0);
+    }
+    // boca torcida: gira el conjunto de la boca (con 0 queda exactamente como antes)
+    this.boca.children.forEach((m) => { if (m !== this.bocaArco) m.rotation.z = -0.5 * tc; });
+    this.bocaArco.rotation.z = -Math.PI / 2 - Math.PI * 0.31 - 0.5 * tc;
     return this;
   }
 
@@ -760,7 +780,7 @@ export function espejo(p) {
   return o;
 }
 // Carga las poses 3D. render.mjs las inyecta en window.EMAKI_POSES3D; si no (navegador normal), las pide por XHR.
-export function cargarPoses(nombres = ['yoi', 'kamae', 'zenkutsu-dachi', 'zenkutsu-bajo', 'pies-juntos', 'gedan-barai-prep', 'zenkutsu-bajo-misma-base', 'rei', 'cargar-viga', 'brazos-arriba', 'maestro-seiza-pincel', 'maestro-pie-escribiendo', 'maestro-manos-atras']) {
+export function cargarPoses(nombres = ['yoi', 'kamae', 'zenkutsu-dachi', 'zenkutsu-bajo', 'pies-juntos', 'gedan-barai-prep', 'zenkutsu-bajo-misma-base', 'rei', 'cargar-viga', 'brazos-arriba', 'maestro-seiza-pincel', 'maestro-pie-escribiendo', 'maestro-manos-atras', 'choku-zuki-kiai', 'gyaku-zuki-kiai']) {
   const P = Object.assign({}, (typeof window !== 'undefined' && window.EMAKI_POSES3D) || {});
   for (const n of nombres) if (!P[n] && typeof XMLHttpRequest !== 'undefined') {
     try { const x = new XMLHttpRequest(); x.open('GET', new URL('./poses/' + n + '.json', import.meta.url).href, false); x.send(); if (x.status === 200 || x.status === 0) P[n] = JSON.parse(x.responseText); } catch (e) { console.warn('pose 3D no encontrada', n); }

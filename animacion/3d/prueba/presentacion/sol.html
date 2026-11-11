@@ -1,0 +1,20 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../marca.js"></script>
+<script type="module">
+// Plano 9: rollo cerrado y atado en el centro → se abre «como un sol» (0,2–1,2 s) → cara del logo que guiña (1,5 s).
+// Último fotograma (t = 2,2) = fotograma 0 del plano 1 (logo exacto). escala 1 como el plano 1.
+import { ctx, crearEscenario, Karateka3D, cargarPoses, crearRollo, crearLogo, LOGO, U } from './base.js';
+const esc = crearEscenario({ escala: 1 });
+const P = cargarPoses();
+const k = new Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz);
+const logo = crearLogo(esc, k);
+const rollo = crearRollo();
+window.DURACION = 2.2;
+window.render = (t) => {
+  logo.personaje(P, { guino: U.parpadeo(t, [1.45], 0.35), sonrisa: LOGO.cara.sonrisa + 0.15 * U.parpadeo(t, [1.45], 0.35) });
+  logo.actualizar(0);
+  const p = U.prog(t, 0.2, 1.2);
+  if (p >= 1) logo.dibujar(ctx, 0);
+  else rollo.sol(ctx, p, (c) => logo.dibujar(c, 0), { cy: LOGO.cy });
+};
+</script></body></html>

@@ -1,0 +1,62 @@
+{
+ "nombre": "choku-zuki-kiai",
+ "descripcion": "Kiai con choku-zuki (puñetazo recto) desde yoi: piernas de yoi (hachiji-dachi, sin mover los pies), puño derecho al frente a la altura del plexo (chūdan) con el brazo casi estirado y la palma abajo, hikite izquierdo en la cadera con la palma arriba, barbilla un poco arriba. Para la fila del plano 7: mezclar(P.yoi, P[\"choku-zuki-kiai\"], f) + cara({ grito }).",
+ "cadera": {},
+ "piernaI": {
+  "adelante": 2.2,
+  "abre": 6.6,
+  "gira": 27.7
+ },
+ "rodillaI": 5,
+ "tobilloI": {
+  "flex": -0.1,
+  "ladeo": -4.8
+ },
+ "piernaD": {
+  "adelante": 2.2,
+  "abre": 6.6,
+  "gira": 27.7
+ },
+ "rodillaD": 5,
+ "tobilloD": {
+  "flex": -0.1,
+  "ladeo": -4.8
+ },
+ "tronco": {},
+ "cabeza": {
+  "inclina": -4
+ },
+ "manoI": 0,
+ "manoD": 0,
+ "brazoI": {
+  "adelante": -59,
+  "abre": 5.6,
+  "gira": -0.4
+ },
+ "codoI": 115,
+ "munecaI": {
+  "gira": 94
+ },
+ "munecaD": {
+  "gira": -92
+ },
+ "codoD": 4,
+ "brazoD": {
+  "adelante": 78.4,
+  "abre": -12.8,
+  "gira": 0
+ },
+ "medidas": {
+  "puno_D": [
+   -0.033,
+   1.228,
+   0.543
+  ],
+  "puno_I": [
+   0.17,
+   1.015,
+   0.014
+  ],
+  "altura_cadera_m": 0.951
+ }
+}

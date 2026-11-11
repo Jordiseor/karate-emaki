@@ -1,0 +1,16 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../marca.js"></script>
+<script type="module">
+// 絵巻 a trazos (plano 2) y 松濤館 (comprobación de que no cambia). t = progreso del trazado (0–1,2).
+import { ctx, H2, U } from './base.js';
+window.DURACION = 1.5;
+window.render = (t) => {
+  window.EMAKI.fondoPapel(ctx);
+  const p = U.clamp(t);
+  H2.kanji(ctx, '絵巻', 540, 520, 330, { prog: p, color: H2.TINTA ?? '#1A1A1A' });
+  window.EMAKI.texto && 0;
+  ctx.font = `900 96px ${window.EMAKI.marca.fuente.titulo}`; ctx.fillStyle = '#1A1A1A'; ctx.textAlign = 'center'; ctx.fillText('EMAKI', 540, 790);
+  for (const [i, q] of [0.25, 0.5, 0.75].entries()) H2.kanji(ctx, '絵巻', 200 + i * 340, 1000, 140, { prog: q, color: '#1A1A1A' });
+  H2.kanji(ctx, '松濤館', 540, 1330, 260, { prog: p });
+};
+</script></body></html>
