@@ -1,0 +1,23 @@
+LOCUCIÓN: Presentación de KARATE EMAKI
+Voz: sharvard hombre, sempai cercano, ritmo normal (~2,6 palabras/s). Total: 42 palabras. Español de España.
+
+PRONUNCIACIONES
+- emaki -> «e-ma-ki»  (grafía para la voz: e-ma-ki)
+- dōjō -> «doo-yo»    (grafía para la voz: do-yo)
+- kiai no se dice en voz; es sonido aparte (SFX).
+- KARATE EMAKI -> «ka-ra-te e-ma-ki»
+
+TEXTO EXACTO POR PLANO (cada línea empieza ≈0,1 s tras el corte)
+
+P1 (0,0-2,0 s)   Pasa, que empezamos.
+P2 (2,0-4,6 s)   Un e-ma-ki es un rollo japonés
+P3 (4,6-7,4 s)   que cuenta una historia, escena a escena.
+P4 (7,4-9,5 s)   De dónde viene todo.
+P5 (9,5-11,6 s)  La técnica, paso a paso.
+P6 (11,6-13,7 s) Y la física: ¿cuánto aguantas?
+P7 (13,7-15,8 s) Y el doo-yo. Con sus gallos.                 [SFX: kiai y kiai quebrado hacia 14,5 s, sin voz encima]
+P8 (15,8-18,0 s) Karate contado escena a escena.
+P9 (18,0-20,2 s) ¿Te quedas?
+
+TEXTO CONTINUO (para sintetizar de una vez)
+Pasa, que empezamos. Un e-ma-ki es un rollo japonés que cuenta una historia, escena a escena. De dónde viene todo. La técnica, paso a paso. Y la física: ¿cuánto aguantas? Y el doo-yo. Con sus gallos. Karate contado escena a escena. ¿Te quedas?

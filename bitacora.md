@@ -49,3 +49,6 @@
 - 2026-11-11 · Sensei · Jorge no quiere el crédito de la voz en los textos: quitado de Shotokan; el crédito CC BY pasa a CREDITOS.md.
 - 2026-11-11 · Modelador 3D · Kit de perfil en animacion/perfil/: foto (karateka sonriente sobre disco rojo), alternativa con dōjō y 5 portadas de destacados. Guía de configuración en animacion/perfil/README.md.
 - 2026-11-11 · Sensei · Jorge borra el reel de zenkutsu y quiere mejorar el guion de los dos reels. Shotokan pasa a borrador en Metricool. Ambas piezas vuelven a storyboard. La cuenta se abrirá con una presentación.
+- 2026-11-11 · Sensei · Jorge prioriza el reel de presentación (pieza 2026-11-11-presentacion); zenkutsu y Shotokan después (sus storyboards v2 ya están escritos).
+- 2026-11-11 · Investigador · Dosier de la presentación: emaki = rollo japonés ilustrado que cuenta una historia (Britannica, Kotobank).
+- 2026-11-11 · Guionista · Storyboard de la presentación: 20 s, 9 planos, 43 palabras, pilares en viñetas dentro de un rollo, bucle cara→cara.
