@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Escena 3D</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import { crearEscenario, util as U } from '../../../../animacion/3d/escenario.js';
+import { Karateka3D, cargarPoses, mezclar } from '../../../../animacion/3d/karateka3d.js';
+import { Diagrama3D } from '../../../../animacion/3d/diagrama3d.js';
+import { overlay } from '../../../../animacion/3d/overlay2d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5 });
+const k = new Karateka3D({ cinturon: 'negro' });
+esc.escena.add(k.raiz);
+const P = cargarPoses();
+const d = new Diagrama3D(esc, k);
+window.DURACION = 4;
+// Escena 8: plano final frontal; tres flechas rojas (delante, detrás, costado); cejas levantadas; congelado desde 2,8 s
+k.colocar(0, 0, 90).aplicarPose(P['zenkutsu-dachi']);
+d.ajustarVuelco(26);
+const __r = (t) => {
+  const tt = Math.min(t, 2.8);                              // congelado final (el plano deja de moverse)
+  const pz = JSON.parse(JSON.stringify(P['zenkutsu-dachi']));
+  const gg = U.easeInOut(U.prog(t, 0, 2.8));
+  pz.cabeza.giro = (pz.cabeza.giro || 0) + (-40) * gg;     // gira la cabeza hacia la cámara
+  k.aplicarPose(pz);
+  const ce = U.easeOut(U.prog(t, 0.2, 0.6));
+  k.cara({ parpadeo: U.parpadeo(t, [1.9]), cejas: ce, sonrisa: 0.6 * U.prog(t, 0.2, 0.6) });
+  const g = U.easeInOut(U.prog(t, 0, 2.8));
+  esc.orbita({ centro: [0, 1.0, 0], distancia: 8.6, azimut: 90 - 42 * g, elevacion: 3, fov: 26 });
+  d.limpiar();
+  d.base({ eje: 'lado' });
+  d.cdm();
+  const v = (a) => 1 + 0.05 * Math.sin(tt * 14 + a);       // vibración pequeña de las flechas
+  const cr = (t0) => U.easeOut(U.prog(t, t0, t0 + 0.4));
+  d.flecha({ desde: [1.45, 0.75, 0.0], hacia: [0.6, 0.75, 0.0], crecer: cr(0.5) * v(0) });     // delante (viene de cara a él)
+  d.flecha({ desde: [-1.45, 1.4, 0.0], hacia: [-0.6, 1.4, 0.0], crecer: cr(1.0) * v(2) });   // detrás
+  d.flecha({ desde: [0, 1.1, 1.5], hacia: [0, 1.1, 0.65], crecer: cr(1.5) * v(4) });          // costado
+  esc.dibujar(ctx);
+  d.dibujar2D(ctx);
+  overlay.titulo(ctx, t, { lineas: ['Cuéntalo en','comentarios'], t0: 0.6, size: 96 });
+};
+window.DURACION = 3; const __T0 = 0.3; window.render = (t_) => __r(t_ + __T0);
+</script></body></html>

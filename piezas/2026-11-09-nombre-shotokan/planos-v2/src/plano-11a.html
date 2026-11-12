@@ -1,0 +1,29 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import { crearEscenario, util as U } from "../../../../animacion/3d/escenario.js";
+import * as HS from "../../../../animacion/3d/historia3d.js";
+import * as H2 from "../../../../animacion/3d/historia2d.js";
+import { Karateka3D, cargarPoses, mezclar } from "../../../../animacion/3d/karateka3d.js";
+import { overlay } from "../../../../animacion/3d/overlay2d.js";
+const { ambiente, crearCasa, crearMaestro, anadirMaestro, crearPapelColgado, crearCartel, crearFila } = HS;
+const ctx = document.getElementById("c").getContext("2d");
+const esc = crearEscenario({ escala: 0.5, fondo: "degradado" });
+const P = cargarPoses();
+esc.escena.fog.near = 12; esc.escena.fog.far = 60;
+const casa = crearCasa({}); casa.modo("fantasma").colocar(0, -9.5); esc.escena.add(casa.raiz);
+const fila = crearFila(esc, { n: 12, columnas: 4, origen: [0, -1.6], iguales: true });
+const k = new Karateka3D({ cinturon: "negro" }); esc.escena.add(k.raiz);
+const V3 = k.raiz.position.constructor;
+window.DURACION = 1.6;
+window.render = (tt) => { const t = tt + 0;
+  const f = U.easeInOut(U.prog(t, 0.2, 1.4));
+  fila.pose(P, (i) => mezclar(P["pies-juntos"], P.kamae, U.clamp(U.prog(t, 0.3 + i * 0.04, 1.3 + i * 0.04))));
+  k.colocar(0, 0.6, 0).aplicarPose(mezclar(P.neutra, P.kamae, f)); k.cara({ sonrisa: 0.5, parpadeo: U.parpadeo(t, [2.0]) });
+  casa.contorno({ dibujar: U.prog(t, 0.2, 2.0), alfa: 1 });
+  esc.orbita({ centro: [0, 2.4, -3], distancia: 13, azimut: 0, elevacion: 9, fov: 34 });
+  esc.dibujar(ctx);
+  const p = esc.proyectar(new V3(0, 6.2, -9.5));
+  H2.kanji(ctx, "松濤館", 540, Math.max(640, p.y), 190, { halo: 0.7, prog: U.prog(t, 1.4, 2.6) });
+};
+</script></body></html>

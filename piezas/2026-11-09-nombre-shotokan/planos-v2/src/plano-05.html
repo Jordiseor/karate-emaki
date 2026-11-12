@@ -1,0 +1,25 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import { crearEscenario, util as U } from "../../../../animacion/3d/escenario.js";
+import { cargarPoses, mezclar } from "../../../../animacion/3d/karateka3d.js";
+import { overlay } from "../../../../animacion/3d/overlay2d.js";
+import * as H from "../../../../animacion/3d/historia3d.js";
+import * as H2 from "../../../../animacion/3d/historia2d.js";
+const ctx = document.getElementById("c").getContext("2d");
+const esc = crearEscenario({ escala: 0.5, fondo: "degradado" });
+H.ambiente(esc, "calle");
+const P = cargarPoses();
+const casa = H.crearCasa({ rotulo: "" }); esc.escena.add(casa.raiz);
+window.DURACION = 2.0;
+window.render = (tt) => { const t = tt + 0;
+  const p = U.prog(t, 0.5, 0.9);
+  casa.raiz.visible = t >= 0.5;
+  if (t >= 0.5) casa.pop(p).construir(1).puerta(0.15);
+  esc.orbita({ centro: [0, 2.0, 0], distancia: 21, azimut: 20, elevacion: 9, fov: 30 });
+  esc.dibujar(ctx);
+  H2.kanji(ctx, "松濤", 350, 520, 230, { halo: 0.8 });
+  H2.kanjiGolpe(ctx, "館", 790, 520, 230, U.prog(t, 0.5, 1.0), { halo: 0.8 });
+  overlay.tarjeta(ctx, tt, { lineas: '[r]館[/r] = casa', t0:0.7, size:110, abajo:true });
+};
+</script></body></html>

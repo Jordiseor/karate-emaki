@@ -1,0 +1,73 @@
+[página] [.WebGL-0x14c400161400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x14c400161400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x14c400161400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x14c400161400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+src/plano-01.mp4: 48 fotogramas (1.6s a 30 fps) en 66.2 s, centro → src/plano-01.png
+done 01
+[página] [.WebGL-0x39f400166c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x39f400166c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x39f400166c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x39f400166c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+src/plano-02.mp4: 48 fotogramas (1.6s a 30 fps) en 62.6 s, centro → src/plano-02.png
+done 02
+[página] [.WebGL-0x2de400175a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x2de400175a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x2de400175a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x2de400175a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+src/plano-03.mp4: 66 fotogramas (2.2s a 30 fps) en 129.5 s, centro → src/plano-03.png
+done 03
+[página] [.WebGL-0x1fdc0016a000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x1fdc0016a000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x1fdc0016a000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x1fdc0016a000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+src/plano-04.mp4: 72 fotogramas (2.4s a 30 fps) en 118.9 s, centro → src/plano-04.png
+done 04
+[página] [.WebGL-0x1f3c001bda00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x1f3c001bda00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x1f3c001bda00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x1f3c001bda00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+src/plano-05.mp4: 60 fotogramas (2s a 30 fps) en 54.5 s, centro → src/plano-05.png
+done 05
+[página] [.WebGL-0x26ec001bda00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x26ec001bda00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x26ec001bda00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x26ec001bda00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+src/plano-06.mp4: 84 fotogramas (2.8s a 30 fps) en 159.6 s, centro → src/plano-06.png
+done 06
+[página] [.WebGL-0x169c001c9a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x169c001c9a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x169c001c9a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x169c001c9a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+src/plano-07.mp4: 84 fotogramas (2.8s a 30 fps) en 164.3 s, centro → src/plano-07.png
+done 07
+[página] [.WebGL-0x260c001c9400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x260c001c9400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x260c001c9400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x260c001c9400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+src/plano-08.mp4: 72 fotogramas (2.4s a 30 fps) en 58.5 s, centro → src/plano-08.png
+done 08
+[página] [.WebGL-0x3be4001bda00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x3be4001bda00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x3be4001bda00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x3be4001bda00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+src/plano-09.mp4: 78 fotogramas (2.6s a 30 fps) en 59.8 s, centro → src/plano-09.png
+done 09
+[página] [.WebGL-0x12140016d400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x12140016d400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x12140016d400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x12140016d400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+src/plano-10.mp4: 72 fotogramas (2.4s a 30 fps) en 54.3 s, centro → src/plano-10.png
+done 10
+[página] [.WebGL-0xebc00169a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0xebc00169a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0xebc00169a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0xebc00169a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+src/plano-11a.mp4: 48 fotogramas (1.6s a 30 fps) en 139.4 s, centro → src/plano-11a.png
+done 11a
+[página] [.WebGL-0x257c001bd400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x257c001bd400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x257c001bd400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[página] [.WebGL-0x257c001bd400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+src/plano-11b.mp4: 54 fotogramas (1.8s a 30 fps) en 46.9 s, centro → src/plano-11b.png
+done 11b
+FIN

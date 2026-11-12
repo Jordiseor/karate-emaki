@@ -1,0 +1,26 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import { crearEscenario, util as U } from '../../../../animacion/3d/escenario.js';
+import { cargarPoses } from '../../../../animacion/3d/karateka3d.js';
+import { ambiente, crearColina, crearMaestro, anadirMaestro, crearMesita } from '../../../../animacion/3d/historia3d.js';
+import * as H2 from '../../../../animacion/3d/historia2d.js';
+import { overlay } from '../../../../animacion/3d/overlay2d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5, fondo: 'degradado' });
+ambiente(esc, 'atardecer', { suelo: false });
+const col = crearColina({ pinos: 9 }); esc.escena.add(col.raiz);
+const P = cargarPoses();
+const m = anadirMaestro(esc, crearMaestro({}));
+const mesa = crearMesita({ texto: '松濤' }); esc.escena.add(mesa.raiz);
+window.DURACION = 2.2;
+window.render = (tt) => { const t = tt + 0;
+  col.viento(t);
+  m.colocar(0, 0, 180).pose(P, 'maestro-seiza-pincel', { escribir: t });
+  mesa.colocar(0, -0.55, 180).escribir(U.prog(t, 0.4, 3.5));
+  const s = U.prog(t, 0, 5.5);
+  esc.orbita({ centro: [0, 0.75, -0.3], distancia: U.lerp(4.4, 3.4, s), azimut: U.lerp(16, 8, s), elevacion: 14, fov: 34 });
+  esc.dibujar(ctx);
+  H2.kanji(ctx, '松濤', 540, 440, 330, { prog: U.prog(t, 0.15, 1.9), halo: 0.7 });
+};
+</script></body></html>

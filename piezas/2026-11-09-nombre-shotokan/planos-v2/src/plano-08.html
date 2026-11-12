@@ -1,0 +1,30 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import { crearEscenario, util as U } from "../../../../animacion/3d/escenario.js";
+import * as HS from "../../../../animacion/3d/historia3d.js";
+import * as H2 from "../../../../animacion/3d/historia2d.js";
+import { Karateka3D, cargarPoses, mezclar } from "../../../../animacion/3d/karateka3d.js";
+import { overlay } from "../../../../animacion/3d/overlay2d.js";
+const { ambiente, crearCasa, crearMaestro, anadirMaestro, crearPapelColgado, crearCartel, crearFila } = HS;
+const ctx = document.getElementById("c").getContext("2d");
+const esc = crearEscenario({ escala: 0.5, fondo: "degradado" });
+ambiente(esc, "noche");
+const casa = crearCasa({ rotulo: "松濤館" }); esc.escena.add(casa.raiz);
+window.DURACION = 2.4;
+window.render = (tt) => { const t = tt + 0;
+  const sube = U.easeInOut(U.prog(t, 0.2, 1.6));
+  const baja = U.easeInOut(U.prog(t, 2.0, 3.2));
+  const p = sube * (1 - baja);
+  if (t < 1.6) casa.modo("solido").arder(sube).luzInterior(0.4 * (1 - sube));
+  else casa.restaurar(), casa.modo("fantasma").contorno({ color: "#8A847A", alfa: 1 });
+  esc.orbita({ centro: [0, 2.0, 0], distancia: 21, azimut: 15, elevacion: 7, fov: 30 });
+  esc.dibujar(ctx);
+  H2.resplandor(ctx, Math.min(1, p * 1.05), t);
+  H2.pavesas(ctx, t, { n: 50, intensidad: t < 1.6 ? sube * 0.6 : 0.4 + 0.6 * baja, sube: t < 1.6 });
+  const a = U.prog(t, 0.3, 0.9);
+  ctx.save(); ctx.globalAlpha = 0.82 * a; ctx.fillStyle = "#1A1A1A";
+  ctx.fillRect(40, 300, 1000, 130); ctx.restore();
+  overlay.tarjeta(ctx, tt, { lineas: '[r]1945[/r]', t0:0.2, size:130, y:330, color:'#F4EFE6', sombra:false });
+};
+</script></body></html>

@@ -22,9 +22,21 @@ Para los huecos del mar 17 (Técnica/Ciencia), sáb 21 (Humor) y el interactivo 
 | El tigre es un juego de palabras | Curiosidades | 5+5+4+4 = 18 | reserva |
 | De Okinawa a Tokio en 36 años | Historia (interactivo) | 4+5+4+5 = 18 | interactivo |
 
+## Elegidas — producción del 12 nov 2026 (huecos libres)
+
+| Pieza | Pilar | Puntos | Hueco |
+| --- | --- | --- | --- |
+| 2026-11-12-hikite · Hikite: el brazo que vuelve también golpea | Técnica | 18 | mar 17 |
+| 2026-11-12-kiai-gallo · El kiai gallo | Anécdotas y humor | 17 | sáb 21 |
+| 2026-11-12-linea-temporal · De Okinawa a Tokio en 36 años | Historia (interactivo) | 18 | interactivo de la quincena |
+
+Candidatas nuevas subidas a la oficina el 12 nov: De «mano china» a «mano vacía» (19), El cinturón negro que le prestó el judo (19), La cadera no es un adorno (17), POV: tu primer día con el cinturón (17). Siguen: Mismo puño, distinto golpe (18) y El tigre (18).
+
 ## Descartadas
 
-Ninguna todavía: las no elegidas siguen en las propuestas.
+| Idea | Pilar | Descartada por | Fecha |
+| --- | --- | --- | --- |
+| Contar en japonés: expectativa vs realidad | Humor | Jorge (oficina) | 11 nov 2026 |
 
 ## Propuestas — 2026-11-09 — Historia
 

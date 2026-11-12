@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Escena 3D</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import { crearEscenario, util as U } from "../../../../animacion/3d/escenario.js";
+import { Karateka3D, cargarPoses, mezclar } from "../../../../animacion/3d/karateka3d.js";
+import { Diagrama3D } from "../../../../animacion/3d/diagrama3d.js";
+import { overlay } from "../../../../animacion/3d/overlay2d.js";
+const ctx = document.getElementById("c").getContext("2d");
+const esc = crearEscenario({ escala: 0.5 });
+const k = new Karateka3D({ cinturon: "negro" });
+esc.escena.add(k.raiz);
+const P = cargarPoses();
+const d = new Diagrama3D(esc, k);
+
+window.DURACION = 3;
+// 3/4 que gira a perfil; cara de reto; la flecha entra por detrás y vibra
+const __r = (t) => {
+  const g = U.easeInOut(U.prog(t, 0, 1.6));
+  k.colocar(0, 0, U.lerp(25, 90, g));
+  k.aplicarPose(P['pies-juntos']);
+  const reto = U.easeOut(U.prog(t, 0.2, 0.8));
+  k.cara({ parpadeo: U.parpadeo(t, [1.9]), sonrisa: 0.35 * reto + 0.1, cejas: -0.5 * reto + 0.2 * Math.sin(t * 2) * 0, mirada: [0.4 * (1 - g), 0] });
+  esc.orbita({ centro: [0.1, 1.2, 0], distancia: U.lerp(6.6, 7.2, g), azimut: 0, elevacion: 3, fov: 26 });
+  d.limpiar();
+  const ent = U.easeOut(U.prog(t, 0.7, 1.5));
+  const vib = ent >= 1 ? 0.025 * Math.sin(t * 38) : 0;
+  const x0 = -1.2 + 0.35 * ent + vib;
+  if (ent > 0) d.flecha({ desde: [x0, 1.0, 0], hacia: [x0 + 0.65, 1.0, 0], crecer: ent });
+  esc.dibujar(ctx); d.dibujar2D(ctx);
+};
+window.DURACION = 1.3; const __T0 = 0; window.render = (t_) => __r(t_ + __T0);
+</script></body></html>

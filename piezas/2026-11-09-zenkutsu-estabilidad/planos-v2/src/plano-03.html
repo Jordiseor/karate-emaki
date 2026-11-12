@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Escena 3D</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import { crearEscenario, util as U } from "../../../../animacion/3d/escenario.js";
+import { Karateka3D, cargarPoses, mezclar } from "../../../../animacion/3d/karateka3d.js";
+import { Diagrama3D } from "../../../../animacion/3d/diagrama3d.js";
+import { overlay } from "../../../../animacion/3d/overlay2d.js";
+const ctx = document.getElementById("c").getContext("2d");
+const esc = crearEscenario({ escala: 0.5 });
+const k = new Karateka3D({ cinturon: "negro" });
+esc.escena.add(k.raiz);
+const P = cargarPoses();
+const d = new Diagrama3D(esc, k);
+window.DURACION = 4;
+k.colocar(0, 0, 90).aplicarPose(P['pies-juntos']);
+d.ajustarVuelco(8);
+const tobD = k.punto('tobilloD'), anc = { x: tobD.x, z: tobD.z };
+d.ajustarVuelco(null);
+const clon = (o) => JSON.parse(JSON.stringify(o));
+const __r = (t) => {
+  const paso = U.prog(t, 2.9, 3.6);              // paso torpe
+  let inc = 8 * U.easeInOut(U.prog(t, 0.5, 2.0)) + 12 * U.easeIn(U.prog(t, 2.5, 2.95));
+  const aloj = t < 2.95;                          // diagrama activo mientras es cuerpo rígido
+  let base = P['pies-juntos'], op = { inclinar: inc };
+  let p = clon(base);
+  if (t >= 2.5) { // brazos al aire al perder el equilibrio
+    const w = U.easeOut(U.prog(t, 2.5, 2.9)), mol = Math.sin(t * 22);
+    for (const l of ['brazoI', 'brazoD']) { p[l].adelante = U.lerp(p[l].adelante || 0, 125 + 12 * mol * (l === 'brazoI' ? 1 : -1), w); p[l].abre = U.lerp(p[l].abre || 0, 35, w); }
+  }
+  if (paso > 0) {
+    const f = U.easeBack(paso);
+    p = mezclar(p, P['zenkutsu-dachi'], { piernas: U.clamp(f, 0, 1.05), brazos: 0.2 * paso, tronco: 0, cabeza: 0 });
+    op = { ancla: { pie: 'D', x: anc.x, z: anc.z }, inclinar: 20 * (1 - U.easeOut(U.prog(t, 2.9, 3.3))) };
+  }
+  k.aplicarPose(p, op);
+  const susto = U.prog(t, 2.0, 2.4), grin = U.prog(t, 3.6, 3.9);
+  k.cara({ parpadeo: U.parpadeo(t, [1.0, 3.8]), sonrisa: t < 2.0 ? 0.35 : (t < 3.6 ? 0.8 * susto : 0.8 * (1 - grin) + 0.5 * grin), cejas: t < 3.6 ? 1.0 * susto : 0.3, mirada: [0.2, 0] });
+  const z = 5.9;
+  esc.orbita({ centro: [0.12 + 0.45 * U.easeInOut(U.prog(t, 2.9, 3.7)), 0.95, 0], distancia: 7.4, azimut: 0, elevacion: 3, fov: 26 });
+  d.limpiar();
+  if (aloj) {
+    d.ajustarVuelco(8);
+    const fa = 1 - U.prog(t, 2.85, 2.95);
+    d.base({ alerta: inc > 8.1 ? 0.5 + 0.5 * Math.sin(t * 24) : 0, alfa: fa });
+    const c = d.cdm({ alfa: fa });
+    const piv = d.pivote();
+    d.linea(piv, c, { grosor: 0.007, alfa: 0.9 * fa });
+    if (inc > 0.3) d.arco({ centro: piv, desde: 0, hasta: c, radio: 0.5, texto: '', distTexto: 1.0, desplazaTexto: [130, -30], tamTexto: 80, alfa: fa });
+    if (t < 3.0) d.flecha({ desde: [-0.85 + 0.07 * U.easeOut(U.prog(t, 0.4, 1.0)), 1.0, 0], hacia: [-0.18 + 0.07 * U.easeOut(U.prog(t, 0.4, 1.0)), 1.0, 0], crecer: U.easeOut(U.prog(t, 0, 0.4)), alfa: fa });
+  }
+  esc.dibujar(ctx); d.dibujar2D(ctx);
+  overlay.titulo(ctx, t, { lineas: '[r]≈8°[/r]', t0: 1.0, size: 150 });
+};
+window.DURACION = 2.5; const __T0 = 0.2; window.render = (t_) => __r(t_ + __T0);
+</script></body></html>
