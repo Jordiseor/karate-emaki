@@ -1,36 +1,7 @@
 # Bitácora
 
-- 2026-11-09 · Sensei · Estudio creado: marca, 10 agentes, estructura de carpetas.
-- 2026-11-09 · Ideas: Técnica · 8 ideas (5 ciencia, 2 técnica, 1 interactivo).
-- 2026-11-09 · Ideas: Humor · 8 ideas (2 bucles cortos, 1 serie, 5 formatos en tendencia).
-- 2026-11-09 · Ideas: Historia · 8 ideas (4 historia, 3 curiosidades, 1 interactivo); avisa de fechas en duda del primer dōjō.
-- 2026-11-09 · Sensei · Elige 4 piezas: nombre Shotokan, contar en japonés, zenkutsu, línea temporal. Pasan a investigación.
-- 2026-11-09 · Sensei · Jorge decide: cuenta KARATE EMAKI, karate en general con base Shotokan, tono mixto, figura 2D, texto + voz, ritmo 2 reels/semana + 1 interactivo cada 2 semanas. Se añaden los pilares Competición y Anécdotas. Contar en japonés y la línea temporal pasan a la semana del 16 nov.
-- 2026-11-09 · Investigador · Dosier de nombre-shotokan: dōjō inaugurado en 1939 (Zōshigaya), ardió en 1945; «cartel de los alumnos» solo como «cuentan que». Corrige la ficha de ideas.
-- 2026-11-09 · Sensei · nombre-shotokan pasa a storyboard (Guionista).
-- 2026-11-09 · Guionista · Storyboard nombre-shotokan: 30 s, 9 escenas; avisa de locución ajustada (≈93 palabras).
-- 2026-11-09 · Sensei · nombre-shotokan pasa a animación. Entorno sin motor de voz: el Editor montará sin locución hasta que haya TTS.
-- 2026-11-09 · Investigador · Dosier zenkutsu-estabilidad: ≈8° pies juntos, ≈26° delante en zenkutsu, ≈30° bajando cadera; de lado ≈15–18°. Corrige el planteamiento de la idea (base talón-punta, CdM adelantado 60/40).
-- 2026-11-09 · Sensei · zenkutsu-estabilidad pasa a storyboard (Guionista).
-- 2026-11-09 · Guionista · Storyboard zenkutsu-estabilidad: 30 s, 8 escenas, poses P1–P4 por ángulos; nota para Marketing sobre comentario fijado.
-- 2026-11-09 · Sensei · zenkutsu en cola de animación hasta que el Animador termine la base y Shotokan.
-- 2026-11-09 · Sensei · Jorge pide un equipo más dinámico: trabajo largo repartido entre varios agentes (animación por tramos), nuevo agente Intendente (ahorro de tokens, modelo por tarea), y tareas programadas (preparadas en programacion.md, pendientes de repositorio).
-- 2026-11-09 · Animador · nombre-shotokan: 9 escenas (30 s) y base de animación (karateka, poses, sumi-e, render). Kanji tipográficos, sin trazado real de pincel.
-- 2026-11-09 · Sensei · Revisa las escenas de Shotokan (hoja de contactos): bien para v1. Pasa a montaje (Editor, sonnet). Zenkutsu: jefe de animación (sonnet) prepara poses y plan; después 2 tramos en paralelo.
-- 2026-11-09 · Editor · Reel nombre-shotokan montado (30 s, sonido propio, sin voz) y portada.
-- 2026-11-09 · Sensei · Revisión final OK; corrige subtítulo de portada. Pasa a aprobación de Jorge.
-- 2026-11-09 · Animador (jefe) · zenkutsu: poses P1–P4, fisica.js, karateka frontal, plan de 2 tramos. Dudas para Jorge en el resumen.
-- 2026-11-09 · Sensei · Lanza tramo A (1–4) y tramo B (5–8) en paralelo, sonnet.
-- 2026-11-09 · Animador (tramo A) · zenkutsu escenas 1–4 (14 s). Paso torpe y salto P1→P2 simplificados.
-- 2026-11-09 · Animador (tramo B) · zenkutsu escenas 5–8 (16 s). Giro de cámara plano en la 7.
-- 2026-11-09 · Sensei · Revisa las 8 escenas de zenkutsu: válidas para v1. Pasa a montaje.
-- 2026-11-09 · Editor · Reel zenkutsu-estabilidad montado (30 s, sonido propio con golpes por cifra, sin voz) y portada.
-- 2026-11-09 · Sensei · Revisión final zenkutsu OK. Las 2 piezas de la semana en aprobación de Jorge.
-- 2026-11-09 · Sensei · Jorge aprueba zenkutsu (pasa a Marketing) y pide cambios en Shotokan: añadir la voz. La voz se genera en el PC de Jorge con herramientas/generar-voz.ps1 (voz de Windows).
-- 2026-11-09 · Marketing · Copys de zenkutsu (IG, TikTok, Shorts, 8 hashtags, comentario fijado); propone jueves 12 nov 19:30. Calendario 9–22 nov.
-- 2026-11-09 · Sensei · Estudio subido a GitHub (Jordiseor/karate-emaki). 4 tareas programadas activas: ideas (lun 8:45), producción (L–V 10:15), cierre (vie 17:45), métricas (día 1, 9:10).
-- 2026-11-10 · Sensei · Producción: buzón vacío, sin audios en piezas/*/voz/. Shotokan sigue en montaje (espera voz) y zenkutsu programada para el jue 12 sin voz. Ninguna pieza avanza; no se lanza ningún agente.
-- 2026-11-10 · Sensei · Jorge autoriza generar la voz en la nube. Piper con voz es-carlfm (dominio público, calidad baja 16 kHz); script herramientas/generar-voz.py. Voz mezclada en los 2 reels (ritmo 0,85; recortes menores de locución anotados en locucion.txt; copia sin voz en final/reel-sin-voz.mp4). Mezcla hecha por el Sensei, sin lanzar al Editor. Nadie ha escuchado el resultado: las 2 piezas van a aprobación de Jorge.
+Entradas anteriores resumidas en archivo/bitacora-2026-11.md.
+
 - 2026-11-10 · Sensei · Jorge pide voz más cálida, estilo 3D más cercano y un agente de audio, y autoriza crear agentes nuevos. Nacen Sonido y Modelador 3D. A Jorge le encanta la primera prueba 3D. Zenkutsu se rehace en 3D como piloto; Shotokan espera.
 - 2026-11-10 · Modelador 3D · Base 3D en animacion/3d/: karateka con rig y poses medidas (zenkutsu-dachi correcto), dōjō, diagrama3d (punto rojo, base, arco, flecha, inclinar), overlay de texto, plantilla y README. ~1,5 s/fotograma. El CdM real del personaje da 10,6/30/37°; `ajustarVuelco` lo cuadra con las cifras del dosier (8/26/30).
 - 2026-11-10 · Sonido · herramientas/instalar-voz.sh y voz.py (sustituye a generar-voz.py). 3 voces es_ES de calidad media: davefx (CC0), sharvard hombre y mujer (CC BY 3.0, exige crédito). Muestras en audio/muestras/. Demo en el reel 2D de zenkutsu con sharvard hombre (-16,1 LUFS). Nadie ha escuchado nada: elige Jorge.
@@ -71,3 +42,5 @@
 - 2026-11-13 · Guionista · Hikite: 27 s, 11 planos, ≈75 palabras; gancho en pregunta, cita de Funakoshi «según una traducción»; pide poses hikite-medio, agarre-brazo, tiron-cadera y silueta de rival.
 - 2026-11-13 · Guionista · Kiai gallo: 9 s, 6 planos, bucle perfecto (fila en yoi); el quinto kiai sale en gallo y todos se tocan el hara. Pendiente: acepción RAE de «gallo».
 - 2026-11-13 · Guionista · Línea temporal: 12 hitos, 3 vistas (portada, línea, quiz de 3) y reel de anuncio de 12 s. Quitadas las planchas de 1923; Yoshitaka, JKA 1948/49 y Naha 1936 matizados.
+- 2026-11-13 · Intendente · Cierre semana 46: propuestas del 9 nov a archivo/ideas-2026-11.md, bitácora resumida en archivo/bitacora-2026-11.md, informes/consumo-2026-46.md (4,30 M tokens; lo más caro, biblioteca 3D en opus).
+- 2026-11-13 · Sensei · Cierre de semana: buzón vacío, sin decisiones pendientes; presentación sigue pendiente en Metricool (sáb 14). presupuesto.md ajustado (personaje y rig en opus; poses y decorados en sonnet; montaje siempre del Editor); consumo.csv con campos entrecomillados. Resumen en informes/semana-2026-46.md y en el buzón. Bloqueo: voz Chatterbox v2 de zenkutsu (antes del lun 16) y Shotokan.
