@@ -1,0 +1,12 @@
+Locución v2 (65 palabras, 26,2 s) para generar con Chatterbox (herramientas/voz-chatterbox.ps1). Formato: inicio en s | texto. Pronunciación: Shōtō "shoo-too", dōjō "doo-yo". Años en palabras. La voz arranca en 0,0 s y termina abierta para el bucle.
+0.0 | Shotokan no es un estilo.
+1.6 | Es una casa.
+3.2 | Funakoshi firmaba sus poemas como Shōtō:
+5.4 | Olas de pino. Suena a mar.
+7.8 | Y kan significa casa.
+9.8 | En el treinta y nueve, levantan un dōjō.
+12.6 | Cuentan que sus alumnos colgaron el cartel.
+15.4 | En el cuarenta y cinco, ardió.
+17.8 | Funakoshi nunca bautizó su karate.
+20.4 | Y el mundo lo llamó Shotokan.
+22.8 | Dices Shotokan, nombras una casa que ya no existe.

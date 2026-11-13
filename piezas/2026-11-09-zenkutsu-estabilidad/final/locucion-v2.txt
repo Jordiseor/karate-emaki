@@ -1,0 +1,10 @@
+Locución v2 (para generar con Chatterbox: herramientas/voz-chatterbox.ps1). Una línea por plano: inicio en s | texto. Ritmo ≈3 palabras/s; cada voz empieza ≈0,2 s tras el inicio del plano.
+0,0 | Empújame hacia delante. ¿Cuánto aguanto?
+2,0 | Mientras el punto rojo caiga sobre tus pies, aguantas.
+5,0 | Pies juntos: ocho grados y fuera.
+7,5 | Zenkutsu-dachi: un metro de base.
+10,0 | Hacia delante, aguantas unos veintiséis grados.
+13,0 | Baja la cadera: aún más.
+15,0 | De lado, la base es estrecha.
+17,7 | ¿Por dónde me empujarías tú?
+20,7 | (silencio)
