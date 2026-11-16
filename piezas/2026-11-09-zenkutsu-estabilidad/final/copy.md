@@ -9,7 +9,7 @@ Empújame hacia delante. ¿En qué posición aguantas más?
 
 En zenkutsu-dachi (posición adelantada) la base delante-atrás pasa de un metro. Con los pies juntos, apenas un pie.
 
-Te mantienes en pie mientras la vertical de tu centro de masas (el punto rojo) caiga dentro de tus pies. Con los pies juntos, basta inclinarte unos 8° para caer. En zenkutsu, hacia delante, aguantas hasta unos 26°, y si bajas la cadera, unos 30°.
+Te mantienes en pie mientras la vertical de tu centro de masas (el punto rojo) caiga dentro de tus pies. Con los pies juntos, basta inclinarte unos 8° para caer. En zenkutsu, hacia delante, aguantas hasta unos 26°.
 
 Ojo: es un modelo simplificado (cuerpo rígido, adulto de 1,70 m), no tus ángulos reales. Y solo vale hacia delante: de lado la base es estrecha y aguantas bastante menos.
 
