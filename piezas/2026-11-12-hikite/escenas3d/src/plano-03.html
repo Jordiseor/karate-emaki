@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Hikite · plano 03</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, k, P, U } = C.iniciar();
+window.DURACION = 2.5;
+// PLANO 3: pantalla partida. Izquierda: hikite a medio camino (error). Derecha: gesto completo. Dos pasadas con clip.
+const D = 9.8, DESPL = 0.62;       // desplazamiento de cámara para centrar a cada karateka en su mitad
+const uL = (t) => U.easeOut(U.prog(t, 0, 1.5)) * (0.93 + 0.07 * Math.sin(2 * Math.PI * t / 1.25));
+const poseL = (t) => C.mezclar(C.golpe(P, 0.3), P['hikite-medio'], uL(t));
+const poseR = (t) => C.golpe(P, 0.3 + 0.7 * U.easeInOut(U.prog(t, 0.1, 1.9)));
+function lado(t, izq) {
+  ctx.save(); ctx.beginPath(); ctx.rect(izq ? 0 : 540, 0, 540, 1920); ctx.clip();
+  k.colocar(0, 0, -90);
+  const pf = izq ? poseL : poseR;
+  k.aplicarPose(pf(t));
+  k.cara({ parpadeo: U.parpadeo(t, [1.4]), cejas: izq ? 0.2 : -0.2, sonrisa: 0, mirada: [-0.3, 0] });
+  esc.orbita({ ...C.CAM.general, distancia: D, centro: [izq ? DESPL - 0.02 : -DESPL, 0.95, 0] });
+  esc.dibujar(ctx, {});
+  if (izq) {
+    // rastro gris que se queda a medio camino
+    const n = 16, cola = 1.1, pts = [];
+    for (let i = 0; i <= n; i++) { k.aplicarPose(pf(t - cola + cola * i / n < 0 ? 0 : t - cola + cola * i / n)); pts.push(esc.proyectar(k.punto('manoI'))); }
+    k.aplicarPose(pf(t));
+    ctx.lineCap = 'round'; ctx.strokeStyle = C.GRIS;
+    for (let i = 1; i < pts.length; i++) { const q = i / pts.length; ctx.globalAlpha = 0.9 * q; ctx.lineWidth = 3 + 18 * q; ctx.beginPath(); ctx.moveTo(pts[i - 1].x, pts[i - 1].y); ctx.lineTo(pts[i].x, pts[i].y); ctx.stroke(); }
+    ctx.globalAlpha = 1;
+    // cruz roja junto al puño izquierdo
+    const m = esc.proyectar(k.punto('manoI')), a = U.prog(t, 0.7, 1.0), x = m.x - 5, y = m.y + 100, s = 34 * U.easeOut(a);
+    if (a > 0) { ctx.strokeStyle = C.ROJO; ctx.lineWidth = 14; ctx.beginPath(); ctx.moveTo(x - s, y - s); ctx.lineTo(x + s, y + s); ctx.moveTo(x + s, y - s); ctx.lineTo(x - s, y + s); ctx.stroke(); }
+  }
+  ctx.restore();
+}
+window.render = (t) => {
+  lado(t, true); lado(t, false);
+  ctx.save(); ctx.fillStyle = C.TINTA; ctx.fillRect(537, 0, 6, 1920); ctx.restore();
+  C.tarjeta(ctx, t, ['Error frecuente:', 'a medio camino'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

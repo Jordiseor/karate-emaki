@@ -429,3 +429,16 @@ Fila del ejemplo: `crearFila(esc, { n: 6, columnas: 3, separacion: [0.82, 1.1], 
 - Las cejas por encima de `cejas ≈ 0,6` se esconden bajo el flequillo: el «gallo» se apoya en la boca torcida y los ojos muy abiertos.
 - `crearLogo` añade dos mallas a la escena: si la escena sigue con otra cosa, `logo.ocultar()`. El encuadre exacto solo es exacto con `escala: 1`.
 - Fuera del rollo no se dibuja nada: pinta tú el fondo (papel, dōjō…) antes de `rollo.dibujar`.
+
+### Poses 2026-11-16 (hikite y kiai-gallo) — `herramientas/disenar-poses-2026-11.mjs`
+
+| Pose | Uso |
+| --- | --- |
+| `P['hikite-medio']` | Error: gyaku-zuki + puño izquierdo a medio camino (pecho, codo abierto). Piernas = `zenkutsu-dachi`. La versión completa (hikite en cadera) es `P['gyaku-zuki-kiai']` |
+| `P['agarre-brazo']` → `P['tiron-cadera']` | Mano izquierda abierta al frente → cerrada en la cadera: `mezclar(a, b, f)` |
+| `P['rival-brazo-extendido']` | Rival (siempre `silueta('#1A1A1A')`), brazo derecho extendido. `rival.colocar(X, Z, 180)` de modo que `rival.punto('manoD')` ≈ `k.punto('manoI')` con `agarre-brazo` (restar el uno al otro); desequilibrio con `op.inclinar` 6–10. Ejemplo en `prueba/poses-2026-11-16.html` |
+| `P['mano-hara']` | Yoi con las dos manos abiertas sobre el bajo vientre. Giro de cabeza hacia un lado: `{ ...pose, cabeza: { giro: 35 } }` (no hace falta pose aparte) |
+
+Golpe con boca abierta: `choku-zuki-kiai` (desde yoi, para la fila) o `gyaku-zuki-kiai` + `k.cara(CARAS.kiai)`; caras `kiai`, `gallo`, `deReojo` (sonrisa tímida: `{ sonrisa: 0.5 }`).
+Fila de 5 con cinturones distintos: `crearFila(esc, { n: 5, columnas: 5, separacion: [0.7, 1.1] })` y `fila.miembros[i].cinturon('verde')`; cámara `orbita({ centro:[0,1,0], distancia: 12.5, elevacion: 4, fov: 26 })` y `esc.escena.fog.near = 16; fog.far = 60` (si no, la niebla los borra). Con `distancia 8.8` solo caben 3.
+Hoja de prueba: `HTML=$PWD/prueba/poses-2026-11-16.html bash herramientas/taller.sh salida.png "0 1 … 10"`.

@@ -1,0 +1,25 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 3 (3,6–4,8 s): el quinto golpea y el kiai se le quiebra (gallo). Empuje de cámara a su cara; bocadillo que tiembla y se rompe.
+import { crearToma, ctx, DURACION, INICIO, T_GALLO, bocadillo, bocadilloRoto, U, CAM_FILA } from './comun.js';
+const toma = crearToma();
+window.DURACION = DURACION[3];
+const L = (a, b, f) => a + (b - a) * f;
+window.render = (t) => {
+  const T = INICIO[3] + t;
+  toma.fijar(T);
+  const cab = toma.M[4].punto('cabeza'), f = U.easeInOut(U.prog(t, 0, 0.4));
+  toma.esc.orbita({ centro: [L(0, cab.x, f), L(1, cab.y + 0.02, f), L(0, cab.z, f)], distancia: L(14.2, 3.8, f), elevacion: L(4, 3, f), fov: 26 });
+  window.EMAKI.fondoPapel(ctx);
+  toma.esc.dibujar(ctx);
+  const tg = T_GALLO - INICIO[3]; // 0,2
+  const p = toma.esc.proyectar(cab);
+  const bx = Math.max(330, Math.min(750, p.x - 40 * f)), by = Math.max(330, Math.min(1400, p.y - 330 * f - 60));
+  const op = { size: 100, puntas: 11 };
+  const e = U.easeOut(U.prog(t, 0.05, 0.25)) * f; // el bocadillo aparece con el empuje
+  if (t < tg + 0.02) {
+    if (f > 0.05) { ctx.save(); ctx.globalAlpha = Math.min(1, f * 3); bocadillo(ctx, bx, by, 820, 330, '¡Ki-ai-iii…!', { ...op, temblor: L(0.5, 3, U.prog(t, 0.05, tg)), tt: t }); ctx.restore(); }
+  } else bocadilloRoto(ctx, bx, by, 820, 330, '¡Ki-ai-iii…!', U.prog(t, tg + 0.02, tg + 0.52), { ...op, temblor: 3, tt: t });
+};
+</script></body></html>

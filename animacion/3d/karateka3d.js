@@ -780,7 +780,7 @@ export function espejo(p) {
   return o;
 }
 // Carga las poses 3D. render.mjs las inyecta en window.EMAKI_POSES3D; si no (navegador normal), las pide por XHR.
-export function cargarPoses(nombres = ['yoi', 'kamae', 'zenkutsu-dachi', 'zenkutsu-bajo', 'pies-juntos', 'gedan-barai-prep', 'zenkutsu-bajo-misma-base', 'rei', 'cargar-viga', 'brazos-arriba', 'maestro-seiza-pincel', 'maestro-pie-escribiendo', 'maestro-manos-atras', 'choku-zuki-kiai', 'gyaku-zuki-kiai']) {
+export function cargarPoses(nombres = ['yoi', 'kamae', 'zenkutsu-dachi', 'zenkutsu-bajo', 'pies-juntos', 'gedan-barai-prep', 'zenkutsu-bajo-misma-base', 'rei', 'cargar-viga', 'brazos-arriba', 'maestro-seiza-pincel', 'maestro-pie-escribiendo', 'maestro-manos-atras', 'choku-zuki-kiai', 'gyaku-zuki-kiai', 'hikite-medio', 'agarre-brazo', 'tiron-cadera', 'rival-brazo-extendido', 'mano-hara']) {
   const P = Object.assign({}, (typeof window !== 'undefined' && window.EMAKI_POSES3D) || {});
   for (const n of nombres) if (!P[n] && typeof XMLHttpRequest !== 'undefined') {
     try { const x = new XMLHttpRequest(); x.open('GET', new URL('./poses/' + n + '.json', import.meta.url).href, false); x.send(); if (x.status === 200 || x.status === 0) P[n] = JSON.parse(x.responseText); } catch (e) { console.warn('pose 3D no encontrada', n); }

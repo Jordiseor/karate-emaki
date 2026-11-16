@@ -60,3 +60,16 @@ fecha,agente,pieza,modelo,tokens,usos_herramientas,minutos
 2026-11-16,investigador,2026-11-16-kumite-puntos (dosier),sonnet,28468,16,2.0
 2026-11-16,investigador,2026-11-16-embusen (dosier),sonnet,53057,24,2.7
 2026-11-16,sensei,reunion de ideas (buzon, eleccion, oficina),opus,60000,30,15
+2026-11-16,modelador-3d,poses hikite y kiai gallo,sonnet,61360,15,3.5
+2026-11-16,guionista,2026-11-16-cinturon-judo (storyboard),sonnet,31242,9,0.9
+2026-11-16,guionista,2026-11-16-kumite-puntos (storyboard),sonnet,31959,9,1.0
+2026-11-16,investigador,2026-11-16-embusen (2a ronda),sonnet,36156,21,6.7
+2026-11-16,interactivos,2026-11-12-linea-temporal (interactivo),sonnet,38801,6,1.8
+2026-11-16,animador,2026-11-12-hikite (jefe),sonnet,65960,22,3.5
+2026-11-16,animador,2026-11-12-hikite (tramo A),sonnet,63267,31,11.4
+2026-11-16,animador,2026-11-12-hikite (tramo B),sonnet,74468,26,8.7
+2026-11-16,animador,2026-11-12-hikite (tramo C),sonnet,67918,30,11.2
+2026-11-16,animador,2026-11-12-kiai-gallo (jefe),sonnet,56601,18,3.3
+2026-11-16,animador,2026-11-12-kiai-gallo (tramo A),sonnet,31902,11,5.6
+2026-11-16,animador,2026-11-12-kiai-gallo (tramo B),sonnet,36576,14,11.6
+2026-11-16,sensei,produccion (oficina, revision hojas, cierre),opus,70000,30,50

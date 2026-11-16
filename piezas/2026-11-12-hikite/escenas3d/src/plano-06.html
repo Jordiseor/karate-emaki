@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Hikite · plano 06</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { ctx, esc, k, P, d, U } = C.iniciar();
+window.DURACION = 2.0;
+// PLANO 6: cadera gira, hombros siguen con retardo. Cámara 3/4 alta.
+const g = (t, a, b) => U.easeInOut(U.prog(t, a, b));
+const poseEn = (t) => {
+  const f = g(t, 0.2, 1.7);
+  const p = C.golpe(P, 0.15 + 0.85 * f);
+  p.cadera = { giro: -8 + 20 * g(t, 0.2, 1.4) };
+  p.tronco = { ...p.tronco, giro: -4 + 18 * g(t, 0.45, 1.7), inclina: 4 * f };
+  return p;
+};
+window.render = (t) => {
+  k.colocar(0, 0, -60);
+  k.aplicarPose(poseEn(t));
+  k.cara({ parpadeo: U.parpadeo(t, [1.5]), cejas: -0.3, sonrisa: 0, mirada: [-0.2, 0] });
+  esc.orbita({ centro: [0, 1.0, 0], distancia: 6, azimut: 8 * U.prog(t, 0, 2), elevacion: 48, fov: 26 });
+  d.limpiar();
+  esc.dibujar(ctx, {});
+  // arco fino rojo 2D sobre el tronco que sigue el giro
+  const h = esc.proyectar(k.punto('hombroD') || k.punto('manoD')), h2 = esc.proyectar(k.punto('hombroI') || k.punto('manoI'));
+  const cx = (h.x + h2.x) / 2, cy = (h.y + h2.y) / 2, r = 250, a = U.easeOut(U.prog(t, 0.3, 1.2));
+  ctx.save(); ctx.strokeStyle = C.ROJO; ctx.lineWidth = 9; ctx.lineCap = 'round';
+  const a0 = Math.PI * 1.05, a1 = a0 + Math.PI * 0.9 * a;
+  ctx.beginPath(); ctx.ellipse(cx, cy + 190, r, r * 0.55, 0, a0, a1); ctx.stroke();
+  if (a > 0.05) { const ex = cx + r * Math.cos(a1), ey = cy + 190 + r * 0.55 * Math.sin(a1), tx = -r * Math.sin(a1), ty = r * 0.55 * Math.cos(a1), n = Math.hypot(tx, ty);
+    const ux = tx / n, uy = ty / n; ctx.fillStyle = C.ROJO; ctx.beginPath(); ctx.moveTo(ex + ux * 34, ey + uy * 34); ctx.lineTo(ex - uy * 20, ey + ux * 20); ctx.lineTo(ex + uy * 20, ey - ux * 20); ctx.closePath(); ctx.fill(); }
+  ctx.restore();
+  C.tarjeta(ctx, t, ['Coordina cadera', 'y tronco'], { y: 270 });
+};
+</script></body></html>

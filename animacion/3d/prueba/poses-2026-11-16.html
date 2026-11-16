@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Poses 2026-11-16</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../marca.js"></script>
+<script type="module">
+import { crearEscenario } from '../escenario.js';
+import { Karateka3D, cargarPoses } from '../karateka3d.js';
+import { crearFila } from '../historia3d.js';
+import { CARAS } from '../logo3d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5 });
+const P = cargarPoses(); esc.escena.fog.near = 16; esc.escena.fog.far = 60;
+const k = new Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz);
+const r = new Karateka3D({ cinturon: 'negro' }); r.silueta('#1A1A1A'); esc.escena.add(r.raiz);
+const fila = crearFila(esc, { n: 5, columnas: 5, separacion: [0.7, 1.1], origen: [0, 0] });
+['blanco', 'amarillo', 'naranja', 'verde', 'azul'].forEach((c, i) => fila.miembros[i].cinturon(c));
+const cam = (c, d = 7, el = 3, az = 0, fov = 26) => ({ centro: c, distancia: d, azimut: az, elevacion: el, fov });
+// RIVAL: su manoD debe coincidir con la manoI de agarre-brazo
+const dyG = 0, ZR = 1.45;
+const VISTAS = [
+  ['hikite-medio', 90, 'hikite-medio · perfil', cam([0, 0.9, 0])],
+  ['hikite-medio', 35, 'hikite-medio · 3/4', cam([0, 0.9, 0])],
+  ['gyaku-zuki-kiai', 90, 'hikite completo · perfil', cam([0, 0.9, 0])],
+  ['agarre', 90, 'agarre-brazo + rival', cam([0.6, 0.95, 0.6], 6)],
+  ['tiron', 90, 'tiron-cadera + rival', cam([0.6, 0.95, 0.6], 6)],
+  ['agarre', 35, 'agarre 3/4', cam([0.5, 0.95, 0.5], 6)],
+  ['mano-hara', 0, 'mano-hara · frente', cam([0, 0.95, 0])],
+  ['mano-hara', 60, 'mano-hara · 3/4', cam([0, 0.95, 0])],
+  ['giro', 0, 'cabeza giro 35 + gallo', cam([0, 1.5, 0], 3.2)],
+  ['kiaiGolpe', 0, 'choku-zuki-kiai + kiai', cam([0, 0.95, 0])],
+  ['fila', 0, 'fila 5 cinturones', cam([0, 1.0, 0], 12.5, 4)],
+];
+window.DURACION = VISTAS.length;
+window.render = (t) => {
+  const [m, rumbo, rot, c] = VISTAS[Math.min(VISTAS.length - 1, Math.floor(t))];
+  k.raiz.visible = true; r.raiz.visible = false; fila.miembros.forEach((q) => (q.raiz.visible = false));
+  k.colocar(0, 0, rumbo); k.cara({ sonrisa: 0.1 });
+  if (m === 'agarre' || m === 'tiron') {
+    k.aplicarPose(P['agarre-brazo']); const mano = k.punto('manoI').clone();
+    k.aplicarPose(m === 'agarre' ? P['agarre-brazo'] : P['tiron-cadera']);
+    r.raiz.visible = true; r.colocar(0, 0, 180); r.aplicarPose(P['rival-brazo-extendido'], { suelo: true });
+    const rm = r.punto('manoD'); // mover el rival rígido hasta que su muñeca toque la mano del karateka (en el mundo, rumbo 90 → rotamos todo)
+    const a = (rumbo * Math.PI) / 180; // el karateka mira a (sin a, cos a)
+    const wx = mano.x, wz = mano.z;
+    // en coordenadas del karateka con rumbo 0: mano=(wx, wz); rival (rumbo 180) manoD local (lx, lz) → x = wx - ..., ver abajo
+    const base = r.punto('manoD'); // con r en (0,0)
+    const tx = wx - base.x, tz = wz - base.z; // posición del rival en marco del karateka (rumbo 0)
+    const X = tx * Math.cos(a) + tz * Math.sin(a), Z = -tx * Math.sin(a) + tz * Math.cos(a);
+    r.colocar(X, Z, 180 + rumbo); r.aplicarPose(P['rival-brazo-extendido'], { inclinar: m === 'tiron' ? 8 : 0 });
+    k.colocar(0, 0, rumbo); k.aplicarPose(m === 'agarre' ? P['agarre-brazo'] : P['tiron-cadera']);
+    esc.orbita(c);
+  } else if (m === 'giro') {
+    k.aplicarPose({ ...P['mano-hara'], cabeza: { giro: 45 } }); k.cara(CARAS.gallo); esc.orbita(c);
+  } else if (m === 'kiaiGolpe') {
+    k.aplicarPose(P['choku-zuki-kiai']); k.cara(CARAS.kiai); esc.orbita(c);
+  } else if (m === 'fila') {
+    k.raiz.visible = false; fila.miembros.forEach((q) => (q.raiz.visible = true));
+    fila.pose(P, (i) => (i === 0 ? P['mano-hara'] : i === 4 ? P['choku-zuki-kiai'] : i === 2 ? { ...P.yoi, cabeza: { giro: -30 } } : P.yoi), { cara: (i) => (i === 4 ? CARAS.gallo : i === 0 ? CARAS.kiai : { sonrisa: 0.1 }) });
+    esc.orbita(c);
+  } else { k.aplicarPose(P[m]); esc.orbita(c); }
+  esc.dibujar(ctx, { grano: false });
+  EMAKI.texto(ctx, { lineas: rot, size: 60, y: 120 });
+};
+</script></body></html>

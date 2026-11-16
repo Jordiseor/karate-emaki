@@ -1,0 +1,15 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 1 (0–1,6 s): fila de 5 en yoi, respiran a la vez. Cámara fija. Tarjeta «RONDA DE KIAI» a 0,1 s. Fotograma 0 = fila en yoi sin texto (cierre del bucle).
+import { crearToma, ctx, tarjeta, DURACION, INICIO } from './comun.js';
+const toma = crearToma();
+window.DURACION = DURACION[1];
+window.render = (t) => {
+  const T = INICIO[1] + t;
+  toma.camFila(); toma.fijar(T);
+  window.EMAKI.fondoPapel(ctx);
+  toma.esc.dibujar(ctx);
+  tarjeta(ctx, t, 'RONDA DE [r]KIAI[/r]', 0.1, 99);
+};
+</script></body></html>

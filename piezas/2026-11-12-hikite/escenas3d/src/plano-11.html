@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Hikite · plano 11</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, k, P, U } = C.iniciar();
+window.DURACION = 2.5;
+// PLANO 11: bucle con el plano 1. Acaba en la cámara y pose exactas del fotograma 0 del plano 1 (C.golpe f=0.3+0.7*easeOut(0.5/2.6)), sin rastro.
+const F0 = 0.3 + 0.7 * U.easeOut(U.prog(0.5, 0, 2.6));
+window.render = (t) => {
+  const w = U.prog(t, 0, 2.5), fin = U.easeInOut(U.prog(t, 2.0, 2.5));
+  const amp = 1 - U.prog(t, 1.9, 2.5);               // la micro-respiración se apaga para empalmar con el plano 1
+  k.colocar(0, 0, C.RUMBO_34);
+  k.aplicarPose(C.golpe(P, F0 + 0.012 * Math.sin(t * 3.2) * amp));
+  k.cara({ parpadeo: U.parpadeo(t, [0.9]), cejas: -0.35, sonrisa: 0, mirada: [-0.3, 0] });
+  const c = C.CAM.tres4;
+  esc.orbita({ ...c, distancia: c.distancia + 0.25 * (1 - U.easeInOut(w)) * 0 + 0.25 * (1 - U.easeInOut(U.prog(t, 0, 2.5))) , azimut: 0 });
+  esc.dibujar(ctx, {});
+  const a = 1 - U.prog(t, 2.35, 2.5);                // la tarjeta se va en la última décima
+  if (a > 0) { ctx.save(); ctx.globalAlpha = a; C.tarjeta(ctx, t, ['¿Equilibrio', 'o agarre?'], { t0: 0.1, y: 270 }); ctx.restore(); }
+};
+</script></body></html>

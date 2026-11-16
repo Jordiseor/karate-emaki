@@ -1,0 +1,21 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 2 (1,6–3,6 s): cuatro golpes de kiai seguidos (i=0..3). Cámara de fila fija. Destello rojo + tarjeta ¡KIAI! que pulsa en cada golpe.
+import { crearToma, ctx, tarjeta, destello, DURACION, INICIO, T_GOLPE, U } from './comun.js';
+const toma = crearToma();
+const XC = [155, 350, 540, 730, 920];
+window.DURACION = DURACION[2];
+window.render = (t) => {
+  const T = INICIO[2] + t;
+  toma.camFila(); toma.fijar(T);
+  window.EMAKI.fondoPapel(ctx);
+  toma.esc.dibujar(ctx);
+  let k = -1; for (let i = 0; i < 4; i++) if (T >= T_GOLPE[i]) k = i;
+  for (let i = 0; i < 4; i++) { const a = T_GOLPE[i] - INICIO[2]; destello(ctx, XC[i], 810, U.prog(t, a, a + 0.25)); }
+  if (k >= 0 && t < 1.9) {
+    const a = T_GOLPE[k] - INICIO[2], p = U.prog(t, a, a + 0.2), s = 96 * (1 + 0.15 * Math.sin(Math.PI * p));
+    tarjeta(ctx, t, '¡[r]KIAI[/r]!', a, k < 3 ? a + 0.5 : 1.9, { size: s });
+  }
+};
+</script></body></html>

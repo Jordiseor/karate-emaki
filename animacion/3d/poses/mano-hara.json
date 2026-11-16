@@ -1,0 +1,60 @@
+{
+ "nombre": "mano-hara",
+ "descripcion": "Comprobar el hara: piernas de yoi, las dos manos abiertas sobre el bajo vientre (un palmo bajo el ombligo, la izquierda sobre la derecha), codos algo abiertos, tronco vertical. Para el giro de cabeza no hay pose aparte: { ...P[\"mano-hara\"], cabeza: { giro: 35 } }.",
+ "cadera": {},
+ "piernaI": {
+  "adelante": 2.2,
+  "abre": 6.6,
+  "gira": 27.7
+ },
+ "rodillaI": 5,
+ "tobilloI": {
+  "flex": -0.1,
+  "ladeo": -4.8
+ },
+ "piernaD": {
+  "adelante": 2.2,
+  "abre": 6.6,
+  "gira": 27.7
+ },
+ "rodillaD": 5,
+ "tobilloD": {
+  "flex": -0.1,
+  "ladeo": -4.8
+ },
+ "tronco": {},
+ "cabeza": {},
+ "manoI": 1,
+ "manoD": 1,
+ "brazoD": {
+  "adelante": 29.5,
+  "abre": 6.5,
+  "gira": -73.2
+ },
+ "codoD": 40.8,
+ "brazoI": {
+  "adelante": 29.2,
+  "abre": 7.6,
+  "gira": -72.4
+ },
+ "codoI": 41.2,
+ "munecaD": {
+  "gira": 22
+ },
+ "munecaI": {
+  "gira": 20
+ },
+ "medidas": {
+  "puno_D": [
+   -0.03,
+   0.901,
+   0.3
+  ],
+  "puno_I": [
+   0.039,
+   0.9,
+   0.301
+  ],
+  "altura_cadera_m": 0.951
+ }
+}

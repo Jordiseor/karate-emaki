@@ -1,0 +1,19 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 6 (8,2–9,0 s): la cámara retrocede a CAM_FILA (exacta a 0,45 s); tarjeta «¿Otra?». Último fotograma = fotograma 0 del plano 1 (bucle).
+import { crearToma, ctx, tarjeta, DURACION, INICIO, U, CAM_FILA } from './comun.js';
+const toma = crearToma(), { esc, M } = toma;
+window.DURACION = DURACION[6];
+const cad0 = (() => { toma.fijar(8.2); const c = M[4].punto('cadera'); return { x: c.x, y: c.y, z: c.z }; })();
+const FIN5 = { centro: [cad0.x - 0.35, cad0.y, cad0.z], distancia: 6, elevacion: 12, fov: 26 / 1.15 }; // = final del plano 5
+window.render = (t) => {
+  const T = INICIO[6] + t;
+  toma.fijar(T);
+  const f = U.easeInOut(U.prog(t, 0, 0.45)), L = (a, b) => a + (b - a) * f, c = CAM_FILA;
+  esc.orbita({ centro: [L(FIN5.centro[0], c.centro[0]), L(FIN5.centro[1], c.centro[1]), L(FIN5.centro[2], c.centro[2])], distancia: L(FIN5.distancia, c.distancia), elevacion: L(FIN5.elevacion, c.elevacion), fov: L(FIN5.fov, c.fov) });
+  window.EMAKI.fondoPapel(ctx);
+  esc.dibujar(ctx);
+  tarjeta(ctx, t, '¿Otra?', 0.1, 0.6);
+};
+</script></body></html>

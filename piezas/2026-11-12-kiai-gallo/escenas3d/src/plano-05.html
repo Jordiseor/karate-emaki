@@ -1,0 +1,36 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 5 (6,0–8,2 s): picado suave y empuje al abdomen del quinto; punto rojo, onda hasta la boca, kanji 気合.
+import { crearToma, ctx, tarjeta, DURACION, INICIO, U, ROJO, CAM_FILA } from './comun.js';
+import * as H2 from '../../../../animacion/3d/historia2d.js';
+const toma = crearToma(), { esc, M } = toma;
+window.DURACION = DURACION[5];
+// Cámara final del plano 5 (la repite el plano 6 como punto de partida)
+const FIN5 = (cad) => ({ centro: [cad.x - 0.35, cad.y, cad.z], distancia: 6, elevacion: 12, fov: 26 / 1.15 });
+window.render = (t) => {
+  const T = INICIO[5] + t;
+  toma.fijar(T);
+  const cad = M[4].punto('cadera'), cab = M[4].punto('cabeza');
+  const f = U.easeInOut(U.prog(t, 0, 2.2)), fin = FIN5(cad), L = (a, b) => a + (b - a) * f;
+  esc.orbita({ centro: [L(0, fin.centro[0]), L(1, fin.centro[1]), L(0, fin.centro[2])], distancia: L(14.2, 6), elevacion: L(4, 12), fov: L(26, fin.fov) });
+  window.EMAKI.fondoPapel(ctx);
+  esc.dibujar(ctx);
+  const pc = esc.proyectar(cad), pb = esc.proyectar(cab);
+  // punto rojo con rebote a 0,3 s
+  if (t > 0.3) { const r = 34 * U.easeBack(U.prog(t, 0.3, 0.6)); ctx.save(); ctx.fillStyle = ROJO; ctx.beginPath(); ctx.arc(pc.x, pc.y, Math.max(0, r), 0, 7); ctx.fill(); ctx.restore(); }
+  // onda: anillos que suben del punto a la boca entre 0,6 y 1,6
+  const w = U.prog(t, 0.6, 1.6);
+  if (w > 0 && w < 1) {
+    ctx.save(); ctx.strokeStyle = ROJO; ctx.lineCap = 'round';
+    for (let k = 0; k < 3; k++) { const q = w - k * 0.14; if (q <= 0 || q > 1) continue; const y = pc.y + (pb.y + 40 - pc.y) * U.easeInOut(q), a = Math.sin(Math.PI * q);
+      ctx.globalAlpha = a; ctx.lineWidth = 12; ctx.beginPath(); ctx.ellipse(pc.x + (pb.x - pc.x) * U.easeInOut(q), y, 70 + 40 * q, 22 + 10 * q, 0, 0, 7); ctx.stroke(); }
+    ctx.restore();
+  }
+  // kanji pequeño + rótulo, zona segura (arriba >250)
+  const kp = U.prog(t, 0.1, 0.9);
+  H2.kanji(ctx, '気合', 200, 420, 150, { prog: kp, color: '#1A1A1A' });
+  ctx.save(); ctx.globalAlpha = U.prog(t, 0.8, 1.1); ctx.fillStyle = '#1A1A1A'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.font = `900 52px ${window.EMAKI.marca.fuente.titulo}`; ctx.fillText('ki = energía', 200, 540); ctx.restore();
+  if (t < 1.2) tarjeta(ctx, t, '[r]hara[/r] = bajo vientre', 0, 1.2); else tarjeta(ctx, t, 'Así se enseña', 1.2, 99);
+};
+</script></body></html>

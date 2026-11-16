@@ -52,3 +52,7 @@
 | The Martial Way — https://www.themartialway.com.au/heian-shodan/ | Secuencia; posible errata en el mov. 4 | Media |
 | karateyon — https://karateyon.blogspot.com/2010/11/heian-shodan.html | Secuencia y kiai | Media |
 | Fisher (xylenepower.com) — Heian Shodan | Giros movimiento a movimiento | Media |
+| Kodansha USA, Best Karate vol. 5 — https://kodansha.us/book/best-karate-series/best-karate-vol-5 | Ficha editorial: el volumen cubre las Heian (no da movimientos) | Alta (solo como ficha) |
+| historyoffighting.com, «The History of the Heian Kata» | Historia de las Heian; leyenda de Channan marcada como tal | Baja-media |
+| Kanzenki Karate Club — https://garenewing.co.uk/kanzenki/kata_01Hshodan.php | Itosu hacia 1904; cambio de orden Shodan/Nidan | Media-baja |
+| Wikipedia «Pinan» — https://en.wikipedia.org/wiki/Pinan | Solo pista (cita Schmeisser 2004, Karate Kenkyū 1934) | Media (pista) |

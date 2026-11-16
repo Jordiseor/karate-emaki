@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Hikite · plano 10</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, k, P, U } = C.iniciar();
+window.DURACION = 2.5;
+// PLANO 10: duda. Neutra de frente, cabeza ladeada, dos «?» rojos sobre los puños.
+window.render = (t) => {
+  const resp = Math.sin(t * 2.4) * 0.5;
+  k.colocar(0, 0, 0);
+  k.aplicarPose({ ...P.neutra, cabeza: { ladeo: 12 * U.easeOut(U.prog(t, 0, 0.6)) } });
+  k.cara({ parpadeo: U.parpadeo(t, [1.3]), cejas: 0.5, sonrisa: -0.25, mirada: [0.2, 0.3] });
+  esc.orbita({ ...C.CAM.frontal, centro: [0, 1.3, 0], distancia: 6.6 - 0.3 * U.easeInOut(U.prog(t, 0, 2.5)) });
+  esc.dibujar(ctx, {});
+  const sgn = (p) => p.x < 540 ? -1 : 1;
+  for (const [pt, dx] of [['manoD', -1], ['manoI', 1]]) {
+    const p = esc.proyectar(k.punto(pt));
+    const a = U.easeOut(U.prog(t, 0.5 + (dx < 0 ? 0 : 0.2), 0.9 + (dx < 0 ? 0 : 0.2)));
+    const x = p.x + dx * 95, y = p.y - 60 - 70 * a + Math.sin(t * 3 + dx) * 10;
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.ROJO; ctx.strokeStyle = C.ROJO; ctx.lineWidth = 8; ctx.lineCap = 'round';
+    ctx.font = '900 120px Inter, Arial, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('?', x, y);
+    ctx.restore();
+  }
+  C.tarjeta(ctx, t, ['¿Cuánta fuerza', 'añade?'], { t0: 0.1, y: 270 });
+};
+</script></body></html>

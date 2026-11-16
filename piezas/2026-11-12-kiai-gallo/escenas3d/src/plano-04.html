@@ -1,0 +1,15 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 4 (4,8–6,0 s): giro de cabezas, manos al vientre, sonrisa del quinto. Cámara de fila fija. Tarjeta «Nos pasa a todos» a 0,5 s.
+import { crearToma, ctx, tarjeta, DURACION, INICIO } from './comun.js';
+const toma = crearToma();
+window.DURACION = DURACION[4];
+window.render = (t) => {
+  const T = INICIO[4] + t;
+  toma.camFila(); toma.fijar(T);
+  window.EMAKI.fondoPapel(ctx);
+  toma.esc.dibujar(ctx);
+  tarjeta(ctx, t, 'Nos pasa a todos', 0.5, 99);
+};
+</script></body></html>

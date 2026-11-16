@@ -82,3 +82,60 @@ Candidatas a `fuentes.md`:
 - Stanford Karate, katas — https://karate.groups.stanford.edu/resources/kata (media-baja; 21 movimientos y significado)
 
 Abiertas pero sin dato útil o con dato débil: shotokanfitness.blogspot.com (un kiai, direcciones dudosas; baja), karatecoaching.com/heian-1 (solo los grupos de técnicas), bujutsumartialarts.com.au (Heian = Pinan; una frase), garenewing.co.uk/kanzenki (técnicas principales), Auburn (solo vídeos).
+
+---
+
+## 2.ª ronda 16 nov
+
+**Resultado en una línea:** sigo sin fuente alta (JKA, ISKF, Nakayama) abierta con texto. Las páginas de la JKA no aparecieron en las búsquedas para este tema y el libro de Nakayama solo se pudo comprobar como ficha de editorial (no hay texto). Lo nuevo mejora los movimientos 18–21 con una descripción detallada (media), pero no con fuente alta. El dosier sirve para storyboard con las marcas de abajo.
+
+### Qué se ha verificado
+| Dato | Fuente | Fiabilidad | Estado |
+| --- | --- | --- | --- |
+| 21 movimientos | The Martial Way (texto explícito); Bertel (explícito) | Media | Confirmado por 2 fuentes más (ya había 5; ninguna federación) |
+| Kiai en los movimientos 9 y 17 | The Martial Way («KIAÏ» tras el 9 y el 17); Bertel (marca KIAI en 9 y 17) | Media | Confirmado, 5.ª y 6.ª lectura concordante |
+| Movs. 18–21: cuatro shuto-uke (chūdan) en kokutsu-dachi, sin kiai | The Martial Way; Bertel | Media | Técnica y posición confirmadas por 2 fuentes |
+| Lados 18–21 según The Martial Way: 18 izda., 19 dcha., 20 dcha., 21 izda. | The Martial Way (descripción de pivotes) | Media | Coincide con Bertel solo en la mano; Bertel da el pie delantero distinto (ver abajo) |
+| Giros 18–21 según The Martial Way: 18 = 90° a la izquierda; 19 = 45° a la derecha; 20 = otros 45° a la derecha; 21 = 45° a la izquierda | The Martial Way (una sola fuente) | Media-baja | Una sola fuente; el pie que gira es el delantero |
+| Embusen «aproximadamente en I» | The Martial Way | Media-baja | Sigue siendo una sola fuente, sin diagrama |
+| Bertel, movs. 18–21: pie delantero migi, hidari, hidari, migi (kokutsu) y solo lado, sin giros | Bertel (11 mar 2022) | Media | Contradice a The Martial Way en el pie delantero del kokutsu (ver abajo); Bertel no cita Nakayama ni JKA |
+| Best Karate vol. 5 (Nakayama, Kodansha, 2012 en edición actual) cubre las cinco Heian y tres Tekki con unas 1500 fotos secuenciales | Kodansha USA (ficha de editorial) | Alta (existencia y contenido del libro), nula para los datos de cada movimiento | El libro existe y es la referencia que Jorge puede consultar; no tengo el texto |
+| Itosu y las Pinan: la fecha varía según la fuente: «hacia 1900» (historyoffighting), «hacia 1904» (Kanzenki), «años 1880» (Wikipedia) | historyoffighting.com; Kanzenki Karate Club; Wikipedia «Pinan» | Baja-media (ninguna académica ni federación) | **No hay fecha firme.** Contradicción abierta |
+| Funakoshi cambió Pinan por Heian | Wikipedia «Pinan»; Kanzenki; historyoffighting | Media (tres coinciden) | Aceptable como «se atribuye» |
+| Heian y Pinan: mismos caracteres 平安, lecturas distintas (Heian = onyomi); «paz y seguridad» | Wikipedia «Pinan»; Kanzenki (heiwa antei) | Media | Aceptable con cautela |
+| Orden Shodan/Nidan: el Heian Shodan de Shotokan corresponde al «Pinan Nidan» de otros estilos | Wikipedia «Pinan»; Kanzenki y historyoffighting atribuyen el cambio de orden a Funakoshi | Media (Wikipedia no atribuye el cambio a Funakoshi; las otras dos sí) | Decir «según algunas fuentes»; la atribución de quién cambió el orden es discutida |
+
+### Discrepancias nuevas
+- **Pie delantero en el kokutsu de 18–21:** Bertel da migi, hidari, hidari, migi; The Martial Way describe pivotes que dejan el pie girado (el delantero) a izquierda, derecha, derecha, izquierda. Bertel escribe la mano primero y el pie entre paréntesis; las dos fuentes coinciden en el patrón izquierda-derecha-derecha-izquierda de la **mano**. Para la animación, el patrón de la mano es fiable (2 fuentes); el pie delantero y los grados son de una sola fuente.
+- **Patrón de manos 18–21:** izquierda-derecha-derecha-izquierda. Es raro frente a una alternancia estricta, pero coincide en las dos fuentes nuevas y con karateyon. Se mantiene, y el dosier avisa de que es lo que dicen las fuentes, no una deducción.
+- **Giro del mov. 18:** The Martial Way dice 90° a la izquierda; la 1.ª ronda tenía 270° de otra fuente. 90° a la izquierda desde el sur (rumbo 6, tras el mov. 17) es hacia el este (3). Como esto es una deducción mía sobre un giro de una sola fuente, sigue como «a confirmar».
+- **Fecha de Itosu:** tres fuentes, tres fechas (1880s, ~1900, ~1904). No hay consenso.
+
+### Rumbos derivados de 18–21 (DEDUCIDOS, no figuran así en ninguna fuente)
+Partiendo del 6 (sur) tras el mov. 17 y sumando los giros de The Martial Way: 18 → 3 (este); 19 → ~4:30 (sureste); 20 → 6 (sur); 21 → ~4:30 (sureste). Solo para maqueta interna; no mostrar en pantalla como dato verificado.
+
+### Lo que sigue sin verificar
+- Movs. 18–21 con fuente alta (JKA / Nakayama / federación): sin verificar. Solo hay dos fuentes de práctica con patrón de manos coincidente.
+- Forma exacta del embusen y su diagrama: sin verificar.
+- Fecha y autoría de las Heian: fecha sin consenso; ver abajo cómo presentarlo.
+- Quién cambió el orden de Shodan y Nidan (Funakoshi según dos páginas, no según Wikipedia): sin verificar.
+- Número de kiai según JKA oficial: sin verificar (la única voz discrepante, shotokanfitness, dice uno).
+
+### Cómo presentar la historia en pantalla
+- **Sí (con «atribuidas»):** «Las Heian se atribuyen a Ankō Itosu (Okinawa, hacia comienzos del siglo XX); Funakoshi las rebautizó Heian al llevar el karate a Japón». Sin año concreto en pantalla.
+- **No:** «Itosu las creó en 1907» (el 1907 del encargo no aparece en ninguna fuente abierta), ni «Funakoshi cambió el orden» como hecho.
+
+### ¿Listo para storyboard?
+**Sí, con condiciones.** Movs. 1–17, 21 movimientos y los dos kiai (9 y 17) se pueden storyboardear como «versión habitual en Shotokan». Los movs. 18–21 deben ir marcados «a confirmar» y no dibujar grados concretos en pantalla hasta que Jorge los contraste con Best Karate vol. 5 o su sensei. La historia solo con «atribuidas» y sin fecha.
+
+### Fuentes nuevas (2.ª ronda) para pasar a fuentes.md
+- The Martial Way, Heian Sho-dan, 2.ª lectura — https://www.themartialway.com.au/heian-shodan/ (media; descripción de pivotes 18–21; ya en banco, ampliar nota: 21 movimientos, kiai 9 y 17, «roughly I-shaped», giros 18–21)
+- André Bertel, mar 2022 — https://andrebertel.blogspot.com/2022/03 (media; ya en banco, ampliar nota: 18–21 con pie y mano; no cita Nakayama ni JKA)
+- Kodansha USA, Best Karate vol. 5 — https://kodansha.us/book/best-karate-series/best-karate-vol-5 (alta como ficha de editorial: contenido del libro, 2012; no respalda datos de movimientos)
+- historyoffighting.com, «The History of the Heian Kata» — https://www.historyoffighting.com/the-blog/the-history-of-the-heian-kata (baja-media; sin fuentes; usa «leyenda», «probablemente»; leyenda de Channan marcada como tal)
+- Kanzenki Karate Club — https://garenewing.co.uk/kanzenki/kata_01Hshodan.php (media-baja; Itosu hacia 1904; Funakoshi y cambio de orden)
+- Wikipedia, «Pinan» — https://en.wikipedia.org/wiki/Pinan (media, solo pista; cita Schmeisser 2004, Karate Kenkyū 1934, Kyohan; 1880s; Funakoshi no acreditado con el cambio de orden)
+
+Bloqueadas o sin abrir: iainabernethy.co.uk (redirección y permiso denegado), JKA/ISKF (sin resultados útiles), Fisher «3rd Turn» (solo llega al mov. 12; sin kiai ni 17–21).
+
+Consumo: 6 búsquedas, 7 páginas abiertas (más 2 bloqueadas).

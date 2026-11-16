@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Hikite · plano 08</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, k, P, U } = C.iniciar();
+const r = new C.Karateka3D({ cinturon: 'negro' }); r.silueta('#1A1A1A'); esc.escena.add(r.raiz);
+window.DURACION = 2.5;
+// PLANO 8: agarre. La mano izquierda abierta llega a la muñeca del rival (sin tirar).
+const RUMBO = -90;
+function colocarRival(inclinar) {
+  let x = 0, z = 0;
+  for (let i = 0; i < 4; i++) { // traslación rígida iterada hasta que manoD rival = manoI karateka
+    r.colocar(x, z, 180 + RUMBO); r.aplicarPose(P['rival-brazo-extendido'], { suelo: true, inclinar });
+    const m = k.punto('manoI'), b = r.punto('manoD');
+    x += m.x - b.x; z += m.z - b.z;
+  }
+  r.colocar(x, z, 180 + RUMBO); r.aplicarPose(P['rival-brazo-extendido'], { suelo: true, inclinar });
+}
+k.colocar(0, 0, RUMBO); k.aplicarPose(P['agarre-brazo']);
+const CX = k.punto('manoI').x + 0.1; // misma cámara fija en planos 8 y 9
+window.render = (t) => {
+  const f = U.easeInOut(U.prog(t, 0.2, 1.7));
+  k.colocar(0, 0, RUMBO);
+  k.aplicarPose(C.mezclar(P['zenkutsu-dachi'], P['agarre-brazo'], f));
+  k.cara({ parpadeo: U.parpadeo(t, [1.4]), cejas: 0, sonrisa: 0 });
+  colocarRival(0);
+  const cx = CX;
+  esc.orbita({ ...C.CAM.perfil, centro: [cx, 0.95, 0], distancia: 8.2 - 0.3 * U.easeInOut(U.prog(t, 0, 2.5)) });
+  esc.dibujar(ctx, {});
+  C.tarjeta(ctx, t, ['Según Funakoshi', '(traducción)'], { t0: 0.1 });
+  C.letraPequena(ctx, ['Rentan Goshin Karate-Jutsu, 1925', '(traducción al inglés)'], { size: 48 });
+};
+</script></body></html>

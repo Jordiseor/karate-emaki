@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Hikite · plano 02</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, k, P, d, U } = C.iniciar();
+window.DURACION = 2.5;
+// PLANO 2: perfil del lado del hikite; gesto en bucle lento (ida-vuelta suave), flecha roja mano→cadera y 引き手.
+const f = (t) => 0.3 + 0.7 * U.easeInOut(0.5 - 0.5 * Math.cos(Math.PI * U.prog(t, 0, 2.5) * 1.6));
+const poseEn = (t) => C.golpe(P, f(t));
+window.render = (t) => {
+  k.colocar(0, 0, -90);
+  k.aplicarPose(poseEn(t));
+  k.cara({ parpadeo: U.parpadeo(t, [1.4]), cejas: -0.2, sonrisa: 0, mirada: [-0.3, 0] });
+  esc.orbita({ ...C.CAM.perfil });
+  d.limpiar();
+  const mano = k.punto('manoI').clone();
+  k.aplicarPose(C.golpe(P, 0.3)); const ini = k.punto('manoI').clone(); k.aplicarPose(poseEn(1.25)); const fin = k.punto('manoI').clone(); k.aplicarPose(poseEn(t));
+  // flecha del punto de partida del gesto a la cadera; la punta sigue a la mano
+  const cr = U.clamp((f(t) - 0.3) / 0.7) * U.easeOut(U.prog(t, 0.1, 0.5));
+  d.flecha({ desde: [ini.x, ini.y + 0.12, ini.z], hacia: [fin.x, fin.y + 0.12, fin.z], crecer: cr, alfa: 0.95 });
+  esc.dibujar(ctx, {});
+  // kanji a trazos a 0,8 s, a la derecha del brazo (zona libre del dojo)
+  C.H2.kanji(ctx, '引き手', 955, 1010, 170, { prog: U.easeOut(U.prog(t, 0.8, 1.6)), halo: 0.7, vertical: true });
+  C.tarjeta(ctx, t, ['Hikite:', '«mano que tira»'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

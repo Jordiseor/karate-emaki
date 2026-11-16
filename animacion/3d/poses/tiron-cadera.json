@@ -1,0 +1,62 @@
+{
+ "nombre": "tiron-cadera",
+ "descripcion": "Bunkai del hikite, plano 9: las mismas piernas de hidari zenkutsu; la mano izquierda, ahora CERRADA, ha tirado hasta la cadera (hikite izquierdo, palma arriba, codo atrás). La derecha, en su hikite. Viene de agarre-brazo con mezclar(); el rival se inclina con k.inclinar.",
+ "cadera": {},
+ "piernaI": {
+  "adelante": 50,
+  "abre": 0,
+  "gira": 0
+ },
+ "rodillaI": 50,
+ "tobilloI": {
+  "flex": 0,
+  "ladeo": 0
+ },
+ "piernaD": {
+  "adelante": -34.6,
+  "abre": 3.2,
+  "gira": 36.5
+ },
+ "rodillaD": 0,
+ "tobilloD": {
+  "flex": 27.6,
+  "ladeo": -22
+ },
+ "tronco": {},
+ "cabeza": {
+  "inclina": -4
+ },
+ "manoI": 0,
+ "manoD": 0,
+ "brazoD": {
+  "adelante": -59,
+  "abre": 5.6,
+  "gira": -0.4
+ },
+ "codoD": 115,
+ "munecaD": {
+  "gira": 94
+ },
+ "brazoI": {
+  "adelante": -59,
+  "abre": 5.6,
+  "gira": -0.4
+ },
+ "codoI": 115,
+ "munecaI": {
+  "gira": 94
+ },
+ "medidas": {
+  "puno_D": [
+   -0.17,
+   0.873,
+   0.014
+  ],
+  "puno_I": [
+   0.17,
+   0.873,
+   0.014
+  ],
+  "altura_cadera_m": 0.809
+ }
+}
