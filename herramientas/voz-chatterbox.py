@@ -22,6 +22,30 @@ PIEZAS = {
         ("f08", "Karate, contado escena a escena.", 0.4),                                   # plano 8
         ("f09", "¿Te quedas?", 0.0),                                                        # plano 9
     ],
+    # v2 (16 nov 2026): una frase por plano, de final/locucion-v2.txt
+    "2026-11-09-zenkutsu-estabilidad": [
+        ("f01", "Empújame hacia delante. ¿Cuánto aguanto?", 0.3),                        # plano 1 (0,0 s)
+        ("f02", "Mientras el punto rojo caiga sobre tus pies, aguantas.", 0.3),          # plano 2 (2,0 s)
+        ("f03", "Pies juntos: ocho grados y fuera.", 0.4),                               # plano 3 (5,0 s)
+        ("f04", "Zenkutsu dachi: un metro de base.", 0.4),                               # plano 4 (7,5 s)
+        ("f05", "Hacia delante, aguantas unos veintiséis grados.", 0.4),                 # plano 5 (10,0 s)
+        ("f06", "Baja la cadera: aún más.", 0.5),                                        # plano 6 (13,0 s)
+        ("f07", "De lado, la base es estrecha.", 0.6),                                   # plano 7 (15,0 s)
+        ("f08", "¿Por dónde me empujarías tú?", 0.0),                                    # plano 8 (17,7 s)
+    ],
+    "2026-11-09-nombre-shotokan": [
+        ("f01", "Shotokan no es un estilo.", 0.3),                                       # 0,0 s
+        ("f02", "Es una casa.", 0.4),                                                    # 1,6 s
+        ("f03", "Funakoshi firmaba sus poemas como Shoto:", 0.3),                        # 3,2 s
+        ("f04", "Olas de pino. Suena a mar.", 0.4),                                      # 5,4 s
+        ("f05", "Y kan significa casa.", 0.4),                                           # 7,8 s
+        ("f06", "En el treinta y nueve, levantan un doyo.", 0.4),                        # 9,8 s
+        ("f07", "Cuentan que sus alumnos colgaron el cartel.", 0.4),                     # 12,6 s
+        ("f08", "En el cuarenta y cinco, ardió.", 0.5),                                  # 15,4 s
+        ("f09", "Funakoshi nunca bautizó su karate.", 0.4),                              # 17,8 s
+        ("f10", "Y el mundo lo llamó Shotokan.", 0.4),                                   # 20,4 s
+        ("f11", "Dices Shotokan, nombras una casa que ya no existe.", 0.0),              # 22,8 s
+    ],
 }
 
 def main():

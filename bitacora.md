@@ -51,3 +51,4 @@ Entradas anteriores resumidas en archivo/bitacora-2026-11.md.
 - 2026-11-16 · Investigador · Kumite: reglamento WKF 2026.01 verificado (yūko 1, waza-ari 2, ippon 3); contacto 2/5 cm en adultos contra 5/10 de karate.news; «zanshin» no aparece en el texto. No se sabe qué es novedad de 2026.
 - 2026-11-16 · Investigador · Embusen: 21 movimientos, 1–17 coherentes en tres fuentes medias; 18–21 y la historia de Itosu sin verificar. Falta 2.ª ronda con Nakayama/JKA.
 - 2026-11-16 · Sensei · Bloqueo: zenkutsu sale el mar 17 sin voz; aviso en el buzón.
+- 2026-11-16 · Sensei · Jorge pide que generemos la voz nosotros: no se puede en la nube (huggingface.co, de donde se bajan los pesos de Chatterbox, está bloqueado). voz-chatterbox.py/.ps1 ahora incluyen zenkutsu v2 y Shotokan v2 y preguntan la pieza (antes solo hacían la presentación).

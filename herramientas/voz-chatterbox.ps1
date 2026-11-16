@@ -1,11 +1,18 @@
 ﻿# KARATE EMAKI - locución natural con Chatterbox (gratis, licencia MIT), en tu PC.
-# Uso: clic derecho > "Ejecutar con PowerShell", o en PowerShell desde esta carpeta:
-#   powershell -ExecutionPolicy Bypass -File .\voz-chatterbox.ps1
+# Uso: clic derecho > "Ejecutar con PowerShell" (te pregunta la pieza), o en PowerShell desde esta carpeta:
+#   powershell -ExecutionPolicy Bypass -File .\voz-chatterbox.ps1 2026-11-09-zenkutsu-estabilidad
+# Piezas: 2026-11-09-zenkutsu-estabilidad, 2026-11-09-nombre-shotokan, 2026-11-11-presentacion
 # La primera vez instala Python 3.11 (si falta), Chatterbox y el modelo (~3-4 GB en total). Tarda un rato.
 # Al final deja un .zip en Videos\KarateEmaki\ para subirlo al chat.
 
+param([string]$pieza = "")
 $ErrorActionPreference = "Stop"
-$pieza = "2026-11-11-presentacion"
+if (-not $pieza) {
+  Write-Host "1) zenkutsu   2) Shotokan   3) presentacion"
+  $n = Read-Host "Qué pieza (1/2/3)"
+  $pieza = @{"1"="2026-11-09-zenkutsu-estabilidad"; "2"="2026-11-09-nombre-shotokan"; "3"="2026-11-11-presentacion"}[$n]
+  if (-not $pieza) { Write-Host "Opción no válida"; exit 1 }
+}
 $aqui  = Split-Path -Parent $MyInvocation.MyCommand.Path
 $base  = Join-Path $env:USERPROFILE "KarateEmaki"
 $venv  = Join-Path $base "chatterbox-venv"
