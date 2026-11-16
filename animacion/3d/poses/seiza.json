@@ -1,0 +1,65 @@
+{
+ "nombre": "seiza",
+ "descripcion": "Seiza (sentado sobre los talones) con las manos cerradas sobre los muslos, para el público sentado (siluetas, sala del Kōdōkan). Aplicar SIEMPRE con k.aplicarPose(P.seiza, { suelo: false, altura: -0.62 }) (o crearSala().publico, que lo hace). Con gi blanco las piernas se cruzan visualmente: usar con k.silueta().",
+ "piernaI": {
+  "adelante": 72,
+  "abre": 8,
+  "gira": 0
+ },
+ "piernaD": {
+  "adelante": 72,
+  "abre": 8,
+  "gira": 0
+ },
+ "rodillaI": 162,
+ "rodillaD": 162,
+ "tobilloI": {
+  "flex": -90
+ },
+ "tobilloD": {
+  "flex": -90
+ },
+ "cadera": {},
+ "tronco": {
+  "inclina": 2
+ },
+ "cabeza": {},
+ "brazoI": {
+  "adelante": 28,
+  "abre": 10,
+  "gira": 0
+ },
+ "brazoD": {
+  "adelante": 28,
+  "abre": 10,
+  "gira": 0
+ },
+ "codoI": 55,
+ "codoD": 55,
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {},
+ "munecaD": {},
+ "aplicar": {
+  "suelo": false,
+  "altura": -0.62
+ },
+ "medidas": {
+  "puno_D": [
+   -0.234,
+   0.42,
+   0.418
+  ],
+  "puno_I": [
+   0.234,
+   0.42,
+   0.418
+  ],
+  "tobillo_D": [
+   -0.095,
+   0.148,
+   -0.02
+  ],
+  "altura_cadera_m": 0.335
+ }
+}

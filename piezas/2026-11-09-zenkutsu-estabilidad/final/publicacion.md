@@ -14,3 +14,4 @@
 - Metricool: id 429829658 · uuid 287322591082857675 · estado pendiente
 - Planificador: https://app.metricool.com/planner/calendar?blogId=8028366&openWithPostUuid=287322591082857675
 - Texto: copy.md (Instagram + hashtags, sin la cifra de 30°); primer comentario: «Comentario fijado»
+- 16 nov: Jorge pide publicar ya. Fecha cambiada en Metricool (nuevo id 429938537). PUBLICADA: https://www.instagram.com/reel/DfzRq0qD3vm/ (lun 16 nov, 12:42; Jorge pidió adelantarla)

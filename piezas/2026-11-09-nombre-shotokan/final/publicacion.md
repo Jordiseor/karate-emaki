@@ -14,3 +14,4 @@
 - Metricool: id 429829683 · uuid 8093920365330056490 · estado pendiente
 - Planificador: https://app.metricool.com/planner/calendar?blogId=8028366&openWithPostUuid=8093920365330056490
 - Texto: copy.md (Instagram + hashtags); primer comentario: «Comentario fijado». El borrador v1 (id 424214020, sáb 14) sigue en Metricool sin publicar: que lo borre Jorge.
+- 16 nov: Jorge pide publicar ya. Fecha cambiada en Metricool (nuevo id 429938566). PUBLICADA: https://www.instagram.com/reel/DfzSIhPDU5x/ (lun 16 nov, 12:47; Jorge pidió adelantarla)

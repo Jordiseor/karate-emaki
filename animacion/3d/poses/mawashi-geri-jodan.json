@@ -1,0 +1,74 @@
+{
+ "nombre": "mawashi-geri-jodan",
+ "descripcion": "Mawashi-geri jōdan (patada circular a la cabeza) con la pierna derecha desde kamae hidari: el tobillo derecho queda en (-0,20; 1,46; 0,60) respecto al pie de apoyo, a la altura de la cabeza de ao en kamae, y se detiene (control). Pie de apoyo girado ≈ 39°, cuerpo inclinado hacia el lado contrario. Poses de un instante: usar mezclar(kamae, mawashi-geri-prep, f) → mezclar(prep, mawashi-geri-jodan, f). Alinear al rival con alinearRival() de kumite3d.js.",
+ "brazoI": {
+  "adelante": 32.9,
+  "abre": 30.5,
+  "gira": 21.8
+ },
+ "brazoD": {
+  "adelante": 22.2,
+  "abre": -11.1,
+  "gira": -66.7
+ },
+ "codoI": 108.9,
+ "codoD": 98.1,
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {
+  "gira": -70
+ },
+ "munecaD": {
+  "gira": -80
+ },
+ "cadera": {
+  "giro": -4.5
+ },
+ "tronco": {
+  "giro": 25.5,
+  "ladeo": 34.3,
+  "inclina": 9.7
+ },
+ "cabeza": {
+  "giro": -20.9,
+  "inclina": 6
+ },
+ "piernaD": {
+  "adelante": 127.8,
+  "abre": 4.3,
+  "gira": 0
+ },
+ "rodillaD": -0.2,
+ "tobilloD": {
+  "flex": 8,
+  "ladeo": 0
+ },
+ "piernaI": {
+  "adelante": -1.1,
+  "abre": 2.1,
+  "gira": 43
+ },
+ "rodillaI": 0.6,
+ "tobilloI": {
+  "flex": -12.1,
+  "ladeo": -2.4
+ },
+ "medidas": {
+  "puno_D": [
+   0.287,
+   1.094,
+   0.086
+  ],
+  "puno_I": [
+   0.56,
+   1.116,
+   0.093
+  ],
+  "tobillo_D": [
+   -0.204,
+   1.434,
+   0.631
+  ],
+  "altura_cadera_m": 0.991
+ }
+}

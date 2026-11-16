@@ -25,6 +25,10 @@ Para hacer una escena **no hace falta leer el código**: copia `plantilla-escena
 | `rollo2d.js` | Rollo de papel (emaki) 2D: ventana de viñetas, desplazamiento, enrollar/desenrollar, atado, apertura «sol» (ver «Presentación») |
 | `logo3d.js` | Cara del logo en 3D con el encuadre de `foto-perfil.png`, disco rojo, caras de kiai y gallo (ver «Presentación») |
 | `herramientas/disenar-poses-presentacion.mjs` | Genera `choku-zuki-kiai` y `gyaku-zuki-kiai` |
+| `judo3d.js` | Pieza «cinturón de judo»: cinturón suelto, siluetas de judoka/Kanō/Kawaishi, sala del Kōdōkan con público, pancarta, sello 2D (ver «Judo y Kōdōkan») |
+| `kumite3d.js` | Pieza «kumite WKF»: pareja aka/ao, alineación de patadas, área de combate (ver «Kumite») |
+| `herramientas/disenar-poses-2026-11b.mjs` | Genera las poses de judo y de kumite de 2026-11-16b |
+| `prueba/poses-2026-11-16b.png` | Hoja de revisión (10 vistas); capturas sueltas en `prueba/2026-11-16b/`; escena `prueba/poses-2026-11-16b.html` |
 | `prueba/presentacion/` | Escenas de ejemplo + PNG de cada asset de la presentación |
 
 ## Cómo renderizar
@@ -442,3 +446,105 @@ Fila del ejemplo: `crearFila(esc, { n: 6, columnas: 3, separacion: [0.82, 1.1], 
 Golpe con boca abierta: `choku-zuki-kiai` (desde yoi, para la fila) o `gyaku-zuki-kiai` + `k.cara(CARAS.kiai)`; caras `kiai`, `gallo`, `deReojo` (sonrisa tímida: `{ sonrisa: 0.5 }`).
 Fila de 5 con cinturones distintos: `crearFila(esc, { n: 5, columnas: 5, separacion: [0.7, 1.1] })` y `fila.miembros[i].cinturon('verde')`; cámara `orbita({ centro:[0,1,0], distancia: 12.5, elevacion: 4, fov: 26 })` y `esc.escena.fog.near = 16; fog.far = 60` (si no, la niebla los borra). Con `distancia 8.8` solo caben 3.
 Hoja de prueba: `HTML=$PWD/prueba/poses-2026-11-16.html bash herramientas/taller.sh salida.png "0 1 … 10"`.
+
+## Judo y Kōdōkan — `judo3d.js` (pieza `2026-11-16-cinturon-judo`)
+
+`import { crearCinturonSuelto, crearJudoka, crearSala, crearPancarta, sello } from '.../judo3d.js'`. Escena de ejemplo: `prueba/poses-2026-11-16b.html`.
+
+### Poses nuevas (`P[...]`, `herramientas/disenar-poses-2026-11b.mjs`)
+
+| Pose | Uso |
+| --- | --- |
+| `P['atar-cinturon']` | Yoi con las dos manos cerradas a los lados del nudo (0,2 m), tirando de los extremos (planos 1 y 11). `k.aplicarPose(p, { cinta: { x: 0.2, z: 0 } })` balancea las caídas |
+| `P['pasar-objeto']` | Brazos extendidos al frente, palmas arriba, manos a 0,24 m, inclinación 10° (silueta de Kanō) |
+| `P.recibir` | Dos manos abiertas juntas, palmas arriba, inclinación 14° (silueta de Funakoshi). Colocación: dador en `(0, -0.43, rumbo 0)`, receptor en `(0, 0.43, rumbo 180)` (0,86 m entre ellos) |
+| `P.seiza` | Sentado sobre los talones, manos en los muslos. Aplicar con `{ suelo: false, altura: -0.62 }` (la sala lo hace sola) |
+
+Entrada y salida de un gesto: `mezclar(P.yoi, P.recibir, f)`.
+
+### Cinturón suelto — `crearCinturonSuelto({ color: 'negro', largo: 1.9 })`
+
+Cinta plana (se reconstruye cada vez que la llamas, sin estado) con las puntas colgando. `esc.escena.add(c.raiz)`.
+
+| Método | Uso |
+| --- | --- |
+| `c.entre(A, B)` | Sujeto por dos puntos (`k.punto('manoI')`, `k.punto('manoD')`); las puntas caen |
+| `c.pasar(dador, receptor, p, { arco: 0.1 })` | `p` 0→1: va de las manos del dador a las del receptor (ambos ya con su pose aplicada ese fotograma) |
+| `c.tirante(A, B)` | Recto, centrado entre A y B |
+| `c.halo(p, escala)` | Resplandor cálido de leyenda (0..1, aditivo, borde irregular). No es rojo: el rojo del plano 8 es la tarjeta «LEYENDA» |
+| `c.color('amarillo')`, `c.ocultar()`, `c.mostrar()` | |
+
+```js
+const a = crearJudoka({ cinturon: 'negro', color: '#1A1A1A', detalle: 'kano' }), b = crearJudoka({ cinturon: 'negro', color: '#1A1A1A' });
+a.colocar(0, -0.43, 0); b.colocar(0, 0.43, 180); a.aplicarPose(P['pasar-objeto']); b.aplicarPose(P.recibir);
+cinta.pasar(a, b, U.prog(t, 1, 2.5)); cinta.halo(U.prog(t, 2.5, 3.2));
+```
+
+### Siluetas — `crearJudoka({ cinturon: 'blanco' | 'negro', color: '#3E3A36', detalle: null | 'kano' | 'kawaishi', peinado })`
+
+Karateka3D en silueta sin rostro **con el cinturón visible** (el blanco, blanco; el negro, negro puro; `silueta()` a secas lo pierde).
+Poses: `neutra`, `yoi`, `rei`, `pies-juntos`, `gyaku-zuki-kiai` (Funakoshi en kata). Para el plano 4 usa el `color` por defecto (marrón ceniza)
+para que el cinturón negro se lea; Kanō SIEMPRE `color: '#1A1A1A'`.
+`detalle` es la única seña de las figuras históricas, sin rasgos de la persona: `'kano'` = hakama (falda recta oscura; solo piernas rectas: neutra, yoi, rei),
+`'kawaishi'` = boina plana (seña visual de «Francia»; el animador decide si la usa). Ancho de 4 siluetas en fila: cámara `distancia 14`, separación 1,0 m.
+
+### Sala del Kōdōkan — `crearSala(esc, { publico: {} })`
+
+Estilizada, **sin logos ni escudos**: paredes de yeso claro, postes y vigas de madera, ventanales de shōji; tatami del escenario
+(`crearEscenario({ suelo: 'tatami' })`). Oculta las paredes del dōjō cálido; `sala.mostrar()` / `sala.ocultar()` las alterna.
+Hueco útil: ancho 16 m, fondo hasta z = −16.
+
+- `publico: { filasLado: 3, porFila: 6, filasFrente: 2, porFilaFrente: 7 }` → siluetas sentadas (seiza) en U: dos lados mirando al centro y un fondo que mira a cámara
+  (50 por defecto; `publico: null` = sala vacía). `sala.publico.miembros` son Karateka3D.
+- `sala.publico.pose(P, { t, modo: 'quieto' | 'asentir' | 'mirar', ritmo })`: cabecean (plano 6) o se vuelven unos a otros. Llamarlo cada fotograma.
+- Funakoshi: `crearJudoka({ cinturon: 'negro', color: '#1A1A1A' })` en el centro (z ≈ 0), `P['gyaku-zuki-kiai']`. Cámara de la prueba: `orbita({ centro:[0,1,-2], distancia: 20, elevacion: 12, fov: 30 })`.
+- `crearPancarta({ texto: '', ancho: 2.2, alto: 0.7, y: 3.4 })` (`.colocar(x, z, rumbo)`, `.pop(p)`): tela de papel con dos varas, vacía por defecto (ponle `texto`
+  o rotúlala en 2D). Cartel de madera con texto: `crearCartel` (historia3d). Mapa/emaki: `rollo2d`.
+
+### Sello rojo (2D) — `sello(ctx, '初段', x, y, size, p, { rotar, color })`
+
+Estampa con rebote (`p` 0→1). `'沖縄'` y `'初段'` salen a dos caracteres apilados; un solo carácter sale grande. Rojo de marca. Dibujar después de `esc.dibujar`.
+
+## Kumite — `kumite3d.js` (pieza `2026-11-16-kumite-puntos`)
+
+`import { crearPareja, alinearRival, crearAreaWKF, CINTURON_AKA, CINTURON_AO } from '.../kumite3d.js'`
+
+### Poses nuevas
+
+| Pose | Uso |
+| --- | --- |
+| `P['mawashi-geri-jodan']` | Patada circular a la cabeza con la pierna **derecha** desde `kamae` (hidari): tobillo en (−0,20; 1,43; 0,63) respecto al pie de apoyo, a la altura de la cabeza de ao. Poses de un instante: `mezclar(P.kamae, P['mawashi-geri-prep'], f)` → `mezclar(prep, jodan, f)`. Para espejo (pierna izquierda) `espejo(P[...])` |
+| `P['mawashi-geri-prep']` | Rodilla derecha subida de lado |
+| `P['mae-geri-chudan']` | Patada frontal al tronco, tobillo derecho en (−0,12; 0,98; 0,81). Preparación: `P['mae-geri-prep']` |
+| `P['kumite-esquiva']` | Ao recibe: kamae con el tronco 12° atrás y rodillas flexionadas, guardia alta |
+| `P['espalda-tras-patada']` | Giro de ≈160° (cadera 80° + tronco 80°) con la cabeza mirando de reojo: la espalda queda hacia ao (plano 9). `mezclar(P['mae-geri-chudan'], P['espalda-tras-patada'], f)` |
+
+Sin casco, sin contacto: las patadas se paran a ≈ 5 cm (`hueco`). Si el pie de apoyo desliza al mezclar, `k.aplicarPose(p, { ancla: { pie: 'I', x, z } })`.
+
+### Pareja — `const par = crearPareja(esc, { distancia: 2 })`
+
+`par.aka` (cinturón `CINTURON_AKA` #B01620, un rojo algo más oscuro que el de marca #C8102E para no confundirse con rastros y marcador;
+si prefieres el de marca, `par.aka.cinturon('rojo')`) y `par.ao` (`CINTURON_AO` #1F4C9A, flequillo). Los dos son Karateka3D con gi blanco, sin casco.
+
+| Método | Uso |
+| --- | --- |
+| `par.colocar(d, x, z, rumbo)` | Enfrentados a `d` m, centrados en (x, z). Aka mira a +Z con rumbo 0 y ao a −Z |
+| `par.alinear('mawashi-geri-jodan' \| 'mae-geri-chudan', { hueco: 0.05 })` | Tras `aplicarPose` a los dos: mueve a ao para que el pie de aka acabe a `hueco` m de su cabeza (jōdan) o pecho (chūdan). Llamarlo cada fotograma que aka esté en la pose |
+| `par.centro()` | `[x, z]` del punto medio, para centrar la cámara |
+
+Cámara de 2 personas en 9:16: `esc.orbita({ centro:[cx, 1.1, cz], distancia: 10.5, azimut: ±75…90, elevacion: 3, fov: 26 })`; con `distancia 7,5` no cabe aka entero.
+La patada derecha se ve de frente desde `azimut −75` (aka a la izquierda, ao a la derecha); desde `+90` el pie queda tapado por la cabeza de ao.
+`esc.sombraEn(cx, cz)` si se alejan del origen. Dos Karateka3D con sombra: ≈ 2 s/fotograma a escala 0,5.
+
+### Área de combate — `crearAreaWKF(esc, { lado: 8, seguridad: 2 })`
+
+Lámina sobre el tatami: línea blanca del área (8 × 8 m), zona de seguridad (jōgai) algo más oscura fuera, y dos marcas de salida (roja y azul) a 2 m. Decorativa: no pongas cifras de medidas en pantalla.
+`.ocultar()` / `.mostrar()`. Marcador, regla de seis casillas, cronómetro 3:00 y bandera senshu son 2D (`overlay2d.js`), los hace el animador. Las protecciones (guantes, espinilleras) no están hechas: los cinturones bastan.
+
+### Tiempos y límites (judo y kumite)
+
+- Captura suelta ≈ 3,5 s (arranque incluido); sala con 50 siluetas ≈ 5,3 s. Fotograma de vídeo: ≈ 1,5 s (pareja), ≈ 2,5–3 s (sala llena); en `escala: 0.5`.
+- El hakama de Kanō y la boina de Kawaishi son rígidos: solo con las piernas rectas.
+- Las manos agarran el cinturón «de mentira»: la cinta se pone entre `punto('manoI')` y `punto('manoD')`; con las manos muy separadas se queda recta. No hay anudado ni nudo que se deshaga: `atar-cinturon` es un gesto con las caídas del propio karateka.
+- La patada circular se resuelve por optimización (error de ≈ 4 cm sobre el objetivo); el empeine apunta de lado y no se ve bien desde azimut +90.
+- La sala llena es de siluetas todas iguales de color (con variación de peinado y cinturón negro/blanco); sin sombras proyectadas, salvo la del personaje central.

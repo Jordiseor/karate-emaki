@@ -1,0 +1,69 @@
+{
+ "nombre": "recibir",
+ "descripcion": "Recibir con las dos manos (plano 8, silueta de Funakoshi): yoi, inclinación de 14° (respeto), manos abiertas con las palmas arriba, juntas (0,18 m), codos pegados al cuerpo. Al otro lado del objeto: pasar-objeto a 0,85 m, de frente (rumbo 180).",
+ "cadera": {},
+ "piernaI": {
+  "adelante": 2.2,
+  "abre": 6.6,
+  "gira": 27.7
+ },
+ "rodillaI": 5,
+ "tobilloI": {
+  "flex": -0.1,
+  "ladeo": -4.8
+ },
+ "piernaD": {
+  "adelante": 2.2,
+  "abre": 6.6,
+  "gira": 27.7
+ },
+ "rodillaD": 5,
+ "tobilloD": {
+  "flex": -0.1,
+  "ladeo": -4.8
+ },
+ "tronco": {
+  "inclina": 14
+ },
+ "cabeza": {
+  "inclina": 8
+ },
+ "manoI": 1,
+ "manoD": 1,
+ "munecaI": {
+  "gira": 92
+ },
+ "brazoI": {
+  "adelante": 11.7,
+  "abre": 2.2,
+  "gira": -15.4
+ },
+ "codoI": 108.7,
+ "munecaD": {
+  "gira": 92
+ },
+ "brazoD": {
+  "adelante": 11.7,
+  "abre": 2.2,
+  "gira": -15.4
+ },
+ "codoD": 108.7,
+ "medidas": {
+  "puno_D": [
+   -0.091,
+   1.121,
+   0.339
+  ],
+  "puno_I": [
+   0.091,
+   1.121,
+   0.339
+  ],
+  "tobillo_D": [
+   -0.17,
+   0.075,
+   0
+  ],
+  "altura_cadera_m": 0.951
+ }
+}

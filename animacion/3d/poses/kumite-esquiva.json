@@ -1,0 +1,74 @@
+{
+ "nombre": "kumite-esquiva",
+ "descripcion": "Ao recibe / esquiva (planos 1, 4, 5, 10): kamae con el tronco inclinado 12° hacia atrás, rodillas algo más flexionadas y las dos manos de guardia delante de la cara. Sin casco. Ponerlo con rumbo 180 frente a aka (alinearRival).",
+ "cadera": {
+  "giro": -35,
+  "ladeo": 0
+ },
+ "tronco": {
+  "giro": -5,
+  "inclina": -12
+ },
+ "cabeza": {
+  "giro": 38,
+  "inclina": 6
+ },
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {
+  "gira": -70
+ },
+ "munecaD": {
+  "gira": -80
+ },
+ "piernaI": {
+  "adelante": 19.9,
+  "abre": 16.3,
+  "gira": 35.9
+ },
+ "rodillaI": 30,
+ "tobilloI": {
+  "flex": -1.5,
+  "ladeo": -0.9
+ },
+ "piernaD": {
+  "adelante": -1.4,
+  "abre": 11.9,
+  "gira": 10.1
+ },
+ "rodillaD": 34,
+ "tobilloD": {
+  "flex": 19.3,
+  "ladeo": -11.9
+ },
+ "brazoI": {
+  "adelante": 32.9,
+  "abre": 30.5,
+  "gira": 21.8
+ },
+ "codoI": 108.9,
+ "brazoD": {
+  "adelante": 22.2,
+  "abre": -11.1,
+  "gira": -66.7
+ },
+ "codoD": 98.1,
+ "medidas": {
+  "puno_D": [
+   0.033,
+   1.216,
+   0.193
+  ],
+  "puno_I": [
+   0.137,
+   1.407,
+   0.359
+  ],
+  "tobillo_D": [
+   -0.03,
+   0.136,
+   -0.319
+  ],
+  "altura_cadera_m": 0.933
+ }
+}

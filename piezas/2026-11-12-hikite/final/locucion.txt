@@ -1,0 +1,12 @@
+Locución hikite (27 s, voz Kokoro em_santa). Formato: inicio en s | texto en pantalla | texto para la voz (grafía adaptada: hikite→jikite para que suene la h japonesa). La voz arranca en 0,0 s y termina abierta para el bucle.
+0.0 | ¿Y el brazo que NO golpea? | ¿Para qué sirve el brazo que no golpea?
+2.5 | Hikite: «mano que tira» | Se llama jikite: la mano que tira.
+5.0 | Error frecuente: a medio camino | Se ve mucho: la mano se queda a medio camino.
+7.5 | Que recorra todo el trayecto | Que recorra todo el trayecto.
+10.0 | Uno sale, otro vuelve | Razón uno: un brazo sale, el otro vuelve.
+12.5 | Coordina cadera y tronco | Y coordina cadera y tronco.
+14.5 | Razón dos: el bunkai | Razón dos: el bunkai, la aplicación del kata.
+17.0 | Según Funakoshi (traducción) | Según una traducción de Funakoshi…
+19.5 | Agarrar y tirar | …es agarrar y tirar del rival.
+22.0 | ¿Cuánta fuerza añade? | ¿Cuánta fuerza añade? Los científicos aún lo discuten.
+24.5 | ¿Equilibrio o agarre? | ¿Te lo enseñaron como equilibrio o como agarre?

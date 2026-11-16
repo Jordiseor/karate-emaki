@@ -1,0 +1,74 @@
+{
+ "nombre": "mae-geri-prep",
+ "descripcion": "Preparación del mae-geri: la rodilla derecha sube al frente (muslo a 85°, rodilla a 100°, espinilla colgando), pie de apoyo y cuerpo como en mae-geri-chudan. Mezclar con mae-geri-chudan para extender.",
+ "brazoI": {
+  "adelante": 32.9,
+  "abre": 30.5,
+  "gira": 21.8
+ },
+ "brazoD": {
+  "adelante": 22.2,
+  "abre": -11.1,
+  "gira": -66.7
+ },
+ "codoI": 108.9,
+ "codoD": 98.1,
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {
+  "gira": -70
+ },
+ "munecaD": {
+  "gira": -80
+ },
+ "cadera": {
+  "giro": -4.3
+ },
+ "tronco": {
+  "giro": 18.7,
+  "ladeo": 19.7,
+  "inclina": 6
+ },
+ "cabeza": {
+  "giro": -14.4,
+  "inclina": 6
+ },
+ "piernaD": {
+  "adelante": 85,
+  "abre": 4,
+  "gira": 0
+ },
+ "rodillaD": 100,
+ "tobilloD": {
+  "flex": -8,
+  "ladeo": 0
+ },
+ "piernaI": {
+  "adelante": 0,
+  "abre": 0,
+  "gira": 33.4
+ },
+ "rodillaI": 0,
+ "tobilloI": {
+  "flex": -9.8,
+  "ladeo": 0
+ },
+ "medidas": {
+  "puno_D": [
+   0.248,
+   1.156,
+   0.128
+  ],
+  "puno_I": [
+   0.502,
+   1.247,
+   0.175
+  ],
+  "tobillo_D": [
+   -0.138,
+   0.494,
+   0.292
+  ],
+  "altura_cadera_m": 0.985
+ }
+}

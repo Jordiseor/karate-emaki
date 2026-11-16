@@ -1,0 +1,4 @@
+Locución «El kiai gallo» (9 palabras, 9,0 s). Formato: inicio en s | texto en pantalla | texto para la voz. Voz Kokoro em_santa. Los kiai y el gallo son efectos sintetizados, no voz.
+0.0 | RONDA DE KIAI | ¡Ronda de kiai!
+6.1 | hara = bajo vientre / Así se enseña | El kiai sale del hara.
+8.3 | ¿Otra? | ¿Otra?

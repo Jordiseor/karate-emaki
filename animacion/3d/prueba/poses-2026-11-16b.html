@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Poses 2026-11-16b</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../marca.js"></script>
+<script type="module">
+import { crearEscenario } from '../escenario.js';
+import { Karateka3D, cargarPoses, mezclar } from '../karateka3d.js';
+import { crearCinturonSuelto, crearJudoka, crearSala, crearPancarta, sello } from '../judo3d.js';
+import { crearPareja, crearAreaWKF } from '../kumite3d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5, suelo: 'tatami', fondo: new URLSearchParams(location.search).get('f') || 'dojo' });
+const P = cargarPoses();
+const cam = (c, d = 7, el = 3, az = 0, fov = 26) => ({ centro: c, distancia: d, azimut: az, elevacion: el, fov });
+// --- elementos ---
+const k = new Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz);
+const cin = crearCinturonSuelto({ color: 'negro' }); esc.escena.add(cin.raiz);
+const kano = crearJudoka({ cinturon: 'negro', color: '#1A1A1A', detalle: 'kano' }); esc.escena.add(kano.raiz);
+const funa = crearJudoka({ cinturon: 'negro', color: '#1A1A1A' }); esc.escena.add(funa.raiz);
+const jw = crearJudoka({ cinturon: 'blanco' }); const jb = crearJudoka({ cinturon: 'negro' }); const kaw = crearJudoka({ cinturon: 'negro', detalle: 'kawaishi' });
+[jw, jb, kaw].forEach((q) => esc.escena.add(q.raiz));
+const par = crearPareja(esc, { distancia: 2 });
+const area = crearAreaWKF(esc);
+const sala = crearSala(esc, { publico: {} }); sala.ocultar();
+const VISTAS = [
+  ['atar', 'atar-cinturon', cam([0, 1.0, 0])],
+  ['pasar', 'pasar → recibir p=.5', cam([0, 1.1, 0.4], 6, 4, 70, 26)],
+  ['recibir', 'recibir p=1', cam([0, 1.1, 0.4], 6, 4, 70, 26)],
+  ['sala', 'sala Kodokan', cam([0, 1.0, -2], 20, 12, 0, 30)],
+  ['judokas', 'judokas', cam([0, 1.0, 0], 14, 3, 0, 26)],
+  ['mawashi', 'mawashi aka/ao', cam([0, 1.1, 0.2], 10.5, 3, -75, 26)],
+  ['mae', 'mae-geri', cam([0, 1.0, 0], 10.5, 3, 90, 26)],
+  ['espalda', 'espalda', cam([0, 1.0, 0], 10.5, 3, 60, 26)],
+  ['halo', 'halo + sello', cam([0, 1.1, 0.4], 6, 4, 70, 26)],
+  ['area', 'area WKF', cam([0, 0.6, 0], 17, 38, 25, 30)],
+];
+window.DURACION = VISTAS.length;
+const todos = () => [k, kano, funa, jw, jb, kaw, par.aka, par.ao];
+window.render = (t) => {
+  const [m, rot, c] = VISTAS[Math.min(VISTAS.length - 1, Math.floor(t))];
+  todos().forEach((q) => (q.raiz.visible = false)); cin.raiz.visible = false; area.ocultar(); sala.ocultar();
+  esc.sombraEn(0, 0); esc.cam = null;
+  if (m === 'atar') { k.raiz.visible = true; k.colocar(0, 0, 0); k.cinturon('negro'); k.aplicarPose(P['atar-cinturon'], { cinta: { x: 0.2, z: 0 } }); k.cara({ sonrisa: 0.1 }); }
+  else if (m === 'pasar' || m === 'recibir' || m === 'halo') {
+    const a = kano, b = funa; a.raiz.visible = b.raiz.visible = true; cin.raiz.visible = true;
+    a.colocar(0, -0.43, 0); b.colocar(0, 0.43, 180);
+    a.aplicarPose(P['pasar-objeto']); b.aplicarPose(P.recibir);
+    const p = m === 'pasar' ? 0.5 : 1; cin.pasar(a, b, p);
+    if (m === 'halo') { cin.halo(1); } else cin.halo(0);
+  } else if (m === 'sala') {
+    sala.mostrar(); sala.publico.pose(P, { t: 0.4, modo: 'asentir' });
+    funa.raiz.visible = true; funa.colocar(0, 0.2, 0); funa.aplicarPose(P['gyaku-zuki-kiai']);
+  } else if (m === 'judokas') {
+    [[jw, -1.5, 'neutra'], [jb, -0.5, 'rei'], [kano, 0.5, 'neutra'], [kaw, 1.5, 'neutra']].forEach(([q, x, p]) => { q.raiz.visible = true; q.colocar(x, 0, 0); q.aplicarPose(P[p]); });
+  } else {
+    area.mostrar(); par.aka.raiz.visible = par.ao.raiz.visible = true;
+    if (m === 'mawashi') { par.colocar(2); par.aka.aplicarPose(P['mawashi-geri-jodan']); par.ao.aplicarPose(P['kumite-esquiva']); par.alinear('mawashi-geri-jodan'); }
+    if (m === 'mae') { par.colocar(2); par.aka.aplicarPose(P['mae-geri-chudan']); par.ao.aplicarPose(P['kumite-esquiva']); par.alinear('mae-geri-chudan'); }
+    if (m === 'espalda') { par.colocar(2); par.aka.aplicarPose(P['espalda-tras-patada']); par.ao.aplicarPose(P.kamae); }
+    if (m === 'area') { par.colocar(2); par.aka.aplicarPose(P.kamae); par.ao.aplicarPose(P.kamae); }
+    par.aka.cara({ sonrisa: 0.1 }); par.ao.cara({ sonrisa: 0.1 });
+  }
+  if (par.aka.raiz.visible) { const [cx, cz] = par.centro(); esc.orbita({ ...c, centro: [cx, c.centro[1], cz] }); } else esc.orbita(c);
+  esc.dibujar(ctx, { grano: false });
+  if (m === 'halo') sello(ctx, '初段', 540, 400, 200, 1);
+  EMAKI.texto(ctx, { lineas: rot, size: 60, y: 120 });
+};
+</script></body></html>

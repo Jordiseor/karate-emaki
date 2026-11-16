@@ -1,0 +1,7 @@
+# Montaje · El kiai gallo
+
+- Entrada: escenas3d/plano-01..06.mp4 concatenados con corte seco (9,0 s, 30 fps, 1080x1920). Sin transiciones. Último fotograma = fotograma 0 (PSNR 42,8 dB frente a la portada base): bucle intacto. Textos ya quemados en los planos (zona segura); no se añaden subtítulos porque coinciden con las tarjetas y la locución es de 9 palabras.
+- Sonido (todo sintético con numpy/ffmpeg, sin derechos): 4 kiais limpios graves (1,7 / 2,2 / 2,7 / 3,2 s, f0 96-112 Hz y formantes distintos), gallo a 3,8 s (arranca grave y salta a ≈720 Hz con quiebro, 0,7 s), «ñic» muy bajo a 5,0 s, respiración grave 6,5-8,1 s, ambiente de dōjō casi inaudible. Silencio forzado los últimos 0,15 s. Sin música (bucle limpio). Guion de síntesis no guardado en la pieza; los efectos no usan voz sintética.
+- Voz: Kokoro em_santa (herramientas/voz-kokoro.py), velocidad 1,0: «¡Ronda de kiai!» 0,12-1,18 s, «El kiai sale del hara.» 6,16-7,57 s, «¿Otra?» 8,36-8,91 s. Fondo +3 dB, voz 13,5 dB sobre el fondo con ducking. reel.mp4: -16,4 LUFS, pico real -1,3 dBFS, H.264, AAC, 9,0 s. Textos en final/locucion.txt.
+- reel-sin-voz.mp4: mismo vídeo con solo los efectos (-19,5 LUFS integrados, sin normalizar más: es sparse). Portada: fotograma 0 con placa papel «EL KIAI / GALLO» (3 palabras, GALLO en rojo). hoja.png: fotogramas a 0,2 / 2,6 / 4,3 / 5,4 / 7,0 / 8,9 s.
+- Comprobado: inicio, mitad y final del reel legibles. Pendiente de oído de Jorge: que el gallo suene cómico y no falso; si no, se rehace el efecto.

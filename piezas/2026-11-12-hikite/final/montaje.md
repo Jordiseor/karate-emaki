@@ -1,0 +1,11 @@
+# Montaje · hikite
+
+- Entrada: escenas3d/plano-01..11.mp4 concatenados con corte seco (27,0 s, 30 fps, 1080x1920; 10 planos de 2,5 s y el 6 de 2,0 s, como el storyboard). reel-sin-voz.mp4 y reel.mp4: H.264 veryfast, AAC 192 kbps, 27,0 s.
+- Correcciones de la hoja (superpuestas en el montaje, los planos originales no se tocan): plano 3 (5,0-7,5 s), placa papel #F4EFE6 con borde tinta (x170-910, y275-490) con «Error frecuente: a medio camino» a 76 px, que tapa la tarjeta original y la línea central ya no cruza el texto; plano 8 (17,0-19,5 s), placa con «Rentan Goshin Karate-Jutsu, 1925 / (traducción al inglés)» a 50 px (antes ≈26 px), x90-990, y1430-1600, dentro de la zona segura.
+- No corregido: en el plano 3 los dos karatekas siguen pequeños (cámara abierta del plano original); arreglarlo exige re-renderizar plano-03 con cámara más cerrada o una sola pantalla (error -> corte -> bueno, como propone plan.md).
+- Música (obra propia, licencia anotada en animacion/musica/fondo-*.txt): pulso-vivo.wav x0,5 + ambiente.wav x0,2 (en bucle, 30 s recortados a 27) + golpe.wav a 0,4 s (puño del plano 1), golpe-cifra.wav a 9,0 s (el «clac» de la pausa del plano 4) y golpe-caida.wav a 20,6 s (tirón del plano 9). Fundido final 25,8-27,0 s. reel-sin-voz: -15,8 LUFS integrados.
+- Voz: Kokoro em_santa (sid 53, elegida por Jorge) con herramientas/voz-kokoro.py, velocidades por frase 1,0/1,0/1,1/1,0/1,1/1,0/1,15/1,15/1,0/1,4/1,3 (f10 y f11 a 1,4 y 1,3 para que quepan en 27 s; suenan algo rápidas). Desfases máximos +0,24 s (la 8.ª +0,15 s); la voz acaba en 26,94 s. Voz 14,0 dB sobre el fondo con fondo-db por defecto (-7), fondo bajado 9,5 dB en tramos con voz. reel.mp4: -16,1 LUFS, pico real -1,3 dBFS.
+- «hikite» se pronuncia «jikite» en la 3.ª columna de locucion.txt (la h es muda en español). Revisar de oído.
+- Sin subtítulos quemados: las tarjetas de cada plano ya llevan el texto en pantalla y duplicarlo en zona segura saturaría el encuadre; si Jorge los quiere, se pueden añadir.
+- Portada: fotograma del plano 1 (0,3 s) con placa papel «HIKITE / el brazo que vuelve» (4 palabras, tinta y rojo #C8102E), x110-970, y250-520, zona segura. Hoja de contactos: 1 fotograma por plano (hoja.png).
+- Último fotograma (tarjeta en fundido) enlaza con el plano 1 para el bucle.
