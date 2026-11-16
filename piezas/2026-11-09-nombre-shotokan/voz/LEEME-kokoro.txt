@@ -1,0 +1,1 @@
+v2-fNN.wav: Kokoro em_santa, velocidad 1.0, --fondo-db -7. Voz 14,5 dB sobre el fondo; reel -16,1 LUFS, pico -1,3 dBFS. Desfases <= 0,43 s; la voz acaba en 25,98 s (reel 26,2 s).

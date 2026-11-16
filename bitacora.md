@@ -61,3 +61,4 @@ Entradas anteriores resumidas en archivo/bitacora-2026-11.md.
 - 2026-11-16 · Animador (jefe + tramos A, B, C) · Hikite: 11 planos (27 s) en escenas3d/; el 11 enlaza con el 1. Plano 3 en pantalla partida con algo de niebla.
 - 2026-11-16 · Animador (jefe + tramos A, B) · Kiai gallo: 6 planos (9,0 s), bucle comprobado (PSNR 79 dB). El plano 5 encuadra 4 karatekas.
 - 2026-11-16 · Sensei · Hojas de contactos (escenas3d/hoja.png): hikite y kiai gallo válidos para montaje. Detalles: hikite plano 3 pequeño y con el título cruzando la línea central; plano 6 en picado muy alto (pierna delantera rara); plano 8 con letra pequeña de cita en 2 líneas.
+- 2026-11-16 · Sensei · Voz en la nube con Kokoro (em_santa, elegida por Jorge entre 3 muestras), con herramientas/voz-kokoro.py. Zenkutsu v2 y Shotokan v2 mezclados (final/reel-v2-voz.mp4, ≈−16 LUFS, voz 13–14 dB sobre el fondo). En zenkutsu, f02 y f03 entran 0,6–0,7 s tarde. Pasan a aprobación de Jorge.

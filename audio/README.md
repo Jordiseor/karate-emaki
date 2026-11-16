@@ -31,3 +31,8 @@ Recorte de silencios -> 48 kHz -> paso alto 70 Hz -> +2 dB a 220 Hz (Q 1) -> -2 
 - Fondo (`reel-sin-voz.mp4`): +3 dB entre frases; sidechaincompress (umbral 0,015, ratio 1,7, ataque 25 ms, suelta 350 ms) -> voz unos 14-15 dB por encima del fondo mientras habla (objetivo 12-15 dB). El ducking también atenúa los golpes del fondo si coinciden con la voz.
 - Encaje: la voz entra 0,06 s tras el inicio de escena y el desfase máximo es 0,5 s; el script informa de cada escena.
 - Música y efectos: solo `animacion/musica/` o sintetizados.
+
+## Kokoro (16 nov 2026)
+Chatterbox no se puede bajar en la nube (Hugging Face bloqueado), así que se usa **Kokoro-82M v1.0** (Apache 2.0) con sherpa-onnx 1.12.15 (Apache 2.0). Los dos se bajan de las releases de GitHub de k2-fsa/sherpa-onnx. Jorge eligió la voz **em_santa** (sid 53) tras escuchar 3 muestras.
+Uso: `KOKORO_DIR=<dir> python3 herramientas/voz-kokoro.py <pieza> [--velocidad 1.0 | v1,v2,...] [--fondo-db -7]`. Toma las frases de `voz-chatterbox.py` y los inicios de `final/locucion-v2.txt`, aplica la misma cadena y el mismo ducking que `voz.py` y saca `final/reel-v2-voz.mp4`. El fondo de reel-v2 ya trae la música a ≈−15 LUFS, por eso se baja a −7 dB.
+Kokoro habla más despacio que el guion (≈3 palabras/s): zenkutsu necesita `--velocidad 1.3,1.25,1.2,1.1` y aun así f02 y f03 entran 0,7 y 0,6 s tarde.
