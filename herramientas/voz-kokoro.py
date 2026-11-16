@@ -8,7 +8,9 @@ Instalación (releases de GitHub, ~380 MB), en KOKORO_DIR (por defecto /tmp/koko
 Uso: python3 herramientas/voz-kokoro.py <pieza> [--sid 53] [--velocidad 1.0 | 1.3,1.3,1.2,...] [--sin-mezcla]
 --velocidad admite un valor por frase separado por comas. Zenkutsu v2: ver piezas/<id>/voz/LEEME-kokoro.txt.
 Frases: las de herramientas/voz-chatterbox.py (grafía adaptada); inicios: final/locucion-v2.txt.
-Salida: piezas/<id>/voz/v2-fNN.wav y final/reel-v2-voz.mp4 (cadena y ducking de herramientas/voz.py)."""
+Salida: piezas/<id>/voz/v2-fNN.wav y final/reel-v2-voz.mp4 (cadena y ducking de herramientas/voz.py).
+Piezas nuevas: --locucion final/locucion.txt (líneas «inicio | texto en pantalla | texto para la voz», la 3.ª columna
+es opcional y sirve para la grafía: doyo, Shoto…) --base final/reel-sin-voz.mp4 --salida final/reel.mp4 --prefijo fNN."""
 import argparse, importlib.util, os, re, subprocess as sp, sys, tempfile
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,18 +42,28 @@ def frase_wav(d, sid, vel, texto, out, tmp):
              f'afade=t=out:st={max(voz.dur(pre) - 0.06, 0):.3f}:d=0.05', '-ar', '48000', '-c:a', 'pcm_s16le', out])
 
 
-def inicios(pieza):
-    ts = []
-    for l in open(f'{RAIZ}/piezas/{pieza}/final/locucion-v2.txt', encoding='utf-8'):
+def leer_locucion(f):
+    """[(inicio, texto_voz)] de un fichero «inicio | texto [| texto para la voz]»; ignora «(silencio)»."""
+    out = []
+    for l in open(f, encoding='utf-8'):
         m = re.match(r'\s*([\d.,]+)\s*\|\s*(.+)', l)
         if m and '(silencio)' not in m.group(2):
-            ts.append(float(m.group(1).replace(',', '.')))
-    return ts
+            cols = [c.strip() for c in m.group(2).split('|')]
+            out.append((float(m.group(1).replace(',', '.')), cols[-1]))
+    return out
+
+
+def inicios(pieza):
+    return [t for t, _ in leer_locucion(f'{RAIZ}/piezas/{pieza}/final/locucion-v2.txt')]
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('pieza', choices=sorted(PIEZAS))
+    ap.add_argument('pieza')
+    ap.add_argument('--locucion', help='fichero de locución (relativo a la pieza); si falta, frases de voz-chatterbox.py')
+    ap.add_argument('--base', default='final/reel-v2.mp4', help='vídeo sin voz (relativo a la pieza)')
+    ap.add_argument('--salida', default='final/reel-v2-voz.mp4', help='reel con voz (relativo a la pieza)')
+    ap.add_argument('--prefijo', default='v2-', help='prefijo de los wav en voz/')
     ap.add_argument('--sid', type=int, default=53)
     ap.add_argument('--velocidad', default='1.0', help='un valor o uno por frase separados por comas')
     ap.add_argument('--dir', default=os.environ.get('KOKORO_DIR', '/tmp/kokoro'))
@@ -59,10 +71,18 @@ def main():
     ap.add_argument('--sin-mezcla', action='store_true')
     a = ap.parse_args()
     voz.FONDO_DB = a.fondo_db
-    p, frases, ini = a.pieza, PIEZAS[a.pieza], inicios(a.pieza)
+    p, d = a.pieza, f'{RAIZ}/piezas/{a.pieza}'
+    if a.locucion:
+        loc = leer_locucion(f'{d}/{a.locucion}')
+        ini = [t for t, _ in loc]
+        frases = [(f'f{i + 1:02d}', t, 0) for i, (_, t) in enumerate(loc)]
+    else:
+        if p not in PIEZAS:
+            sys.exit(f'{p} no está en voz-chatterbox.py: usa --locucion')
+        frases, ini = PIEZAS[p], inicios(p)
     if len(ini) != len(frases):
         sys.exit(f'{len(frases)} frases y {len(ini)} inicios en locucion-v2.txt: no cuadran')
-    base = f'{RAIZ}/piezas/{p}/final/reel-v2.mp4'
+    base = f'{d}/{a.base}'
     total = voz.dur(base)
     os.makedirs(f'{RAIZ}/piezas/{p}/voz', exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
@@ -70,7 +90,7 @@ def main():
         vels += [vels[-1]] * (len(frases) - len(vels))
         wavs = []
         for (fid, texto, _), vel in zip(frases, vels):
-            w = f'{RAIZ}/piezas/{p}/voz/v2-{fid}.wav'
+            w = f'{d}/voz/{a.prefijo}{fid}.wav'
             frase_wav(a.dir, a.sid, vel, texto, w, tmp)
             wavs.append(w)
         plan, fin = voz.planificar(wavs, ini, total)
@@ -80,7 +100,7 @@ def main():
         if fin > total:
             print('  AVISO: la voz se pasa del final del reel: sube --velocidad')
         if not a.sin_mezcla:
-            voz.mezclar(base, wavs, plan, total, tmp, f'{RAIZ}/piezas/{p}/final/reel-v2-voz.mp4')
+            voz.mezclar(base, wavs, plan, total, tmp, f'{d}/{a.salida}')
 
 
 if __name__ == '__main__':
