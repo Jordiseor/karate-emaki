@@ -5,8 +5,8 @@ Hora de Madrid. Ritmo de arranque: 2 reels por semana. Un interactivo cada 2 sem
 | Fecha | Hora | Pieza | Pilar | Estado |
 | --- | --- | --- | --- | --- |
 | Sáb 14 nov | 19:30 | Esto es KARATE EMAKI (`2026-11-11-presentacion`) | Presentación | Publicada (Instagram) |
-| Mar 17 nov | 19:30 | Zenkutsu-dachi: por qué la posición larga no te tira (`2026-11-09-zenkutsu-estabilidad`) | Ciencia | Voz Kokoro mezclada (reel-v2-voz.mp4); esperando aprobación de Jorge. Sale el mar 17 si la aprueba hoy |
-| Sáb 21 nov | 19:30 | Shotokan no es un estilo: es una casa (`2026-11-09-nombre-shotokan`) | Historia | Montaje v2 (26 s); falta voz Chatterbox de Jorge |
+| Mar 17 nov | 19:30 | Zenkutsu-dachi: por qué la posición larga no te tira (`2026-11-09-zenkutsu-estabilidad`) | Ciencia | Programada en Metricool (id 429829658) |
+| Sáb 21 nov | 19:30 | Shotokan no es un estilo: es una casa (`2026-11-09-nombre-shotokan`) | Historia | Programada en Metricool (id 429829683) |
 | Mar 24 nov | 19:30 | Hikite: el brazo que vuelve también golpea (`2026-11-12-hikite`) | Técnica | Animación hecha (11 planos, 27 s); siguiente: montaje |
 | Sáb 28 nov | 19:30 | El kiai gallo (`2026-11-12-kiai-gallo`) | Anécdotas y humor del dōjō | Animación hecha (6 planos, 9 s, bucle comprobado); siguiente: montaje |
 | Quincena 16–29 nov | — | Interactivo: De Okinawa a Tokio en 36 años (`2026-11-12-linea-temporal`) | Historia | Interactivo hecho (3 vistas); falta reel de anuncio de 12 s |
