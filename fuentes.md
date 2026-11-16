@@ -31,3 +31,24 @@
 | Svinth, Journal of Combative Sport 2002 — https://ejmas.com/jcs/jcsart_svinth_1202.htm | Karate fuera de escuelas y universidades en la ocupación | Media-alta |
 | Traducción de Toyama 1960 (reunión de Naha) — https://isshin-concentration.blogspot.com/2019/06/the-meeting-of-okinawan-karate-masters.html | 25 oct 1936, Showa Kaikan, sin decisión formal | Media |
 | ryukyu-bugei (https://ryukyu-bugei.com/?p=9059, https://ryukyu-bugei.com/?p=1283) | Exposición de 1922; museo destruido en 1923; libro de 1925 | Media |
+
+## Cinturón negro y judo (16 nov 2026)
+| Fuente | Qué respalda | Fiabilidad |
+| --- | --- | --- |
+| IJF, judo culture — https://www.ijf.org/history/judo-culture/2250 | Kanō crea el sistema kyū/dan (1883); colores intermedios en Inglaterra (1926) y Kawaishi en Francia (1935) | Alta |
+| JKA — https://www.jka.or.jp/?p=21125 | Kanō invita a Funakoshi al Kōdōkan tras 1922 | Alta |
+| Nippon.com — https://www.nippon.com/en/in-depth/d01014/ | Origen del cinturón y los grados en el judo | Media-alta |
+
+## Kumite WKF (16 nov 2026)
+| Fuente | Qué respalda | Fiabilidad |
+| --- | --- | --- |
+| WKF, Kumite and Kata Rules 2026.01 (PDF oficial) | Yūko 1, waza-ari 2, ippon 3; seis criterios; duración, senshu, ventaja de 8; contacto 2 cm manos / 5 cm patadas en adultos | Alta |
+| karate.news (resumen cambios 2026) | Solo pista: sus cifras de contacto contradicen el PDF | Media |
+
+## Heian Shodan (16 nov 2026)
+| Fuente | Qué respalda | Fiabilidad |
+| --- | --- | --- |
+| André Bertel, mar 2022 — https://andrebertel.blogspot.com/2022/03 | Tabla de posiciones de Heian Shodan (21 movimientos) | Media |
+| The Martial Way — https://www.themartialway.com.au/heian-shodan/ | Secuencia; posible errata en el mov. 4 | Media |
+| karateyon — https://karateyon.blogspot.com/2010/11/heian-shodan.html | Secuencia y kiai | Media |
+| Fisher (xylenepower.com) — Heian Shodan | Giros movimiento a movimiento | Media |

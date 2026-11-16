@@ -7,3 +7,4 @@
 - Planificador: https://app.metricool.com/planner/calendar?blogId=8028366&openWithPostUuid=-1006975753556638838
 - Texto: copy.md (Instagram + hashtags); sin primer comentario
 - Programado por el Sensei el 13 nov 2026 (aprobada por Jorge el 12 nov). Comprobado con getScheduledPosts: pendiente.
+- 16 nov 2026 (Sensei): publicada el sáb 14 a las 19:30 según Metricool: https://www.instagram.com/reel/Dfu2tVVlTFC/
