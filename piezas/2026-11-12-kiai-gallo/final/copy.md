@@ -9,7 +9,7 @@ Ronda de kiai. Cuatro limpios… y el quinto, no.
 
 Nos pasa a todos: el gallo aparece cuando gritas con nervios.
 
-Pero el kiai (気合: ki = energía) no sale de la garganta. Se enseña a lanzarlo desde el hara, el bajo vientre (hara = bajo vientre).
+Pero el kiai (気合: ki = energía) no sale de la garganta. Se enseña a lanzarlo desde el hara, el bajo vientre.
 
 Del vientre, no de la garganta.
 
