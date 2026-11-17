@@ -30,6 +30,14 @@ Cuando Jorge aprueba una pieza y Marketing tiene `final/copy.md`, el Sensei la p
 - Apunta el id y el `plannerUrl` de Metricool en `piezas/<id>/final/publicacion.md` y pon la pieza en `programada`. Comprueba con `getScheduledPosts` que sigue pendiente.
 - Tras la fecha, pásala a `publicada`. TikTok y YouTube, cuando Jorge los conecte.
 
+## Métricas desde Metricool (desde el 17 nov 2026)
+
+Propuesta del Sensei aprobada por Jorge el 17 nov: nada de skills de Instagram de terceros; las métricas salen de Metricool, que ya está conectado.
+- En cada producción, el Sensei mira los reels publicados hace al menos 48 h y actualiza su fila en `metricas.csv` (una fila por pieza y red, se sobrescribe con el último dato; columna `medido` = fecha de la consulta). Deja de actualizarla a los 30 días.
+- Herramienta: `getAnalyticsDataByMetrics` (marca 8028366) con los campos de reels de Instagram IGRE02 fecha, IGRE06 url, IGRE23 visualizaciones, IGRE11 alcance, IGRE24 tiempo medio (s), IGRE30 salto en 3 s (%), IGRE10 me gusta, IGRE07 comentarios, IGRE12 guardados, IGRE21 compartidos. `retencion_media` = tiempo medio / duración del reel. Seguidores ganados: IGEV43 (cuenta) del día de la publicación y los 2 siguientes, como aproximación.
+- Metricool tarda en sincronizar: si un reel aún no sale, se reintenta en la siguiente producción.
+- El informe del día 1 de cada mes lo escribe Marketing con `metricas.csv` (no tiene acceso a Metricool: el Sensei vuelca los datos antes de lanzarlo).
+
 ## Huecos libres (producción, desde el 11 nov 2026)
 
 Si en las próximas 2 semanas de `calendario.md` hay un hueco sin pieza (o falta el interactivo de la quincena), la producción no se queda parada:
