@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Kumite · plano 13</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, aka, ao, par, U, P } = S;
+window.DURACION = 3.5;
+// PLANO 13 (32,5–36,0) cierre y bucle con el plano 1: rei, kamae, y en la última décima aka inicia la rodilla; cámara = tres4 en el último fotograma.
+const c0 = { x: ao.base.x, z: ao.base.z, r: ao.base.rumbo };
+const X = C.intercambio(S, 'mawashi');
+const pieza = (t) => {
+  if (t < 1.1) return C.mezclar(P['pies-juntos'], P.rei, U.easeInOut(U.prog(t, 0.2, 0.8)));
+  if (t < 1.6) return C.mezclar(P.rei, P.kamae, U.easeInOut(U.prog(t, 1.1, 1.6)));
+  return C.mezclar(P.kamae, C.mawashi(P, 0.3), U.easeInOut(U.prog(t, 3.2, 3.5)));
+};
+window.render = (t) => {
+  const p = pieza(t);
+  X.poner(0, 0, p);
+  // ao arranca a 2 m (rei) y se acerca despacio a la distancia del plano 1 mientras están en kamae
+  const e = U.easeInOut(U.prog(t, 1.8, 3.3)), F = X.fin;
+  ao.colocar(c0.x + (F.x - c0.x) * e, c0.z + (F.z - c0.z) * e, F.r); ao.aplicarPose(p);
+  aka.cara({ cejas: -0.3, parpadeo: 0 }); ao.cara({ ojos: 0.4, cejas: 0.3, parpadeo: 0 });
+  const c = C.CAM.tres4;
+  C.cam(esc, par, { ...c, distancia: c.distancia - 0.5 * (1 - U.easeInOut(U.prog(t, 0, 3.5))) });
+  esc.dibujar(ctx, {});
+  C.tarjeta(ctx, t, ['¿Cuál fue tu', 'primer ippon?'], { t0: 0.1, y: 280 });
+  C.letraPequena(ctx, 'WKF Kumite Competition Rules 2026.01');
+};
+</script></body></html>

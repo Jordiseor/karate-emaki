@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Kumite · plano 09</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, aka, ao, par, U, P } = S;
+window.DURACION = 3.0;
+// PLANO 9 (20,5–23,5): aka patea (mae-geri) y gira dándole la espalda a ao; la sexta casilla se tacha y el marcador de aka se tacha.
+const X = C.intercambio(S, 'mae');
+const pieza = (t) => { const h = U.prog(t, 0.95, 1.95);
+  if (h > 0) return C.mezclar(P['mae-geri-chudan'], P['espalda-tras-patada'], U.easeInOut(h));
+  return C.mae(P, U.prog(t, 0, 0.5)); };
+const rea = (t) => U.prog(t, 0.3, 0.9);
+window.render = (t) => {
+  X.poner(1, rea(t), pieza(t));
+  aka.cara({ cejas: 0.3, parpadeo: 0 }); ao.cara({ ojos: 0.5, cejas: 0.3, parpadeo: 0 });
+  C.cam(esc, par, { ...C.CAM.espalda, centro: [0, 1.3, 0] });
+  esc.dibujar(ctx, {});
+  const tach = U.prog(t, 2.2, 2.7);
+  // marcador: aka sube a 2 con la patada y se tacha (vuelve a 0)
+  const val = t < 0.5 ? 0 : (t < 2.3 ? 2 : 0);
+  ctx.save(); ctx.translate(540, 470); ctx.scale(0.6, 0.6); ctx.translate(-540, -470);
+  C.regla(ctx, 5, { y: 470, aparece: U.easeOut(U.prog(t, 0, 0.3)), cruz: U.prog(t, 1.5, 2.1) }); ctx.restore();
+  C.marcador(ctx, val, 0, { pulso: U.prog(t, 0.5, 0.9) * (t < 1.0 ? 1 : 0), tachado: tach });
+  C.tarjeta(ctx, t, ['Espalda al rival:', 'no puntúa'], { t0: 0.1, y: 280 });
+};
+</script></body></html>

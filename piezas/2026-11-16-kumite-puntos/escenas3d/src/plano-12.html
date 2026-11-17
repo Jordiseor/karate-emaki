@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Kumite · plano 12</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, aka, ao, par, U, P } = S;
+window.DURACION = 3.0;
+// PLANO 12 (29,5–32,5): marcador 2–2; bandera senshu (2D) desciende sobre aka; después ambos hacen rei.
+par.colocar(2);
+const pose = (t) => C.mezclar(P['pies-juntos'], P.rei, U.easeInOut(U.prog(t, 1.6, 2.3)));
+window.render = (t) => {
+  const p = pose(t);
+  aka.aplicarPose(p); ao.aplicarPose(p);
+  aka.cara({ cejas: -0.2, parpadeo: 0 }); ao.cara({ cejas: 0.2, parpadeo: 0 });
+  C.cam(esc, par, C.CAM.tres4);
+  esc.dibujar(ctx, {});
+  C.marcador(ctx, 2, 2);
+  // bandera senshu: poste + paño rojo, desciende sobre la cabeza de aka
+  const h = esc.proyectar(aka.punto('cabeza')), q = U.easeOut(U.prog(t, 0.2, 1.1));
+  const x = h.x, yb = h.y - 70 - (1 - q) * 110 + 6 * Math.sin(t * 6) * (1 - q), alto = 210;
+  ctx.save(); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.strokeStyle = C.TINTA; ctx.lineWidth = 10; ctx.beginPath(); ctx.moveTo(x, yb); ctx.lineTo(x, yb - alto); ctx.stroke();
+  const on = 8 * Math.sin(t * 7);
+  ctx.fillStyle = '#C8102E'; ctx.beginPath(); ctx.moveTo(x + 5, yb - alto); ctx.quadraticCurveTo(x + 90, yb - alto - 18 + on, x + 170, yb - alto + 4);
+  ctx.lineTo(x + 170, yb - alto + 100); ctx.quadraticCurveTo(x + 90, yb - alto + 82 + on, x + 5, yb - alto + 104); ctx.closePath(); ctx.fill();
+  ctx.lineWidth = 6; ctx.stroke(); ctx.restore();
+  C.tarjeta(ctx, t, ['Empate: gana', 'el primero (senshu)'], { t0: 0.1, y: 280 });
+};
+</script></body></html>

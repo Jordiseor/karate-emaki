@@ -1,0 +1,15 @@
+# Notas del interactivo (2026-11-16-embusen)
+- `index.html` autocontenido (~32 KB, sin CDN, sin red, sin almacenamiento del navegador; tipografías del sistema con la pila Archivo Black/Arial Black como respaldo). 4 vistas: portada, 21 pasos en vista cenital (SVG, animación de 1 s, huellas, flechas, arcos de giro, kiai en 9 y 17, 6 marcas de tramo, teclado ←/→/Inicio/Fin), dibujo final (trazo de 4 s, tramo punteado con «?»), quiz de 3 + pregunta final + fuentes en el pie. Respeta `prefers-reduced-motion`.
+- Pruebas (Playwright, Chromium, 390x844 y 1280x800): 0 errores de consola, sin scroll horizontal en ninguna vista, rumbos calculados de 1–17 coinciden con la tabla del dosier. Capturas en `capturas/`.
+
+## Dónde se corrigen los pasos 18–21 (PENDIENTE de Jorge)
+En el `<script>`, bloque `PASOS_A_CONFIRMAR` (comentado). Ahora solo muestran técnica (shuto-uke chūdan), posición (kokutsu-dachi) y mano (izda-dcha-dcha-izda, The Martial Way y Bertel). No se muestran giro, rumbo ni pie delantero; el karateka queda en el paso 17 con círculo discontinuo y «?». Para fijarlos tras contrastar con Best Karate vol. 5 o con el sensei: poner `confirmado:true` y rellenar `giro` (grados con signo, negativo = izquierda), `mov` (0/1) y `lado` ('L'/'R'), en orden 18 a 21. El paso pasa solo a dibujarse como los demás y la etiqueta cambia a «Según fuentes». Al confirmar hay que revisar a mano: el texto `txt`, el aviso «A confirmar» de la vista 3 (tramo `?`, función `dibujo()`), los textos de la pregunta final del paso 21 y el reel B.
+
+## Decisiones y pendientes
+- Traducciones: solo las que da el dosier (hachiji-dachi = posición natural abierta; hidari/migi = izquierda/derecha; kentsui = golpe de martillo). Quitadas las glosas del storyboard sin fuente (barrido bajo, puñetazo, bloqueo ascendente, canto de la mano, posición adelantada/retrasada, kiai = grito…, embusen = recorrido). Si Jorge las valida, se añaden en `tec`/`txt`. Preguntas del quiz sin glosas entre paréntesis.
+- Texto «Del norte al este» (paso 10) y los rumbos 1–17 son derivados del dosier (aviso en pantalla).
+- Distancias y forma de la «I» son esquemáticas e inventadas por maquetación (cada paso avanza lo mismo; las ida y vuelta se separan 9 px para verse); el aviso lo dice. Con el diagrama real de Best Karate 5 habría que cambiar las posiciones. El trazo se parece más a una «S» angulosa que a una «I»: la forma real depende de ese diagrama.
+- Color del cinturón del karateka (marrón oscuro) elegido por mí; el de la pieza no está definido. El karateka es una figura vectorial simple, no un render 3D de `animacion/3d/`.
+- Paso 4: se muestra «Según fuentes» con la nota de la discrepancia (renoji-dachi), como pide el storyboard.
+- Enlaces de fuentes en el pie son solo texto/enlaces externos del dosier (Fisher sin URL fiable en el dosier).
+- Reel de anuncio (parte B): no hecho aquí.

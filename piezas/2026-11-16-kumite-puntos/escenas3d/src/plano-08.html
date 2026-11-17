@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Kumite · plano 08</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar({ distancia: 1.6 }); const { ctx, esc, aka, ao, par, P, U } = S;
+window.DURACION = 2.5;
+// PLANO 8 (2,5 s): ao abre la guardia y aka golpea; flecha roja en el hueco; regla de 3 a 5 vistos.
+par.colocar(1.6);
+// ao a ≈ 4 cm del puño con el golpe completo (revisado a ojo): se mide con la pose final y se desplaza ao en z
+aka.aplicarPose(P['gyaku-zuki-kiai']); ao.aplicarPose(P.kamae);
+const dz = ao.punto('pecho').z - aka.punto('manoD').z;
+const b = { x: ao.base.x, z: ao.base.z - (dz - 0.14) + 0.0, r: ao.base.rumbo };
+const f = (t) => U.easeOut(U.prog(t, 0.9, 1.4));
+const pose = (t) => C.mezclar(P.kamae, P['gyaku-zuki-kiai'], f(t));
+const rea = (t) => U.easeOut(U.prog(t, 1.2, 1.7));
+const poner = (t) => { aka.aplicarPose(pose(t)); ao.colocar(b.x, b.z + 0.0, b.r); ao.aplicarPose(C.mezclar(P.kamae, P['gyaku-zuki-kiai'], 0.15 * U.easeOut(U.prog(t, 0.85, 1.0)))); };
+const vistos = (t) => 3 + U.prog(t, 1.4, 1.7) + U.prog(t, 1.8, 2.1);
+window.render = (t) => {
+  poner(t);
+  aka.cara({ cejas: -0.5, parpadeo: 0 }); ao.cara({ ojos: 0.6, cejas: 0.5, parpadeo: 0 });
+  C.cam(esc, par, { ...C.CAM.tres4, distancia: 11.5, centro: [0, 0.45, 0] });
+  S.d.limpiar();
+  const crecer = U.easeOut(U.prog(t, 0.45, 0.85)), fa = 1 - U.prog(t, 1.2, 1.6);
+  if (crecer > 0 && fa > 0) {
+    aka.aplicarPose(P.kamae); const d0 = aka.punto('manoD'); const e = ao.punto('pecho'); poner(t);
+    const y = 1.25, ax = aka.punto('pecho');
+    S.d.flecha({ desde: [d0.x + 0.1 * (e.x - ax.x), y, d0.z], hacia: [e.x - 0.1 * (e.x - ax.x), y, e.z - 0.10], crecer, alfa: fa });
+  }
+  esc.dibujar(ctx, {});
+  // destello 2D en el instante del golpe (aguja/arena no hecha)
+  const g = U.prog(t, 1.15, 1.45);
+  if (g > 0 && g < 1) { const p = esc.proyectar(aka.punto('manoD')); ctx.save(); ctx.globalAlpha = 1 - g; ctx.strokeStyle = C.ROJO; ctx.lineWidth = 14; ctx.beginPath(); ctx.arc(p.x, p.y, 30 + 120 * g, 0, 7); ctx.stroke(); ctx.restore(); }
+  C.regla(ctx, vistos(t), { y: 1010 });
+  C.tarjeta(ctx, t, ['Buen momento,', 'distancia correcta'], { t0: 0.1, y: 280 });
+};
+</script></body></html>

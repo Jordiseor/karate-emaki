@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Kumite · plano 07</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar({ distancia: 1.6 }); const { ctx, esc, aka, ao, par, P, U } = S;
+window.DURACION = 2.5;
+// PLANO 7 (2,5 s): gyaku-zuki en limpio (sin rastro ni marcador), perfil; la regla suma tres vistos.
+par.colocar(1.6);
+// ao a ≈ 4 cm del puño con el golpe completo (revisado a ojo): se mide con la pose final y se desplaza ao en z
+aka.aplicarPose(P['gyaku-zuki-kiai']); ao.aplicarPose(P.kamae);
+const dz = ao.punto('pecho').z - aka.punto('manoD').z;
+const b = { x: ao.base.x, z: ao.base.z - (dz - 0.14) + 0.0, r: ao.base.rumbo };
+const f = (t) => U.easeOut(U.prog(t, 0.3, 1.2));
+const pose = (t) => C.mezclar(P.kamae, P['gyaku-zuki-kiai'], f(t));
+const rea = (t) => U.easeOut(U.prog(t, 0.75, 1.3));
+const poner = (t) => { aka.aplicarPose(pose(t)); ao.colocar(b.x, b.z + 0.10 * rea(t), b.r); ao.aplicarPose(P.kamae); };
+const vistos = (t) => U.prog(t, 0.5, 0.8) + U.prog(t, 0.9, 1.2) + U.prog(t, 1.3, 1.6);
+window.render = (t) => {
+  poner(t);
+  aka.cara({ cejas: -0.5, parpadeo: 0 }); ao.cara({ ojos: 0.6, cejas: 0.5, parpadeo: 0 });
+  C.cam(esc, par, { ...C.CAM.perfil, azimut: -90, distancia: 13.5, centro: [0, 0.2, 0] });
+  esc.dibujar(ctx, {});
+  C.regla(ctx, vistos(t), { y: 1010, aparece: U.easeOut(U.prog(t, 0, 0.3)) });
+  C.tarjeta(ctx, t, ['Forma, actitud', 'y vigor'], { t0: 0.1, y: 280 });
+};
+</script></body></html>

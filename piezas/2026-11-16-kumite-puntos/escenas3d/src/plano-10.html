@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Kumite · plano 10</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, aka, ao, par, U, P } = S;
+window.DURACION = 3.0;
+// PLANO 10 (23,5–26,5): primer plano lateral de la patada a jōdan; el pie se detiene a un palmo (5 cm, adultos, art. 8.8).
+par.colocar(2.6);
+const X = C.intercambio(S, 'mawashi');
+const f = (t) => U.easeOut(U.prog(t, 0, 1.5));
+const rea = (t) => U.prog(t, 0.3, 1.2);
+window.render = (t) => {
+  X.poner(f(t), rea(t));
+  aka.cara({ cejas: -0.5, parpadeo: 0 }); ao.cara({ ojos: 0.6, cejas: 0.5, parpadeo: 0 });
+  C.cam(esc, par, { ...C.CAM.patada, distancia: 7.5, centro: [0, 1.5, 0] });
+  esc.dibujar(ctx, {});
+  // línea fina de distancia entre el pie y la cabeza de ao
+  const a = esc.proyectar(aka.punto('tobilloD')), b = esc.proyectar(ao.punto('cabeza'));
+  const q = U.easeOut(U.prog(t, 1.5, 1.9));
+  if (q > 0) {
+    const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+    ctx.save(); ctx.strokeStyle = C.TINTA; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.globalAlpha = q;
+    ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(a.x + (b.x - a.x) * q, a.y + (b.y - a.y) * q); ctx.stroke();
+    const nx = -(b.y - a.y), ny = (b.x - a.x), nl = Math.hypot(nx, ny) || 1;
+    for (const p of [a, b]) { ctx.beginPath(); ctx.moveTo(p.x - nx / nl * 24, p.y - ny / nl * 24); ctx.lineTo(p.x + nx / nl * 24, p.y + ny / nl * 24); ctx.stroke(); }
+    ctx.restore();
+    const cx = Math.min(820, Math.max(260, mx)), cy = Math.max(520, my - 220);
+    ctx.save(); ctx.globalAlpha = q; ctx.strokeStyle = C.ROJO; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(mx, my - 12); ctx.lineTo(cx, cy + 62); ctx.stroke(); ctx.restore();
+    C.overlay.cifra(ctx, cx, cy, '5 cm', { size: 96, alpha: q });
+  }
+  C.tarjeta(ctx, t, ['Jōdan: control', 'a [r]5 cm[/r]'], { t0: 0.1, y: 280 });
+  C.letraPequena(ctx, t < 1.6 ? 'Demostración animada controlada' : 'Adultos. Patada a jōdan');
+};
+</script></body></html>

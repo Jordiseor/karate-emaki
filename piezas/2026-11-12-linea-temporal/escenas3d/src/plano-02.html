@@ -1,0 +1,15 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 2 (2,5 s): castillo de Shuri, filas de siluetas, cartel rojo 1921; el rollo avanza al final.
+import { ctx, U, ROJO, TINTA, PAPEL, texto, fondo, crearRollo, rr, vinetaShuri, vinetaTokio } from './comun.js';
+const rollo = crearRollo(); window.DURACION = 2.5;
+window.render = (t) => {
+  fondo();
+  rollo.dibujar(ctx, { abierto: 1, avance: 0, centrar: 0, vinetas: [(c) => vinetaShuri(c, t), (c) => vinetaTokio(c, t)] });
+  const p = U.easeBack(U.prog(t, 0.15, 0.55));
+  ctx.save(); ctx.translate(540, 400); ctx.scale(p, p); texto(ctx, '1921', 0, 0, 170, { color: ROJO, halo: 22 }); ctx.restore();
+  const a = U.prog(t, 0.5, 0.8); ctx.save(); ctx.globalAlpha = a * 0.92; ctx.fillStyle = PAPEL; rr(ctx, 90, 1370, 900, 110, 24); ctx.fill(); ctx.restore();
+  texto(ctx, 'Castillo de Shuri', 540, 1425, 72, { alfa: a });
+};
+</script></body></html>

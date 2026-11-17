@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cinturón judo · plano 01</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, k, P, U } = C.iniciar();
+window.DURACION = 3.0;
+// PLANO 1 (0,0–3,0) gancho: nudo en primer plano con las manos ya tirando (t=0); la cámara retrocede a plano medio frontal; mira a cámara, cejas alzadas.
+// Tirón en bucle suave (cinta balancea) hasta 1,4 s; luego suelta a yoi y la cara sube las cejas.
+const suelta = (t) => U.easeInOut(U.prog(t, 1.2, 2.0));
+window.render = (t) => {
+  k.colocar(0, 0, 0);
+  const tiron = Math.sin(t * 9) * 0.5 + 0.5;               // vaivén de tirar de los extremos
+  const pose = C.mezclar(P['atar-cinturon'], P.yoi, suelta(t));
+  k.aplicarPose(pose, { cinta: { x: 0.2 + 0.1 * tiron * (1 - suelta(t)), z: 0 } });
+  k.cara({ parpadeo: U.parpadeo(t, [2.5]), cejas: 0.75 * U.easeOut(U.prog(t, 1.9, 2.4)), sonrisa: 0.15 * U.prog(t, 2.0, 2.6), mirada: [0, 0] });
+  const p = U.easeInOut(U.prog(t, 0.15, 2.2));
+  esc.orbita(C.mezclarCam(C.CAM.nudo, C.CAM.medio, p));
+  esc.dibujar(ctx, {});
+  C.tarjeta(ctx, t, ['Nació en', 'el [r]judo[/r]'], { t0: -1, y: 300 });
+};
+</script></body></html>

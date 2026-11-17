@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cinturón judo · plano 07</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, k, P, U } = C.iniciar();
+window.DURACION = 3.0;
+// PLANO 7 (16,5–19,5): Abril 1924, primeros dan. Karateka a la izquierda en yoi; certificado 2D a la derecha con sello 初段 y flecha roja.
+const CAMARA = { centro: [0.3, 1.2, 0], distancia: 6.6, azimut: 0, elevacion: 3, fov: 26 };
+function certificado(ctx, t) {
+  const p = U.easeOut(U.prog(t, 0.3, 0.9)); if (p <= 0) return;
+  const x = 590, w = 400, h = 300, y = 890 + (1 - p) * 40;
+  ctx.save(); ctx.globalAlpha = p; ctx.translate(x + w / 2, y + h / 2); ctx.rotate(-0.03); ctx.translate(-w / 2, -h / 2);
+  ctx.fillStyle = 'rgba(40,25,10,0.22)'; ctx.filter = 'blur(10px)'; ctx.fillRect(8, 14, w, h); ctx.filter = 'none';
+  ctx.fillStyle = '#F7EBCF'; ctx.fillRect(0, 0, w, h);
+  ctx.strokeStyle = C.TINTA; ctx.lineWidth = 6; ctx.strokeRect(14, 14, w - 28, h - 28);
+  ctx.lineWidth = 2; ctx.strokeRect(26, 26, w - 52, h - 52);
+  ctx.fillStyle = C.TINTA; for (const [yy, ww] of [[70, 240], [104, 290], [138, 200], [172, 270]]) ctx.fillRect(55, yy, ww, 8);
+  ctx.restore();
+  C.sello(ctx, '初段', x + w * 0.66, y + h * 0.64, 150, U.prog(t, 1.0, 1.4));
+}
+function flecha(ctx, t) {
+  const p = U.easeInOut(U.prog(t, 1.2, 1.8)); if (p <= 0) return;
+  const y = 1095, x0 = 570, x1 = 570 - 200 * p;   // del certificado hacia el karateka
+  ctx.save(); ctx.strokeStyle = C.ROJO; ctx.fillStyle = C.ROJO; ctx.lineWidth = 18; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1 + 30, y); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x1 - 14, y); ctx.lineTo(x1 + 40, y - 40); ctx.lineTo(x1 + 40, y + 40); ctx.closePath(); ctx.fill(); ctx.restore();
+}
+window.render = (t) => {
+  k.colocar(0, 0, 0); k.cinturon('negro');
+  k.aplicarPose(P.yoi);
+  k.cara({ parpadeo: U.parpadeo(t, [1.9]), sonrisa: 0.2 * U.prog(t, 1.5, 2.2), mirada: [0.3 * U.prog(t, 1.2, 1.8), 0] });
+  esc.orbita(CAMARA);
+  esc.dibujar(ctx, {});
+  certificado(ctx, t); flecha(ctx, t);
+  C.H2.pergamino(ctx, t, { texto: 'Abril 1924', t0: 0.1, t1: 0.8, y: 290 });
+  C.tarjeta(ctx, t, ['Primeros dan'], { t0: 1.0, y: 470, size: 84 });
+};
+</script></body></html>

@@ -1,0 +1,18 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 1 (3 s): «36» rojo golpea; debajo el rollo se desenrolla hacia la izquierda.
+import { ctx, U, ROJO, TINTA, texto, fondo, crearRollo, silueta } from './comun.js';
+const rollo = crearRollo(); window.DURACION = 3;
+window.render = (t) => {
+  fondo();
+  const p = U.prog(t, 0.12, 0.42), s = p <= 0 ? 0 : (p < 1 ? U.easeBack(p) : 1) * 1;
+  const sacud = t > 0.3 && t < 0.7 ? Math.sin(t * 90) * 14 * (1 - U.prog(t, 0.3, 0.7)) : 0;
+  const sc = 2.6 - 1.6 * s; // entra grande y se asienta
+  // rollo (debajo): se abre hacia la izquierda desde la derecha
+  const ab = U.easeInOut(U.prog(t, 0.6, 2.4));
+  rollo.dibujar(ctx, { abierto: ab, avance: 0, centrar: 1, escala: 0.34, y: 400, vinetas: [(c) => { c.fillStyle = '#EDE5D6'; c.fillRect(0, 300, 1080, 1200); for (let i = 0; i < 4; i++) silueta(c, 200 + i * 230, 1250, 330, { pose: 'kihon', fase: t * 1.3 + i * 0.25 }); }, null, null] });
+  if (p > 0) { ctx.save(); ctx.translate(540 + sacud, 640); ctx.scale(sc, sc); texto(ctx, '36', 0, 0, 480, { color: ROJO, alfa: U.clamp(p * 3) }); ctx.restore(); }
+  texto(ctx, 'años.', 540 + 0, 920, 150, { alfa: U.prog(t, 0.7, 0.95), color: TINTA });
+};
+</script></body></html>

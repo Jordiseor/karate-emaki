@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cinturón judo · plano 10</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, k, P, U } = C.iniciar();
+window.DURACION = 2.5;
+// PLANO 10 (25,5–28,0): misma cámara que el 9. Cinturón azul, marrón, negro (cortes secos). Entra Kawaishi (silueta, boina) y asiente; solo «los llevó».
+const CAMARA = { ...C.CAM.medio, centro: [0.3, 1.2, 0] };
+const kaw = C.crearJudoka({ cinturon: 'negro', color: '#1A1A1A', detalle: 'kawaishi' });
+esc.escena.add(kaw.raiz);
+window.render = (t) => {
+  k.colocar(0, 0, 0);
+  C.cinturonPorTramos(k, t, [[0, 'azul'], [0.5, 'marron'], [1.0, 'negro']]);
+  k.aplicarPose(P.yoi);
+  k.cara({ parpadeo: U.parpadeo(t, [1.9]), sonrisa: 0.25, mirada: [0.5 * U.prog(t, 0.6, 1.0), 0] });
+  // Kawaishi entra desde la derecha (0,6–1,2 s) y asiente dos veces
+  const e = U.easeOut(U.prog(t, 0.6, 1.2));
+  kaw.colocar(1.6 - 0.85 * e, 0.1, -30);
+  const asiente = t > 1.3 ? Math.max(0, Math.sin((t - 1.3) * 7.5)) * Math.min(1, (2.3 - t) * 3) : 0;
+  const pose = JSON.parse(JSON.stringify(P.neutra)); pose.cabeza = { ...(pose.cabeza || {}), inclina: 14 * asiente };
+  kaw.aplicarPose(pose);
+  kaw.raiz.visible = t >= 0.6;
+  esc.orbita(CAMARA);
+  esc.dibujar(ctx, {});
+  C.tarjeta(ctx, t, ['Francia, [r]1935[/r]:', 'Kawaishi'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

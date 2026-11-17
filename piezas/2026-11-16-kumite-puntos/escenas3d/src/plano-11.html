@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Kumite · plano 11</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, aka, ao, par, U, P } = S;
+window.DURACION = 3.0;
+// PLANO 11 (26,5–29,5): cronómetro 3:00 y marcador 0→8; «STOP» al llegar a 8 (senior, arts. 5.1 y 7.7).
+window.render = (t) => {
+  aka.cara({ parpadeo: 0 }); ao.cara({ parpadeo: 0 });
+  C.cam(esc, par, { ...C.CAM.alto, azimut: 90, centro: [0, 0.2, 0] });
+  esc.dibujar(ctx, {});
+  // reloj dibujado aquí: tarjeta papel 540×200, números tinta
+  const seg = t < 0.5 ? 180 : 180 - Math.min(2, Math.floor(t - 0.5));  // 3:00 → 2:58, se queda al llegar a 8
+  const mm = Math.floor(seg / 60), ss = String(seg % 60).padStart(2, '0');
+  const x = 270, y = 500, ea = U.easeOut(U.prog(t, 0, 0.3));
+  ctx.save(); ctx.globalAlpha = ea; ctx.translate(0, (1 - ea) * 30);
+  ctx.fillStyle = 'rgba(244,239,230,0.96)'; ctx.strokeStyle = C.TINTA; ctx.lineWidth = 8;
+  ctx.beginPath(); ctx.roundRect(x, y, 540, 200, 30); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = C.TINTA; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.font = '900 150px "Montserrat","Arial Black",system-ui,sans-serif'; ctx.fillText(`${mm}:${ss}`, x + 270, y + 108);
+  ctx.restore();
+  // marcador de aka: una unidad cada 0,25 s desde 0,5 s hasta 8 a los 2,5 s
+  const v = Math.max(0, Math.min(8, Math.floor((t - 0.5) / 0.25) + 1)), tocaSubir = ((t - 0.5) % 0.25) / 0.25;
+  C.marcador(ctx, t < 0.5 ? 0 : v, 0, { pulso: t < 0.5 || v >= 8 && t > 2.75 ? 0 : tocaSubir * 0.9 });
+  // sello STOP
+  const s = U.prog(t, 2.5, 2.7);
+  if (s > 0) {
+    const k = 1 + 0.6 * (1 - U.easeOut(s));
+    ctx.save(); ctx.globalAlpha = Math.min(1, s * 2); ctx.translate(540, 1010); ctx.rotate(-0.12); ctx.scale(k, k);
+    ctx.strokeStyle = C.ROJO; ctx.lineWidth = 14; ctx.fillStyle = 'rgba(244,239,230,0.92)';
+    ctx.beginPath(); ctx.roundRect(-300, -110, 600, 220, 24); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = C.ROJO; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.font = '900 170px "Montserrat","Arial Black",system-ui,sans-serif'; ctx.fillText('STOP', 0, 8); ctx.restore();
+  }
+  C.tarjeta(ctx, t, ['3 min o 8 puntos', 'de ventaja'], { t0: 0.1, y: 280 });
+  C.letraPequena(ctx, 'Senior');
+};
+</script></body></html>

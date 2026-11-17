@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cinturón judo · plano 03</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, k, P, U } = C.iniciar(); k.raiz.visible = false; const H2 = C.H2;
+window.DURACION = 3.0;
+// PLANO 3 (3,0 s): dojo, camara frontal con empuje; silueta de Kano (hakama, #1A1A1A) a la izquierda y pergamino «1883» a su derecha; tiras «kyu» (1,4 s) y «dan» (1,9 s).
+const kano = C.crearJudoka({ color: '#1A1A1A', detalle: 'kano', cinturon: 'negro' });
+esc.escena.add(kano.raiz);
+kano.colocar(-0.45, 0, 0); kano.aplicarPose(P.neutra);
+function tira(c, texto, x, y, p, rojo) {
+  if (p <= 0) return;
+  const e = U.easeOut(p), w = 380, h = 120;
+  c.save(); c.globalAlpha = Math.min(1, p * 4); c.translate(x + (1 - e) * 220, y);
+  c.fillStyle = 'rgba(40,25,10,0.2)'; c.filter = 'blur(8px)'; c.fillRect(-w / 2 + 5, -h / 2 + 10, w, h); c.filter = 'none';
+  c.fillStyle = '#F7F1E4'; c.fillRect(-w / 2, -h / 2, w, h);
+  c.strokeStyle = C.TINTA; c.lineWidth = 5; c.strokeRect(-w / 2 + 8, -h / 2 + 8, w - 16, h - 16);
+  c.fillStyle = rojo ? C.ROJO : C.TINTA; c.font = '900 72px Inter, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(texto, 0, 4);
+  c.restore();
+}
+window.render = (t) => {
+  kano.aplicarPose(P.neutra);
+  const p = U.easeInOut(U.prog(t, 0, 3.0));
+  esc.orbita({ centro: [0, 1.1, 0], distancia: 7.0 - 0.4 * p, azimut: 0, elevacion: 3, fov: 26 });
+  esc.dibujar(ctx, {});
+  H2.pergamino(ctx, t, { texto: '1883', t0: 0.3, t1: 1.0, y: 580, x: 770, size: 84 });
+  tira(ctx, 'kyū', 770, 840, U.prog(t, 1.4, 1.7));
+  tira(ctx, 'dan', 770, 1000, U.prog(t, 1.9, 2.2));
+  C.tarjeta(ctx, t, ['1883: Kanō', 'crea los grados'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

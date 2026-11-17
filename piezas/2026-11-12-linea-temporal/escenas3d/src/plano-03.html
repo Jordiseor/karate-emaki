@@ -1,0 +1,16 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 3 (2,5 s): el rollo avanza del castillo (0,1 s) al skyline de Tokio con dōjō y linterna; el año cambia a 1939.
+import { ctx, U, ROJO, TINTA, PAPEL, texto, fondo, crearRollo, rr, vinetaShuri, vinetaTokio } from './comun.js';
+const rollo = crearRollo(); window.DURACION = 2.5;
+window.render = (t) => {
+  fondo();
+  rollo.dibujar(ctx, { abierto: 1, avance: rollo.avance(t, [0.1]), centrar: 0, vinetas: [(c) => vinetaShuri(c, t + 2.5), (c) => vinetaTokio(c, t)] });
+  const q = U.prog(t, 0.2, 0.35), r = U.easeBack(U.prog(t, 0.3, 0.7));
+  ctx.save(); ctx.translate(540, 400); const s = t < 0.3 ? 1 - U.prog(t, 0.1, 0.3) * 0 : r; ctx.scale(s, s);
+  texto(ctx, t < 0.3 ? '1921' : '1939', 0, 0, 170, { color: ROJO, halo: 22 }); ctx.restore();
+  const a = U.prog(t, 0.55, 0.85); ctx.save(); ctx.globalAlpha = a * 0.92; ctx.fillStyle = PAPEL; rr(ctx, 70, 1370, 940, 110, 24); ctx.fill(); ctx.restore();
+  texto(ctx, 'Dōjō Shōtōkan, Tokio', 540, 1425, 70, { alfa: a });
+};
+</script></body></html>

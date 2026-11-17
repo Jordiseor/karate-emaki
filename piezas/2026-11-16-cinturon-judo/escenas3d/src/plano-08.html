@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cinturón judo · plano 08</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, k, P, U } = C.iniciar({ fondo: 'degradado' });
+k.raiz.visible = false;
+window.DURACION = 3.5;
+// PLANO 8 (19,5–23,0): LEYENDA. Kanō (silueta) pasa un cinturón negro a Funakoshi (silueta); halo de leyenda. No se afirma el regalo.
+const kano = C.crearJudoka({ cinturon: 'negro', color: '#1A1A1A', detalle: 'kano' });
+const funa = C.crearJudoka({ cinturon: 'negro', color: '#1A1A1A' });
+const cinta = C.crearCinturonSuelto({ color: 'negro' });
+esc.escena.add(kano.raiz); esc.escena.add(funa.raiz); esc.escena.add(cinta.raiz);
+window.render = (t) => {
+  kano.colocar(0, -0.43, 0); funa.colocar(0, 0.43, 180);
+  const f = U.easeInOut(U.prog(t, 0, 0.6));
+  kano.aplicarPose(C.mezclar(P.yoi, P['pasar-objeto'], f)); funa.aplicarPose(C.mezclar(P.yoi, P.recibir, f));
+  cinta.pasar(kano, funa, U.prog(t, 0.8, 2.4));
+  cinta.halo(U.prog(t, 2.4, 3.2));
+  esc.orbita({ centro: [0, 1.1, 0], distancia: 6.8, azimut: 70, elevacion: 4, fov: 26 });
+  esc.dibujar(ctx, {});
+  const ft = ctx.fillText.bind(ctx);   // el pergamino pinta en tinta: se pinta en rojo (leyenda) solo dentro de esta llamada
+  ctx.fillText = (a, b, c2) => { ctx.fillStyle = C.ROJO; ft(a, b, c2); };
+  C.H2.pergamino(ctx, t, { texto: 'Cuentan que…', t0: 0.0, t1: 0.6, y: 290 });
+  ctx.fillText = ft;
+  C.tarjeta(ctx, t, ['[r]LEYENDA[/r]'], { t0: 1.8, y: 450 });
+  C.letraPequena(ctx, 'Según un historiador');
+};
+</script></body></html>

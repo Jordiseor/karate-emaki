@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cinturón judo · plano 05</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, k, P, U } = C.iniciar({ suelo: 'tatami' }); k.raiz.visible = false;
+window.DURACION = 3.0;
+// PLANO 5 (3,0 s): sala del Kodokan llena; Funakoshi (silueta, kata) en el centro; camara con empuje lento 20 -> 17; cartel «1922» rojo.
+const sala = C.crearSala(esc, { publico: {} });
+const fu = C.crearJudoka({ cinturon: 'negro', color: '#1A1A1A' });
+esc.escena.add(fu.raiz); fu.colocar(0, 0.2, 0);
+window.render = (t) => {
+  sala.publico.pose(P, { t, modo: 'quieto' });
+  fu.aplicarPose(P['gyaku-zuki-kiai']);
+  const p = U.easeInOut(U.prog(t, 0, 3.0));
+  esc.orbita({ ...C.CAM.sala, distancia: 20 - 3 * p });
+  esc.dibujar(ctx, {});
+  // cartel «1922» (fecha clave, rojo) a media altura
+  const e = U.easeOut(U.prog(t, 0.5, 0.9));
+  if (e > 0) {
+    ctx.save(); ctx.globalAlpha = Math.min(1, e * 3); ctx.translate(540, 650); ctx.scale(0.8 + 0.2 * e, 0.8 + 0.2 * e);
+    ctx.fillStyle = 'rgba(244,239,230,0.92)'; ctx.beginPath(); ctx.roundRect(-250, -120, 500, 240, 24); ctx.fill();
+    ctx.strokeStyle = C.TINTA; ctx.lineWidth = 8; ctx.stroke();
+    ctx.fillStyle = C.ROJO; ctx.font = '900 190px Inter, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('1922', 0, 10);
+    ctx.restore();
+  }
+  C.tarjeta(ctx, t, ['1922: Funakoshi', 'en el Kōdōkan'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

@@ -9,14 +9,15 @@ Hora de Madrid. Ritmo de arranque: 2 reels por semana. Un interactivo cada 2 sem
 | Lun 16 nov | 12:47 | Shotokan no es un estilo: es una casa (`2026-11-09-nombre-shotokan`) | Historia | Publicada (adelantada por Jorge) |
 | Mar 17 nov | 19:30 | Hikite: el brazo que vuelve también golpea (`2026-11-12-hikite`) | Técnica | Programada en Metricool (id 431068088) |
 | Sáb 21 nov | 19:30 | El kiai gallo (`2026-11-12-kiai-gallo`) | Anécdotas y humor del dōjō | Programada en Metricool (id 431068105) |
-| Mar 24 nov | 19:30 | Libre | — | Hueco: la producción lo cubre con una candidata |
-| Sáb 28 nov | 19:30 | Libre | — | Hueco: la producción lo cubre con una candidata |
-| Quincena 16–29 nov | — | Interactivo: De Okinawa a Tokio en 36 años (`2026-11-12-linea-temporal`) | Historia | Interactivo hecho (3 vistas); falta reel de anuncio de 12 s |
-| Mar 1 dic | 19:30 | El cinturón negro que le prestó el judo (`2026-11-16-cinturon-judo`) | Curiosidades | Storyboard (30 s, 11 planos) |
-| Sáb 5 dic | 19:30 | Cómo se puntúa un combate de kumite WKF (`2026-11-16-kumite-puntos`) | Competición | Storyboard (36 s, 13 planos) |
-| Quincena 30 nov–13 dic | — | Interactivo: Embusen de Heian Shodan (`2026-11-16-embusen`) | Técnica | Investigación (2.ª ronda hecha; mov. 18–21 «a confirmar» por Jorge) |
+| Mar 24 nov | 19:30 | Mismo puño, distinto golpe: el tiempo de contacto (`2026-11-17-tiempo-contacto`) | Ciencia | Investigación (dosier hecho) |
+| Sáb 28 nov | 19:30 | Seiza: minuto 1 contra minuto 10 (`2026-11-17-seiza`) | Anécdotas y humor del dōjō | Investigación (dosier hecho) |
+| Quincena 16–29 nov | — | Interactivo: De Okinawa a Tokio en 36 años (`2026-11-12-linea-temporal`) | Historia | Interactivo hecho; anuncio de 12 s animado (5 planos). Pasa a montaje |
+| Mar 1 dic | 19:30 | El cinturón negro que le prestó el judo (`2026-11-16-cinturon-judo`) | Curiosidades | Animación (11 planos, 30 s, hoja revisada) |
+| Sáb 5 dic | 19:30 | Cómo se puntúa un combate de kumite WKF (`2026-11-16-kumite-puntos`) | Competición | Animación (13 planos; rehacer encuadre de 1, 5 y 10) |
+| Quincena 30 nov–13 dic | — | Interactivo: Embusen de Heian Shodan (`2026-11-16-embusen`) | Técnica | Animación: interactivo hecho (4 vistas); pasos 18–21 «a confirmar» por Jorge; falta reel de anuncio |
 
 Notas:
+- 17 nov (producción, Sensei): huecos cubiertos con candidatas «gusta»: tiempo de contacto (Ciencia, 18) el mar 24 y seiza (Humor, 17) el sáb 28. Tigre (18) no va el 28 porque el mar 1 ya es Curiosidades; mano vacía (19) sigue esperando por repetir 1936 con el interactivo.
 - 17 nov (Sensei): Jorge aprueba hikite (mar 17) y kiai gallo (sáb 21). Quedan libres el mar 24 y el sáb 28.
 - 16 nov (Sensei): Jorge adelanta zenkutsu y Shotokan al lun 16. Quedan libres el mar 17 y el sáb 21: propuesto hikite y kiai gallo ahí si Jorge los aprueba.
 - 16 nov (producción, Sensei): zenkutsu pierde el mar 17 por falta de voz. Si la voz llega, zenkutsu y Shotokan se mezclan y van a aprobación; el primer hueco libre lo cubre la pieza que antes esté aprobada.

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Kumite · plano 05</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, aka, ao, par, U } = S;
+window.DURACION = 2.5;
+// PLANO 5 (2,5 s): mawashi-geri a jōdan en cámara lenta; el halo sube del pecho a la cabeza; marcador 3.
+par.colocar(2.5);
+const X = C.intercambio(S, 'mawashi');
+const f = (t) => U.easeInOut(U.prog(t, 0.1, 1.7));
+const rea = (t) => U.prog(t, 1.0, 1.8);
+window.render = (t) => {
+  X.poner(f(t), rea(t));
+  aka.cara({ cejas: -0.5, parpadeo: 0 }); ao.cara({ ojos: 0.6, cejas: 0.5, parpadeo: 0 });
+  const c = { ...C.CAM.patada, azimut: -120 };
+  C.cam(esc, par, { ...c, distancia: 9.5 - 0.5 * U.prog(t, 0, 2.5) });
+  esc.dibujar(ctx, {});
+  const p = U.easeInOut(U.prog(t, 0.3, 1.5));
+  C.halo(ctx, esc, ao, 'pecho', (1 - p) * U.easeOut(U.prog(t, 0.1, 0.4)), { r: 150 });
+  C.halo(ctx, esc, ao, 'cabeza', p, { rojo: true, r: 150 });
+  C.rastro(ctx, esc, aka, null, t, { punto: 'tobilloD', cola: 0.6, alfa: 1 - U.prog(t, 1.8, 2.4), alMuestrear: (ti) => X.poner(f(ti), rea(ti)) });
+  C.marcador(ctx, t >= 1.7 ? 3 : 0, 0, { pulso: U.prog(t, 1.7, 2.2) });
+  C.tarjeta(ctx, t, ['Patada a la cabeza:', 'ippon, [r]3[/r]'], { t0: 0.1, y: 280 });
+};
+</script></body></html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Kumite · plano 04</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, aka, ao, par, U } = S;
+window.DURACION = 2.5;
+// PLANO 4 (2,5 s): mae-geri a chūdan, perfil; halo tenue en el pecho de ao; marcador 2.
+par.colocar(2);
+const X = C.intercambio(S, 'mae');
+const f = (t) => U.easeOut(U.prog(t, 0.2, 1.3));
+const rea = (t) => U.prog(t, 0.8, 1.4);
+window.render = (t) => {
+  X.poner(f(t), rea(t));
+  aka.cara({ cejas: -0.5, parpadeo: 0 }); ao.cara({ ojos: 0.6, cejas: 0.5, parpadeo: 0 });
+  C.cam(esc, par, { ...C.CAM.perfil, azimut: -90, distancia: 9 });
+  esc.dibujar(ctx, {});
+  C.halo(ctx, esc, ao, 'pecho', U.easeOut(U.prog(t, 0.3, 0.7)), { r: 170 });
+  C.rastro(ctx, esc, aka, null, t, { punto: 'tobilloD', cola: 0.4, alfa: 1 - U.prog(t, 1.5, 2.1), alMuestrear: (ti) => X.poner(f(ti), rea(ti)) });
+  C.marcador(ctx, t >= 1.2 ? 2 : 0, 0, { pulso: U.prog(t, 1.2, 1.7) });
+  C.tarjeta(ctx, t, ['Patada al cuerpo:', 'waza-ari, [r]2[/r]'], { t0: 0.1, y: 280 });
+};
+</script></body></html>

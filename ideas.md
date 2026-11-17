@@ -46,6 +46,15 @@ No elegida pese a sus 19 puntos: De «mano china» a «mano vacía», porque la 
 Candidatas en la oficina tras la reunión: tiempo de contacto (18), tigre (18), mano vacía (19), cadera (17), POV cinturón (17) y nueva: Seiza, minuto 1 contra minuto 10 (17).
 Reserva nueva con 17: Dos españoles en el podio olímpico, ¿Puntúa o no? (interactivo), ¿Dato o leyenda? (interactivo), Notas del móvil de un cinturón blanco. Ojo: «¿Quién trajo el karate a España?» no se elige sin dosier previo.
 
+## Elegidas — producción del 17 nov 2026 (huecos libres)
+
+| Pieza | Pilar | Puntos | Hueco |
+| --- | --- | --- | --- |
+| 2026-11-17-tiempo-contacto · Mismo puño, distinto golpe: el tiempo de contacto | Ciencia | 18 | mar 24 |
+| 2026-11-17-seiza · Seiza: minuto 1 contra minuto 10 | Anécdotas y humor | 17 | sáb 28 |
+
+Siguen en candidatas: mano vacía (19), tigre (18), cadera (17), POV cinturón (17).
+
 ## Descartadas
 
 | Idea | Pilar | Descartada por | Fecha |

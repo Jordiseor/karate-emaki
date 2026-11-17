@@ -56,3 +56,16 @@
 | historyoffighting.com, «The History of the Heian Kata» | Historia de las Heian; leyenda de Channan marcada como tal | Baja-media |
 | Kanzenki Karate Club — https://garenewing.co.uk/kanzenki/kata_01Hshodan.php | Itosu hacia 1904; cambio de orden Shodan/Nidan | Media-baja |
 | Wikipedia «Pinan» — https://en.wikipedia.org/wiki/Pinan | Solo pista (cita Schmeisser 2004, Karate Kenkyū 1934) | Media (pista) |
+| Hofmann, Witte, Emmermacher, ISBS 2008 — https://ojs.ub.uni-konstanz.de/cpa/article/view/1937/1805 | Gyaku-zuki: velocidad del puño ≈ 8 m/s (7,4–8,8) en 3 karatekas | Alta (n = 3) |
+| Mašić, ISBS 1987 — https://ojs.ub.uni-konstanz.de/cpa/article/view/2318/2183 | Gyaku-zuki de 15 maestros: impulso 21,9–40,7 N·s, masa efectiva 3,3–4,8 kg, velocidad 7,3–10,3 m/s; fuerza de 16–19 ms (cita Yoshihuku 1984); efecto del kiai solo parcial | Alta-media |
+| Walilko, Viano, Bir, Br J Sports Med 39:710, 2005 — https://bjsm.bmj.com/content/39/10/710.full | Boxeo: 9,14 m/s, 2,9 kg, 3427 N (contacto 11,4 ms vía UBC wiki) | Alta (boxeo) |
+| UBC wiki, Boxing Injury Biomechanics — https://wiki.ubc.ca/Documentation:FIB_book/Boxing_Injury_Biomechanics | Cifras de Atha 1985 (14 ms, 4096 N) y Walilko (11,4 ms) | Media (secundaria) |
+| OpenStax University Physics Vol. 1 §9.2 — https://openstax.org/books/university-physics-volume-1/pages/9-2-impulse-and-collisions | F_media = Δp/Δt; ejemplo del airbag | Alta |
+| Dimitrova, Trakia J Sci 24(2), 2026 — https://tjs.trakia-uni.bg/index.php/tjs/article/view/278 | Golpe real vs kata: menos máximos en la curva y más recorrido de aceleración (kyokushin, n = 16); sin cifras | Media |
+| Columbia JKA — https://columbia.edu/cu/jka/etiquette.html | Seiza, mokusō, mokusō yame, shōmen ni rei al empezar y terminar | Media |
+| UNC Shotokan — https://shotokankarate.web.unc.edu/dojo-etiquettes | Rutina completa de inicio y fin; tardones en seiza | Media |
+| JKA PDF 2022 — https://www.jka.or.jp/wp/wp-content/uploads/2022/06/7a361015440653956d4e9a15bfc7604c.pdf | Mokusō y dōjō kun al final de la práctica; reverencias | Alta |
+| gojuryu.net, Opening & Closing Class y Seiza Zarei | Kanji y significado de seiza, mokusō, mokusō yame | Media |
+| Wadokai Canadá, glosario — https://canadajkfwadokai.org/our-style/terminology/ | Seiza/mokusō como órdenes; «naorei» = volver a musubi-dachi y saludar | Media |
+| BrainFacts / NINDS, Paresthesia | Hormigueo por presión sostenida sobre un nervio | Alta |
+| Fightingarts, Seiza | Seiza = etiqueta; piernas entumecidas en occidentales | Media |

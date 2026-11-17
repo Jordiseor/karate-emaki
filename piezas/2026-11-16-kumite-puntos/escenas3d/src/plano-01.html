@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Kumite · plano 01</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, aka, ao, par, U } = S;
+window.DURACION = 3.0;
+// PLANO 1 (0,0–3,0) gancho: patada circular a jōdan en cámara lenta ya en marcha en t=0 (f≈0,62); el pie se detiene junto a la cabeza de ao.
+const X = C.intercambio(S, 'mawashi');
+const f = (t) => 0.62 + 0.38 * U.easeOut(U.prog(t, 0, 1.4));         // sin impacto: llega a 1 y se queda
+const rea = (t) => U.prog(t, 0.2, 1.2);                               // ao se echa atrás
+const pulso = (t) => U.prog(t, 1.35, 1.8);                            // el marcador sube a 3 al llegar el pie
+window.render = (t) => {
+  X.poner(f(t), rea(t));
+  aka.cara({ cejas: -0.5, parpadeo: 0 }); ao.cara({ ojos: 0.6, cejas: 0.5, parpadeo: 0 });
+  const c = C.CAM.tres4;
+  C.cam(esc, par, { ...c, distancia: c.distancia - 0.6 * U.easeInOut(U.prog(t, 0, 3)) });   // empuje lento
+  esc.dibujar(ctx, {});
+  C.rastro(ctx, esc, aka, null, t, { punto: 'tobilloD', cola: 0.45, alfa: 1 - U.prog(t, 1.5, 2.2), alMuestrear: (ti) => X.poner(f(ti), rea(ti)) });
+  const sube = t >= 1.4;
+  C.marcador(ctx, sube ? 3 : 0, 0, { pulso: pulso(t) });
+  C.tarjeta(ctx, t, ['Patada a la cabeza', '= [r]3[/r]'], { t0: -1, y: 280 });
+};
+</script></body></html>

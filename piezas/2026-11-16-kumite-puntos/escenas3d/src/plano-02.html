@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Kumite · plano 02</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, aka, ao, par, U } = S;
+window.DURACION = 2.5;
+// PLANO 2 (2,5 s): primer plano de ao mirando al marcador (3). Aparece el «?».
+aka.colocar(0, 0, 0); ao.colocar(0, 0, 0); aka.raiz.visible = false;
+window.render = (t) => {
+  const r = U.easeInOut(U.prog(t, 0, 2.5));
+  ao.cara({ cejas: 0.6, ojos: 0.7, mirada: [-0.6, 0.2], parpadeo: U.parpadeo(t, [1.7]) });
+  C.cam(esc, par, { ...C.CAM.cerrado, azimut: 180, distancia: 4.2 - 0.35 * r });
+  esc.dibujar(ctx, {});
+  const al = 0.85 + 0.15 * Math.sin(t * 9);   // el marcador parpadea
+  C.marcador(ctx, 3, 0, { alfa: al, interrogante: U.easeOut(U.prog(t, 0.8, 1.2)) });
+  C.tarjeta(ctx, t, ['¿Y por qué no', 'siempre cuenta?'], { t0: 0.1, y: 280 });
+};
+</script></body></html>

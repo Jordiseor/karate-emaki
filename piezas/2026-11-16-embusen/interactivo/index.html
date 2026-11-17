@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Embusen: el dibujo oculto de Heian Shodan · KARATE EMAKI</title>
+<meta name="description" content="Heian Shodan paso a paso, visto desde arriba: el dibujo que la kata traza en el suelo. Versión habitual en Shotokan.">
+<style>
+:root{--p:#F4EFE6;--t:#1A1A1A;--r:#C8102E;--t2:#1A1A1A99;--w:#d8bb91}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow-x:hidden;background:var(--p);color:var(--t)}
+body{font:400 18px/1.4 "Noto Sans","Segoe UI",system-ui,Arial,sans-serif;-webkit-text-size-adjust:100%}
+h1,h2,h3,.big{font-family:"Archivo Black","Arial Black",Impact,sans-serif;font-weight:400;line-height:1.08}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--r);outline-offset:2px}
+.view{display:none;height:100dvh;flex-direction:column;overflow:hidden;max-width:560px;margin:0 auto;width:100%}
+.view.on{display:flex}
+.red{color:var(--r)}
+.btn{min-height:52px;padding:0 24px;border:3px solid var(--t);background:var(--t);color:var(--p);font-family:"Archivo Black","Arial Black",Arial,sans-serif;font-size:18px;border-radius:6px}
+.btn.alt{background:transparent;color:var(--t)}
+.btn:disabled{opacity:.3;cursor:default}
+svg{display:block}
+.small{font-size:14px;color:var(--t2)}
+/* portada */
+#v1{padding:22px 22px 18px;justify-content:space-between;gap:10px}
+#v1 h1{font-size:clamp(32px,10vw,46px)}
+#v1 h1 .red{display:inline}
+#v1 p.sub{margin-top:8px}
+#v1 svg{width:100%;flex:1;min-height:0;border-radius:8px}
+#v1 .go{display:flex;flex-direction:column;gap:10px}
+.pr{animation:pr 3s ease-in-out 0.3s both}
+@keyframes pr{0%{opacity:0}20%,45%{opacity:1}100%{opacity:.0}}
+@media (prefers-reduced-motion:reduce){.pr{animation:none;opacity:.55}.trz{transition:none!important}}
+/* pasos */
+#v2 header{flex:none;padding:8px 12px 0}
+.top{display:flex;align-items:baseline;justify-content:space-between}
+.top h2{font-size:24px}
+.cnt{font-family:"Archivo Black","Arial Black",Arial,sans-serif;font-size:20px}
+.cnt b{color:var(--r);font-weight:400}
+.marks{display:flex;gap:6px;margin:6px 0 4px}
+.mk{flex:1;min-height:44px;border:2px solid var(--t);border-radius:6px;background:transparent;font-weight:700;font-size:15px;padding:0}
+.mk.on{background:var(--t);color:var(--p)}
+.mk.cf{border:2px dashed var(--r);color:var(--r)}
+.mk.cf.on{background:var(--r);color:var(--p)}
+.stagew{flex:1;min-height:0;position:relative;padding:0 8px}
+.stagew svg{width:100%;height:100%;border-radius:8px}
+.pop{position:absolute;left:14px;right:14px;bottom:8px;background:var(--p);border:3px solid var(--t);border-radius:6px;padding:8px 10px;font-size:15px;display:none;z-index:3}
+.pop.on{display:block}
+.card{flex:none;margin:6px 12px 0;padding:8px 12px;border:3px solid var(--t);border-radius:8px;max-height:34dvh;overflow:auto;background:#fbf8f1}
+.card .l1{font-family:"Archivo Black","Arial Black",Arial,sans-serif;font-size:19px;line-height:1.15}
+.card .l1 b{color:var(--r);font-weight:400}
+.card .l2{font-size:15px;color:var(--t2);margin-top:2px}
+.card .tx{margin-top:4px;font-size:18px;line-height:1.3}
+.card .row{display:flex;gap:8px;align-items:center;margin-top:6px;flex-wrap:wrap}
+.tag{min-height:44px;padding:0 14px;border:2px solid var(--t);border-radius:22px;background:transparent;font-weight:700;font-size:15px}
+.tag.cf{border:2px dashed var(--r);color:var(--r)}
+.card .btn{min-height:48px;font-size:16px;padding:0 16px}
+.avisof{flex:none;font-size:13px;line-height:1.25;color:var(--t2);padding:4px 14px 0}
+.nav{flex:none;display:flex;gap:10px;padding:8px 12px 10px}
+.nav .btn{flex:1}
+/* dibujo */
+.scroll{overflow-y:auto;flex:1;padding:18px 20px 24px}
+.scroll h2{font-size:clamp(30px,9vw,40px)}
+.scroll .sub{margin:6px 0 10px}
+.draw{background:linear-gradient(#e3c9a3,#d6b88c);border-radius:8px;width:100%;height:auto}
+.trz{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 4s linear}
+.trz.go{stroke-dashoffset:0}
+.dat{display:grid;gap:8px;margin:12px 0}
+.dat div{border:2px solid var(--t);border-radius:6px;padding:8px 10px;font-size:17px}
+.dat small{display:block;font-size:13px;color:var(--t2)}
+.dat em{font-style:normal;font-weight:700;font-size:13px;display:inline-block;border:2px solid var(--t);border-radius:12px;padding:0 8px;margin-bottom:4px}
+.alerta{border:3px solid var(--r);border-radius:6px;padding:10px 12px;font-size:17px;margin:10px 0 14px}
+.btns{display:flex;flex-direction:column;gap:10px}
+/* quiz */
+.qn{font-size:14px;font-weight:700;color:var(--t2)}
+#q h2{font-size:clamp(23px,6.6vw,30px);margin:6px 0 14px}
+.op{display:block;width:100%;min-height:56px;text-align:left;padding:10px 14px;margin-bottom:10px;border:3px solid var(--t);border-radius:6px;background:transparent}
+.op.ok{border-color:var(--r);color:var(--r);font-weight:700}
+.op.no{opacity:.45}
+.fb{margin:6px 0 14px;font-size:17px;min-height:26px}
+.score{font-size:clamp(60px,20vw,96px);color:var(--r)}
+.fin{border-top:3px solid var(--t);margin-top:16px;padding-top:14px;display:flex;gap:14px;align-items:center}
+.fin svg{flex:none;width:90px;height:auto}
+.fin p{font-family:"Archivo Black","Arial Black",Arial,sans-serif;font-size:19px;line-height:1.2}
+footer.src{margin-top:18px;font-size:13px;color:var(--t2);line-height:1.35}
+footer.src a{color:inherit;overflow-wrap:anywhere}
+footer.src ul{padding-left:18px;margin:4px 0}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<radialGradient id="gSkin" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#ecc59c"/><stop offset="1" stop-color="#c58f64"/></radialGradient>
+<radialGradient id="gGi" cx=".4" cy=".3" r=".9"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d9d4c8"/></radialGradient>
+<linearGradient id="gWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0c59d"/><stop offset="1" stop-color="#cfae80"/></linearGradient>
+<radialGradient id="gLight" cx=".5" cy=".45" r=".7"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#000" stop-opacity=".12"/></radialGradient>
+<marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#C8102E"/></marker>
+<!-- karateka visto desde arriba, mirando al norte (arriba) -->
+<g id="kar">
+  <ellipse cx="3" cy="5" rx="27" ry="16" fill="#000" opacity=".18"/>
+  <ellipse cx="-25" cy="1" rx="6.5" ry="14" fill="url(#gGi)" stroke="#b9b3a4" stroke-width="1.2"/>
+  <ellipse cx="25" cy="1" rx="6.5" ry="14" fill="url(#gGi)" stroke="#b9b3a4" stroke-width="1.2"/>
+  <ellipse cx="0" cy="3" rx="22" ry="12.5" fill="url(#gGi)" stroke="#b9b3a4" stroke-width="1.2"/>
+  <ellipse cx="0" cy="5" rx="13" ry="7" fill="none" stroke="#4a3426" stroke-width="4"/>
+  <circle cx="0" cy="-1" r="12" fill="#2a2220"/>
+  <circle cx="0" cy="-3" r="10" fill="url(#gSkin)"/>
+  <ellipse cx="0" cy="-12.5" rx="2.2" ry="1.6" fill="#b17b52"/>
+</g>
+<g id="foot"><ellipse cx="0" cy="0" rx="4.6" ry="9.5"/></g>
+<!-- karateka de frente en saludo -->
+<g id="rei">
+  <ellipse cx="45" cy="148" rx="30" ry="5" fill="#000" opacity=".15"/>
+  <rect x="31" y="95" width="13" height="48" rx="5" fill="url(#gGi)" stroke="#b9b3a4" stroke-width="2"/>
+  <rect x="46" y="95" width="13" height="48" rx="5" fill="url(#gGi)" stroke="#b9b3a4" stroke-width="2"/>
+  <path d="M22 50 Q45 40 68 50 L66 100 L24 100z" fill="url(#gGi)" stroke="#b9b3a4" stroke-width="2"/>
+  <rect x="24" y="78" width="42" height="8" fill="#4a3426"/>
+  <rect x="14" y="52" width="12" height="46" rx="6" fill="url(#gGi)" stroke="#b9b3a4" stroke-width="2"/>
+  <rect x="64" y="52" width="12" height="46" rx="6" fill="url(#gGi)" stroke="#b9b3a4" stroke-width="2"/>
+  <circle cx="45" cy="28" r="20" fill="url(#gSkin)"/>
+  <path d="M25 26 Q45 0 65 26 Q45 12 25 26z" fill="#2a2220"/>
+  <circle cx="38" cy="30" r="2" fill="#1A1A1A"/><circle cx="52" cy="30" r="2" fill="#1A1A1A"/>
+  <path d="M39 38 Q45 42 51 38" stroke="#1A1A1A" stroke-width="2" fill="none" stroke-linecap="round"/>
+</g>
+<!-- suelo de dojo -->
+<g id="floor">
+  <rect x="-400" y="-500" width="800" height="900" fill="url(#gWood)"/>
+  <g stroke="#8a6a3f" stroke-opacity=".28" stroke-width="1.2">
+    <path d="M-400-440H400M-400-380H400M-400-320H400M-400-260H400M-400-200H400M-400-140H400M-400-80H400M-400-20H400M-400 40H400M-400 100H400M-400 160H400"/>
+  </g>
+  <g stroke="#8a6a3f" stroke-opacity=".2" stroke-width="1.2">
+    <path d="M-250-440v60M-130-380v60M-300-320v60M-60-260v60M-210-200v60M-90-140v60M-330-80v60M-20-20v60M-170 40v60M-280 100v60M60-440v60M170-380v60M110-320v60M260-260v60M80-200v60M200-140v60M310-80v60M140-20v60M240 40v60M30 100v60M330-440v60M-350-380v60"/>
+  </g>
+  <rect x="-400" y="-500" width="800" height="900" fill="url(#gLight)"/>
+</g>
+</defs></svg>
+
+<!-- VISTA 1: portada -->
+<section class="view on" id="v1" aria-label="Portada">
+  <div>
+    <h1>Heian Shodan <span class="red">dibuja</span> algo en el suelo.</h1>
+    <p class="sub">Míralo desde arriba, movimiento a movimiento.</p>
+  </div>
+  <svg viewBox="-170 -150 340 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Suelo de dōjō visto desde arriba con un karateka en hachiji-dachi, posición natural abierta">
+    <use href="#floor"/>
+    <g stroke="#1A1A1A" stroke-opacity=".22" stroke-width="2"><path d="M0-150V150M-170 0H170"/></g>
+    <g class="pr" fill="#C8102E"><use href="#foot" x="-11" y="2"/><use href="#foot" x="11" y="2"/></g>
+    <use href="#kar" transform="scale(1.35)"/>
+  </svg>
+  <div class="go">
+    <button class="btn" id="empezar">Empezar</button>
+    <p class="small">Versión habitual en Shotokan. Dibujo esquemático.</p>
+  </div>
+</section>
+
+<!-- VISTA 2: paso a paso -->
+<section class="view" id="v2" aria-label="Embusen paso a paso">
+  <header>
+    <div class="top"><h2>Embusen</h2><div class="cnt" aria-live="polite"><b id="cn">0</b> / 21</div></div>
+    <div class="marks" id="marks" role="group" aria-label="Tramos"></div>
+  </header>
+  <div class="stagew">
+    <svg id="stage" viewBox="-170 -300 340 380" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Vista cenital del suelo con el recorrido del karateka">
+      <use href="#floor"/>
+      <g stroke="#1A1A1A" stroke-opacity=".22" stroke-width="2"><path d="M0-300V80M-170 0H170"/></g>
+      <g font-family="Arial Black,Arial,sans-serif" font-size="15" fill="#1A1A1A" fill-opacity=".5" text-anchor="middle"><text x="0" y="-282">N</text><text x="152" y="5">E</text><text x="0" y="74">S</text><text x="-152" y="5">O</text></g>
+      <g id="trail" fill="#C8102E" opacity=".3"></g>
+      <g id="cur"></g>
+      <g id="kk"><use id="karu" href="#kar"/><g id="kiai" display="none"><g fill="none" stroke="#C8102E" stroke-width="4" stroke-linecap="round"><path d="M-30-30L-40-42M0-38V-52M30-30L40-42M-36-8L-50-10M36-8L50-10"/></g></g></g>
+      <text id="kiaitx" x="0" y="0" display="none" font-family="Arial Black,Arial,sans-serif" font-size="22" fill="#C8102E" stroke="#F4EFE6" stroke-width="4" paint-order="stroke" text-anchor="middle">KIAI</text>
+    </svg>
+    <div class="pop" id="pop" role="status"></div>
+  </div>
+  <article class="card" id="card"></article>
+  <p class="avisof">Rumbos calculados sumando los giros que dan las fuentes. Dibujo esquemático: las distancias no son reales.</p>
+  <div class="nav">
+    <button class="btn alt" id="prev">‹ Anterior</button>
+    <button class="btn" id="next">Siguiente ›</button>
+  </div>
+</section>
+
+<!-- VISTA 3: dibujo final -->
+<section class="view" id="v3" aria-label="Dibujo final del recorrido">
+  <div class="scroll">
+    <h2>Parecido a una <span class="red">«I»</span>.</h2>
+    <p class="sub">Avanza, da media vuelta y vuelve, sin salir de una cruz de ejes.</p>
+    <svg class="draw" id="draw" viewBox="-170 -290 340 360" role="img" aria-label="Recorrido de los movimientos 1 a 17 como trazo rojo y un tramo punteado con interrogante para los movimientos 18 a 21"></svg>
+    <div class="dat">
+      <div><em>Según fuentes</em><br>21 movimientos. Empieza y acaba en hachiji-dachi.</div>
+      <div><em>Según fuentes</em><br>Dos kiai: movimientos 9 y 17.<small>Una página cita solo uno.</small></div>
+      <div><em>Según fuentes</em><br>Los giros de los pasos 1–17 caen en gedan-barai: 6 en total (1, 3, 6, 10, 12, 14).</div>
+    </div>
+    <p class="alerta"><b>La forma «I» es aproximada:</b> una sola fuente la describe y ninguna da diagrama. Hay variantes según la escuela.</p>
+    <div class="btns">
+      <button class="btn alt" id="rep">Repetir el recorrido</button>
+      <button class="btn" id="aquiz">Ir al quiz</button>
+    </div>
+  </div>
+</section>
+
+<!-- VISTA 4: quiz -->
+<section class="view" id="v4" aria-label="Quiz">
+  <div class="scroll" id="q"></div>
+</section>
+
+<script>
+/* ================================================================
+   DATOS. Todo lo que sale de las fuentes está aquí, en dos bloques.
+   Fuente: piezas/2026-11-16-embusen/dosier.md
+   ================================================================ */
+
+/* Pasos 1-17: tabla del dosier (versión habitual en Shotokan).
+   giro: grados con signo (negativo = a la izquierda, antihorario; positivo = a la derecha).
+   mov: 1 = avanza un paso esquemático, 0 = sin paso.
+   lado: 'L' hidari / 'R' migi (pie y mano adelantados). kiai: true en 9 y 17. */
+const PASOS = [
+ {n:1, tec:"Hidari gedan-barai", pos:"Hidari zenkutsu-dachi", giro:-90, mov:1, lado:'L', txt:"Primer giro: 90° a la izquierda con gedan-barai. La kata empieza hacia el oeste.", nota:"Hidari = izquierda; migi = derecha."},
+ {n:2, tec:"Migi chūdan oi-zuki", pos:"Migi zenkutsu-dachi", giro:0, mov:1, lado:'R', txt:"Un paso adelante con oi-zuki. Primer tramo corto."},
+ {n:3, tec:"Migi gedan-barai", pos:"Migi zenkutsu-dachi", giro:180, mov:1, lado:'R', txt:"Media vuelta con gedan-barai. Ahora mira justo al lado contrario."},
+ {n:4, tec:"Migi kentsui (golpe de martillo)", pos:"Migi zenkutsu-dachi, sin paso", giro:0, mov:0, lado:'R', txt:"Sin mover los pies: kentsui. Una fuente pone aquí otra posición; dato a comprobar."},
+ {n:5, tec:"Hidari chūdan oi-zuki", pos:"Hidari zenkutsu-dachi", giro:0, mov:1, lado:'L', txt:"Paso adelante y oi-zuki con el otro lado."},
+ {n:6, tec:"Hidari gedan-barai", pos:"Hidari zenkutsu-dachi", giro:-90, mov:1, lado:'L', txt:"Giro de 90° a la izquierda: se abre el eje largo del dibujo, hacia el norte."},
+ {n:7, tec:"Migi jōdan age-uke", pos:"Migi zenkutsu-dachi", giro:0, mov:1, lado:'R', txt:"Avanza con age-uke."},
+ {n:8, tec:"Hidari jōdan age-uke", pos:"Hidari zenkutsu-dachi", giro:0, mov:1, lado:'L', txt:"Otro paso, otro age-uke con el lado contrario."},
+ {n:9, tec:"Migi jōdan age-uke", pos:"Migi zenkutsu-dachi", giro:0, mov:1, lado:'R', kiai:true, txt:"Tercer age-uke y primer kiai."},
+ {n:10, tec:"Hidari gedan-barai", pos:"Hidari zenkutsu-dachi", giro:-270, mov:1, lado:'L', txt:"Giro grande: 270° a la izquierda. Del norte al este con gedan-barai."},
+ {n:11, tec:"Migi chūdan oi-zuki", pos:"Migi zenkutsu-dachi", giro:0, mov:1, lado:'R', txt:"Avanza con oi-zuki."},
+ {n:12, tec:"Migi gedan-barai", pos:"Migi zenkutsu-dachi", giro:180, mov:1, lado:'R', txt:"Media vuelta con gedan-barai: se vuelve por donde se vino."},
+ {n:13, tec:"Hidari chūdan oi-zuki", pos:"Hidari zenkutsu-dachi", giro:0, mov:1, lado:'L', txt:"Avanza con oi-zuki hacia el oeste."},
+ {n:14, tec:"Hidari gedan-barai", pos:"Hidari zenkutsu-dachi", giro:-90, mov:1, lado:'L', txt:"Giro de 90° a la izquierda: ahora la kata baja hacia el sur."},
+ {n:15, tec:"Migi chūdan oi-zuki", pos:"Migi zenkutsu-dachi", giro:0, mov:1, lado:'R', txt:"Primero de tres oi-zuki seguidos avanzando."},
+ {n:16, tec:"Hidari chūdan oi-zuki", pos:"Hidari zenkutsu-dachi", giro:0, mov:1, lado:'L', txt:"Segundo oi-zuki, con el lado contrario."},
+ {n:17, tec:"Migi chūdan oi-zuki", pos:"Migi zenkutsu-dachi", giro:0, mov:1, lado:'R', kiai:true, txt:"Tercer oi-zuki y segundo kiai. Fin del tramo hacia el sur."}
+];
+
+/* ----------------------------------------------------------------
+   PASOS 18-21: A CONFIRMAR (Best Karate vol. 5 o sensei de Jorge).
+   Por ahora solo se muestran: técnica (shuto-uke, chūdan), posición
+   (kokutsu-dachi) y mano (patrón izquierda-derecha-derecha-izquierda,
+   The Martial Way y Bertel). No se muestran giro, rumbo ni pie delantero.
+   PARA CORREGIR: pon confirmado:true y rellena giro (grados con signo),
+   mov (0 o 1) y lado ('L'/'R'). Entonces el paso se dibuja y se
+   anima igual que los 1-17 y cambia la etiqueta a «Según fuentes».
+   Los pasos 18-21 deben confirmarse en orden.
+   ---------------------------------------------------------------- */
+const PASOS_A_CONFIRMAR = [
+ {n:18, tec:"Hidari chūdan shuto-uke", pos:"Kokutsu-dachi", confirmado:false, giro:null, mov:null, lado:null, txt:"Empieza el cierre: cuatro shuto-uke en kokutsu-dachi. Giro y pie delantero, a confirmar."},
+ {n:19, tec:"Migi chūdan shuto-uke", pos:"Kokutsu-dachi", confirmado:false, giro:null, mov:null, lado:null, txt:"Segundo shuto-uke, ahora con la mano derecha. Dirección a confirmar."},
+ {n:20, tec:"Migi chūdan shuto-uke", pos:"Kokutsu-dachi", confirmado:false, giro:null, mov:null, lado:null, txt:"Tercer shuto-uke, de nuevo con la derecha según las fuentes. Dirección a confirmar."},
+ {n:21, tec:"Hidari chūdan shuto-uke", pos:"Kokutsu-dachi", confirmado:false, giro:null, mov:null, lado:null, txt:"Último shuto-uke, con la izquierda. Luego se vuelve a hachiji-dachi. Dirección a confirmar."}
+];
+
+const TEXTO_INICIO = "Empezamos en hachiji-dachi (posición natural abierta). Mira al norte: esa es la parte alta de la pantalla.";
+const TEXTO_FINAL = "La kata termina como empezó: en hachiji-dachi.";
+const TRAMOS = [[1,2],[3,5],[6,9],[10,13],[14,17],[18,21]];
+const EXPL = {seg:"Según fuentes = varias páginas de práctica coinciden; ninguna es federación.", cf:"A confirmar = las fuentes discrepan; lo estamos contrastando."};
+
+const QUIZ = [
+ {q:"¿Cuántos movimientos tiene Heian Shodan?", o:["15","21","27"], c:1, e:"Cuatro páginas de práctica coinciden: 21 movimientos, de hachiji-dachi a hachiji-dachi."},
+ {q:"¿En qué movimientos se da el kiai?", o:["1 y 21","9 y 17","Solo en el último"], c:1, e:"Según las fuentes, en el tercer age-uke (9) y en el tercer oi-zuki (17)."},
+ {q:"¿Con qué técnica caen los giros de los movimientos 1 a 17?", o:["Gedan-barai","Age-uke","Shuto-uke"], c:0, e:"Cada giro de 1 a 17 cae en un gedan-barai."}
+];
+
+/* ================================================================
+   LÓGICA
+   ================================================================ */
+const TODOS = PASOS.concat(PASOS_A_CONFIRMAR);
+const FINAL = TODOS.length + 1;               // paso 22: cierre
+const U = 62, OFF = 9;
+const $ = s => document.querySelector(s);
+const NS = "http://www.w3.org/2000/svg";
+const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+const esc = s => s;
+
+/* Posiciones esquemáticas: se calculan sumando giros (cada paso avanza U). */
+const pose = [{x:0,y:0,a:0,dx:0,dy:0}];
+(function(){
+  let x=0,y=0,a=0;
+  for(const p of TODOS){
+    if(p.confirmado===false || p.giro==null || p.mov==null){ break; }
+    a += p.giro; const r=a*Math.PI/180;
+    x += p.mov*U*Math.sin(r); y -= p.mov*U*Math.cos(r);
+    pose.push({x:x+OFF*Math.cos(r), y:y+OFF*Math.sin(r), a, bx:x, by:y});
+  }
+})();
+const ULT = pose.length-1;                    // último paso con pose conocida (17 hoy)
+const RUMBOS = ["norte","este","sur","oeste"];
+const rumbo = a => RUMBOS[(((Math.round(a/90))%4)+4)%4];
+const poseDe = n => pose[Math.min(n, ULT)];
+const esConf = n => n>=1 && n<=ULT;           // ¿se muestra con rumbo?
+const tramoDe = n => { for(let i=0;i<TRAMOS.length;i++) if(n>=TRAMOS[i][0]&&n<=TRAMOS[i][1]) return i; return n>=22?5:-1; };
+
+function el(tag, attrs, parent){ const e=document.createElementNS(NS,tag); for(const k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
+function rot(a){ return a*Math.PI/180; }
+
+/* Huellas de un paso: dos pies en el sistema del karateka */
+function huellas(parent, n, extra){
+  const p = pose[n], g = el("g",{transform:`translate(${p.x} ${p.y}) rotate(${p.a})`},parent);
+  let f;
+  if(n===0) f=[[-11,2],[11,2]];
+  else { const l = TODOS[n-1].lado==='L'; f = l ? [[-9,-10],[9,13]] : [[9,-10],[-9,13]]; }
+  f.forEach(c=>el("use",{href:"#foot",x:c[0],y:c[1]},g));
+  return g;
+}
+
+/* Estado de la vista */
+let paso = 0, kx=0, ky=0, ka=0, anim=0;
+const karu=$("#karu"), kiai=$("#kiai"), kiaitx=$("#kiaitx"), cur=$("#cur"), trail=$("#trail");
+function ponK(x,y,a){ kx=x;ky=y;ka=a; karu.setAttribute("transform",`translate(${x} ${y}) rotate(${a})`); kiai.setAttribute("transform",`translate(${x} ${y})`); }
+
+function tarjeta(){
+  const c=$("#card"); c.innerHTML="";
+  const add=(cls,t,tag)=>{const d=document.createElement(tag||"div");d.className=cls;d.textContent=t;c.appendChild(d);return d;};
+  if(paso===0){
+    c.setAttribute("aria-label","paso 0, inicio");
+    add("l1","Inicio");
+    add("tx",TEXTO_INICIO);
+    return;
+  }
+  if(paso===FINAL){
+    c.setAttribute("aria-label","final de la kata");
+    add("l1","Final");
+    add("tx",TEXTO_FINAL);
+    const r=document.createElement("div");r.className="row";c.appendChild(r);
+    r.appendChild(etiqueta("seg"));
+    const b=document.createElement("button");b.className="btn";b.textContent="Ver el dibujo";b.onclick=()=>ir("v3");r.appendChild(b);
+    return;
+  }
+  const p=TODOS[paso-1], cf = p.confirmado===false;
+  c.setAttribute("aria-label",`paso ${p.n}, ${p.tec}`);
+  const l1=add("l1","");
+  l1.innerHTML=`<b>${p.n}</b> · `; l1.appendChild(document.createTextNode(p.tec));
+  let l2 = p.pos;
+  if(!cf) l2 += " · mira al "+rumbo(pose[paso].a);
+  add("l2",l2);
+  add("tx",p.txt);
+  if(p.nota && !cf) add("l2",p.nota);
+  const r=document.createElement("div");r.className="row";c.appendChild(r);
+  r.appendChild(etiqueta(cf?"cf":"seg"));
+  if(p.kiai){const k=document.createElement("span");k.style.cssText="color:var(--r);font-weight:700";k.textContent="KIAI";r.appendChild(k);}
+}
+function etiqueta(t){
+  const b=document.createElement("button");b.className="tag"+(t==="cf"?" cf":"");
+  b.textContent = t==="cf"?"A confirmar":"Según fuentes";
+  b.setAttribute("aria-label",b.textContent+". Toca para saber qué significa.");
+  b.onclick=()=>{const pp=$("#pop");pp.textContent=EXPL[t];pp.classList.toggle("on");};
+  return b;
+}
+
+function marcas(){
+  const m=$("#marks"); m.innerHTML="";
+  TRAMOS.forEach((t,i)=>{
+    const b=document.createElement("button");
+    const cf = TODOS[t[0]-1].confirmado===false;
+    b.className="mk"+(cf?" cf":"");
+    b.textContent = t[0]+"–"+t[1];
+    b.setAttribute("aria-label",`Tramo de los pasos ${t[0]} a ${t[1]}`+(cf?", a confirmar":""));
+    b.onclick=()=>mover(t[0],true);
+    m.appendChild(b);
+  });
+}
+function marcarTramo(){
+  const t=tramoDe(paso);
+  [...$("#marks").children].forEach((b,i)=>{b.classList.toggle("on",i===t); if(i===t) b.setAttribute("aria-current","step"); else b.removeAttribute("aria-current");});
+}
+
+/* Capas estáticas del paso: huellas atenuadas, huella actual, flecha, arco, kiai, "?" */
+function acabado(n){
+  trail.innerHTML=""; cur.innerHTML="";
+  kiai.setAttribute("display","none"); kiaitx.setAttribute("display","none");
+  const hasta = n>ULT ? ULT+1 : n;
+  for(let i=0;i<hasta;i++) huellas(trail,i===0?0:i);   // 0..hasta-1 atenuadas
+  if(n===0){ huellas(cur,0).setAttribute("opacity",.85); cur.firstChild.style.fill="#C8102E"; cur.setAttribute("fill","#C8102E"); return; }
+  cur.setAttribute("fill","#C8102E");
+  if(esConf(n)){
+    const p=pose[n], q=pose[n-1], pd=TODOS[n-1];
+    huellas(cur,n);
+    if(pd.giro){ // arco de giro sobre el sitio, en la posición anterior
+      const r=30, a0=rot(q.a), a1=rot(q.a+pd.giro), sw=pd.giro>0?1:0, lg=Math.abs(pd.giro)>180?1:0;
+      const f=a=>[ (q.x+r*Math.sin(a)).toFixed(1), (q.y-r*Math.cos(a)).toFixed(1) ];
+      const s=f(a0), e=f(a1);
+      el("path",{d:`M${s[0]} ${s[1]} A${r} ${r} 0 ${lg} ${sw} ${e[0]} ${e[1]}`,fill:"none",stroke:"#C8102E","stroke-width":3,"stroke-linecap":"round","marker-end":"url(#ah)"},cur);
+    }
+    // flecha de dirección
+    const r=rot(p.a);
+    if(pd.mov){ const d=Math.hypot(p.x-q.x,p.y-q.y);
+      if(d>6) el("line",{x1:q.x,y1:q.y,x2:p.x-Math.sin(r)*30+0,y2:p.y+Math.cos(r)*30,stroke:"#C8102E","stroke-width":4,"stroke-linecap":"round","marker-end":"url(#ah)"},cur);
+    } else el("line",{x1:p.x,y1:p.y,x2:p.x+Math.sin(r)*46,y2:p.y-Math.cos(r)*46,stroke:"#C8102E","stroke-width":4,"stroke-linecap":"round","marker-end":"url(#ah)"},cur);
+    if(pd.kiai){ kiai.setAttribute("display","block"); kiaitx.setAttribute("display","block"); kiaitx.setAttribute("x",p.x); kiaitx.setAttribute("y",p.y-48); }
+  } else { // 18-21 y final: sin rumbo, solo "?"
+    const p=pose[ULT];
+    cur.setAttribute("fill","none");
+    el("circle",{cx:p.x,cy:p.y,r:44,fill:"none",stroke:"#C8102E","stroke-width":3,"stroke-dasharray":"7 7"},cur);
+    const t=el("text",{x:p.x+48,y:p.y-30,"font-family":"Arial Black,Arial,sans-serif","font-size":38,fill:"#C8102E",stroke:"#F4EFE6","stroke-width":5,"paint-order":"stroke"},cur); t.textContent="?";
+  }
+}
+
+function dif(a){ return ((a%360)+540)%360-180; }
+function mover(n, saltar){
+  const ant=paso; paso=Math.max(0,Math.min(FINAL,n));
+  const id=++anim, dest=poseDe(paso);
+  $("#cn").textContent=Math.min(paso,21);
+  $("#pop").classList.remove("on");
+  tarjeta(); marcarTramo();
+  $("#prev").disabled = paso===0; $("#next").disabled = paso===FINAL;
+  const fin=()=>{ if(id!==anim)return; ponK(dest.x,dest.y,dest.a); acabado(paso); };
+  // al empezar la animación: quitar capas del paso actual
+  const adj = paso===ant+1 && esConf(paso);
+  trail.innerHTML=""; cur.innerHTML=""; kiai.setAttribute("display","none"); kiaitx.setAttribute("display","none");
+  for(let i=0;i<Math.min(paso,ULT+1);i++) huellas(trail,i);
+  if(reduce){ fin(); return; }
+  const x0=kx,y0=ky,a0=ka;
+  let a1 = adj ? a0 + TODOS[paso-1].giro : a0 + dif(dest.a-a0);
+  if(paso===ant && !adj){ fin(); return; }
+  const fase1 = adj && TODOS[paso-1].giro ? 0.4 : 0, dur = adj ? 1000 : 600, t0=performance.now();
+  if(adj && fase1){ const q=pose[paso-1]; /* arco ya visible durante el giro */ acabadoArco(paso); }
+  (function f(now){
+    if(id!==anim) return;
+    let t=(now-t0)/dur; if(t>=1){ fin(); return; }
+    let ta, tp;
+    if(fase1){ ta=Math.min(1,t/fase1); tp=Math.max(0,(t-fase1)/(1-fase1)); } else { ta=tp=t; }
+    const e=k=>k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+    ponK(x0+(dest.x-x0)*e(tp), y0+(dest.y-y0)*e(tp), a0+(a1-a0)*e(ta));
+    requestAnimationFrame(f);
+  })(t0);
+}
+function acabadoArco(n){ // dibuja solo el arco mientras gira
+  const pd=TODOS[n-1], q=pose[n-1], r=30, a0=rot(q.a), a1=rot(q.a+pd.giro), sw=pd.giro>0?1:0, lg=Math.abs(pd.giro)>180?1:0;
+  const f=a=>[(q.x+r*Math.sin(a)).toFixed(1),(q.y-r*Math.cos(a)).toFixed(1)], s=f(a0), e=f(a1);
+  el("path",{d:`M${s[0]} ${s[1]} A${r} ${r} 0 ${lg} ${sw} ${e[0]} ${e[1]}`,fill:"none",stroke:"#C8102E","stroke-width":3,"stroke-linecap":"round","marker-end":"url(#ah)"},cur);
+}
+
+/* ---------- dibujo final ---------- */
+function dibujo(){
+  const s=$("#draw"); s.innerHTML="";
+  el("use",{href:"#floor"},s);
+  el("path",{d:"M0-290V70M-170 0H170",stroke:"#1A1A1A","stroke-opacity":.25,"stroke-width":2},s);
+  const pts=pose.map(p=>p.x.toFixed(1)+" "+p.y.toFixed(1));
+  // marcas de kiai
+  const tr=el("polyline",{points:pts.join(" "),fill:"none",stroke:"#C8102E","stroke-width":6,"stroke-linecap":"round","stroke-linejoin":"round",pathLength:1,class:"trz"},s);
+  pose.forEach((p,i)=>{
+    if(i===0){ const t=el("text",{x:p.x-26,y:p.y+22,"font-family":"Arial Black,Arial,sans-serif","font-size":13,fill:"#1A1A1A"},s); t.textContent="Inicio"; el("circle",{cx:p.x,cy:p.y,r:5,fill:"#1A1A1A"},s); }
+    else if(TODOS[i-1].kiai){
+      el("circle",{cx:p.x,cy:p.y,r:9,fill:"#F4EFE6",stroke:"#C8102E","stroke-width":4},s);
+      const t=el("text",{x:p.x+(i===17?-40:14),y:p.y+(i===17?-12:-10),"font-family":"Arial Black,Arial,sans-serif","font-size":13,fill:"#C8102E",stroke:"#F4EFE6","stroke-width":3,"paint-order":"stroke"},s); t.textContent="KIAI "+i;
+    }
+  });
+  const e=pose[ULT];
+  el("circle",{cx:e.x,cy:e.y,r:34,fill:"none",stroke:"#555","stroke-width":3,"stroke-dasharray":"2 7","stroke-linecap":"round"},s);
+  const q=el("text",{x:e.x+30,y:e.y+36,"font-family":"Arial Black,Arial,sans-serif","font-size":34,fill:"#555",stroke:"#F4EFE6","stroke-width":4,"paint-order":"stroke"},s); q.textContent="?";
+  const l=el("text",{x:e.x+30,y:e.y+54,"font-family":"Arial,sans-serif","font-size":12,"font-weight":700,fill:"#1A1A1A"},s); l.textContent="18–21 · A confirmar";
+  l.setAttribute("x",e.x-20);
+  q.setAttribute("x",e.x+38); q.setAttribute("y",e.y-26);
+  l.setAttribute("y",e.y+58);
+  [["N",0,-276],["E",152,5],["S",0,64],["O",-152,5]].forEach(c=>{const t=el("text",{x:c[1],y:c[2],"text-anchor":"middle","font-family":"Arial Black,Arial,sans-serif","font-size":15,fill:"#1A1A1A","fill-opacity":.5},s);t.textContent=c[0];});
+  const go=()=>tr.classList.add("go");
+  if(reduce){ tr.style.transition="none"; go(); } else { tr.getBoundingClientRect(); setTimeout(go,60); }
+}
+
+/* ---------- quiz ---------- */
+let qi=0, pts=0;
+function quiz(){
+  const q=$("#q"); q.innerHTML="";
+  if(qi>=QUIZ.length){
+    q.innerHTML=`<div class="qn">Resultado</div><h2>Has acertado</h2><div class="big score" aria-live="polite">${pts}/3</div>
+    <div class="btns"><button class="btn" id="vol">Volver al embusen</button></div>
+    <div class="fin"><svg viewBox="0 0 90 155" aria-hidden="true"><use href="#rei"/></svg><p>¿Qué dibujo te enseñó tu sensei? Cuéntalo en los comentarios.</p></div>`;
+    $("#vol").onclick=()=>{ir("v2");mover(0);};
+    q.appendChild(pie());
+    return;
+  }
+  const d=QUIZ[qi];
+  q.innerHTML=`<div class="qn">Pregunta ${qi+1} de 3</div><h2></h2><div id="ops"></div><p class="fb" id="fb" aria-live="polite"></p><div class="btns" id="nx"></div>`;
+  q.querySelector("h2").textContent=d.q;
+  d.o.forEach((t,i)=>{
+    const b=document.createElement("button");b.className="op";b.textContent=String.fromCharCode(97+i)+") "+t;
+    b.onclick=()=>{
+      const bs=[...q.querySelectorAll(".op")]; bs.forEach((x,j)=>{x.disabled=true; if(j===d.c)x.classList.add("ok"); else if(j!==i)x.classList.add("no");});
+      if(i===d.c){pts++;}
+      $("#fb").textContent=(i===d.c?"Correcto. ":"No. ")+d.e;
+      const n=document.createElement("button");n.className="btn";n.textContent=qi===QUIZ.length-1?"Ver resultado":"Siguiente pregunta";
+      n.onclick=()=>{qi++;quiz();};$("#nx").appendChild(n);n.focus();
+    };
+    $("#ops").appendChild(b);
+  });
+  q.appendChild(pie());
+}
+function pie(){
+  const f=document.createElement("footer");f.className="src";
+  f.innerHTML=`<p><b>Secuencia según páginas de práctica; pendiente de contrastar con Best Karate vol. 5 (Nakayama). Variantes según la escuela.</b></p>
+  <p>Fuentes:</p><ul>
+  <li>The Martial Way (AU), «Heian Sho-dan»: <a href="https://www.themartialway.com.au/heian-shodan/" rel="noopener">themartialway.com.au/heian-shodan</a></li>
+  <li>André Bertel, «平安初段» (2022): <a href="https://andrebertel.blogspot.com/2022/03" rel="noopener">andrebertel.blogspot.com/2022/03</a></li>
+  <li>karateyon, «heian shodan»: <a href="https://karateyon.blogspot.com/2010/11/heian-shodan.html" rel="noopener">karateyon.blogspot.com</a></li>
+  <li>Fisher, «Shotokan Heian Shodan» (xylenepower.com)</li>
+  <li>Stanford Karate, katas: <a href="https://karate.groups.stanford.edu/resources/kata" rel="noopener">karate.groups.stanford.edu</a></li>
+  <li>Kodansha USA, Best Karate vol. 5 (solo como referencia de consulta): <a href="https://kodansha.us/book/best-karate-series/best-karate-vol-5" rel="noopener">kodansha.us</a></li></ul>`;
+  return f;
+}
+
+/* ---------- navegación ---------- */
+function ir(id){
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id===id));
+  if(id==="v3") dibujo();
+  if(id==="v4"){qi=0;pts=0;quiz();}
+  const f=document.querySelector("#"+id+" h1,#"+id+" h2"); window.scrollTo(0,0);
+}
+$("#empezar").onclick=()=>{ir("v2");mover(0);};
+$("#prev").onclick=()=>mover(paso-1);
+$("#next").onclick=()=>mover(paso+1);
+$("#rep").onclick=()=>{ir("v2");paso=0;ponK(0,0,0);mover(1);};
+$("#aquiz").onclick=()=>ir("v4");
+document.addEventListener("keydown",e=>{
+  if(!$("#v2").classList.contains("on")) return;
+  if(e.key==="ArrowRight") mover(paso+1);
+  else if(e.key==="ArrowLeft") mover(paso-1);
+  else if(e.key==="Home") mover(0);
+  else if(e.key==="End") mover(FINAL);
+  else return;
+  e.preventDefault();
+});
+marcas(); ponK(0,0,0); mover(0);
+</script>
+</body>
+</html>

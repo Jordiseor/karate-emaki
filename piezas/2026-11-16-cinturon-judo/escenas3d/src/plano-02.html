@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cinturón judo · plano 02</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+import { crearRollo } from '../../../../animacion/3d/rollo2d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const { U, H2 } = C;
+window.DURACION = 2.5;
+// PLANO 2 (2,5 s): rollo emaki abierto; sello 沖縄 a la izquierda, dojo de judo a la derecha y flecha roja que crece de izquierda a derecha. Solo 2D.
+const rollo = crearRollo();
+let T = 0;
+function dojo(c, x, y, s, p) {
+  // casa-dojo simple a tinta: base, muros, tejado a dos aguas con alero, puerta
+  c.save(); c.translate(x, y); c.scale(s, s); c.globalAlpha = Math.min(1, p * 3);
+  c.strokeStyle = C.TINTA; c.lineWidth = 7; c.lineJoin = 'round'; c.lineCap = 'round';
+  const q = (a, b) => Math.max(0, Math.min(1, (p - a) / (b - a)));
+  c.fillStyle = '#EDE3CF';
+  c.beginPath(); c.rect(-150, -140 * q(0, .4), 300, 140 * q(0, .4)); c.fill(); c.stroke();
+  const t = q(.3, .8);
+  c.fillStyle = '#3B2E26'; c.beginPath(); c.moveTo(-215, -140); c.lineTo(0, -140 - 120 * t); c.lineTo(215, -140); c.quadraticCurveTo(0, -150, -215, -140); c.closePath(); c.globalAlpha *= t; c.fill(); c.stroke();
+  c.globalAlpha = Math.min(1, p * 3) * q(.6, 1);
+  c.fillStyle = C.TINTA; c.fillRect(-35, -100, 70, 100);
+  for (const xx of [-110, 110]) { c.fillStyle = '#C9B896'; c.fillRect(xx - 24, -105, 48, 60); c.strokeRect(xx - 24, -105, 48, 60); }
+  c.restore();
+}
+const vineta = (c) => {
+  C.sello(c, '沖縄', 270, 900, 250, U.prog(T, 0.1, 0.55), { rotar: -0.06 });
+  dojo(c, 740, 1060, 0.95, U.prog(T, 0.5, 1.4));
+  H2.kanji(c, '柔道', 740, 650, 150, { prog: U.prog(T, 0.9, 1.7), color: C.TINTA });
+  // flecha roja 2D (crece de izquierda a derecha, fuera de Okinawa hacia el judo)
+  const f = U.easeInOut(U.prog(T, 0.55, 1.5));
+  if (f > 0) {
+    const x0 = 140, x1 = 140 + 520 * f, y = 1180;
+    c.save(); c.strokeStyle = C.ROJO; c.fillStyle = C.ROJO; c.lineWidth = 22; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(x0, y); c.lineTo(Math.max(x0, x1 - 30), y); c.stroke();
+    if (f > 0.15) { c.beginPath(); c.moveTo(x1 + 40, y); c.lineTo(x1 - 25, y - 55); c.lineTo(x1 - 25, y + 55); c.closePath(); c.fill(); }
+    c.restore();
+  }
+};
+window.render = (t) => {
+  T = t;
+  window.EMAKI.fondoPapel(ctx);
+  rollo.dibujar(ctx, { abierto: U.easeOut(U.prog(t, 0, 0.5)), centrar: 1, vinetas: [vineta] });
+  C.tarjeta(ctx, t, ['No vino', 'de Okinawa'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

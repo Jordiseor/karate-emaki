@@ -1,0 +1,18 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 5 (1,5 s): silueta en saludo junto al rollo cerrado; botón «Enlace en el perfil».
+import { ctx, U, ROJO, TINTA, PAPEL, texto, fondo, crearRollo, silueta, rr } from './comun.js';
+const rollo = crearRollo(); window.DURACION = 1.5;
+window.render = (t) => {
+  fondo();
+  const f = U.easeInOut(U.prog(t, 0.1, 0.6)) * (1 - U.easeInOut(U.prog(t, 1.1, 1.45)));
+  rollo.cerrado(ctx, { x: 740, y: 940, atado: U.prog(t, 0.0, 0.5), escala: 0.9 });
+  silueta(ctx, 330, 1060, 560, { pose: 'rei', f });
+  const p = U.easeBack(U.prog(t, 0.45, 0.85));
+  ctx.save(); ctx.translate(540, 1390); ctx.scale(p, p);
+  ctx.fillStyle = TINTA; rr(ctx, -430, -75, 860, 150, 75); ctx.fill();
+  texto(ctx, 'Enlace en el perfil', 0, 0, 68, { color: PAPEL }); ctx.restore();
+  texto(ctx, '36 años en un rollo', 540, 290, 76, { alfa: U.prog(t, 0.2, 0.5) });
+};
+</script></body></html>

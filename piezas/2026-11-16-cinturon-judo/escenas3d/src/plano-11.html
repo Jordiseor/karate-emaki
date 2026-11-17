@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cinturón judo · plano 11</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, k, P, U } = C.iniciar();
+window.DURACION = 2.0;
+// PLANO 11 (28,0–30,0): bucle con el plano 1. Yoi a cámara (sin pose de brazos cruzados: se usa yoi), guiño a 1,0 s; la cámara se acerca de medio a nudo
+// y el cuerpo pasa a atar-cinturon (mismo fotograma que el plano 1 en t=0). Tarjeta abajo (no cruza la cara durante el zoom).
+window.render = (t) => {
+  k.colocar(0, 0, 0); k.cinturon('negro');
+  const f = U.easeInOut(U.prog(t, 1.2, 1.97));
+  k.aplicarPose(C.mezclar(P.yoi, P['atar-cinturon'], f), { cinta: { x: 0.2 + 0.05 * f, z: 0 } });
+  const g = U.prog(t, 1.0, 1.15) * (1 - U.prog(t, 1.3, 1.45));   // guiño 1,0–1,45 s
+  k.cara({ parpadeo: 0, guino: g, sonrisa: 0.3 * (1 - f), cejas: 0, mirada: [0, 0] });
+  esc.orbita(C.mezclarCam(C.CAM.medio, C.CAM.nudo, U.easeInOut(U.prog(t, 1.0, 1.97))));
+  esc.dibujar(ctx, {});
+  C.tarjeta(ctx, t, ['¿De qué color', 'es el tuyo?'], { t0: 0.1, t1: 1.9, y: 1330, size: 84 });
+};
+</script></body></html>

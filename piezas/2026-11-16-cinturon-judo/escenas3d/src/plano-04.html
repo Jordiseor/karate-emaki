@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cinturón judo · plano 04</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, k, P, U } = C.iniciar(); k.raiz.visible = false;
+window.DURACION = 2.5;
+// PLANO 4 (2,5 s): dos judokas, cinturon blanco (x=-0,6) y negro (x=0,6); neutra 1,3 s y despues la blanca hace rei. Solo blanco y negro.
+const jb = C.crearJudoka({ cinturon: 'blanco' }), jn = C.crearJudoka({ cinturon: 'negro' });
+esc.escena.add(jb.raiz); esc.escena.add(jn.raiz);
+if (esc.escena.fog) { esc.escena.fog.near = 16; esc.escena.fog.far = 60; }
+jb.colocar(-0.6, 0, 0); jn.colocar(0.6, 0, 0);
+window.render = (t) => {
+  const f = U.easeInOut(U.prog(t, 1.3, 1.85)) * (1 - U.easeInOut(U.prog(t, 2.2, 2.5)) * 0);
+  jn.aplicarPose(P.neutra);
+  jb.aplicarPose(t < 1.3 ? P.neutra : C.mezclar(P['pies-juntos'], P.rei, f));
+  esc.orbita({ centro: [0, 1.0, 0], distancia: 11 - 0.4 * U.prog(t, 0, 2.5), azimut: 0, elevacion: 3, fov: 26 });
+  esc.dibujar(ctx, {});
+  C.tarjeta(ctx, t, ['Antes: blanco', 'y negro'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

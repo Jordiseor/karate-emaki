@@ -1,0 +1,39 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 4 (2,5 s): un dedo (silueta de mano) desliza la línea temporal en un móvil dibujado.
+import { ctx, U, ROJO, TINTA, PAPEL, GRIS, texto, fondo, rr } from './comun.js';
+window.DURACION = 2.5;
+const HITOS = [['1921', 0, 'Seguro'], ['1922', 1, 'Seguro'], ['1939', 2, 'Seguro'], ['1945', 3, 'Según fuentes'], ['1957', 4, 'Seguro']];
+window.render = (t) => {
+  fondo();
+  const ent = U.easeOut(U.prog(t, 0, 0.4));
+  const px = 150, py = 330 + (1 - ent) * 200, pw = 780, ph = 1000;
+  ctx.save(); ctx.globalAlpha = ent;
+  ctx.fillStyle = TINTA; rr(ctx, px, py, pw, ph, 70); ctx.fill();
+  ctx.fillStyle = PAPEL; rr(ctx, px + 24, py + 24, pw - 48, ph - 48, 50); ctx.fill();
+  ctx.save(); rr(ctx, px + 24, py + 24, pw - 48, ph - 48, 50); ctx.clip();
+  // línea temporal horizontal que se desliza con el dedo
+  const desl = U.easeInOut(U.prog(t, 0.6, 2.1)) * 560;
+  const ly = py + 480;
+  ctx.strokeStyle = TINTA; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(px, ly); ctx.lineTo(px + pw, ly); ctx.stroke();
+  HITOS.forEach(([a, i, n]) => {
+    const x = px + 150 + i * 340 - desl, seg = n === 'Seguro';
+    ctx.fillStyle = seg ? TINTA : PAPEL; ctx.strokeStyle = seg ? TINTA : GRIS; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(x, ly, 26, 0, 7); ctx.fill(); ctx.stroke();
+    texto(ctx, a, x, ly - 110, 64, { color: ROJO });
+    const w = n.length * 27 + 50; ctx.fillStyle = seg ? TINTA : 'transparent'; ctx.strokeStyle = seg ? TINTA : GRIS; ctx.lineWidth = 5; rr(ctx, x - w / 2, ly + 70, w, 76, 38); if (seg) ctx.fill(); ctx.stroke();
+    texto(ctx, n, x, ly + 110, 48, { color: seg ? PAPEL : GRIS, peso: 800 });
+  });
+  ctx.restore(); ctx.restore();
+  // mano (silueta de tinta): puño con dedo índice que arrastra
+  const mx = px + 600 - desl * 0.98, my = ly + 400 + Math.sin(t * 2) * 0;
+  ctx.save(); ctx.beginPath(); ctx.rect(0, 0, 1080, 1345); ctx.clip(); ctx.translate(mx, my); ctx.scale(0.8, 0.8); ctx.translate(-mx, -my); ctx.globalAlpha = ent; ctx.fillStyle = TINTA; ctx.strokeStyle = TINTA; ctx.lineCap = 'round';
+  ctx.lineWidth = 58; ctx.beginPath(); ctx.moveTo(mx, my - 250); ctx.lineTo(mx, my - 20); ctx.stroke();      // índice
+  rr(ctx, mx - 90, my - 40, 200, 230, 70); ctx.fill();                                                          // palma
+  ctx.lineWidth = 50; ctx.beginPath(); ctx.moveTo(mx - 85, my + 110); ctx.lineTo(mx - 130, my + 20); ctx.stroke(); // pulgar
+  ctx.beginPath(); ctx.moveTo(mx + 40, my + 150); ctx.lineTo(mx + 120, my + 520); ctx.lineWidth = 120; ctx.stroke(); // muñeca
+  ctx.restore();
+  const a = U.prog(t, 0.2, 0.5);
+  texto(ctx, 'Desliza.', 540, 1405, 84, { alfa: a }); texto(ctx, 'Cada hito, con su fuente.', 540, 1500, 62, { alfa: a, peso: 800 });
+};
+</script></body></html>

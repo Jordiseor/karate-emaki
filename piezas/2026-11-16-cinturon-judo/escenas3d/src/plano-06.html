@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cinturón judo · plano 06</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, k, P, U } = C.iniciar({ suelo: 'tatami' }); k.raiz.visible = false;
+window.DURACION = 2.5;
+// PLANO 6 (2,5 s): misma sala que el 5 (corte limpio); el publico se mira y luego asiente; la camara sube hacia el fondo; pancarta vacia entra a 1,0 s con rotulo «sala llena».
+const sala = C.crearSala(esc, { publico: {} });
+const fu = C.crearJudoka({ cinturon: 'negro', color: '#1A1A1A' });
+esc.escena.add(fu.raiz); fu.colocar(0, 0.2, 0);
+const pan = C.crearPancarta({ texto: '', ancho: 2.2, alto: 0.7, y: 3.4 });
+esc.escena.add(pan.raiz); pan.colocar(0, -4, 0);
+window.render = (t) => {
+  sala.publico.pose(P, { t: 3.0 + t, modo: t < 1.5 ? 'mirar' : 'asentir' });
+  fu.aplicarPose(P['gyaku-zuki-kiai']);
+  const p = U.easeInOut(U.prog(t, 0, 2.5));
+  const c = C.mezclarCam({ ...C.CAM.sala, distancia: 17 }, { ...C.CAM.sala, centro: [0, 2.0, -4], distancia: 15, elevacion: 16 }, p);
+  esc.orbita(c);
+  pan.pop(U.easeOut(U.prog(t, 1.0, 1.4)));
+  esc.dibujar(ctx, {});
+  C.tarjeta(ctx, t, ['Sala llena'], { t0: 0.1, y: 300 });
+};
+</script></body></html>
