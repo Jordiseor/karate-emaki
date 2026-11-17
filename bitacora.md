@@ -80,3 +80,4 @@ Entradas anteriores resumidas en archivo/bitacora-2026-11.md.
 - 2026-11-17 · Animador (jefe + tramos A, B) · Kumite WKF: 13 planos en escenas3d/. Hoja: aka y ao se solapan en los planos 1 (el gancho), 5 y 10, porque la patada de la biblioteca alinea a ao encima. Hay que reencuadrarlos antes del montaje.
 - 2026-11-17 · Interactivos · Embusen: interactivo/index.html (32 KB, 4 vistas, 0 errores a 390 px). Pasos 18–21 en un bloque «A confirmar» sin giro ni pie, pendientes de Jorge. Ojo: el trazo final sale como una «S» angulosa, no como la «I» del embusen; hay que revisarlo. Falta el reel de anuncio de 14 s.
 - 2026-11-17 · Sensei · Jorge da el visto bueno al plan del día («todo bien para delante»). En seiza se usa «mokusō yame». Los pasos 18–21 del embusen siguen «a confirmar» hasta que Jorge los contraste.
+- 2026-11-17 · Sensei · Jorge pide subir ya el reel de hoy: hikite adelantado de las 19:30 a las 18:17 en Metricool (nuevo id 431761265).

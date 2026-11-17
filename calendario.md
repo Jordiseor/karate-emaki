@@ -7,7 +7,7 @@ Hora de Madrid. Ritmo de arranque: 2 reels por semana. Un interactivo cada 2 sem
 | Sáb 14 nov | 19:30 | Esto es KARATE EMAKI (`2026-11-11-presentacion`) | Presentación | Publicada (Instagram) |
 | Lun 16 nov | 12:42 | Zenkutsu-dachi: por qué la posición larga no te tira (`2026-11-09-zenkutsu-estabilidad`) | Ciencia | Publicada (adelantada por Jorge) |
 | Lun 16 nov | 12:47 | Shotokan no es un estilo: es una casa (`2026-11-09-nombre-shotokan`) | Historia | Publicada (adelantada por Jorge) |
-| Mar 17 nov | 19:30 | Hikite: el brazo que vuelve también golpea (`2026-11-12-hikite`) | Técnica | Programada en Metricool (id 431068088) |
+| Mar 17 nov | 18:17 | Hikite: el brazo que vuelve también golpea (`2026-11-12-hikite`) | Técnica | Programada en Metricool (id 431761265), adelantada por Jorge |
 | Sáb 21 nov | 19:30 | El kiai gallo (`2026-11-12-kiai-gallo`) | Anécdotas y humor del dōjō | Programada en Metricool (id 431068105) |
 | Mar 24 nov | 19:30 | Mismo puño, distinto golpe: el tiempo de contacto (`2026-11-17-tiempo-contacto`) | Ciencia | Investigación (dosier hecho) |
 | Sáb 28 nov | 19:30 | Seiza: minuto 1 contra minuto 10 (`2026-11-17-seiza`) | Anécdotas y humor del dōjō | Investigación (dosier hecho) |
