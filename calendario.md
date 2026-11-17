@@ -7,14 +7,17 @@ Hora de Madrid. Ritmo de arranque: 2 reels por semana. Un interactivo cada 2 sem
 | Sáb 14 nov | 19:30 | Esto es KARATE EMAKI (`2026-11-11-presentacion`) | Presentación | Publicada (Instagram) |
 | Lun 16 nov | 12:42 | Zenkutsu-dachi: por qué la posición larga no te tira (`2026-11-09-zenkutsu-estabilidad`) | Ciencia | Publicada (adelantada por Jorge) |
 | Lun 16 nov | 12:47 | Shotokan no es un estilo: es una casa (`2026-11-09-nombre-shotokan`) | Historia | Publicada (adelantada por Jorge) |
-| Mar 24 nov | 19:30 | Hikite: el brazo que vuelve también golpea (`2026-11-12-hikite`) | Técnica | Animación hecha (11 planos, 27 s); siguiente: montaje |
-| Sáb 28 nov | 19:30 | El kiai gallo (`2026-11-12-kiai-gallo`) | Anécdotas y humor del dōjō | Animación hecha (6 planos, 9 s, bucle comprobado); siguiente: montaje |
 | Quincena 16–29 nov | — | Interactivo: De Okinawa a Tokio en 36 años (`2026-11-12-linea-temporal`) | Historia | Interactivo hecho (3 vistas); falta reel de anuncio de 12 s |
 | Mar 1 dic | 19:30 | El cinturón negro que le prestó el judo (`2026-11-16-cinturon-judo`) | Curiosidades | Storyboard (30 s, 11 planos) |
 | Sáb 5 dic | 19:30 | Cómo se puntúa un combate de kumite WKF (`2026-11-16-kumite-puntos`) | Competición | Storyboard (36 s, 13 planos) |
 | Quincena 30 nov–13 dic | — | Interactivo: Embusen de Heian Shodan (`2026-11-16-embusen`) | Técnica | Investigación (2.ª ronda hecha; mov. 18–21 «a confirmar» por Jorge) |
+| Mar 17 nov | 19:30 | Hikite: el brazo que vuelve también golpea (`2026-11-12-hikite`) | Técnica | Programada en Metricool (id 431068088) |
+| Sáb 21 nov | 19:30 | El kiai gallo (`2026-11-12-kiai-gallo`) | Anécdotas y humor del dōjō | Programada en Metricool (id 431068105) |
+| Mar 24 nov | 19:30 | Libre | — | Hueco: la producción lo cubre con una candidata |
+| Sáb 28 nov | 19:30 | Libre | — | Hueco: la producción lo cubre con una candidata |
 
 Notas:
+- 17 nov (Sensei): Jorge aprueba hikite (mar 17) y kiai gallo (sáb 21). Quedan libres el mar 24 y el sáb 28.
 - 16 nov (Sensei): Jorge adelanta zenkutsu y Shotokan al lun 16. Quedan libres el mar 17 y el sáb 21: propuesto hikite y kiai gallo ahí si Jorge los aprueba.
 - 16 nov (producción, Sensei): zenkutsu pierde el mar 17 por falta de voz. Si la voz llega, zenkutsu y Shotokan se mezclan y van a aprobación; el primer hueco libre lo cubre la pieza que antes esté aprobada.
 - 16 nov (Sensei): reunión de ideas. Semana del 30 nov: cinturón (mar 1) y kumite (sáb 5); interactivo del embusen en la quincena 30 nov–13 dic.
