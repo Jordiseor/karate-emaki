@@ -89,3 +89,10 @@ fecha,agente,pieza,modelo,tokens,usos_herramientas,minutos
 2026-11-17,animador,2026-11-16-cinturon-judo (tramo B),sonnet,79169,26,11.2
 2026-11-17,animador,2026-11-16-kumite-puntos (tramo A),sonnet,99309,39,15.7
 2026-11-17,animador,2026-11-16-kumite-puntos (tramo B),sonnet,72396,39,26.0
+2026-11-18,guionista,2026-11-17-tiempo-contacto (storyboard),sonnet,40434,7,1.6
+2026-11-18,guionista,2026-11-17-seiza (storyboard),sonnet,32895,7,1.0
+2026-11-18,editor,2026-11-16-cinturon-judo (montaje),sonnet,52609,20,9.1
+2026-11-18,editor,2026-11-12-linea-temporal (montaje anuncio),sonnet,38137,16,4.4
+2026-11-18,animador,2026-11-16-kumite-puntos (reencuadre 1-5-10),sonnet,53712,23,5.4
+2026-11-18,animador,2026-11-16-embusen (anuncio 14 s),sonnet,67822,19,5.5
+2026-11-18,interactivos,2026-11-16-embusen (trazo en I),sonnet,41780,12,2.8

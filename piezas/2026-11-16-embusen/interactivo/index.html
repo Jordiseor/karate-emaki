@@ -213,23 +213,23 @@ footer.src ul{padding-left:18px;margin:4px 0}
    mov: 1 = avanza un paso esquemático, 0 = sin paso.
    lado: 'L' hidari / 'R' migi (pie y mano adelantados). kiai: true en 9 y 17. */
 const PASOS = [
- {n:1, tec:"Hidari gedan-barai", pos:"Hidari zenkutsu-dachi", giro:-90, mov:1, lado:'L', txt:"Primer giro: 90° a la izquierda con gedan-barai. La kata empieza hacia el oeste.", nota:"Hidari = izquierda; migi = derecha."},
- {n:2, tec:"Migi chūdan oi-zuki", pos:"Migi zenkutsu-dachi", giro:0, mov:1, lado:'R', txt:"Un paso adelante con oi-zuki. Primer tramo corto."},
- {n:3, tec:"Migi gedan-barai", pos:"Migi zenkutsu-dachi", giro:180, mov:1, lado:'R', txt:"Media vuelta con gedan-barai. Ahora mira justo al lado contrario."},
- {n:4, tec:"Migi kentsui (golpe de martillo)", pos:"Migi zenkutsu-dachi, sin paso", giro:0, mov:0, lado:'R', txt:"Sin mover los pies: kentsui. Una fuente pone aquí otra posición; dato a comprobar."},
- {n:5, tec:"Hidari chūdan oi-zuki", pos:"Hidari zenkutsu-dachi", giro:0, mov:1, lado:'L', txt:"Paso adelante y oi-zuki con el otro lado."},
- {n:6, tec:"Hidari gedan-barai", pos:"Hidari zenkutsu-dachi", giro:-90, mov:1, lado:'L', txt:"Giro de 90° a la izquierda: se abre el eje largo del dibujo, hacia el norte."},
- {n:7, tec:"Migi jōdan age-uke", pos:"Migi zenkutsu-dachi", giro:0, mov:1, lado:'R', txt:"Avanza con age-uke."},
- {n:8, tec:"Hidari jōdan age-uke", pos:"Hidari zenkutsu-dachi", giro:0, mov:1, lado:'L', txt:"Otro paso, otro age-uke con el lado contrario."},
- {n:9, tec:"Migi jōdan age-uke", pos:"Migi zenkutsu-dachi", giro:0, mov:1, lado:'R', kiai:true, txt:"Tercer age-uke y primer kiai."},
- {n:10, tec:"Hidari gedan-barai", pos:"Hidari zenkutsu-dachi", giro:-270, mov:1, lado:'L', txt:"Giro grande: 270° a la izquierda. Del norte al este con gedan-barai."},
- {n:11, tec:"Migi chūdan oi-zuki", pos:"Migi zenkutsu-dachi", giro:0, mov:1, lado:'R', txt:"Avanza con oi-zuki."},
- {n:12, tec:"Migi gedan-barai", pos:"Migi zenkutsu-dachi", giro:180, mov:1, lado:'R', txt:"Media vuelta con gedan-barai: se vuelve por donde se vino."},
- {n:13, tec:"Hidari chūdan oi-zuki", pos:"Hidari zenkutsu-dachi", giro:0, mov:1, lado:'L', txt:"Avanza con oi-zuki hacia el oeste."},
- {n:14, tec:"Hidari gedan-barai", pos:"Hidari zenkutsu-dachi", giro:-90, mov:1, lado:'L', txt:"Giro de 90° a la izquierda: ahora la kata baja hacia el sur."},
- {n:15, tec:"Migi chūdan oi-zuki", pos:"Migi zenkutsu-dachi", giro:0, mov:1, lado:'R', txt:"Primero de tres oi-zuki seguidos avanzando."},
- {n:16, tec:"Hidari chūdan oi-zuki", pos:"Hidari zenkutsu-dachi", giro:0, mov:1, lado:'L', txt:"Segundo oi-zuki, con el lado contrario."},
- {n:17, tec:"Migi chūdan oi-zuki", pos:"Migi zenkutsu-dachi", giro:0, mov:1, lado:'R', kiai:true, txt:"Tercer oi-zuki y segundo kiai. Fin del tramo hacia el sur."}
+ {n:1, tec:"Hidari gedan-barai", pos:"Hidari zenkutsu-dachi", giro:-90, mov:0, p:[0,0], lado:'L', txt:"Primer giro: 90° a la izquierda con gedan-barai. La kata empieza hacia el oeste.", nota:"Hidari = izquierda; migi = derecha."},
+ {n:2, tec:"Migi chūdan oi-zuki", pos:"Migi zenkutsu-dachi", giro:0, mov:1, p:[-1,0], lado:'R', txt:"Un paso adelante con oi-zuki. Primer tramo corto."},
+ {n:3, tec:"Migi gedan-barai", pos:"Migi zenkutsu-dachi", giro:180, mov:1, p:[0,0], lado:'R', txt:"Media vuelta con gedan-barai. Ahora mira justo al lado contrario."},
+ {n:4, tec:"Migi kentsui (golpe de martillo)", pos:"Migi zenkutsu-dachi, sin paso", giro:0, mov:0, p:[0,0], lado:'R', txt:"Sin mover los pies: kentsui. Una fuente pone aquí otra posición; dato a comprobar."},
+ {n:5, tec:"Hidari chūdan oi-zuki", pos:"Hidari zenkutsu-dachi", giro:0, mov:1, p:[1,0], lado:'L', txt:"Paso adelante y oi-zuki con el otro lado."},
+ {n:6, tec:"Hidari gedan-barai", pos:"Hidari zenkutsu-dachi", giro:-90, mov:0, p:[0,0], lado:'L', txt:"Giro de 90° a la izquierda: se abre el eje largo del dibujo, hacia el norte."},
+ {n:7, tec:"Migi jōdan age-uke", pos:"Migi zenkutsu-dachi", giro:0, mov:1, p:[0,1], lado:'R', txt:"Avanza con age-uke."},
+ {n:8, tec:"Hidari jōdan age-uke", pos:"Hidari zenkutsu-dachi", giro:0, mov:1, p:[0,2], lado:'L', txt:"Otro paso, otro age-uke con el lado contrario."},
+ {n:9, tec:"Migi jōdan age-uke", pos:"Migi zenkutsu-dachi", giro:0, mov:1, p:[0,3], lado:'R', kiai:true, txt:"Tercer age-uke y primer kiai."},
+ {n:10, tec:"Hidari gedan-barai", pos:"Hidari zenkutsu-dachi", giro:-270, mov:0, p:[0,3], lado:'L', txt:"Giro grande: 270° a la izquierda. Del norte al este con gedan-barai."},
+ {n:11, tec:"Migi chūdan oi-zuki", pos:"Migi zenkutsu-dachi", giro:0, mov:1, p:[1,3], lado:'R', txt:"Avanza con oi-zuki."},
+ {n:12, tec:"Migi gedan-barai", pos:"Migi zenkutsu-dachi", giro:180, mov:1, p:[0,3], lado:'R', txt:"Media vuelta con gedan-barai: se vuelve por donde se vino."},
+ {n:13, tec:"Hidari chūdan oi-zuki", pos:"Hidari zenkutsu-dachi", giro:0, mov:1, p:[-1,3], lado:'L', txt:"Avanza con oi-zuki hacia el oeste."},
+ {n:14, tec:"Hidari gedan-barai", pos:"Hidari zenkutsu-dachi", giro:-90, mov:0, p:[0,3], lado:'L', txt:"Giro de 90° a la izquierda: ahora la kata baja hacia el sur."},
+ {n:15, tec:"Migi chūdan oi-zuki", pos:"Migi zenkutsu-dachi", giro:0, mov:1, p:[0,2], lado:'R', txt:"Primero de tres oi-zuki seguidos avanzando."},
+ {n:16, tec:"Hidari chūdan oi-zuki", pos:"Hidari zenkutsu-dachi", giro:0, mov:1, p:[0,1], lado:'L', txt:"Segundo oi-zuki, con el lado contrario."},
+ {n:17, tec:"Migi chūdan oi-zuki", pos:"Migi zenkutsu-dachi", giro:0, mov:1, p:[0,0], lado:'R', kiai:true, txt:"Tercer oi-zuki y segundo kiai. Fin del tramo hacia el sur."}
 ];
 
 /* ----------------------------------------------------------------
@@ -274,11 +274,13 @@ const esc = s => s;
 /* Posiciones esquemáticas: se calculan sumando giros (cada paso avanza U). */
 const pose = [{x:0,y:0,a:0,dx:0,dy:0}];
 (function(){
-  let x=0,y=0,a=0;
+  /* Coordenadas en rejilla (x este, y norte; ancho de travesano = BAR, largo del eje = 3 pasos).
+     Forma "I": eje central de ida y vuelta + travesano abajo (1-6) y arriba (10-14). Esquematico. */
+  const BAR=1.25; let a=0;
   for(const p of TODOS){
-    if(p.confirmado===false || p.giro==null || p.mov==null){ break; }
+    if(p.confirmado===false || p.giro==null || p.p==null){ break; }
     a += p.giro; const r=a*Math.PI/180;
-    x += p.mov*U*Math.sin(r); y -= p.mov*U*Math.cos(r);
+    const x=p.p[0]*BAR*U, y=-p.p[1]*U;
     pose.push({x:x+OFF*Math.cos(r), y:y+OFF*Math.sin(r), a, bx:x, by:y});
   }
 })();
@@ -434,23 +436,23 @@ function dibujo(){
   const s=$("#draw"); s.innerHTML="";
   el("use",{href:"#floor"},s);
   el("path",{d:"M0-290V70M-170 0H170",stroke:"#1A1A1A","stroke-opacity":.25,"stroke-width":2},s);
-  const pts=pose.map(p=>p.x.toFixed(1)+" "+p.y.toFixed(1));
+  const pts=pose.map((p,i)=>i?p.bx.toFixed(1)+" "+p.by.toFixed(1):"0 0");
   // marcas de kiai
   const tr=el("polyline",{points:pts.join(" "),fill:"none",stroke:"#C8102E","stroke-width":6,"stroke-linecap":"round","stroke-linejoin":"round",pathLength:1,class:"trz"},s);
-  pose.forEach((p,i)=>{
-    if(i===0){ const t=el("text",{x:p.x-26,y:p.y+22,"font-family":"Arial Black,Arial,sans-serif","font-size":13,fill:"#1A1A1A"},s); t.textContent="Inicio"; el("circle",{cx:p.x,cy:p.y,r:5,fill:"#1A1A1A"},s); }
+  pose.forEach((p,i)=>{ if(i===0){p.bx=0;p.by=0;} 
+    if(i===0){ const t=el("text",{x:p.x-64,y:p.y+26,"font-family":"Arial Black,Arial,sans-serif","font-size":13,fill:"#1A1A1A"},s); t.textContent="Inicio"; el("circle",{cx:p.x,cy:p.y,r:5,fill:"#1A1A1A"},s); }
     else if(TODOS[i-1].kiai){
-      el("circle",{cx:p.x,cy:p.y,r:9,fill:"#F4EFE6",stroke:"#C8102E","stroke-width":4},s);
-      const t=el("text",{x:p.x+(i===17?-40:14),y:p.y+(i===17?-12:-10),"font-family":"Arial Black,Arial,sans-serif","font-size":13,fill:"#C8102E",stroke:"#F4EFE6","stroke-width":3,"paint-order":"stroke"},s); t.textContent="KIAI "+i;
+      el("circle",{cx:p.bx,cy:p.by,r:9,fill:"#F4EFE6",stroke:"#C8102E","stroke-width":4},s);
+      const t=el("text",{x:p.bx+(i===17?-66:14),y:p.by+(i===17?-12:-10),"font-family":"Arial Black,Arial,sans-serif","font-size":13,fill:"#C8102E",stroke:"#F4EFE6","stroke-width":3,"paint-order":"stroke"},s); t.textContent="KIAI "+i;
     }
   });
-  const e=pose[ULT];
-  el("circle",{cx:e.x,cy:e.y,r:34,fill:"none",stroke:"#555","stroke-width":3,"stroke-dasharray":"2 7","stroke-linecap":"round"},s);
+  const e={x:pose[ULT].bx,y:pose[ULT].by};
+  el("circle",{cx:e.x,cy:e.y,r:16,fill:"none",stroke:"#555","stroke-width":3,"stroke-dasharray":"2 7","stroke-linecap":"round"},s);
   const q=el("text",{x:e.x+30,y:e.y+36,"font-family":"Arial Black,Arial,sans-serif","font-size":34,fill:"#555",stroke:"#F4EFE6","stroke-width":4,"paint-order":"stroke"},s); q.textContent="?";
   const l=el("text",{x:e.x+30,y:e.y+54,"font-family":"Arial,sans-serif","font-size":12,"font-weight":700,fill:"#1A1A1A"},s); l.textContent="18–21 · A confirmar";
-  l.setAttribute("x",e.x-20);
-  q.setAttribute("x",e.x+38); q.setAttribute("y",e.y-26);
-  l.setAttribute("y",e.y+58);
+  l.setAttribute("x",e.x+8);
+  q.setAttribute("x",e.x+22); q.setAttribute("y",e.y+8);
+  l.setAttribute("y",e.y+30);
   [["N",0,-276],["E",152,5],["S",0,64],["O",-152,5]].forEach(c=>{const t=el("text",{x:c[1],y:c[2],"text-anchor":"middle","font-family":"Arial Black,Arial,sans-serif","font-size":15,fill:"#1A1A1A","fill-opacity":.5},s);t.textContent=c[0];});
   const go=()=>tr.classList.add("go");
   if(reduce){ tr.style.transition="none"; go(); } else { tr.getBoundingClientRect(); setTimeout(go,60); }

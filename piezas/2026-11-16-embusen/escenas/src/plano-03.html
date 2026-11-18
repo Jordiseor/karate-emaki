@@ -1,0 +1,23 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 3 (3 s): pasos 10-17; las huellas forman un trazo rojo continuo; kiai 2 en el 17; final punteado con «?» (18-21 no se muestran).
+import { ctx, U, MAPA as P, suelo, huellas, trazo, karatekaArriba, tarjeta, aparece, kiai, marcaKiai, interrogante, rotulo } from './comun.js';
+window.DURACION = 3;
+const T0 = 0.5, DT = 0.22, tp = (n) => T0 + (n - 10) * DT; // llegada del paso n (10..17) → 17 en t=2,04
+window.render = (t) => {
+  suelo(ctx);
+  let hasta = 9; for (let n = 10; n <= 17; n++) hasta = Math.max(hasta, n - 1 + U.easeInOut(U.prog(t, tp(n) - DT * 0.8, tp(n))));
+  const tr = U.easeInOut(U.prog(t, 0, 0.5)); trazo(ctx, P, Math.max(tr * 9, hasta));
+  huellas(ctx, P, 0);
+  for (let n = 1; n <= 17; n++) if (n <= 9 || t >= tp(n)) huellas(ctx, P, n, { alfa: 1 });
+  marcaKiai(ctx, P, 9, 1, 0, -95);
+  const i = Math.min(16, Math.floor(hasta)), f = hasta - i, a = P[i], b = P[i + 1];
+  karatekaArriba(ctx, a.x + (b.x - a.x) * f, a.y + (b.y - a.y) * f, a.a + (b.a - a.a) * f, 1.35);
+  kiai(ctx, P[17].x, P[17].y, U.prog(t, tp(17), tp(17) + 0.55));
+  if (t > tp(17)) marcaKiai(ctx, P, 17, U.clamp(U.prog(t, tp(17), tp(17) + 0.15)), 135, 0);
+  interrogante(ctx, P, U.clamp(U.prog(t, 2.2, 2.5)));
+  const q = aparece(t, 1.0); tarjeta(ctx, 'Dos kiai', 340, 72, q.alfa, q.desliz);
+  rotulo(ctx, 'Parecido a una «I»', 1470, U.clamp(U.prog(t, 2.3, 2.6)));
+};
+</script></body></html>

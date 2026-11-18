@@ -1,0 +1,21 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 5 (2 s): trazo completo 1-17 (rojo) con el karateka en el punto de partida saludando (rei, vista cenital: cabeza adelante); botón «Enlace en el perfil».
+import { ctx, U, ruta, suelo, rr, texto, huellas, trazo, karatekaArriba, interrogante, ROJO, TINTA, PAPEL } from './comun.js';
+window.DURACION = 2;
+const P = ruta(120, 540, 1120);
+window.render = (t) => {
+  suelo(ctx);
+  trazo(ctx, P, 17, { w: 14 });
+  for (let n = 1; n <= 17; n++) huellas(ctx, P, n, { k: 0.7, alfa: 0.9 });
+  interrogante(ctx, P, 0.9);
+  const rei = U.easeInOut(U.prog(t, 0.2, 0.8)) * (1 - 0.0) ;
+  karatekaArriba(ctx, P[0].x, P[0].y, 0, 1.6, { rei });
+  // botón
+  const e = U.easeBack ? U.easeBack(U.prog(t, 0.6, 1.0)) : U.prog(t, 0.6, 1.0), s = 0.6 + 0.4 * U.clamp(e), al = U.clamp(U.prog(t, 0.6, 0.85));
+  ctx.save(); ctx.globalAlpha = al; ctx.translate(540, 1380); ctx.scale(s, s);
+  ctx.fillStyle = 'rgba(0,0,0,0.3)'; rr(ctx, -430 + 8, -65 + 12, 860, 130, 65); ctx.fill();
+  ctx.fillStyle = TINTA; rr(ctx, -430, -65, 860, 130, 65); ctx.fill(); texto(ctx, 'Enlace en el perfil', 0, 4, 64, { color: PAPEL }); ctx.restore();
+};
+</script></body></html>

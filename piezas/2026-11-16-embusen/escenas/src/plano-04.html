@@ -1,0 +1,44 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 4 (3 s): móvil dibujado (vista «pasos» del interactivo); el dedo toca «Siguiente» (t=0,9 / 1,8) y el karateka avanza una huella cada vez (pasos 1→3).
+import { ctx, U, ruta, NOMBRES, suelo, rr, texto, tarjeta, aparece, huellas, trazo, karatekaArriba, ROJO, TINTA, PAPEL } from './comun.js';
+window.DURACION = 3;
+const P = ruta(86, 540, 1000);          // mini mapa (la vista 2 del interactivo, vista cenital)
+const TAPS = [0.9, 1.8];
+window.render = (t) => {
+  suelo(ctx);
+  ctx.save(); ctx.translate(540, 440); ctx.scale(0.92, 0.92); ctx.translate(-540, -310); // móvil
+  ctx.fillStyle = 'rgba(0,0,0,0.3)'; rr(ctx, 236, 330, 600, 1200, 70); ctx.fill();
+  ctx.fillStyle = '#2B2B2B'; rr(ctx, 230, 310, 620, 1220, 70); ctx.fill();
+  ctx.fillStyle = PAPEL; rr(ctx, 252, 360, 576, 1120, 44); ctx.fill();
+  ctx.fillStyle = '#2B2B2B'; rr(ctx, 480, 330, 120, 16, 8); ctx.fill();
+  let paso = 1; TAPS.forEach((s) => { if (t >= s + 0.12) paso++; });
+  const anim = (k) => U.easeInOut(U.prog(t, TAPS[k] + 0.1, TAPS[k] + 0.55)); // avance del karateka tras el toque k
+  let h = 1; TAPS.forEach((s, k) => { h = Math.max(h, 1 + k + anim(k)); }); h = Math.min(h, 3);
+  // cabecera + mapa
+  texto(ctx, 'Paso ' + paso, 540, 430, 58);
+  ctx.save(); ctx.strokeStyle = 'rgba(26,26,26,0.25)'; ctx.lineWidth = 3; ctx.setLineDash([8, 12]); ctx.beginPath(); ctx.moveTo(540, 520); ctx.lineTo(540, 1080); ctx.moveTo(330, 1000); ctx.lineTo(750, 1000); ctx.stroke(); ctx.restore();
+  trazo(ctx, P, h, { w: 9 });
+  huellas(ctx, P, 0);
+  for (let n = 1; n <= 3; n++) if (h >= n || (n === 1)) huellas(ctx, P, n, { k: 1 });
+  const i = Math.min(16, Math.floor(h)), f = h - i, a = P[i], b = P[i + 1];
+  karatekaArriba(ctx, a.x + (b.x - a.x) * f, a.y + (b.y - a.y) * f, a.a + (b.a - a.a) * f, 0.7);
+  // tarjeta de técnica
+  ctx.fillStyle = '#FBF8F1'; rr(ctx, 280, 1130, 520, 110, 18); ctx.fill(); ctx.lineWidth = 4; ctx.strokeStyle = TINTA; ctx.stroke();
+  texto(ctx, NOMBRES[paso], 540, 1187, 54);
+  // botones ‹ ›  [Siguiente]
+  ctx.lineWidth = 5; ctx.strokeStyle = TINTA;
+  const pulsado = TAPS.some((s) => t > s && t < s + 0.22);
+  ctx.fillStyle = PAPEL; rr(ctx, 280, 1310, 130, 120, 20); ctx.fill(); ctx.stroke(); texto(ctx, '‹', 345, 1366, 90);
+  ctx.fillStyle = pulsado ? '#CFC7B6' : TINTA; rr(ctx, 440, 1310, 360, 120, 20); ctx.fill(); ctx.stroke();
+  texto(ctx, 'Siguiente ›', 620, 1372, 54, { color: pulsado ? TINTA : PAPEL });
+  // dedo (silueta de tinta): se acerca al botón, toca, se retira
+  let near = 0; TAPS.forEach((s) => { near = Math.max(near, U.easeInOut(U.prog(t, s - 0.35, s)) * (1 - U.easeInOut(U.prog(t, s + 0.12, s + 0.45)))); });
+  const fx = 640 + 130 * (1 - near) + 30, fy = 1390 + 260 * (1 - near) - (pulsado ? 0 : 0) ;
+  ctx.save(); ctx.translate(fx, fy); ctx.rotate(-0.2); ctx.fillStyle = 'rgba(0,0,0,0.25)'; rr(ctx, -34, -12, 76, 400, 38); ctx.fill();
+  ctx.fillStyle = '#E7D6C0'; ctx.strokeStyle = TINTA; ctx.lineWidth = 5; rr(ctx, -38, -20, 76, 400, 38); ctx.fill(); ctx.stroke(); ctx.restore();
+  ctx.restore();
+  const q = aparece(t, 0.1); tarjeta(ctx, 'Paso a paso, tú mandas.', 330, 62, q.alfa, q.desliz);
+};
+</script></body></html>

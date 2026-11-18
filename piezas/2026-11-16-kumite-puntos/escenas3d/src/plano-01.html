@@ -8,14 +8,17 @@ import * as C from './comun.js';
 const S = C.iniciar(); const { ctx, esc, aka, ao, par, U } = S;
 window.DURACION = 3.0;
 // PLANO 1 (0,0–3,0) gancho: patada circular a jōdan en cámara lenta ya en marcha en t=0 (f≈0,62); el pie se detiene junto a la cabeza de ao.
-const X = C.intercambio(S, 'mawashi');
+const X0 = C.intercambio(S, 'mawashi');
+// ao se aparta 0.2 m del pie en la dirección aka→ao (lectura de los dos cuerpos); cámara perpendicular a esa línea
+const _dx = X0.fin.x - aka.base.x, _dz = X0.fin.z - aka.base.z, _l = Math.hypot(_dx, _dz) || 1;
+const X = { poner(f, rea = 0) { X0.poner(f, rea); const p = ao.pose; ao.colocar(X0.fin.x + _dx / _l * 0.2, X0.fin.z + _dz / _l * 0.2, X0.fin.r); if (p) ao.aplicarPose(p); } };
 const f = (t) => 0.62 + 0.38 * U.easeOut(U.prog(t, 0, 1.4));         // sin impacto: llega a 1 y se queda
 const rea = (t) => U.prog(t, 0.2, 1.2);                               // ao se echa atrás
 const pulso = (t) => U.prog(t, 1.35, 1.8);                            // el marcador sube a 3 al llegar el pie
 window.render = (t) => {
   X.poner(f(t), rea(t));
   aka.cara({ cejas: -0.5, parpadeo: 0 }); ao.cara({ ojos: 0.6, cejas: 0.5, parpadeo: 0 });
-  const c = C.CAM.tres4;
+  const c = { ...C.CAM.tres4, azimut: -128 };   // otro ángulo: los dos cuerpos separados
   C.cam(esc, par, { ...c, distancia: c.distancia - 0.6 * U.easeInOut(U.prog(t, 0, 3)) });   // empuje lento
   esc.dibujar(ctx, {});
   C.rastro(ctx, esc, aka, null, t, { punto: 'tobilloD', cola: 0.45, alfa: 1 - U.prog(t, 1.5, 2.2), alMuestrear: (ti) => X.poner(f(ti), rea(ti)) });

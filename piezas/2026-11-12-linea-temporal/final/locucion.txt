@@ -1,0 +1,6 @@
+# inicio | texto en pantalla | texto para la voz
+0.5 | 36 años. | Treinta y seis años.
+3.2 | 1921 · Castillo de Shuri | De un castillo en Okinawa...
+5.7 | 1939 · Dōjō Shōtōkan, Tokio | ...a un dōjo en Tokio.
+7.9 | Desliza. Cada hito, con su fuente. | Recórrelo con el dedo, hito a hito, con su nivel de certeza.
+10.3 | Enlace en el perfil | Está en el enlace del perfil.

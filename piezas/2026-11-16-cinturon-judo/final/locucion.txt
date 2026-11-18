@@ -1,0 +1,12 @@
+Locución cinturón judo (30 s, voz Kokoro em_santa). Formato: inicio en s | texto en pantalla | texto para la voz (grafía adaptada: Kanō→Kano, Kōdōkan→Kodokan, judo→yudo, kyū→kiu). Texto de voz abreviado para caber en cada plano.
+0.0 | Nació en el judo | El cinturón negro del karate nació en el yudo.
+3.0 | No vino de Okinawa | No vino de Okinawa. Vino del yudo.
+5.5 | 1883: Kanō crea los grados | 1883: Kano crea los grados, kiu y dan.
+8.5 | Antes: blanco y negro | Antes, solo blanco o negro.
+11.0 | 1922: Funakoshi en el Kōdōkan | 1922: Funakoshi, en el Kodokan.
+14.0 | Sala llena | Sala llena. Y una idea nueva.
+16.5 | Abril 1924: primeros dan | En 1924, Funakoshi emite certificados dan.
+19.5 | LEYENDA | Cuentan que Kano le regaló un cinturón. Solo una leyenda.
+23.0 | Los colores llegaron después | Colores después: Inglaterra, 1926.
+25.5 | Francia, 1935: Kawaishi | Los llevó Kawaishi a Francia.
+28.0 | ¿De qué color es el tuyo? | ¿Y el tuyo? ¿De qué color es?

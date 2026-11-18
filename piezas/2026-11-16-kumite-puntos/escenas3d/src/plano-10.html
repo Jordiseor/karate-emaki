@@ -15,7 +15,7 @@ const rea = (t) => U.prog(t, 0.3, 1.2);
 window.render = (t) => {
   X.poner(f(t), rea(t));
   aka.cara({ cejas: -0.5, parpadeo: 0 }); ao.cara({ ojos: 0.6, cejas: 0.5, parpadeo: 0 });
-  C.cam(esc, par, { ...C.CAM.patada, distancia: 7.5, centro: [0, 1.5, 0] });
+  C.cam(esc, par, { ...C.CAM.patada, azimut: -128, distancia: 7.5, centro: [0, 1.5, 0] });
   esc.dibujar(ctx, {});
   // línea fina de distancia entre el pie y la cabeza de ao
   const a = esc.proyectar(aka.punto('tobilloD')), b = esc.proyectar(ao.punto('cabeza'));

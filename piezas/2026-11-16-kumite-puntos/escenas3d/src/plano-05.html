@@ -9,13 +9,16 @@ const S = C.iniciar(); const { ctx, esc, aka, ao, par, U } = S;
 window.DURACION = 2.5;
 // PLANO 5 (2,5 s): mawashi-geri a jōdan en cámara lenta; el halo sube del pecho a la cabeza; marcador 3.
 par.colocar(2.5);
-const X = C.intercambio(S, 'mawashi');
+const X0 = C.intercambio(S, 'mawashi');
+// ao se aparta 0.2 m del pie en la dirección aka→ao (lectura de los dos cuerpos); cámara perpendicular a esa línea
+const _dx = X0.fin.x - aka.base.x, _dz = X0.fin.z - aka.base.z, _l = Math.hypot(_dx, _dz) || 1;
+const X = { poner(f, rea = 0) { X0.poner(f, rea); const p = ao.pose; ao.colocar(X0.fin.x + _dx / _l * 0.2, X0.fin.z + _dz / _l * 0.2, X0.fin.r); if (p) ao.aplicarPose(p); } };
 const f = (t) => U.easeInOut(U.prog(t, 0.1, 1.7));
 const rea = (t) => U.prog(t, 1.0, 1.8);
 window.render = (t) => {
   X.poner(f(t), rea(t));
   aka.cara({ cejas: -0.5, parpadeo: 0 }); ao.cara({ ojos: 0.6, cejas: 0.5, parpadeo: 0 });
-  const c = { ...C.CAM.patada, azimut: -120 };
+  const c = { ...C.CAM.patada, azimut: -128 };
   C.cam(esc, par, { ...c, distancia: 9.5 - 0.5 * U.prog(t, 0, 2.5) });
   esc.dibujar(ctx, {});
   const p = U.easeInOut(U.prog(t, 0.3, 1.5));
