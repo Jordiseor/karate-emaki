@@ -90,3 +90,4 @@ Entradas anteriores resumidas en archivo/bitacora-2026-11.md.
 - 2026-11-18 · Interactivos · Embusen: el trazo salía en «S» porque las posiciones se sumaban paso a paso; ahora coordenadas explícitas y la vista 3 dibuja una «I». Distancias simplificadas (sin fuente), avisado en notas.md. 18–21 sin dibujar.
 - 2026-11-18 · Animador · Anuncio del embusen: 5 planos 2D cenitales, 14 s, trazo alineado con el interactivo (forma en «I», 18–21 sin dibujar).
 - 2026-11-18 · Sensei · Hojas revisadas: cinturón (montado), kumite y anuncio del embusen valen; anuncio de la línea temporal pasa a revisión. Kumite y embusen pasan a montaje; tiempo de contacto y seiza, a storyboard.
+- 2026-11-18 · Sensei · Jorge: hikite va por 15.000 visualizaciones (Metricool aún no lo ha sincronizado). Adelanta el kiai gallo a hoy, mié 18, a las 19:30 (nuevo id 432714490). El sáb 21 queda libre.
