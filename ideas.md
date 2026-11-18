@@ -55,6 +55,15 @@ Reserva nueva con 17: Dos españoles en el podio olímpico, ¿Puntúa o no? (int
 
 Siguen en candidatas: mano vacía (19), tigre (18), cadera (17), POV cinturón (17).
 
+## Elegidas — 18 nov 2026 (Jorge sube a 3 reels por semana)
+
+| Pieza | Pilar | Puntos | Hueco |
+| --- | --- | --- | --- |
+| 2026-11-18-tigre · El tigre del Shotokan es un juego de palabras | Curiosidades | 18 | lun 30 nov |
+| 2026-11-18-mano-vacia · De «mano china» a «mano vacía» | Historia | 19 | mié 2 dic |
+
+Mano vacía ya no espera: va diez días después del anuncio de la línea temporal, como continuación. Candidatas nuevas subidas a la oficina: Dos españoles en el podio olímpico (17), Notas del móvil de un cinturón blanco (17) y ¿Eres juez de kumite? ¿Puntúa o no? (interactivo, 17). Siguen: cadera (17) y POV cinturón (17).
+
 ## Descartadas
 
 | Idea | Pilar | Descartada por | Fecha |

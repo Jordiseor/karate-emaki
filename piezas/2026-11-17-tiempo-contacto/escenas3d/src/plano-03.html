@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tiempo de contacto · plano 03</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, P, U, esc } = S;
+window.DURACION = 2.0;
+// PLANO 3 (4,0–6,0) plano medio: las almohadillas salen despedidas (la izquierda más rápido y más lejos). Flechas: corta y gruesa / larga y fina. Sin cifras.
+const THREE_V = S.izq.k.raiz.position.constructor;
+const lado = [ { d: 0.6, cab: 22, h0: 0.2 }, { d: 0.35, cab: 10, h0: 0.8 } ];
+const sale = (t) => U.easeOut(U.prog(t, 0.12, 1.5));
+// flecha 2D horizontal con punta
+function flecha(ctx, x, y, largo, grosor, a) {
+  if (a <= 0) return; const l = largo * U.easeOut(a), p = Math.min(l * 0.6, grosor * 2.6);
+  ctx.save(); ctx.globalAlpha = Math.min(1, a * 3); ctx.fillStyle = C.ROJO; ctx.shadowColor = 'rgba(26,26,26,0.25)'; ctx.shadowBlur = 10;
+  ctx.beginPath(); ctx.roundRect(x, y - grosor / 2, Math.max(1, l - p * 0.8), grosor, grosor / 2); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(x + l, y); ctx.lineTo(x + l - p, y - grosor * 1.2); ctx.lineTo(x + l - p, y + grosor * 1.2); ctx.closePath(); ctx.fill(); ctx.restore();
+}
+window.render = (t) => {
+  C.mitades(S, {
+    cam: { ...C.CAM.lado, distancia: 15.5, centro: [0.45, 1.1, 0] },
+    antes: (L, i) => {
+      const o = lado[i], s = sale(t);
+      L.k.aplicarPose(C.poseGancho(P, i, 1)); L.k.cara(L.cara);
+      L.pad.colocar(0, 0, -90).hundir(o.h0).mover(0, 0).pegarA(L.k, 'manoD');
+      L.pad.hundir(o.h0 * (1 - U.prog(t, 0.12, 0.5))).mover(o.d * s, o.cab * s);
+    },
+    despues: (ctx, L, i) => {
+      const p = esc.proyectar(new THREE_V(L.padX, L.padY, L.padZ)), a = U.prog(t, 0.45, 0.95);
+      if (i === 0) flecha(ctx, 170, 640, 130, 46, a); else flecha(ctx, 710, 640, 300, 16, a);
+    },
+  });
+  C.tarjeta(ctx, t, ['Distinta fuerza'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

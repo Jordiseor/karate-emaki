@@ -1,0 +1,70 @@
+{
+ "nombre": "encoge-hombros",
+ "descripcion": "Encoger de hombros (plano 12, duda honesta): yoi con la cabeza ladeada 14°, codos pegados, antebrazos abiertos hacia los lados y las palmas arriba a ≈ 1,0 m de altura. Los hombros del rig no suben: el gesto se lee por los brazos y la cabeza. Cara: k.cara({ cejas: 0.5, sonrisa: 0.15, torcida: 0.4 }). Entrada: mezclar(P.neutra, P['encoge-hombros'], f) (f con U.easeBack da un pequeño rebote).",
+ "cadera": {},
+ "tronco": {
+  "inclina": -2
+ },
+ "cabeza": {
+  "ladeo": 14,
+  "inclina": 4
+ },
+ "manoI": 1,
+ "manoD": 1,
+ "munecaI": {
+  "gira": 94
+ },
+ "munecaD": {
+  "gira": 94
+ },
+ "piernaI": {
+  "adelante": 2.2,
+  "abre": 6.6,
+  "gira": 27.7
+ },
+ "rodillaI": 5,
+ "tobilloI": {
+  "flex": -0.1,
+  "ladeo": -4.8
+ },
+ "piernaD": {
+  "adelante": 2.2,
+  "abre": 6.6,
+  "gira": 27.7
+ },
+ "rodillaD": 5,
+ "tobilloD": {
+  "flex": -0.1,
+  "ladeo": -4.8
+ },
+ "brazoI": {
+  "adelante": 4.3,
+  "abre": 11.9,
+  "gira": 45
+ },
+ "brazoD": {
+  "adelante": 4.3,
+  "abre": 11.9,
+  "gira": 45
+ },
+ "codoI": 66.4,
+ "codoD": 66.4,
+ "medidas": {
+  "puno_D": [
+   -0.425,
+   1.001,
+   0.216
+  ],
+  "puno_I": [
+   0.425,
+   1.001,
+   0.216
+  ],
+  "tobillo_D": [
+   -0.17,
+   0.075,
+   0
+  ],
+  "altura_cadera_m": 0.951
+ }
+}

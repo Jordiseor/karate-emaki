@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tiempo de contacto · plano 13</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, P, U } = S;
+window.DURACION = 2.0;
+// PLANO 13: pantalla partida como el plano 3. Izq (el golpe que se queda): 決め en rojo. Der (empuje): velo gris. Pega en seco al final.
+window.render = (t) => {
+  const f = 0.8 + 0.2 * U.easeOut(U.prog(t, 0, 0.4));
+  const h = [0.2 * U.easeOut(U.prog(t, 0.1, 0.2)), 0.8 * U.easeInOut(U.prog(t, 0.1, 1.2))];
+  C.mitades(S, {
+    antes: (L, i) => { L.k.aplicarPose(C.poseGancho(P, i, f)); L.k.cara(L.cara); L.pad.colocar(0, 0, -90).hundir(h[i]); L.pad.pegarA(L.k, 'manoD'); },
+  });
+  // mitad derecha en gris (la del empuje)
+  const g = U.easeOut(U.prog(t, 0.3, 0.8));
+  ctx.save(); ctx.globalAlpha = 0.6 * g; ctx.fillStyle = C.GRIS; ctx.fillRect(546, 0, 534, 1920); ctx.restore();
+  // 決め sobre la mitad izquierda, trazo a trazo
+  C.H2.kanji(ctx, '決め', 270, 640, 210, { prog: U.prog(t, 0.3, 1.1), halo: 0.8 });
+  C.tarjeta(ctx, t, ['Kime: el golpe', 'que se queda'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

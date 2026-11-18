@@ -30,6 +30,10 @@ Para hacer una escena **no hace falta leer el código**: copia `plantilla-escena
 | `herramientas/disenar-poses-2026-11b.mjs` | Genera las poses de judo y de kumite de 2026-11-16b |
 | `prueba/poses-2026-11-16b.png` | Hoja de revisión (10 vistas); capturas sueltas en `prueba/2026-11-16b/`; escena `prueba/poses-2026-11-16b.html` |
 | `prueba/presentacion/` | Escenas de ejemplo + PNG de cada asset de la presentación |
+| `ciencia3d.js` · `ciencia2d.js` | Pieza «tiempo de contacto»: almohadilla que se hunde, cojín airbag + maniquí + pared; cronómetro, contador de velocidad, gráfico fuerza-tiempo, columnas (ver «Tiempo de contacto») |
+| `seiza3d.js` · `seiza2d.js` | Pieza «seiza»: levantarse, temblor, tambaleo, caras; cronómetro 1:00/10:00, gota de sudor, hormigueo (ver «Seiza») |
+| `herramientas/disenar-poses-2026-11-18.mjs` | Genera `empuje-recto`, `encoge-hombros`, `seiza-alto`, `en-cuclillas-medio`, `manos-rodillas`, `levantarse-vacilando` |
+| `prueba/poses-2026-11-18.png` | Hoja de revisión (10 vistas, escena `prueba/poses-2026-11-18.html`); capturas por objeto en `prueba/2026-11-18/`; escenas `prueba/ciencia.html`, `ciencia2d.html`, `seiza.html`, `caras-seiza.html` |
 
 ## Cómo renderizar
 
@@ -548,3 +552,105 @@ Lámina sobre el tatami: línea blanca del área (8 × 8 m), zona de seguridad (
 - Las manos agarran el cinturón «de mentira»: la cinta se pone entre `punto('manoI')` y `punto('manoD')`; con las manos muy separadas se queda recta. No hay anudado ni nudo que se deshaga: `atar-cinturon` es un gesto con las caídas del propio karateka.
 - La patada circular se resuelve por optimización (error de ≈ 4 cm sobre el objetivo); el empeine apunta de lado y no se ve bien desde azimut +90.
 - La sala llena es de siluetas todas iguales de color (con variación de peinado y cinturón negro/blanco); sin sombras proyectadas, salvo la del personaje central.
+
+## Tiempo de contacto — `ciencia3d.js` + `ciencia2d.js` (pieza `2026-11-17-tiempo-contacto`)
+
+Desde la pieza: `import { crearAlmohadilla, crearChoque } from '../../../../animacion/3d/ciencia3d.js'` y `import * as C from '.../ciencia2d.js'`
+(con `marca.js` antes). Escenas de ejemplo copiables: `prueba/ciencia.html` (3D, una vista por `t` entero) y `prueba/ciencia2d.html` (2D sobre papel).
+
+### Poses nuevas (`P[...]`)
+
+| Pose | Uso |
+| --- | --- |
+| `P['empuje-recto']` | Empuje SIN kime: **mismas piernas que `gyaku-zuki-kiai`** (mezclar sin deslizar pies), tronco 12° adelante, brazo derecho extendido con la **palma abierta** al frente a ≈ 1,08 m (mano en (−0,055; 1,08; 0,61) respecto al origen), izquierda suelta junto a la cadera. `mezclar(P['gyaku-zuki-kiai'], P['empuje-recto'], f)`. Cara sin grito: `k.cara({ sonrisa: 0.1 })` |
+| `P['encoge-hombros']` | Plano 12: yoi, cabeza ladeada 14°, codos pegados y antebrazos abiertos con las palmas arriba. Los hombros del rig no suben: se lee por brazos y cabeza. Cara: `{ cejas: 0.5, sonrisa: 0.15, torcida: 0.4 }`. `mezclar(P.neutra, P['encoge-hombros'], U.easeBack(f))` |
+
+### Almohadilla — `const a = crearAlmohadilla({ altura: 1.1 })` (`esc.escena.add(a.raiz)`)
+
+Almohadilla acolchada (cara crema, cuerpo oscuro) sobre mástil con base. Su frente mira a +Z local (rumbo 0); para recibir a un karateka con rumbo 90 ponla con `colocar(x, z, −90)`.
+
+| Método | Uso |
+| --- | --- |
+| `a.hundir(p)` | **Hundimiento 0..1**: la cara cede hasta el 62 % del grosor y el acolchado se ensancha un poco |
+| `a.mover(d, cabeceo)` | Retroceso de la almohadilla `d` m sobre el mástil y cabeceo en grados (plano 3: «sale despedida») |
+| `a.colocar(x, z, rumbo)` | Sitúa el pie y orienta la cara |
+| `a.pegarA(k, 'manoD')` (o un `Vector3`) | Mueve la almohadilla para que su cara (ya hundida) toque ese punto. Llamar tras `hundir`/`mover` y tras aplicar la pose |
+| `a.cara()` · `a.alfa(0..1)` · `a.visible(bool)` | Centro de la cara en el mundo, fundido, ocultar |
+
+Secuencia del plano 2 (izquierda: puño que se frena; derecha: empuje que sigue): en cada fotograma `k.aplicarPose(...)`, `a.hundir(p)`, `a.pegarA(k, 'manoD')`; el hundimiento sube rápido (p ≈ 0,2 en 0,05 s) o despacio (p → 0,8 en 0,6 s) según la mitad. Con el puño de `gyaku-zuki-kiai` la mano queda en z ≈ 0,54 y con `empuje-recto` en z ≈ 0,61: la almohadilla se recoloca sola con `pegarA`.
+Cámara de perfil: `orbita({ centro: [0.5, 1.0, 0], distancia: 6, elevacion: 3, fov: 26 })`; solo la almohadilla: `distancia 3.2`, `centro [0, 0.9, 0]`.
+
+### Cojín airbag + maniquí + pared — `const ch = crearChoque(esc, P, { cojin: true, xPared: 2.2 })`
+
+Pared lisa (x = 2,2 m, cara hacia −X), cojín blanco hinchado con dos costuras y un maniquí en silueta de tinta (`Karateka3D` con `silueta('#1A1A1A')`) que llega por −X mirando a +X.
+Sube la niebla por ti (`fog.near ≥ 24`). Para «ambiente neutro» usa `crearEscenario({ fondo: 'degradado' })`.
+
+| Método | Uso |
+| --- | --- |
+| `ch.poner({ distancia: 0.5, hund: 0, inclina: 8, pose: P.neutra })` | Maniquí a `distancia` m del contacto (0 = el pecho toca la cara del cojín o de la pared) con el cojín hundido `hund` 0..1. Llamar cada fotograma. Mitad A: `distancia` baja a 0 mientras `hund` sube despacio; mitad B: `cojinVisible(false)` y `distancia` → 0 en seco |
+| `ch.hundir(h)` | Solo el cojín |
+| `ch.cojinVisible(bool)` | Quita / pone el cojín (pared desnuda) |
+| `ch.maniqui` · `ch.pared` · `ch.raiz` · `ch.caraX(h)` | Karateka3D del maniquí, grupo de la pared, x de la cara del cojín |
+| `ch.ocultarManiqui(bool)` | |
+
+Flechas de fuerza de distinta longitud: `Diagrama3D.flecha({ desde: [x, 1.2, 0], hacia: [...] })` (ver «Diagramas»). Cámara: `orbita({ centro: [1.1, 1.1, 0], distancia: 8.5, elevacion: 3, fov: 36 })` (3/4: `azimut: −35`).
+
+### Capa 2D — `import * as C from '.../ciencia2d.js'` (colores `C.COL`: tinta, papel, rojo, gris, azul tinta `#2F3E5C`)
+
+Rojo solo para curvas / cifras clave. Texto ≥ 48 px. Dibujar tras `esc.dibujar(ctx)` (o sobre `EMAKI.fondoPapel(ctx)` en los planos 7–11).
+
+| Función | Uso |
+| --- | --- |
+| `C.cronometro(ctx, { x, y, valor, tipo: 'ms'\|'mmss'\|'s', texto, size: 84, rojo, parado, t, alfa, etiqueta })` | Cronómetro digital (caja de tinta, esfera con aguja, cifras de papel o rojas). `texto: '16–19 ms'` fija la cifra (plano 9); `valor` animado con `tipo: 'ms'` para «correr muy poco y detenerse»; `parado: true` apaga el punto parpadeante. `C.formato(valor, tipo)` da el texto |
+| `C.contadorVelocidad(ctx, { x, y, valor, max: 10, texto: '≈ 8', unidad: 'm/s', size: 150, rojo: true })` | Dial de medio arco con aguja que sube con `valor`; la cifra en rojo. `texto` fija la cifra (siempre «≈ 8», no «8») |
+| `C.ejes(ctx, caja, { prog, etiquetaX: 'tiempo', etiquetaY: 'fuerza' })` | Ejes con flechas que se trazan (`prog` 0→1). `caja = { x, y, w, h }` (ej. `{ x: 190, y: 560, w: 760, h: 640 }`) |
+| `C.curva(ctx, caja, { duracion: 0.8, impulso: 0.3, color, relleno: 0.28, prog, alfa })` | Pulso de fuerza. `duracion` = fracción del ancho; `impulso` = área (mismo `impulso` ⇒ **mismo área**: la curva estrecha sale más alta). `prog` la traza de izquierda a derecha. Devuelve `{ pico, x0, x1, ymax }` para colocar etiquetas |
+| `C.morfosis(ctx, caja, f, { impulso, anchoA: 0.8, anchoB: 0.3 })` | Plano 8: una sola curva que pasa de ancha-azul (f 0) a estrecha-roja (f 1) sin perder área |
+| `C.columnas(ctx, { caja, barras: [{ valor, texto, etiqueta, color, prog }], max, horizontal: false })` | Columnas de altura proporcional (planos 10–11: 875 N / 1750 N) o barras horizontales de tiempo (`horizontal: true`; el texto va a la derecha de la barra: deja ≈ 250 px) |
+| `C.regla(ctx, { x, y, valor: 0..1, w: 420 })` | Regla de tiempo vacía que se llena (planos 2 y 5) |
+
+Las cifras de pantalla son del dosier: nada se calcula aquí, tú pones el texto.
+
+## Seiza — `seiza3d.js` + `seiza2d.js` (pieza `2026-11-17-seiza`)
+
+`import { CARAS_SEIZA, ponerPose, levantarse, temblar, tambalear } from '.../seiza3d.js'` y `import { cronometroSeiza, gotaSudor, hormigueo } from '.../seiza2d.js'`. Ejemplo completo: `prueba/seiza.html` (planos 1, 2 y 6). Karateka con `cinturon: 'naranja'`.
+
+### Poses
+
+| Pose | Uso |
+| --- | --- |
+| `P.seiza` | **Ya existía** (`poses/seiza.json`, la del público del Kōdōkan) y **sirve para el karateka de gi** con cinturón naranja (revisado de frente y 3/4: las piernas no se cruzan feas). Hay que aplicarla con su altura: `ponerPose(k, P.seiza)` (= `k.aplicarPose(P.seiza, { suelo: false, altura: -0.62 })`); a secas flota |
+| `P['seiza-alto']` | De rodillas, tronco erguido, glúteos levantados (cadera 0,62 m), talones libres. `ponerPose` (altura −0,335) |
+| `P['en-cuclillas-medio']` | Transición: pies planos, muslos 80°, rodillas 120°, tronco inclinado 30° (cadera 0,52 m). Con suelo normal |
+| `P['levantarse-vacilando']` | Piernas dormidas: rodillas hacia dentro y distinto doblez, tronco 26° y ladeado, mano izquierda a la rodilla y brazo derecho abierto para el equilibrio. Con suelo normal |
+| `P['manos-rodillas']` | De pie, rodillas flexionadas, tronco 30°, las dos manos abiertas sobre las rodillas |
+
+Las poses de rodillas llevan en su JSON `aplicar: { suelo: false, altura }`: usa siempre `ponerPose(k, pose, extra)`, que respeta ese campo (para las de pie vale `k.aplicarPose`).
+
+### Levantarse — `levantarse(k, P, f, { t, tambaleo: 1 })`
+
+`f` 0→1 recorre `TRAMOS`: seiza → seiza-alto (0,16) → en-cuclillas-medio (0,36) → levantarse-vacilando (0,58) → manos-rodillas (0,78) → neutra (1). Gestiona la altura de la cadera y el suelo. `t` activa el tambaleo (balanceo determinista de tronco, caderas y brazo; sube en f 0,4–0,5 y se apaga hacia 0,9). Ejemplo plano 6: `levantarse(k, P, U.prog(t, 9.5, 11.5), { t })` y `k.cara(mezclarCara(CARAS_SEIZA.hormigueo, CARAS_SEIZA.alivio, …))`.
+Suelta: `tambalear(pose, t, amp)` (±7° de ladeo a amp 1) y `temblar(pose, t, amp)` (vibración de hombros del plano 2: `ponerPose(k, temblar(P.seiza, t, 1))`). Devuelven una pose nueva.
+
+### Caras — `k.cara(CARAS_SEIZA.xxx)`
+
+`tranquilo` (sonrisa 0,8 + cejas altas), `aguantando` (cejas −1, ojos 1, torcida 0,6), `sereno`, `cerrados` (parpadeo 1), `sorpresa`, `alivio`, `hormigueo`; `mezclarCara(a, b, f)` para transitar. Revisadas en `prueba/caras-seiza.png`: `ojos`, `torcida` y `parpadeo` combinan bien. **Límite:** el ceño (`cejas: −1`) apenas se ve porque las cejas quedan bajo el flequillo del peinado aprobado; el «aguantando» se lee por ojos muy abiertos + boca torcida + gota + temblor.
+
+### Overlays 2D (`seiza2d.js`, tras `esc.dibujar(ctx)`)
+
+| Función | Uso |
+| --- | --- |
+| `cronometroSeiza(ctx, { minutos: 1\|10, x: 540, y: 1430, size: 96, rojo, alfa, t })` | Cronómetro «1:00» / «10:00» (el 10:00 sale en rojo, como el «Minuto 10» del storyboard). Reloj parado en la cifra; con `valor` en segundos cuenta |
+| `gotaSudor(ctx, x, y, t, { size: 80, ciclo: 1.3, doble: true, t0 })` | Gota que brota, resbala y se funde (ciclo continuo). Para la sien en seiza frontal (cámara `distancia 7`): ≈ (700, 560) |
+| `hormigueo(ctx, esc, k, t, { intensidad })` | 5 puntos rojos por muslo y por pantorrilla anclados al cuerpo (`k.punto`), parpadeando a ritmos distintos; `intensidad` 1→0 los apaga uno a uno (`1 - U.prog(...)`). Llamar tras `esc.dibujar` con el karateka ya posado |
+
+Kanji 正座 y 黙想: `H2.kanji(ctx, '正座', x, y, 120, { prog, color: '#1A1A1A' })` de `historia2d.js` (la fuente trae ambos; sin probar el trazo de cada uno, ver límites).
+
+### Tiempos y límites (ciencia y seiza)
+
+- Karateka + objeto, `escala: 0.5`: ≈ 0,5 s/fotograma (vídeo de 1 s de `seiza.html` en 14 s con arranque); captura suelta ≈ 3–6 s. Dos karatekas + almohadillas (pantalla partida): ≈ 1,5–2 s/fotograma.
+- Pantalla partida: no hay un helper; dos escenas 3D o una sola con dos `Karateka3D` a ±0,9 m (rumbo 90) y dos almohadillas; el corte vertical se hace con `ctx.clip` en 2D.
+- `levantarse`: los pies resbalan un poco entre seiza-alto y las cuclillas (sin IK); cámara frontal y a ≥ 7 m, o corta con un fundido. En `seiza-alto` los pies sobresalen detrás (talones libres).
+- Almohadilla y cojín son formas simples (elipsoide y caja con bisel): no hay colisión ni física, todo lo mueve el animador con `hundir` / `mover` / `poner`. El hundimiento se ve de perfil, no de frente.
+- Sombras: la almohadilla y la pared proyectan sombra del dōjō; el maniquí lleva las de contacto del karateka.
+- El ceño no se lee con el flequillo normal (ver «Caras»). 正座 / 黙想 con `H2.kanji` no se han renderizado en esta entrega.

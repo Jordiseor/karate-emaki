@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tiempo de contacto · plano 07</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const ctx = document.getElementById('c').getContext('2d'); const U = C.U;
+window.DURACION = 2.5;
+// PLANO 7 (14,0–16,5): papel; se escribe «F = Δp / Δt» en rojo (barrido izq→der) y dos etiquetas. Solo 2D.
+const FONT = '900 140px "Montserrat","Arial Black",system-ui,sans-serif', LAB = '800 56px "Montserrat","Arial Black",system-ui,sans-serif';
+window.render = (t) => {
+  window.EMAKI.fondoPapel(ctx);
+  C.tarjeta(ctx, t, ['F = Δp / Δt'], { t0: 0.1, y: 400 });
+  // pizarra: banda de papel claro con borde de tinta
+  ctx.save(); ctx.fillStyle = 'rgba(255,255,255,0.45)'; ctx.strokeStyle = C.TINTA; ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.roundRect(70, 700, 940, 640, 30); ctx.fill(); ctx.stroke(); ctx.restore();
+  ctx.save(); ctx.font = FONT; ctx.textBaseline = 'middle';
+  const partes = ['F', ' = ', 'Δp', ' / ', 'Δt'], w = partes.map((p) => ctx.measureText(p).width), tot = w.reduce((a, b) => a + b, 0);
+  let x0 = 540 - tot / 2; const xs = []; let a = x0; partes.forEach((p, i) => { xs.push(a); a += w[i]; });
+  const y = 880, prog = U.easeInOut(U.prog(t, 0.25, 1.5));
+  ctx.beginPath(); ctx.rect(x0 - 20, y - 120, (tot + 40) * prog, 240); ctx.clip();
+  ctx.fillStyle = C.ROJO; ctx.textAlign = 'left'; partes.forEach((p, i) => ctx.fillText(p, xs[i], y));
+  ctx.restore();
+  // etiquetas con llave/línea hacia su símbolo
+  const lab = (txt, cx, ty, t0) => {
+    const e = U.easeOut(U.prog(t, t0, t0 + 0.4)); if (e <= 0) return;
+    ctx.save(); ctx.globalAlpha = e; ctx.font = LAB; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    const cc = Math.min(1080 - 100 - ctx.measureText(txt).width / 2, Math.max(100 + ctx.measureText(txt).width / 2, cx));
+    ctx.strokeStyle = C.TINTA; ctx.lineWidth = 6; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(cx, 1000); ctx.lineTo(cx, ty - 44 + (1 - e) * 20); ctx.stroke();
+    ctx.fillStyle = C.TINTA; ctx.fillText(txt, cc, ty + (1 - e) * 20); ctx.restore();
+  };
+  lab('fuerza media', xs[0] + w[0] / 2, 1110, 1.5);
+  lab('tiempo de contacto', xs[4] + w[4] / 2, 1260, 1.9);
+  C.etiquetaModelo(ctx, { alfa: U.easeOut(U.prog(t, 0, 0.3)) });
+  C.letraModelo(ctx);
+};
+</script></body></html>

@@ -1,0 +1,14 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 3 (4–6 s): calma, giro lento de cámara a 3/4 (azimut 0→35°). Kanji 正座 pequeño a un lado.
+import { crearToma, ctx, titulo, H2, U, TINTA, DURACION, INICIO } from './comun.js';
+const toma = crearToma(); window.DURACION = DURACION[3];
+window.render = (t) => {
+  const T = INICIO[3] + t; toma.fijar(T);
+  toma.esc.orbita({ centro: [0, 0.62, 0], distancia: 7, azimut: 35 * U.easeInOut(U.prog(t, 0, 2)), elevacion: 3, fov: 26 });
+  window.EMAKI.fondoPapel(ctx); toma.esc.dibujar(ctx);
+  H2.kanji(ctx, '正座', 880, 640, 130, { prog: U.prog(t, 0.1, 0.8), color: TINTA, alpha: 0.95 });
+  titulo(ctx, t, ['Seiza: sentarse', 'correctamente'], 0.0, 99);
+};
+</script></body></html>

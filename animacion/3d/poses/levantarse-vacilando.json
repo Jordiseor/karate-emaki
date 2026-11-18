@@ -1,0 +1,73 @@
+{
+ "nombre": "levantarse-vacilando",
+ "descripcion": "Levantarse con las piernas dormidas (seiza, plano 6): a medio incorporar, rodillas hacia dentro y distinta flexión (muslos 48° y 60°), pies planos, tronco inclinado 26° y ladeado 8°, mano izquierda a la rodilla y brazo derecho abierto para no caerse, cabeza ladeada. Tambaleo = código determinista sobre `ladeo` del tronco y `giro` de la cadera (ver levantarse() y tambalear() de seiza3d.js); termina en manos-rodillas → neutra.",
+ "brazoI": {
+  "adelante": 37.3,
+  "abre": 1.6,
+  "gira": -60.6
+ },
+ "brazoD": {
+  "adelante": 22,
+  "abre": 78,
+  "gira": 0
+ },
+ "codoI": 26,
+ "codoD": 28,
+ "manoI": 1,
+ "manoD": 1,
+ "munecaI": {},
+ "munecaD": {
+  "flex": 0,
+  "gira": 0
+ },
+ "cadera": {
+  "giro": -6
+ },
+ "tronco": {
+  "inclina": 26,
+  "ladeo": 8,
+  "giro": 6
+ },
+ "cabeza": {
+  "inclina": -14,
+  "ladeo": -10
+ },
+ "piernaI": {
+  "adelante": 48,
+  "abre": -5,
+  "gira": -6
+ },
+ "rodillaI": 82,
+ "piernaD": {
+  "adelante": 60,
+  "abre": 2,
+  "gira": 6
+ },
+ "rodillaD": 63.5,
+ "tobilloI": {
+  "flex": 34,
+  "ladeo": 6
+ },
+ "tobilloD": {
+  "flex": 3.5,
+  "ladeo": -4
+ },
+ "medidas": {
+  "puno_D": [
+   -0.633,
+   1.051,
+   0.31
+  ],
+  "puno_I": [
+   0.05,
+   0.566,
+   0.304
+  ],
+  "tobillo_D": [
+   -0.109,
+   0.079,
+   0.322
+  ],
+  "altura_cadera_m": 0.752
+ }
+}

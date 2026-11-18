@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tiempo de contacto · plano 04</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, P, U } = S;
+window.DURACION = 3.0;
+// PLANO 4 (6,0–9,0) un karateka de perfil, gyaku-zuki en cámara lenta, flecha roja que sigue al puño, contador «≈ 8 m/s». Sin almohadilla.
+const k = S.izq.k; S.der.k.raiz.visible = false; S.izq.pad.visible(false); S.der.pad.visible(false);
+k.colocar(0, 0, 90); esc.sombraEn(0, 0);
+const d = new C.Diagrama3D(esc, k);
+window.render = (t) => {
+  const p = U.prog(t, 0.25, 1.85), f = U.easeInOut(p);
+  k.aplicarPose(C.mezclar(P['zenkutsu-dachi'], P['gyaku-zuki-kiai'], f)); k.cara({ grito: 0.5 * U.prog(p, 0.6, 1), cejas: -0.6 });
+  esc.orbita({ centro: [0.15, 1.5, 0], distancia: 8.6, azimut: 0, elevacion: 3, fov: 26 });
+  const m = k.punto('manoD'), v = U.easeOut(U.prog(t, 0.25, 1.7));
+  d.limpiar();
+  d.flecha({ desde: [m.x - 0.55, m.y, m.z], hacia: [m.x + 0.12, m.y, m.z], grosor: 0.03, punta: 0.15, alfa: Math.min(1, U.prog(t, 0.2, 0.6)), crecer: 1 });
+  esc.dibujar(ctx, {});
+  C.K.contadorVelocidad(ctx, { x: 540, y: 640, valor: 8 * v, max: 10, texto: v > 0.98 ? '≈ 8' : undefined, unidad: 'm/s', size: 120, alfa: U.prog(t, 0.1, 0.5) });
+  C.tarjeta(ctx, t, ['Puño: unos [r]≈ 8 m/s[/r]'], { t0: 0.1, y: 300 });
+  C.letraPequena(ctx, 'Hofmann et al., ISBS 2008 · 3 karatekas');
+};
+</script></body></html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Caras de seiza</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../marca.js"></script>
+<script type="module">
+// Revisión de las caras que pide el storyboard de seiza: CARAS_SEIZA (seiza3d.js). Una por t entero. Primer plano de la cabeza.
+import { crearEscenario } from '../escenario.js';
+import { Karateka3D, cargarPoses } from '../karateka3d.js';
+import { CARAS_SEIZA } from '../seiza3d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5 });
+const P = cargarPoses();
+const k = new Karateka3D({ cinturon: 'naranja' }); esc.escena.add(k.raiz);
+const N = Object.keys(CARAS_SEIZA);
+window.DURACION = N.length;
+window.render = (t) => {
+  const n = N[Math.min(N.length - 1, Math.floor(t))];
+  k.colocar(0, 0, 15).aplicarPose(P.neutra);
+  k.cara(CARAS_SEIZA[n]);
+  esc.orbita({ centro: [0, 1.55, 0], distancia: 2.6, azimut: 0, elevacion: 2, fov: 26 });
+  esc.dibujar(ctx, { grano: false });
+  EMAKI.texto(ctx, { lineas: n, size: 72, y: 300 });
+};
+</script></body></html>

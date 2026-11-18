@@ -1,0 +1,13 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 1 (0–2 s): seiza, sonrisa, cronómetro 1:00. Frontal fija. Título visible desde el fotograma 0 (bucle).
+import { crearToma, ctx, titulo, cronometroSeiza, DURACION, INICIO, CAM_FRONTAL } from './comun.js';
+const toma = crearToma(); window.DURACION = DURACION[1];
+window.render = (t) => {
+  const T = INICIO[1] + t; toma.esc.orbita(CAM_FRONTAL); toma.fijar(T);
+  window.EMAKI.fondoPapel(ctx); toma.esc.dibujar(ctx);
+  cronometroSeiza(ctx, { minutos: 1, t });
+  titulo(ctx, t, 'Seiza. Minuto 1', -1, 99);
+};
+</script></body></html>

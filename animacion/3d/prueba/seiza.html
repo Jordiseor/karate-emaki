@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Seiza · prueba</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../marca.js"></script>
+<script type="module">
+// Escena de ejemplo (copiable): t 0–2 seiza con cronómetro 1:00 · 2–4 minuto 10 con gota y temblor · 4–9 se levanta con puntos de hormigueo.
+import { crearEscenario, util as U } from '../escenario.js';
+import { Karateka3D, cargarPoses } from '../karateka3d.js';
+import { CARAS_SEIZA as CA, mezclarCara, ponerPose, temblar, levantarse } from '../seiza3d.js';
+import { cronometroSeiza, gotaSudor, hormigueo } from '../seiza2d.js';
+import { overlay } from '../overlay2d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5 });
+const P = cargarPoses();
+const k = new Karateka3D({ cinturon: 'naranja' }); esc.escena.add(k.raiz);
+window.DURACION = 9;
+window.render = (t) => {
+  k.colocar(0, 0, 0);
+  esc.orbita({ centro: [0, 0.62, 0], distancia: 7, azimut: 0, elevacion: 3, fov: 26 });
+  if (t < 4) {
+    const minuto10 = t >= 2;
+    ponerPose(k, minuto10 ? temblar(P.seiza, t, 1) : P.seiza);
+    k.cara(minuto10 ? CA.aguantando : { ...CA.tranquilo, parpadeo: U.parpadeo(t, [0.9]) });
+    esc.dibujar(ctx);
+    if (minuto10) gotaSudor(ctx, 700, 560, t, { size: 90, doble: true });
+    cronometroSeiza(ctx, { minutos: minuto10 ? 10 : 1, t });
+    overlay.titulo(ctx, t, { lineas: minuto10 ? 'Seiza. [r]Minuto 10[/r]' : 'Seiza. Minuto 1', t0: -1, t1: 0.01, y: 300, size: 90 });
+  } else {
+    const f = U.prog(t, 4, 8.6);
+    levantarse(k, P, f, { t });
+    k.cara(mezclarCara(CA.hormigueo, CA.alivio, U.prog(f, 0.78, 0.9)));
+    esc.orbita({ centro: [0, 0.8, 0], distancia: 7 + U.prog(t, 4, 6), azimut: 0, elevacion: 3, fov: 26 });
+    esc.dibujar(ctx);
+    hormigueo(ctx, esc, k, t, { intensidad: 1 - U.prog(f, 0.7, 0.92) });
+  }
+};
+</script></body></html>

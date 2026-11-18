@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tiempo de contacto · plano 02</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, P, U } = S;
+window.DURACION = 2.0;
+// PLANO 2 (2,0–4,0) primer plano de las dos almohadillas. Izq: el puño llega y se frena en seco. Der: sigue empujando y la almohadilla cede despacio.
+const T0 = 0.55;                       // instante del contacto (ambos)
+const cam = { ...C.CAM.lado, distancia: 4.5, centro: [0.55, 1.0, 0] };
+const fPose = (i, t) => i === 0 ? 0.62 + 0.38 * U.easeOut(U.prog(t, 0, T0)) : 0.62 + 0.38 * U.easeOut(U.prog(t, 0, T0 + 0.1)) ;
+const hund = (i, t) => i === 0 ? 0.2 * U.easeOut(U.prog(t, T0, T0 + 0.05)) : 0.8 * U.easeInOut(U.prog(t, T0, T0 + 0.6));
+const dur = (i) => i === 0 ? 0.2 : 1.0; // duración del contacto (cualitativa) que corre en la regla
+window.render = (t) => {
+  C.mitades(S, {
+    cam,
+    antes: (L, i) => {
+      cam.centro = [i === 0 ? 0.62 : 0.70, 1.0, 0];
+      const f = Math.min(1, fPose(i, t));
+      L.k.aplicarPose(C.poseGancho(P, i, f)); L.k.cara(L.cara);
+      L.pad.colocar(0, 0, -90).hundir(hund(i, t)); L.pad.pegarA(L.k, 'manoD');
+    },
+    despues: (ctx, L, i) => {
+      // destello rojo corto en el golpe
+      if (i === 0) {
+        const a = U.prog(t, T0, T0 + 0.04) * (1 - U.prog(t, T0 + 0.04, T0 + 0.28));
+        if (a > 0) { const p = S.esc.proyectar(L.pad.cara()); ctx.save(); ctx.globalAlpha = a; ctx.strokeStyle = C.ROJO; ctx.lineWidth = 14; ctx.lineCap = 'round';
+          for (let r = 0; r < 7; r++) { const an = -1.2 + r * 0.4 + Math.PI, c = Math.cos(an), s = Math.sin(an); ctx.beginPath(); ctx.moveTo(p.x + c * 70, p.y + s * 70); ctx.lineTo(p.x + c * (120 + 50 * a), p.y + s * (120 + 50 * a)); ctx.stroke(); }
+          ctx.restore(); }
+      }
+      // reloj: regla que corre mientras dura el contacto
+      const v = U.clamp(Math.min(Math.max(0, t - T0), dur(i)) / 1.0);
+      C.K.regla(ctx, { x: i === 0 ? 270 : 810, y: 1500, valor: v, w: 420, color: i === 0 ? C.ROJO : C.TINTA });
+    },
+  });
+  C.tarjeta(ctx, t, ['Distinto tiempo'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

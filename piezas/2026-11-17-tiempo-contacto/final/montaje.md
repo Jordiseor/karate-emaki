@@ -1,0 +1,8 @@
+# Montaje · tiempo-contacto
+
+- Entrada: escenas3d/plano-01..14.mp4 con corte seco (34,0 s, 30 fps, 1080x1920; 2/2/2/3/2,5/2,5/2,5/3/3/2,5/2,5/2,5/2/2 s, como el storyboard). reel-sin-voz.mp4 y reel.mp4: H.264 veryfast, AAC 192 kbps, 34,0 s. Sin subtítulos quemados (cada plano ya lleva tarjeta).
+- Música (obra propia, licencia en animacion/musica/fondo-zenkutsu-3d.txt: mismas capas, sin nota nueva por no tocar animacion/): pulso-vivo x0,5 + ambiente x0,2 (30 s en bucle hasta 34) + golpe.wav a 1,6 / 2,55 (plano 2) / 4,12 (plano 3) / 12,25 (plano 6, con golpe-caida x0,6) / 21,0 s (plano 9) + golpe-cifra a 25,2 y 25,7 s (columnas del plano 11); +6,7 dB y limitador 0,8; fundido 32-34 s. reel-sin-voz: -14,3 LUFS.
+- Voz: Kokoro em_santa (sid 53), velocidades por frase 1,0/1,0/1,1/1,3/1,2/1,3/1,4/1,4/1,4/1,2/1,4/1,4/1,1/1,0. Desfases +0,06 s salvo f01 +0,12 y f12 +0,47 (empieza a 27,97 s, tras f11 larga). La voz acaba en 33,66 s. reel.mp4: -16,1 LUFS, pico real -1,3 dBFS.
+- Locución respecto al storyboard: f07 «Fuerza media: F igual a delta p entre delta t.» (fórmula leída); f11 sin «Mismo impulso:» (no cabía a x1,4; «mismo impulso» sigue en la etiqueta del plano y la cifra en la tarjeta); cifras dichas en palabras («mil setecientos cincuenta newtons frente a ochocientos setenta y cinco»). Grafías: kime→kíme, m/s→metros por segundo. Sin «duele el doble». Revisar de oído.
+- Portada: fotograma del plano 1 (0,3 s) con placa papel «MISMO PUÑO / distinto golpe» (4 palabras, tinta y rojo #C8102E), y250-540. hoja.png: 14 fotogramas (t=1 s de cada plano).
+- Último fotograma (plano 14) enlaza con el plano 1 (bucle). Mirados inicio, mitad (17 s) y final: texto legible.

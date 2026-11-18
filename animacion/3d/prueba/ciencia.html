@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Ciencia 3D · prueba</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../marca.js"></script>
+<script type="module">
+import { crearEscenario, util as U } from '../escenario.js';
+import { Karateka3D, cargarPoses, mezclar } from '../karateka3d.js';
+import { crearAlmohadilla, crearChoque } from '../ciencia3d.js';
+import * as C2 from '../ciencia2d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5, fondo: new URLSearchParams(location.search).get('f') || 'dojo' });
+const P = cargarPoses();
+const k = new Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz);
+const pad = crearAlmohadilla({ altura: 1.1 }); esc.escena.add(pad.raiz);
+const ch = crearChoque(esc, P); ch.raiz.visible = false; ch.maniqui.raiz.visible = false;
+const cam = (c, d = 7, el = 3, az = 0, fov = 26) => ({ centro: c, distancia: d, azimut: az, elevacion: el, fov });
+// t entero = una vista
+const V = [
+  ['almohadilla en reposo', () => { pad.colocar(0, 0, -90).hundir(0).mover(0); k.raiz.visible = false; return cam([0, 0.9, 0], 3.2, 4, 0, 26); }],
+  ['almohadilla hundida 1', () => { pad.colocar(0, 0, -90).hundir(1).mover(0.04); k.raiz.visible = false; return cam([0, 0.9, 0], 3.2, 4, 0, 26); }],
+  ['empuje: palma sobre la almohadilla', () => { k.raiz.visible = true; k.colocar(0, 0, 90).aplicarPose(P['empuje-recto']); pad.colocar(0, 0, -90).hundir(0.6); pad.pegarA(k, 'manoD'); return cam([0.5, 1.0, 0], 6, 3, 0, 26); }],
+  ['golpe: puño contra almohadilla', () => { k.raiz.visible = true; k.colocar(0, 0, 90).aplicarPose(P['gyaku-zuki-kiai']); pad.colocar(0, 0, -90).hundir(0.15); pad.pegarA(k, 'manoD'); return cam([0.5, 1.0, 0], 6, 3, 0, 26); }],
+  ['cojín: llega (0,5 m)', () => { k.raiz.visible = false; pad.visible(false); ch.raiz.visible = true; ch.maniqui.raiz.visible = true; ch.cojinVisible(true).poner({ distancia: 0.5 }); return cam([1.1, 1.1, 0], 8.5, 3, 0, 36); }],
+  ['cojín hundido', () => { k.raiz.visible = false; pad.visible(false); ch.raiz.visible = true; ch.maniqui.raiz.visible = true; ch.cojinVisible(true).poner({ distancia: 0, hund: 1 }); return cam([1.1, 1.1, 0], 8.5, 3, 0, 36); }],
+  ['pared sin cojín', () => { k.raiz.visible = false; pad.visible(false); ch.raiz.visible = true; ch.maniqui.raiz.visible = true; ch.cojinVisible(false).poner({ distancia: 0 }); return cam([1.1, 1.1, 0], 8.5, 3, 0, 36); }],
+  ['cojín 3/4', () => { k.raiz.visible = false; pad.visible(false); ch.raiz.visible = true; ch.maniqui.raiz.visible = true; ch.cojinVisible(true).poner({ distancia: 0.3, hund: 0.3 }); return cam([1.1, 1.1, 0], 8.5, 6, -35, 36); }],
+];
+window.DURACION = V.length;
+window.render = (t) => {
+  const i = Math.min(V.length - 1, Math.floor(t));
+  ch.raiz.visible = false; ch.maniqui.raiz.visible = false; pad.visible(true);
+  esc.orbita(V[i][1]());
+  esc.dibujar(ctx, { grano: false });
+  EMAKI.texto(ctx, { lineas: V[i][0], size: 60, y: 120 });
+};
+</script></body></html>

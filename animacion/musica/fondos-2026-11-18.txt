@@ -1,0 +1,7 @@
+Fondos sonoros montados el 18 nov 2026 (anotado por el Sensei). Todos son obra propia del estudio: capas sintetizadas de la biblioteca (pulso-vivo, ambiente, golpe, golpe-cifra, golpe-caida) y efectos sintetizados (kiai, ding, respiración, zumbido), sin muestras de terceros. Detalle de capas y tiempos en el final/montaje.md de cada pieza:
+- 2026-11-16-cinturon-judo (30 s)
+- 2026-11-12-linea-temporal, anuncio (12 s)
+- 2026-11-16-kumite-puntos (36 s)
+- 2026-11-16-embusen, anuncio (14 s; piezas/2026-11-16-embusen/final/fondo-embusen.wav)
+- 2026-11-17-tiempo-contacto (34 s; mismas capas que fondo-zenkutsu-3d)
+- 2026-11-17-seiza (14 s, solo efectos)

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tiempo de contacto · plano 10</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const ctx = document.getElementById('c').getContext('2d'); const U = C.U;
+window.DURACION = 2.5;
+// PLANO 10 (22,5–25,0): dos barras horizontales de tiempo (32 ms, 16 ms) y debajo dos flechas de fuerza MEDIA que crecen (la de 16 ms, el doble de larga). Modelo, no medido.
+const FONT = '800 56px "Montserrat","Arial Black",system-ui,sans-serif';
+function flecha(x, y, len, color, grosor = 34) {
+  if (len < 4) return;
+  const h = Math.min(len * 0.5, 70);
+  ctx.save(); ctx.fillStyle = color; ctx.beginPath();
+  ctx.moveTo(x, y - grosor / 2); ctx.lineTo(x + len - h, y - grosor / 2); ctx.lineTo(x + len - h, y - grosor); ctx.lineTo(x + len, y);
+  ctx.lineTo(x + len - h, y + grosor); ctx.lineTo(x + len - h, y + grosor / 2); ctx.lineTo(x, y + grosor / 2); ctx.closePath(); ctx.fill(); ctx.restore();
+}
+window.render = (t) => {
+  window.EMAKI.fondoPapel(ctx);
+  C.tarjeta(ctx, t, ['Mitad de tiempo,', '[r]doble fuerza[/r]'], { t0: 0.1, y: 400, size: 72 });
+  C.K.columnas(ctx, { horizontal: true, caja: { x: 300, y: 720, w: 480, h: 300 }, max: 32,
+    barras: [{ valor: 32, texto: '32 ms', etiqueta: 'largo', prog: U.prog(t, 0.2, 0.8) }, { valor: 16, texto: '16 ms', etiqueta: 'corto', color: C.ROJO, prog: U.prog(t, 0.5, 1.1) }] });
+  // fuerza media (modelo): misma área ⇒ mitad de tiempo = doble de fuerza media
+  const e = U.easeOut(U.prog(t, 1.2, 1.4));
+  if (e > 0) { ctx.save(); ctx.globalAlpha = e; ctx.font = FONT; ctx.fillStyle = C.TINTA; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText('fuerza media', 120, 1130); ctx.restore(); }
+  flecha(120, 1250, 240 * U.easeOut(U.prog(t, 1.3, 1.9)), C.TINTA);
+  flecha(120, 1400, 480 * U.easeOut(U.prog(t, 1.5, 2.2)), C.ROJO);
+  C.etiquetaModelo(ctx);
+  C.letraModelo(ctx);
+};
+</script></body></html>

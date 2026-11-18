@@ -1,0 +1,16 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 7 (12,5–14 s): de pie señala hacia abajo; en el último medio segundo vuelve a seiza. Cámara = plano 1. Último fotograma = fotograma 0.
+import { crearToma, ctx, titulo, cronometroSeiza, U, DURACION, INICIO, CAM_FRONTAL } from './comun.js';
+const toma = crearToma(); window.DURACION = DURACION[7];
+window.render = (t) => {
+  const T = INICIO[7] + t; toma.esc.orbita(CAM_FRONTAL); toma.fijar(T);
+  window.EMAKI.fondoPapel(ctx); toma.esc.dibujar(ctx);
+  const q = U.prog(t, 0.85, 1.0); // 13,35–13,5: pregunta fuera; de 13,6 a 14: entra «Seiza. Minuto 1» y el reloj
+  const a = U.prog(T, 13.6, 13.95);
+  cronometroSeiza(ctx, { minutos: 1, t: 0, alfa: a });
+  if (t < 0.95) titulo(ctx, t, '¿Cuánto aguantas tú?', 0.1, 0.95, { y: 1450 });
+  if (a > 0) { ctx.save(); ctx.globalAlpha = a; titulo(ctx, 99, 'Seiza. Minuto 1', -1, 999); ctx.restore(); }
+};
+</script></body></html>

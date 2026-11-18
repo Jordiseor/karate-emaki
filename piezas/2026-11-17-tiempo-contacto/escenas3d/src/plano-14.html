@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tiempo de contacto · plano 14</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, P, U } = S;
+window.DURACION = 2.0;
+// PLANO 14 (bucle): puño listo (zenkutsu-dachi) → f = 0,45 en t = 1,9 s; desde ahí = C.dibujarGancho(S, 0), idéntico al fotograma 0 del plano 1 (sin su tarjeta).
+// La pregunta se desvanece antes (1,5–1,9 s) para que el último fotograma sea el encuadre limpio del gancho.
+window.render = (t) => {
+  if (t >= 1.9) C.dibujarGancho(S, 0);
+  else {
+    const f = 0.45 * U.easeInOut(U.prog(t, 0, 1.9));
+    C.mitades(S, { antes: (L, i) => {
+      L.k.aplicarPose(C.poseGancho(P, i, f)); L.k.cara(L.cara);
+      L.pad.colocar(0, 0, -90).hundir(0); L.pad.raiz.position.set(L.padX, L.padY, L.padZ);
+    } });
+  }
+  ctx.save(); ctx.globalAlpha = 1 - U.prog(t, 1.5, 1.9);
+  C.tarjeta(ctx, t, ['¿Empujas', 'o golpeas?'], { t0: -1, size: 120, y: 300 });
+  ctx.restore();
+};
+</script></body></html>

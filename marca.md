@@ -5,7 +5,7 @@
 - **Nombre:** KARATE EMAKI. Un *emaki* es un rollo ilustrado japonés que cuenta una historia escena a escena: eso es cada reel.
 - **Redes:** Instagram Reels, TikTok y YouTube Shorts (formato 9:16), mismo nombre en las tres.
 - **Estilo de karate:** base Shotokan, pero la cuenta habla de karate en general. Otros estilos aparecen con respeto, nunca como rivales.
-- **Ritmo de arranque:** 2 reels por semana y 1 interactivo cada 2 semanas. Se sube solo cuando la calidad aguante.
+- **Ritmo:** 3 reels por semana (lunes, miércoles y sábado, 19:30) y 1 interactivo cada 2 semanas. Subido por Jorge el 18 nov 2026 (antes 2 por semana). Se sube más solo cuando la calidad aguante.
 
 ## Pilares de contenido
 

@@ -1,0 +1,15 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 6 (9,5–12,5 s): se levanta, piernas dormidas, puntos rojos de hormigueo que se apagan. Cámara se aleja 7→8.
+import { crearToma, ctx, titulo, hormigueo, U, DURACION, INICIO } from './comun.js';
+const toma = crearToma(); window.DURACION = DURACION[6];
+window.render = (t) => {
+  const T = INICIO[6] + t; toma.fijar(T);
+  const e = U.easeInOut(U.prog(t, 0, 3));
+  toma.esc.orbita({ centro: [0, 0.62 + 0.28 * e, 0], distancia: 7 + e, azimut: 0, elevacion: 3, fov: 26 });
+  window.EMAKI.fondoPapel(ctx); toma.esc.dibujar(ctx);
+  hormigueo(ctx, toma.esc, toma.k, T, { intensidad: toma.hormi(T) });
+  titulo(ctx, t, ['[r]Hormigueo[/r] = presión', 'sobre un nervio'], 0.0, 99, { y: 1450 });
+};
+</script></body></html>

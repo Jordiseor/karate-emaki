@@ -1,0 +1,65 @@
+{
+ "nombre": "seiza-alto",
+ "descripcion": "Seiza alto (de rodillas, tronco erguido): muslos verticales, glúteos levantados (cadera a ≈ 0,62 m), espinillas y empeines en el suelo, talones libres. Es el primer movimiento de levantarse desde P.seiza. Aplicar con k.aplicarPose(p, { suelo: false, altura: -0.336 }) (o con levantarse() de seiza3d.js, que lo hace).",
+ "piernaI": {
+  "adelante": 0,
+  "abre": 3,
+  "gira": 0
+ },
+ "piernaD": {
+  "adelante": 0,
+  "abre": 3,
+  "gira": 0
+ },
+ "rodillaI": 90,
+ "rodillaD": 90,
+ "tobilloI": {
+  "flex": -90
+ },
+ "tobilloD": {
+  "flex": -90
+ },
+ "cadera": {},
+ "tronco": {
+  "inclina": 0
+ },
+ "cabeza": {},
+ "brazoI": {
+  "adelante": 12,
+  "abre": 6,
+  "gira": 0
+ },
+ "brazoD": {
+  "adelante": 12,
+  "abre": 6,
+  "gira": 0
+ },
+ "codoI": 30,
+ "codoD": 30,
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {},
+ "munecaD": {},
+ "aplicar": {
+  "suelo": false,
+  "altura": -0.336
+ },
+ "medidas": {
+  "puno_D": [
+   -0.213,
+   0.506,
+   0.253
+  ],
+  "puno_I": [
+   0.213,
+   0.506,
+   0.253
+  ],
+  "tobillo_D": [
+   -0.113,
+   0.15,
+   -0.41
+  ],
+  "altura_cadera_m": 0.619
+ }
+}

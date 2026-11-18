@@ -1,0 +1,65 @@
+{
+ "nombre": "en-cuclillas-medio",
+ "descripcion": "En cuclillas a medias (transición de levantarse): pies planos, muslos a 80°, rodillas a 120°, tronco inclinado 30°, brazos al frente para el equilibrio. Aplicar con suelo (por defecto). Secuencia: seiza → seiza-alto → en-cuclillas-medio → levantarse-vacilando (usa levantarse() de seiza3d.js).",
+ "piernaI": {
+  "adelante": 80,
+  "abre": 6,
+  "gira": 0
+ },
+ "piernaD": {
+  "adelante": 80,
+  "abre": 6,
+  "gira": 0
+ },
+ "rodillaI": 120,
+ "rodillaD": 120,
+ "tobilloI": {
+  "flex": 40,
+  "ladeo": 0
+ },
+ "tobilloD": {
+  "flex": 40,
+  "ladeo": 0
+ },
+ "cadera": {},
+ "tronco": {
+  "inclina": 30
+ },
+ "cabeza": {
+  "inclina": -18
+ },
+ "brazoI": {
+  "adelante": 40,
+  "abre": 8,
+  "gira": 0
+ },
+ "brazoD": {
+  "adelante": 40,
+  "abre": 8,
+  "gira": 0
+ },
+ "codoI": 35,
+ "codoD": 35,
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {},
+ "munecaD": {},
+ "medidas": {
+  "puno_D": [
+   -0.229,
+   0.376,
+   0.414
+  ],
+  "puno_I": [
+   0.229,
+   0.376,
+   0.414
+  ],
+  "tobillo_D": [
+   -0.113,
+   0.076,
+   0.139
+  ],
+  "altura_cadera_m": 0.521
+ }
+}

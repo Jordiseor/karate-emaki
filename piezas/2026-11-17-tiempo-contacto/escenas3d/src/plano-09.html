@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tiempo de contacto · plano 09</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, P } = S; const U = C.U;
+window.DURACION = 3.0;
+// PLANO 9 (19,5–22,5): primer plano de lado, puño que toca la almohadilla en cámara muy lenta + cronómetro que corre poco y se detiene en «16–19 ms».
+const L = S.izq, k = L.k, pad = L.pad;
+S.der.k.raiz.visible = false; S.der.pad.visible(false);
+k.colocar(0, 0, 90); pad.colocar(0, 0, -90);
+k.aplicarPose(S.P['gyaku-zuki-kiai']); pad.hundir(0).pegarA(k, 'manoD'); const PX = pad.raiz.position.clone();
+const f = (t) => 0.45 + 0.55 * U.easeInOut(U.prog(t, 0, 1.5));
+window.render = (t) => {
+  k.aplicarPose(C.mezclar(P['zenkutsu-dachi'], P['gyaku-zuki-kiai'], f(t)));
+  k.cara({ ...L.cara, parpadeo: U.parpadeo(t, [2.3]) });
+  const h = 0.2 * U.easeOut(U.prog(t, 1.5, 1.65));
+  pad.hundir(h); if (h > 0) pad.pegarA(k, 'manoD'); else pad.raiz.position.copy(PX);
+  esc.sombraEn(0, 0);
+  esc.orbita({ centro: [0.42, 1.32, 0], distancia: 5.4, azimut: 0, elevacion: 3, fov: 26 });
+  esc.dibujar(ctx, {});
+  C.tarjeta(ctx, t, ['Contacto:', '[r]16–19 ms[/r]'], { t0: 0.1, y: 400 });
+  const v = 16 * U.easeOut(U.prog(t, 1.5, 2.0)), parado = t >= 2.0;
+  C.K.cronometro(ctx, { x: 690, y: 770, valor: v, tipo: 'ms', texto: parado ? '16–19 ms' : undefined, parado, rojo: parado, t, size: 84, alfa: U.easeOut(U.prog(t, 0.3, 0.7)) });
+  C.etiquetaModelo(ctx, { alfa: U.easeOut(U.prog(t, 0, 0.3)) });
+  C.letraPequena(ctx, ['Mašić 1987, cita a Yoshihuku 1984','(segunda mano)']);
+};
+</script></body></html>

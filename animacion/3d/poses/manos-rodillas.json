@@ -1,0 +1,65 @@
+{
+ "nombre": "manos-rodillas",
+ "descripcion": "Manos a las rodillas: de pie, rodillas flexionadas (muslo 38°, rodilla 60°), pies planos a la anchura de los hombros, tronco inclinado 30° y las dos manos abiertas apoyadas en las rodillas (descansar, tomar aire, o apoyarse con las piernas dormidas). Cabeza algo levantada.",
+ "brazoI": {
+  "adelante": 31.1,
+  "abre": 5.1,
+  "gira": -39.8
+ },
+ "brazoD": {
+  "adelante": 31.1,
+  "abre": 5.1,
+  "gira": -39.8
+ },
+ "codoI": 21.5,
+ "codoD": 21.5,
+ "manoI": 1,
+ "manoD": 1,
+ "munecaI": {},
+ "munecaD": {},
+ "cadera": {},
+ "tronco": {
+  "inclina": 30
+ },
+ "cabeza": {
+  "inclina": -24
+ },
+ "piernaI": {
+  "adelante": 38,
+  "abre": 5,
+  "gira": 0
+ },
+ "rodillaI": 60,
+ "tobilloI": {
+  "flex": 22,
+  "ladeo": 0
+ },
+ "piernaD": {
+  "adelante": 38,
+  "abre": 5,
+  "gira": 0
+ },
+ "rodillaD": 60,
+ "tobilloD": {
+  "flex": 22,
+  "ladeo": 0
+ },
+ "medidas": {
+  "puno_D": [
+   -0.137,
+   0.617,
+   0.253
+  ],
+  "puno_I": [
+   0.137,
+   0.617,
+   0.253
+  ],
+  "tobillo_D": [
+   -0.146,
+   0.077,
+   0.097
+  ],
+  "altura_cadera_m": 0.838
+ }
+}

@@ -1,0 +1,6 @@
+# inicio | texto en pantalla | texto para la voz
+0.5 | ¿Qué dibuja esta kata? | ¿Sabías que Heian Shodan dibuja algo en el suelo?
+3.2 | 21 movimientos · embusen | Veintiún movimientos. El recorrido se llama embusen.
+6.2 | Dos kiai · Parecido a una «I» | Visto desde arriba, el trazo se parece a una i.
+9.1 | Paso a paso, tú mandas. | En el interactivo lo ves paso a paso.
+12.1 | Enlace en el perfil | Está en el enlace del perfil.

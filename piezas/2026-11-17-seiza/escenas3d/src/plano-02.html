@@ -1,0 +1,14 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 2 (2–4 s): corte seco, mismo encuadre. Minuto 10: ojos abiertos, sonrisa torcida, gota, temblor. Cronómetro rojo.
+import { crearToma, ctx, titulo, cronometroSeiza, gotaSudor, DURACION, INICIO, CAM_FRONTAL } from './comun.js';
+const toma = crearToma(); window.DURACION = DURACION[2];
+window.render = (t) => {
+  const T = INICIO[2] + t; toma.esc.orbita(CAM_FRONTAL); toma.fijar(T);
+  window.EMAKI.fondoPapel(ctx); toma.esc.dibujar(ctx);
+  gotaSudor(ctx, 700, 560, T, { size: 90, doble: true });
+  cronometroSeiza(ctx, { minutos: 10, t });
+  titulo(ctx, t, 'Seiza. [r]Minuto 10[/r]', -1, 99);
+};
+</script></body></html>

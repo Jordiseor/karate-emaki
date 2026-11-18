@@ -1,0 +1,8 @@
+Locución «Seiza, minuto 1 contra minuto 10» (26 palabras, 14,0 s). Formato: inicio en s | texto en pantalla | texto para la voz. Voz Kokoro em_santa. Ding, respiración y zumbido son efectos sintetizados.
+0.0 | Seiza. Minuto 1. | Séisa, minuto uno.
+2.0 | Seiza. Minuto 10. | Séisa, minuto diez.
+4.0 | Seiza (正座): sentarse correctamente | Séisa significa sentarse correctamente.
+6.0 | Mokusō: silencio y respiración | Mokusó: meditar en silencio.
+8.0 | Mokusō yame: fin de la meditación | ¡Mokusó yamé!
+9.6 | Hormigueo = presión sobre un nervio | Hormigueo: presión sobre un nervio. Se pasa.
+12.6 | ¿Cuánto aguantas tú? | ¿Cuánto aguantas tú?

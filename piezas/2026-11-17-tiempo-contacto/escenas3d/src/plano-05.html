@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tiempo de contacto · plano 05</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, P, U } = S;
+window.DURACION = 2.5;
+// PLANO 5 (9,0–11,5) cámara frontal: el puño viene hacia el espectador y se queda a pocos centímetros. Flecha de velocidad + regla de tiempo vacía que se llena. Sin cifras.
+const k = S.izq.k; S.der.k.raiz.visible = false; S.izq.pad.visible(false); S.der.pad.visible(false);
+k.colocar(0, 0, 0); esc.sombraEn(0, 0);
+const d = new C.Diagrama3D(esc, k);
+window.render = (t) => {
+  const p = U.prog(t, 0.1, 1.2), f = U.easeOut(p);
+  k.aplicarPose(C.mezclar(P['zenkutsu-dachi'], P['gyaku-zuki-kiai'], f)); k.cara({ grito: 0.5 * U.prog(p, 0.5, 1), cejas: -0.6 });
+  esc.orbita({ centro: [0.0, 1.05, 0], distancia: 6.6, azimut: 0, elevacion: 3, fov: 26 });
+  const m = k.punto('manoD');
+  d.limpiar();
+  // flecha de velocidad: viene de detrás del puño hacia la cámara (en perspectiva sale en diagonal)
+  // sin flecha 3D (de frente se ve como un punto): ráfaga 2D de líneas de velocidad + flecha 2D en diagonal hacia el espectador
+  d.limpiar();
+  esc.dibujar(ctx, {});
+  { const h = esc.proyectar(m), a = U.prog(t, 0.1, 0.9), al = a * (1 - 0.5 * U.prog(t, 1.3, 1.8));
+    ctx.save(); ctx.strokeStyle = C.ROJO; ctx.fillStyle = C.ROJO; ctx.lineCap = 'round'; ctx.globalAlpha = al;
+    for (let r = 0; r < 6; r++) { const an = (110 + r * 28) * Math.PI / 180, c = Math.cos(an), sn = Math.sin(an), r0 = 95 + 30 * a, r1 = r0 + 50 + 90 * U.easeOut(a) * (r % 2 ? 1 : 0.6);
+      ctx.lineWidth = 10 + 6 * (r % 2); ctx.beginPath(); ctx.moveTo(h.x + c * r0, h.y + sn * r0); ctx.lineTo(h.x + c * r1, h.y + sn * r1); ctx.stroke(); }
+    // flecha diagonal (hacia abajo-derecha = hacia el espectador)
+    const x0 = h.x + 190, y0 = h.y - 190, l = 300 * U.easeOut(a), ux = 0.72, uy = 0.69;
+    ctx.lineWidth = 34; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 + ux * (l - 40), y0 + uy * (l - 40)); ctx.stroke();
+    const ex = x0 + ux * l, ey = y0 + uy * l; ctx.beginPath(); ctx.moveTo(ex, ey); ctx.lineTo(ex - ux * 70 + uy * 55, ey - uy * 70 - ux * 55); ctx.lineTo(ex - ux * 70 - uy * 55, ey - uy * 70 + ux * 55); ctx.closePath(); ctx.fill();
+    ctx.restore(); }
+  C.K.regla(ctx, { x: 540, y: 1430, valor: U.prog(t, 0.1, 2.3), w: 600, color: C.ROJO });
+  C.tarjeta(ctx, t, ['No basta la velocidad'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

@@ -1,0 +1,15 @@
+Locución tiempo-contacto (34 s, voz Kokoro em_santa). Formato: inicio en s | texto en pantalla | texto para la voz (grafía: m/s→metros por segundo, N→newtons, ms→milisegundos, kime→kíme, F = Δp / Δt→F igual a delta p entre delta t).
+0.0 | Misma velocidad | Misma velocidad.
+2.0 | Distinto tiempo | Distinto tiempo.
+4.0 | Distinta fuerza | Distinta fuerza. ¿Por qué?
+6.0 | Puño: unos ≈ 8 m/s | El puño ronda los ocho metros por segundo.
+9.0 | No basta la velocidad | No basta la velocidad: cuenta el tiempo.
+11.5 | Más tiempo, menos fuerza | Como un airbag: más tiempo, menos fuerza.
+14.0 | F = Δp / Δt | Fuerza media: F igual a delta p entre delta t.
+16.5 | Menos tiempo, más fuerza media | Mismo impulso, misma área. Menos tiempo, más fuerza.
+19.5 | Contacto: 16–19 ms | Dura apenas dieciséis milisegundos, según estudios.
+22.5 | Mitad de tiempo, doble fuerza | Modelo: mitad de tiempo, doble fuerza.
+25.0 | 1750 N frente a 875 N | Mil setecientos cincuenta newtons frente a ochocientos setenta y cinco.
+27.5 | Modelo: aún sin medir | Ojo: modelo, aún sin medir en karate.
+30.0 | Kime: el golpe que se queda | Kíme: el golpe que se queda.
+32.0 | ¿Empujas o golpeas? | ¿Tú empujas o golpeas?

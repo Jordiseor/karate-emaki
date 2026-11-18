@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tiempo de contacto · plano 08</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const ctx = document.getElementById('c').getContext('2d'); const U = C.U;
+window.DURACION = 3.0;
+// PLANO 8 (16,5–19,5): gráfico fuerza-tiempo. La curva ancha azul se estrecha hasta la alta roja con el misma área. Respira 1 s al final. Solo 2D, sin cifras.
+const caja = { x: 190, y: 700, w: 760, h: 640 }, IMP = 0.3;
+window.render = (t) => {
+  window.EMAKI.fondoPapel(ctx);
+  C.tarjeta(ctx, t, ['Menos tiempo,', 'más [r]fuerza media[/r]'], { t0: 0.1, y: 400, size: 72 });
+  C.K.ejes(ctx, caja, { prog: U.easeOut(U.prog(t, 0, 0.5)), etiquetaX: 'tiempo', etiquetaY: 'fuerza' });
+  const aparece = U.prog(t, 0.3, 0.8), f = U.easeInOut(U.prog(t, 0.9, 2.0));
+  if (aparece > 0) {
+    const r = C.K.morfosis(ctx, caja, f, { impulso: IMP, prog: U.easeOut(aparece) });
+    const e = U.easeOut(U.prog(t, 1.9, 2.4));
+    if (e > 0) {   // etiqueta del área (impulso) sobre la curva estrecha
+      ctx.save(); ctx.globalAlpha = e; ctx.font = '800 56px "Montserrat","Arial Black",system-ui,sans-serif'; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+      ctx.fillStyle = C.TINTA; ctx.fillText('misma área', caja.x + caja.w * 0.55, caja.y + caja.h * 0.5); ctx.restore();
+    }
+  }
+  C.etiquetaModelo(ctx);
+  C.letraModelo(ctx);
+};
+</script></body></html>

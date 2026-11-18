@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tiempo de contacto · plano 01</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx } = S;
+window.DURACION = 2.0;
+// PLANO 1 (0,0–2,0) gancho: pantalla partida, dos karatekas idénticos con el puño ya lanzado en t=0; mismo f(t) en ambos lados.
+window.render = (t) => {
+  C.dibujarGancho(S, t);
+  C.tarjeta(ctx, t, ['Misma velocidad'], { t0: -1, y: 300 });
+};
+</script></body></html>

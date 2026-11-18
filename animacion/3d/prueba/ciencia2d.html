@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Ciencia 2D · prueba</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../marca.js"></script>
+<script type="module">
+// Prueba de ciencia2d.js sobre fondo papel (copiable). Una vista por t entero:
+// 0 gráfico fuerza-tiempo (dos curvas, mismo área) · 1 morfosis a medio camino · 2 cronómetro ms + contador de velocidad · 3 columnas de fuerza · 4 barras de tiempo
+import * as C from '../ciencia2d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const caja = { x: 190, y: 560, w: 760, h: 640 };
+const VISTAS = [
+  () => { C.ejes(ctx, caja); C.curva(ctx, caja, { duracion: 0.8, impulso: 0.3, color: C.COL.azul }); C.curva(ctx, caja, { duracion: 0.3, impulso: 0.3, color: C.COL.rojo, relleno: 0.2 }); },
+  () => { C.ejes(ctx, caja); C.morfosis(ctx, caja, 0.5, { impulso: 0.3 }); },
+  () => { C.cronometro(ctx, { x: 540, y: 560, valor: 16, tipo: 'ms', texto: '16–19 ms', parado: true, rojo: true, size: 96 });
+          C.cronometro(ctx, { x: 540, y: 820, valor: 9, tipo: 'ms', t: 0.3 });
+          C.contadorVelocidad(ctx, { x: 540, y: 1250, valor: 8, max: 10, texto: '≈ 8', unidad: 'm/s' }); },
+  () => { C.columnas(ctx, { caja: { x: 200, y: 520, w: 700, h: 760 }, max: 1750, barras: [{ valor: 875, texto: '875 N', etiqueta: '32 ms' }, { valor: 1750, texto: '1750 N', etiqueta: '16 ms', color: C.COL.rojo }] }); },
+  () => { C.columnas(ctx, { horizontal: true, caja: { x: 330, y: 620, w: 440, h: 400 }, max: 32, barras: [{ valor: 32, texto: '32 ms', etiqueta: 'largo' }, { valor: 16, texto: '16 ms', etiqueta: 'corto', color: C.COL.rojo }] }); C.regla(ctx, { x: 540, y: 1250, valor: 0.6 }); },
+];
+window.DURACION = VISTAS.length;
+window.render = (t) => { window.EMAKI.fondoPapel(ctx); VISTAS[Math.min(VISTAS.length - 1, Math.floor(t))](); };
+</script></body></html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tiempo de contacto · plano 06</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+import { crearEscenario } from '../../../../animacion/3d/escenario.js';
+import { cargarPoses } from '../../../../animacion/3d/karateka3d.js';
+const { U } = C;
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5, fondo: 'degradado' });
+esc.escena.fog.near = 30; esc.escena.fog.far = 90;
+const P = cargarPoses();
+const ch = C.crearChoque(esc, P, { cojin: true, xPared: 2.2 });
+window.DURACION = 2.5;
+// PLANO 6 (11,5–14,0) escena aparte, ambiente neutro. Pantalla partida HORIZONTAL (arriba A: cojín que se hunde despacio; abajo B: repetición rápida, pared sin cojín:
+// choque seco). El maniquí llega igual de rápido a las dos; solo cambia el tiempo de frenada. Flechas rojas: larga y fina (A), corta y gruesa (B).
+const PAN = [ { y0: 370, y1: 905 }, { y0: 925, y1: 1460 } ];   // paneles dentro de la zona segura (250 arriba / 350 abajo)
+const PX = 1920 / (2 * 14 * Math.tan(15 * Math.PI / 180));  // px por metro a 12 m con fov 30
+const T0 = 0.2, TL = 0.55;   // sale en T0; llega a la superficie en T0 + TL
+const dist = (t) => 0.6 * (1 - U.prog(t, T0, T0 + TL));
+function flecha(ctx, xDer, y, largo, grosor, a) {   // apunta a la izquierda (fuerza sobre el maniquí)
+  if (a <= 0) return; const l = largo * U.easeOut(a), p = Math.min(l * 0.6, grosor * 2.4);
+  ctx.save(); ctx.globalAlpha = Math.min(1, a * 3); ctx.fillStyle = C.ROJO; ctx.shadowColor = 'rgba(26,26,26,0.25)'; ctx.shadowBlur = 10;
+  ctx.beginPath(); ctx.roundRect(xDer - l + p * 0.8, y - grosor / 2, Math.max(1, l - p * 0.8), grosor, grosor / 2); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(xDer - l, y); ctx.lineTo(xDer - l + p, y - grosor * 1.2); ctx.lineTo(xDer - l + p, y + grosor * 1.2); ctx.closePath(); ctx.fill(); ctx.restore();
+}
+window.render = (t) => {
+  ctx.fillStyle = C.PAPEL; ctx.fillRect(0, 0, 1080, 1920);
+  for (let i = 0; i < 2; i++) {
+    const { y0, y1 } = PAN[i], A = i === 0;
+    ch.cojinVisible(A);
+    ch.poner({ distancia: dist(t), hund: A ? 0.95 * U.easeInOut(U.prog(t, T0 + TL, T0 + TL + 1.1)) : 0, inclina: 8, pose: P.neutra });
+    esc.orbita({ centro: [1.15, 0.9 + ((y0 + y1) / 2 - 960) / PX, 0], distancia: 14, azimut: 0, elevacion: 2, fov: 30 });
+    ctx.save(); ctx.beginPath(); ctx.rect(0, y0, 1080, y1 - y0); ctx.clip();
+    esc.dibujar(ctx, {});
+    const a = U.prog(t, T0 + TL, T0 + TL + 0.35);
+    if (A) flecha(ctx, 640, (y0 + y1) / 2 - 90, 380, 14, a); else flecha(ctx, 640, (y0 + y1) / 2 - 90, 150, 44, a);
+    ctx.restore();
+  }
+  ctx.save(); ctx.fillStyle = C.PAPEL; ctx.fillRect(0, 905, 1080, 20); ctx.fillStyle = C.TINTA; ctx.fillRect(0, 913, 1080, 4); ctx.restore();
+  C.tarjeta(ctx, t, ['Más tiempo, menos fuerza'], { t0: 0.1, y: 300, size: 76 });
+  C.letraPequena(ctx, 'OpenStax, Física Universitaria 1, §9.2');
+};
+</script></body></html>

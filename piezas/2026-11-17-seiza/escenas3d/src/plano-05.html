@@ -1,0 +1,13 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 5 (8–9,5 s): abre los ojos de golpe, alivio, hombros que caen. Frontal de medio cuerpo fija.
+import { crearToma, ctx, titulo, DURACION, INICIO } from './comun.js';
+const toma = crearToma(); window.DURACION = DURACION[5];
+window.render = (t) => {
+  const T = INICIO[5] + t; toma.fijar(T);
+  toma.esc.orbita({ centro: [0, 1.0, 0], distancia: 4.6, azimut: 0, elevacion: 2, fov: 26 });
+  window.EMAKI.fondoPapel(ctx); toma.esc.dibujar(ctx);
+  titulo(ctx, t, ['Mokusō yame:', 'fin de la meditación'], 0.0, 99);
+};
+</script></body></html>
