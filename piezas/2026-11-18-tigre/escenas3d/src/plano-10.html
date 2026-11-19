@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre · plano 10</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 4.0;
+// PLANO 10 (cierre y bucle): karateka 3D (yoi, mira a cámara) a la derecha + tigre 'frente' a la izquierda, sobre papel; tarjeta «¿Qué ves tú en el tigre?».
+// 0–2,6 escena; 2,6–3,1 todo se funde a papel; 2,8–3,967 la pincelada 'bucle' se dibuja de p = 0 a C.BUCLE.p0 (= inicio del plano 1).
+// El 3D (sin fondo transparente en esc.dibujar) se renderiza sobre blanco en un lienzo aparte y se compone con 'multiply' sobre el papel.
+const { esc, P } = C.iniciar3d();
+esc.escena.background = new esc.THREE.Color('#FFFFFF'); esc.escena.fog = null; esc.suelo.visible = false; esc.pared.visible = false;
+const k = new C.Karateka3D({ cinturon: 'negro' });
+esc.escena.add(k.raiz); k.colocar(0, 0, 0);
+const off = document.createElement('canvas'); off.width = 1080; off.height = 1920; const octx = off.getContext('2d');
+const FIN = 4.0 - 1 / 30;
+window.render = (t) => {
+  C.papel(ctx);
+  const sal = 1 - U.easeInOut(U.prog(t, 2.6, 3.1));
+  if (sal > 0) {
+    // karateka
+    k.aplicarPose(P.yoi); k.cara({ cejas: 1, parpadeo: U.parpadeo(t, [1.4]) });
+    esc.orbita({ centro: [-0.62, 0.95, 0], distancia: 8, azimut: 0, elevacion: 2, fov: 26 });
+    esc.dibujar(octx, { vineta: false, grano: false });
+    ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.globalAlpha = U.easeOut(U.prog(t, 0.3, 0.8)) * sal; ctx.drawImage(off, 0, 0); ctx.restore();
+    // tigre
+    ctx.save(); ctx.globalAlpha = sal; C.tigre(ctx, 'frente', U.prog(t, 0.2, 1.1), 270, 1470, 0.6); ctx.restore();
+    ctx.save(); ctx.globalAlpha = sal; C.tarjeta(ctx, t, ['¿Qué ves', 'tú en', 'el tigre?'], { t0: 0.1, y: 300 }); ctx.restore();
+  }
+  C.bucle(ctx, C.BUCLE.p0 * U.prog(t, 2.8, FIN));
+};
+</script></body></html>

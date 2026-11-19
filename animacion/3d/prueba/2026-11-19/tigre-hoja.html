@@ -1,0 +1,28 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../marca.js"></script>
+<script type="module">
+// Hoja de prueba de tigre2d.js. t 0..1 = progreso de todos los trazos (t=1: todo completo). Sin cabecera de rejilla: cada cosa en su sitio.
+import * as T from '../../tigre2d.js';
+const ctx = document.getElementById('c').getContext('2d');
+window.DURACION = 2;
+window.render = (t) => {
+  window.EMAKI.fondoPapel(ctx);
+  const p = Math.min(1, t);
+  ctx.fillStyle = 'rgba(138,132,122,0.25)'; ctx.fillRect(0, 0, 1080, 250); ctx.fillRect(0, 1570, 1080, 350); // fuera de la zona segura
+  T.tigre(ctx, 'acecho', p, 330, 540, 0.62);
+  T.tigre(ctx, 'sentado', p, 800, 540, 0.5);
+  T.tigre(ctx, 'frente', p, 240, 1050, 0.55);
+  T.pincelada(ctx, 'interrogacion', p, 540, 840, 0.42);
+  T.pincelada(ctx, 'bucle', p, 780, 740, 0.4);
+  T.pincelada(ctx, 'barrido', p, 780, 830, 0.35);
+  T.tigre(ctx, 'acecho', p, 490, 1050, 0.25, { color: T.ROJO });
+  T.sello(ctx, p, 900, 1000, 190);
+  T.cubierta(ctx, { x: 160, y: 1330, w: 230, h: 300, aparece: p, pincel: p });
+  T.kanji(ctx, '虎', 400, 1190, 150, { prog: p });
+  T.kanji(ctx, '巻', 560, 1190, 150, { prog: p });
+  T.kanji(ctx, '虎巻', 840, 1190, 110, { prog: p });
+  T.rotulo(ctx, 'tora no maki', 620, 1340, 64, p);
+  T.pergamino(ctx, 9, { t0: 0, t1: 0.5, y: 1420, size: 56, x: 360, halo: 0.6 });
+  T.ojo(ctx, p, 850, 1490, 240, { t });
+};
+</script></body></html>

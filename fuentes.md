@@ -69,3 +69,11 @@
 | Wadokai Canadá, glosario — https://canadajkfwadokai.org/our-style/terminology/ | Seiza/mokusō como órdenes; «naorei» = volver a musubi-dachi y saludar | Media |
 | BrainFacts / NINDS, Paresthesia | Hormigueo por presión sostenida sobre un nervio | Alta |
 | Fightingarts, Seiza | Seiza = etiqueta; piernas entumecidas en occidentales | Media |
+| Kim, Kim, Kim 2020 (koreascience.or.kr, JAKO202029660100041) | Orden pelvis → tronco → hombro → codo en choku-tsuki, 10 karatekas (pieza cadera) | Media-alta |
+| Fuchs et al. 2018, Sports Biomechanics 17(4) (ficha NTNU) | Secuencia proximal-distal en el puñetazo de Wing Chun | Media-alta |
+| Suwarganda, ISBS — ojs.ub.uni-konstanz.de/cpa/article/view/3410/3208 | Velocidades lineales en gyaku-zuki: cadera 2,4, hombro ~4,3, codo ~7, muñeca ~7,3 m/s | Media |
+| Camomilla et al., ISBS 2020 — core.ac.uk/download/327694205.pdf | Biomecánica del gyaku-zuki | Media |
+| Ohshima, SKA — kc.ska.org (gyaku-zuki) | Cadera y puño llegan juntos, sin adelantarse (enseñanza Shotokan) | Media |
+| Jin et al. 2025, Frontiers in Physiology 1607933 | Cadena cinética en el puñetazo | Media |
+| Tajibaev et al. 2026, Acta Bioeng. Biomech. 28(2) | Cinemática del puñetazo | Media |
+| Diccionario JMdict (vía nihongomaster.com, entrada 虎の巻) | tora no maki = libro de secretos / manual; lit. «rollo del tigre» (pieza tigre, plano 8) | Media-alta |

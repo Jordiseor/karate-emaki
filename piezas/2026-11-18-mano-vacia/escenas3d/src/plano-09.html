@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Mano vacía · plano 09</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, P, U } = C.iniciar3D(); const { MV, H2 } = C;
+window.DURACION = 3.5;
+// PLANO 9: manos arriba + 空 a trazos (0,3–1,6); a 1,7 s se miran, sello «?» y reloj.
+const mesa = MV.crearMesaNueve(esc);
+mesa.miembros.forEach(k => k.silueta('#0E0E0E'));
+window.render = (t) => {
+  if (t < 1.7) mesa.pose(P, { t, alzan: [0, 2, 3, 6], f: U.easeInOut ? U.easeInOut(U.clamp(U.prog(t, 0.1, 1.0))) : U.clamp(U.prog(t, 0.1, 1.0)) });
+  else mesa.mirarse(P, t - 1.7);
+  esc.orbita({ centro: [0, 0.4, 0], distancia: 20, elevacion: 30, fov: 30 });
+  esc.dibujar(ctx);
+  if (t < 1.7) H2.kanji(ctx, '空', 540, 690, 300, { prog: U.clamp(U.prog(t, 0.3, 1.6)), color: C.ROJO });
+  else {
+    ctx.save(); ctx.globalAlpha = 0.28; H2.kanji(ctx, '空', 540, 690, 300, { prog: 1, color: C.ROJO }); ctx.restore();
+    MV.selloInterrogante(ctx, 540, 1060, 220, U.clamp(U.prog(t, 1.7, 2.2)));
+    MV.reloj(ctx, t, 850, 1400, 220, { p: U.clamp(U.prog(t, 2.0, 2.5)) });
+  }
+  C.tarjeta(ctx, t, ['Varios dicen [r]空[/r].', 'Sin decisión.'], { t0: 0.1, y: 330 });
+};
+</script></body></html>

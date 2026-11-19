@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre · plano 08</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 2.8;
+// PLANO 8 (DATO, 2,8 s): 虎 (0,1–1,0) y 巻 (0,9–1,7) con su lectura; a 1,7 s el tigre salta al rollo y lo recorre hasta el final (el rollo se abre).
+const rollo = C.crearRollo(), S = 0.40, DY = 390;      // rollo pequeño centrado en (540, 1270)
+window.render = (t) => {
+  C.papel(ctx);
+  const K = 290, KY = 725;
+  T.kanji(ctx, '虎', 330, KY, K, { prog: U.prog(t, 0.1, 1.0) });
+  T.kanji(ctx, '巻', 750, KY, K, { prog: U.prog(t, 0.9, 1.7) });
+  ctx.save(); ctx.fillStyle = C.TINTA; ctx.font = '800 56px "Montserrat","Arial Black",system-ui,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.globalAlpha = U.prog(t, 0.7, 1.0); ctx.fillText('tora', 330, 940);
+  ctx.globalAlpha = U.prog(t, 1.5, 1.8); ctx.fillText('maki', 750, 940); ctx.restore();
+  // rollo
+  const aR = U.easeOut(U.prog(t, 0.9, 1.4)), run = U.easeInOut(U.prog(t, 2.05, 2.8));
+  if (aR > 0) {
+    ctx.save(); ctx.globalAlpha = aR;
+    rollo.dibujar(ctx, { abierto: 0.55 + 0.45 * run, vinetas: [null], escala: S, y: DY - 0 });
+    ctx.restore();
+  }
+  // tigre: salto 1,7–2,05 (parábola desde fuera de pantalla a la izquierda hasta el rollo), luego recorre
+  const sc = 0.34;
+  if (t >= 1.7) {
+    const j = U.prog(t, 1.7, 2.05), x0 = 110, y0 = 1260, x1 = 450, y1 = 1330;
+    let x, y;
+    if (j < 1) { x = x0 + (x1 - x0) * j; y = y0 + (y1 - y0) * j - 4 * 140 * j * (1 - j); }
+    else { x = x1 + (650 - x1) * run; y = y1 - Math.abs(Math.sin(run * Math.PI * 6)) * 14 * Math.sin(run * Math.PI); }
+    ctx.save(); ctx.globalAlpha = U.prog(t, 1.7, 1.78);
+    C.tigre(ctx, 'acecho', 1, x, y, sc); ctx.restore();
+  }
+  C.tarjeta(ctx, t, ['Escrito:', '«rollo del tigre»'], { t0: 0.1, y: 300 });
+  C.etiqueta(ctx, t, 'DATO', { t0: 0.3, y: 520 });
+};
+</script></body></html>

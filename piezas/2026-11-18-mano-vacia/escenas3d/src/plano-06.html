@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Mano vacía · plano 06</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, P, U } = C.iniciar3D(); const { MV } = C; const THREE = esc.THREE;
+window.DURACION = 3.5;
+// PLANO 6: Funakoshi (silueta) en seiza tras una mesa baja; el libro se abre sobre la mesa, cubierta a cámara. 1,7 s: 1935 + «manual».
+const f = MV.crearFunakoshi(); f.silueta('#0E0E0E');
+const libro = MV.crearLibro({ texto: '空手', ancho: 0.34, alto: 0.48 });
+const mesa = new THREE.Group();
+const mm = (c) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.7 });
+const tab = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.06, 0.8), mm('#8A6142')); tab.position.y = 0.32; tab.castShadow = tab.receiveShadow = true; mesa.add(tab);
+for (const sx of [-1, 1]) for (const sz of [-1, 1]) { const p = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.3, 0.07), mm('#5C4030')); p.position.set(sx * 0.68, 0.15, sz * 0.34); p.castShadow = true; mesa.add(p); }
+mesa.position.set(0, 0, 0.75);
+esc.escena.add(f.raiz, libro.raiz, mesa);
+for (const l of Object.values(esc.luces)) if (l.intensity !== undefined) { l._i0 = l.intensity; l.intensity *= 0.85; }
+f.colocar(0, 0, 0).aplicarPose(P.seiza); // mira hacia +Z (cámara)
+libro.poner(0, 0.35 + 0.17, 0.75, 0); libro.raiz.rotation.x = -1.05;
+window.render = (t) => {
+  C.papel(ctx);
+  libro.abrir(U.easeInOut(U.clamp(U.prog(t, 0.2, 1.6))));
+  const q = U.prog(t, 0, 3.5);
+  esc.orbita({ centro: [0, 0.55, 0.45], distancia: 4.4 - 0.5 * q, elevacion: 22, fov: 30, azimut: -8 + 6 * q });
+  esc.dibujar(ctx);
+  C.fecha(ctx, '1935', U.clamp(U.prog(t, 1.7, 2.1)), { y: 1330 });
+  C.letraPequena && 0;
+  C.tarjeta(ctx, t, ['[r]1935[/r]: Kyōhan,', '[r]空手[/r]'], { t0: 0.1, y: 330 });
+  if (t > 1.7) { ctx.save(); ctx.globalAlpha = U.clamp(U.prog(t, 1.7, 1.95)); ctx.font = '800 84px "Montserrat","Arial Black",sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round'; ctx.lineWidth = 16; ctx.strokeStyle = C.PAPEL; ctx.strokeText('manual', 540, 1480); ctx.fillStyle = C.TINTA; ctx.fillText('manual', 540, 1480); ctx.restore(); }
+};
+</script></body></html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre · plano 02</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 3.0;
+// PLANO 2 (0–3,0): la pincelada 'barrido' se aparta por la izquierda; entran Kosugi (silueta, seiza con pincel) y Funakoshi (silueta, de pie) uno junto a otro (sin pose de mano en el hombro: no se inventa contacto).
+// 3D sobre papel: esc.dibujar no admite fondo transparente → se oculta suelo y paredes, fondo liso PAPEL, se pinta fuera de pantalla sin viñeta/grano y se compone con 'darken' sobre el papel 2D.
+const { esc, P } = C.iniciar3d();
+const kos = C.anadirMaestro(esc, C.crearMaestro({ silueta: '#1A1A1A' }));
+const fun = C.crearFunakoshi(); esc.escena.add(fun.raiz); if (fun.verRostro) fun.verRostro(false);
+esc.suelo.visible = false; esc.escena.children.forEach((o) => { if (o.isMesh && o !== esc.suelo && o.geometry && o.geometry.type === 'PlaneGeometry') o.visible = false; });
+esc.escena.background = new esc.THREE.Color(C.PAPEL); esc.escena.fog = null;
+const off = document.createElement('canvas'); off.width = 1080; off.height = 1920; const octx = off.getContext('2d');
+window.render = (t) => {
+  C.papel(ctx);
+  const e = U.easeOut(U.prog(t, 0.15, 1.0));
+  kos.colocar(-0.42, 0, 25).pose(P, 'maestro-seiza-pincel', { escribir: t });
+  fun.colocar(0.5, 0, -20); fun.aplicarPose(P.neutra);
+  esc.orbita({ centro: [0, 0.95, 0], distancia: 9.4, azimut: 0, elevacion: 4, fov: 28 });
+  octx.clearRect(0, 0, 1080, 1920); esc.dibujar(octx, { vineta: false, grano: false });
+  ctx.save(); ctx.globalCompositeOperation = 'darken'; ctx.globalAlpha = e; ctx.translate(0, (1 - e) * 60); ctx.drawImage(off, 0, 0); ctx.restore();
+  // la pincelada se aparta hacia la izquierda
+  const s = U.easeIn(U.prog(t, 0, 0.9)); ctx.save(); ctx.globalAlpha = 1 - s; T.pincelada(ctx, 'barrido', 1, 540 - s * 1300, 1000, 1.05); ctx.restore();
+  C.tarjeta(ctx, t, ['Kosugi Hōan,', 'pintor'], { t0: 0.1, y: 300 });
+  C.etiqueta(ctx, t, 'DATO', { t0: 0.4, y: 520 });
+};
+</script></body></html>

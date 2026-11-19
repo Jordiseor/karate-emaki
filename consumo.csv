@@ -110,3 +110,13 @@ fecha,agente,pieza,modelo,tokens,usos_herramientas,minutos
 2026-11-18,animador,2026-11-17-tiempo-contacto (tramo C),sonnet,71451,23,5.7
 2026-11-18,editor,2026-11-17-tiempo-contacto (montaje),sonnet,55898,21,3.7
 2026-11-18,editor,2026-11-17-seiza (montaje),sonnet,33857,11,2.2
+2026-11-19,modelador-3d,tigre2d.js (2026-11-18-tigre),sonnet,87356,19,4.9
+2026-11-19,modelador-3d,manovacia.js (2026-11-18-mano-vacia),sonnet,72567,15,3.1
+2026-11-19,investigador,2026-11-19-cadera (dosier),sonnet,44508,22,2.2
+2026-11-19,animador,2026-11-18-tigre (jefe),sonnet,76895,25,2.0
+2026-11-19,animador,2026-11-18-mano-vacia (jefe),sonnet,82427,23,1.9
+2026-11-19,animador,2026-11-18-tigre (tramo A),sonnet,91409,29,5.2
+2026-11-19,animador,2026-11-18-tigre (tramo B),sonnet,89275,31,6.4
+2026-11-19,animador,2026-11-18-mano-vacia (tramo A),sonnet,67305,28,8.4
+2026-11-19,animador,2026-11-18-mano-vacia (tramo B),sonnet,56592,18,7.3
+2026-11-19,animador,2026-11-18-mano-vacia (tramo C),sonnet,65924,22,6.7

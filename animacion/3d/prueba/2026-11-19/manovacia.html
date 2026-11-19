@@ -1,0 +1,32 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../marca.js"></script>
+<script type="module">
+import { crearEscenario, util as U } from '../../escenario.js';
+import { Karateka3D, cargarPoses } from '../../karateka3d.js';
+import * as H2 from '../../historia2d.js';
+import * as MV from '../../manovacia.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5, fondo: 'degradado' }), P = cargarPoses(); esc.escena.fog.near = 20; esc.escena.fog.far = 90;
+const f = MV.crearFunakoshi(), h = MV.crearHanashiro();
+const l1 = MV.crearLibro({ texto: '唐手' }), l2 = MV.crearLibro({ texto: '空手', tapa: '#E9DFC9' });
+const mesa = MV.crearMesaNueve(esc), ed = MV.crearEdificioNaha();
+esc.escena.add(f.raiz, h.raiz, l1.raiz, l2.raiz, ed.raiz);
+mesa.colocar(0, 0, 0);
+window.DURACION = 100;
+window.render = (t) => {
+  const s = Math.floor(t / 10), l = t - s * 10;
+  window.EMAKI.fondoPapel(ctx);
+  const ver = (a) => { f.raiz.visible = h.raiz.visible = l1.raiz.visible = l2.raiz.visible = a === 'k'; mesa.raiz.visible = a === 'm'; mesa.miembros.forEach(k => k.raiz.visible = a === 'm'); ed.raiz.visible = a === 'e'; };
+  if (s === 0) { ver('k'); f.colocar(-0.75, 0, 0).aplicarPose(P.recibir); h.colocar(0.75, 0, 0).aplicarPose(P.recibir); h.raiz.visible = true;
+    l1.escribir(1).abrir(0).entre(f.punto('manoI'), f.punto('manoD'), { rumbo: 0 }); l2.abrir(0).entre(h.punto('manoI'), h.punto('manoD'), { rumbo: 0 }); esc.orbita({ centro: [0, 1, 0], distancia: 9, elevacion: 5, fov: 30 }); esc.dibujar(ctx); }
+  if (s === 1) { ver('k'); f.raiz.visible = false; h.raiz.visible = false; l2.raiz.visible = false; l1.abrir(l / 2).poner(0, 1.1, 0, 20); esc.orbita({ centro: [0, 1, 0], distancia: 1.8, elevacion: 8, fov: 30 }); esc.dibujar(ctx); }
+  if (s === 2) { ver('m'); mesa.pose(P, { t: l, alzan: [0, 2, 3, 6], f: 1 }); esc.orbita({ centro: [0, 0.7, 0], distancia: 11, elevacion: 30, fov: 30 }); esc.dibujar(ctx); }
+  if (s === 3) { ver('e'); ed.ventana(l / 4); ed.colocar(0, 0, 0); esc.orbita({ centro: [0, 2, 0], distancia: 13, elevacion: 6, fov: 32 }); esc.dibujar(ctx); }
+  if (s === 4) MV.tintaKanji(ctx, 540, 900, 700, 0.08 + l * 0.0 );
+  if (s === 5) MV.tintaKanji(ctx, 540, 900, 700, 0.3);
+  if (s === 6) MV.tintaKanji(ctx, 540, 900, 700, 0.62);
+  if (s === 7) { MV.tintaKanji(ctx, 540, 700, 700, 1); MV.reloj(ctx, 1.2, 330, 1500, 360); MV.selloInterrogante(ctx, 760, 1500, 260, 1); }
+  if (s === 8) MV.pantallaPartida(ctx, 3, { p: 1 });
+  if (s === 9) { ver('k'); f.raiz.visible = h.raiz.visible = false; l1.raiz.visible = l2.raiz.visible = false; esc.dibujar(ctx); MV.tintaKanji(ctx, 540, 900, 700, 0.5); }
+};
+</script></body></html>

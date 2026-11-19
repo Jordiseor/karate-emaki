@@ -654,3 +654,23 @@ Kanji 正座 y 黙想: `H2.kanji(ctx, '正座', x, y, 120, { prog, color: '#1A1A
 - Almohadilla y cojín son formas simples (elipsoide y caja con bisel): no hay colisión ni física, todo lo mueve el animador con `hundir` / `mover` / `poner`. El hundimiento se ve de perfil, no de frente.
 - Sombras: la almohadilla y la pared proyectan sombra del dōjō; el maniquí lleva las de contacto del karateka.
 - El ceño no se lee con el flequillo normal (ver «Caras»). 正座 / 黙想 con `H2.kanji` no se han renderizado en esta entrega.
+
+## Tigre — `tigre2d.js` (pieza `2026-11-18-tigre`)
+`import * as T from '.../animacion/3d/tigre2d.js'`; todo con `p` 0..1 sobre el ctx 2D. Hoja: `prueba/tigre-2026-11-19.png`.
+- `T.tigre(ctx, 'acecho'|'sentado'|'frente', p, x, y, escala, {espejo, color})`: tigre original a pincel (x, y = pies). Devuelve la punta del pincel. Dimensiones en `TIGRE_DIM[pose]`.
+- `T.pincelada(ctx, 'barrido'|'interrogacion'|'bucle', p, x, y, escala)`: el 'bucle' sirve para el plano 10 y el plano 1 (mismo trazo). `T.trazo(ctx, pts, p, {w, color})`.
+- `T.cubierta(ctx, {x, y, w, h, aparece, pincel})`: tela en blanco con pincelada abstracta.
+- `T.kanji(ctx, '虎巻', x, y, size, {prog})` (tinta) y `T.rotulo(ctx, 'tora no maki', x, y, 64, p)`.
+- `T.sello(ctx, p, x, y, 190, {texto:'SE DICE'})` (size ≥ 180 para 48 px) y `T.pergamino(ctx, t, {texto:'Cuentan que…', t0, t1})` (rojo, halo: ojo, tiñe todo el ancho) + `T.ojo(ctx, p, x, y, size, {t})`.
+- Kosugi: `crearMaestro({silueta:'#1A1A1A'})` + pose `maestro-seiza-pincel` (captura `prueba/2026-11-19/tigre-kosugi.png`).
+Límite: la pose 'sentado' es la más tosca (úsala pequeña). No es el emblema: sin círculo ni enroscado.
+
+## Mano vacía — `manovacia.js` (pieza `2026-11-18-mano-vacia`)
+Import: `import * as MV from '.../animacion/3d/manovacia.js'`. Prueba en `prueba/2026-11-19/manovacia.html` (hoja: `prueba/manovacia-2026-11-19.png`).
+- 2D: `MV.tintaKanji(ctx, x, y, size, prog)` plano estrella 唐→空 (0–0,1 唐 · 0,1–0,45 mancha de tinta · 0,4–1 se escribe 空). `H2.kanji(ctx,'唐',…)` ya tiene zonas.
+- `MV.reloj(ctx, t, x, y, size)` sello-reloj rojo «?» que gira · `MV.selloInterrogante(ctx, x, y, size, p)` · `MV.interrogaciones(ctx, t, rect)`.
+- `MV.pantallaPartida(ctx, t, { p, arriba, abajo, rotuloA:'Tokio', rotuloB:'Okinawa' })`.
+- 3D: `MV.crearLibro({ texto:'唐手' })` `.abrir(f)` `.escribir(p)` `.entre(k.punto('manoI'), k.punto('manoD'), { rumbo })` (pose `recibir`; tapa las manos: probar otra distancia).
+- `MV.crearFunakoshi()` (hakama, alto) y `MV.crearHanashiro()` (más bajo, ancho, casquete): siluetas sin rostro.
+- `MV.crearMesaNueve(esc)` 9 siluetas en seiza + periódico: `.pose(P, { t, alzan:[0,2], f })`, `.mirarse(P, t)`. `MV.crearEdificioNaha({ rotulo:'Naha' })` `.ventana(f)` (esquemático).
+- Cámara de la mesa: `orbita({ centro:[0,0.7,0], distancia:11, elevacion:30 })`; con escala 0,5 `esc.escena.fog.far = 90`. Las siluetas salen marrón oscuro por la luz.

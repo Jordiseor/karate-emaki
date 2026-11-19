@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Mano vacía · plano 04</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, U } = C.iniciar2D(); const { MV } = C;
+const cv = document.createElement('canvas'); const cx = cv.getContext('2d');
+window.DURACION = 2.8;
+window.render = (t) => {
+  C.papel(ctx);
+  const pr = U.clamp(U.prog(t, 0.3, 2.1)), esc = U.clamp(U.prog(pr, 0.4, 1));
+  // capa de 唐 + mancha (sin 空); la mancha se seca y desaparece del todo al final, sin restos
+  cv.width = 1080; cv.height = 1920;
+  MV.tintaKanji(cx, 540, 860, 640, pr, { a: '空', colorA: 'rgba(0,0,0,0)' });
+  const seca = 1 - U.clamp(U.prog(t, 1.7, 2.4)); const sq = seca * seca * (3 - 2 * seca);
+  ctx.save(); ctx.globalAlpha = sq; ctx.drawImage(cv, 0, 0); ctx.restore();
+  C.H2.kanji(ctx, '空', 540, 860, 640, { prog: esc, color: C.ROJO });
+  ctx.save(); ctx.font = '900 120px "Montserrat","Arial Black",system-ui,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = C.TINTA; ctx.fillText('kara', 540, 1390); ctx.restore();
+  C.tarjeta(ctx, t, ['[r]空[/r] = vacío'], { t0: 2.1, y: 330 });
+};
+</script></body></html>

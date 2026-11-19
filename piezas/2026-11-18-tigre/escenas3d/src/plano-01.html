@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre · plano 01</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 3.2;
+// PLANO 1 (0,0–3,2) gancho. t=0: la pincelada 'bucle' ya está en movimiento (p = 0,9, la misma que cierra el plano 10).
+// 0–0,45 la pincelada acaba; 0,45–1,6 se dibuja el tigre al acecho (mira a la derecha, cabeza baja); la pincelada se funde a 0,3–0,85.
+window.render = (t) => {
+  C.papel(ctx);
+  const pb = C.BUCLE.p0 + (1 - C.BUCLE.p0) * U.easeOut(U.prog(t, 0, 0.45));
+  ctx.save(); ctx.globalAlpha = 1 - U.easeInOut(U.prog(t, 0.3, 0.85));
+  C.bucle(ctx, pb); ctx.restore();
+  const pt = U.prog(t, 0.45, 1.6);
+  const punta = C.tigre(ctx, 'acecho', pt, 540, 1290, 1.05);
+  C.tarjeta(ctx, t, ['Lo dibujó', 'un pintor'], { t0: -1, y: 300 });
+  C.etiqueta(ctx, t, 'DATO', { t0: -1, y: 520 });
+};
+</script></body></html>

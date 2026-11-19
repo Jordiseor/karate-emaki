@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Mano vacía · plano 08</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, P, U } = C.iniciar3D(); const { MV } = C;
+window.DURACION = 3.0;
+// PLANO 8 (0–1,2 Naha cartel con ventana que se abre; 1,2–3,0 mesa de nueve desde 30°)
+const ed = MV.crearEdificioNaha({ rotulo: 'Naha' }), mesa = MV.crearMesaNueve(esc);
+esc.escena.add(ed.raiz);
+mesa.miembros.forEach(k => k.silueta('#0E0E0E'));
+const ver = (m) => { ed.raiz.visible = !m; mesa.raiz.visible = m; mesa.miembros.forEach(k => k.raiz.visible = m); };
+window.render = (t) => {
+  if (t < 1.25) {
+    ver(false); ed.ventana(U.clamp(U.prog(t, 0.6, 1.2)));
+    esc.orbita({ centro: [0, 2.2, 0], distancia: 11 - 2.5 * U.clamp(t / 1.25), elevacion: 6, fov: 30 });
+  } else {
+    ver(true); mesa.pose(P, { t: t - 1.25 });
+    esc.orbita({ centro: [0, 0.4, 0], distancia: 20, elevacion: 30, fov: 30 });
+  }
+  esc.dibujar(ctx);
+  // destello de papel en el corte
+  const fl = Math.max(0, 1 - Math.abs(t - 1.25) / 0.15);
+  if (fl > 0) { ctx.save(); ctx.globalAlpha = fl * 0.85; ctx.fillStyle = C.PAPEL; ctx.fillRect(0, 0, 1080, 1920); ctx.restore(); }
+  C.fecha(ctx, '25 oct 1936', U.clamp(U.prog(t, 0.3, 0.8)), { y: 1380, size: 120 });
+  C.tarjeta(ctx, t, ['Naha, 1936:', 'nueve maestros'], { t0: 0.1, y: 330 });
+};
+</script></body></html>

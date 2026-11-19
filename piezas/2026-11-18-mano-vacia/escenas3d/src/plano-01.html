@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Mano vacía · plano 01</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, U } = C.iniciar2D(); const { H2 } = C;
+window.DURACION = 2.8;
+// PLANO 1 (0,0–2,8) gancho, solo 2D: t=0 ya hay 空手 enorme en tinta; un pincel lo cruza y lo borra; queda 唐手 (rojo).
+const cv = document.createElement('canvas'); cv.width = 1080; cv.height = 1920; const cx = cv.getContext('2d');
+const Y = 860, SZ = 470;
+window.render = (t) => {
+  C.papel(ctx);
+  const p = U.clamp(U.prog(t, 0.35, 1.25)), pe = U.easeInOut ? U.easeInOut(p) : p;
+  // capa con 空手 y la zona borrada por el pincel
+  cx.clearRect(0, 0, 1080, 1920);
+  H2.kanji(cx, '空手', 540, Y, SZ, { prog: 1, color: C.TINTA });
+  cx.save(); cx.globalCompositeOperation = 'destination-out'; cx.strokeStyle = '#000'; C.pasadaPincel(cx, pe, { y0: Y - 120, y1: Y + 120, ancho: 680 }); cx.restore();
+  ctx.drawImage(cv, 0, 0);
+  // pincelada tinta que se desvanece tras la pasada
+  ctx.save(); ctx.globalAlpha = 0.9 * (1 - U.clamp(U.prog(t, 1.25, 1.7))); ctx.strokeStyle = C.TINTA;
+  const tmp = C.pasadaPincel(ctx, pe, { y0: Y - 120, y1: Y + 120, ancho: 150 }); ctx.restore();
+  // 唐手 queda escrito (rojo) siguiendo al pincel
+  H2.kanji(ctx, '唐手', 540, Y, SZ, { prog: U.clamp(U.prog(t, 0.9, 1.6)), color: C.ROJO });
+  C.tarjeta(ctx, t, ['No siempre', '«mano vacía»'], { t0: -1, y: 330 });
+};
+</script></body></html>

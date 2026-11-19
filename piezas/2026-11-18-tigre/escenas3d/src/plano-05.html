@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre · plano 05</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 2.0;
+// PLANO 5 (0–2,0): el tigre se detiene y mira a cámara ('frente'); a su derecha, la interrogación a pincel. Todo en tinta.
+window.render = (t) => {
+  C.papel(ctx);
+  T.tigre(ctx, 'frente', U.prog(t, 0, 0.9), 430, 1450, 0.95);
+  T.pincelada(ctx, 'interrogacion', U.prog(t, 0.7, 1.5), 900, 1060, 1.25);
+  C.tarjeta(ctx, t, ['¿Por qué un tigre?'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

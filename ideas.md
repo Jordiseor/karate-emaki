@@ -64,6 +64,14 @@ Siguen en candidatas: mano vacía (19), tigre (18), cadera (17), POV cinturón (
 
 Mano vacía ya no espera: va diez días después del anuncio de la línea temporal, como continuación. Candidatas nuevas subidas a la oficina: Dos españoles en el podio olímpico (17), Notas del móvil de un cinturón blanco (17) y ¿Eres juez de kumite? ¿Puntúa o no? (interactivo, 17). Siguen: cadera (17) y POV cinturón (17).
 
+## Elegidas — producción del 19 nov 2026 (huecos libres)
+
+| Pieza | Pilar | Puntos | Hueco |
+| --- | --- | --- | --- |
+| 2026-11-19-cadera · La cadera no es un adorno | Ciencia | 17 | sáb 5 dic |
+
+Candidata «gusta». Empata con «POV: tu primer día con el cinturón» (gusta, 17): gana por viabilidad y porque el sáb 28 ya es humor. Quedan 4 candidatas: POV cinturón, notas del móvil, podio olímpico y ¿puntúa o no?
+
 ## Descartadas
 
 | Idea | Pilar | Descartada por | Fecha |

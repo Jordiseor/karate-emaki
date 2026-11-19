@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre · plano 09</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 3.0;
+// PLANO 9 (LEYENDA): pergamino rojo «Cuentan que…» (0,1–0,7), tigre 'frente' dibujándose (0,2–1,2), ojo abierto grande sobre él, LEYENDA rojo a 1,2 s.
+window.render = (t) => {
+  C.papel(ctx);
+  T.pergamino(ctx, t, { texto: 'Cuentan que…', t0: 0.1, t1: 0.7, y: 300 });
+  C.tigre(ctx, 'frente', U.prog(t, 0.2, 1.2), 540, 1500, 0.72);
+  T.ojo(ctx, U.prog(t, 0.9, 1.6), 540, 850, 380, { t });
+  const a = U.easeOut(U.prog(t, 1.2, 1.5));
+  if (a > 0) { ctx.save(); ctx.globalAlpha = a; ctx.translate(0, (1 - a) * 20); C.tarjeta(ctx, 9, ['[r]LEYENDA[/r]'], { t0: -1, size: 120, y: 500 }); ctx.restore(); }
+};
+</script></body></html>

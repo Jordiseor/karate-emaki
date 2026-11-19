@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Mano vacía · plano 07</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, U } = C.iniciar2D(); const { MV } = C;
+window.DURACION = 2.5;
+window.render = (t) => {
+  C.papel(ctx);
+  MV.pantallaPartida(ctx, t, { p: U.prog(t, 0, 0.6), rotuloA: 'Tokio', rotuloB: 'Okinawa', kanjiA: '', arriba: (c, r) => C.H2.kanji(c, '空手', 540, 650, 270, { prog: 1, color: C.TINTA }) });
+  C.tarjeta(ctx, t, ['Tokio: [r]空手[/r]', 'Okinawa: ¿?'], { t0: 0.3, y: 330, size: 80 });
+};
+</script></body></html>

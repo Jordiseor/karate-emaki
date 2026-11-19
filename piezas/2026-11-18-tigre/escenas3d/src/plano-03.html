@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre · plano 03</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 3.0;
+// PLANO 3 (0–3,0): cubierta en blanco (cae 0,1–0,8), el pincel abstracto la decora (0,8–2,0) y aparece el año 1922 en rojo (2,0 s) bajo la cubierta.
+window.render = (t) => {
+  C.papel(ctx);
+  T.cubierta(ctx, { x: 540, y: 1010, aparece: U.prog(t, 0.1, 0.8), pincel: U.prog(t, 0.8, 2.0), rot: -0.03 });
+  const p = U.prog(t, 2.0, 2.45);
+  if (p > 0) {
+    const e = U.easeOut(p), s = 1 + 0.25 * (1 - e);
+    ctx.save(); ctx.globalAlpha = Math.min(1, p * 3); ctx.translate(540, 1480); ctx.scale(s, s);
+    ctx.fillStyle = C.ROJO; ctx.font = '900 160px "Montserrat","Arial Black",system-ui,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('1922', 0, 0); ctx.restore();
+  }
+  C.tarjeta(ctx, t, ['Cubierta', 'de su libro'], { t0: 0.1, y: 300 });
+  C.etiqueta(ctx, t, 'DATO', { t0: 0.4, y: 520 });
+};
+</script></body></html>

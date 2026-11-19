@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Mano vacía · plano 03</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, U } = C.iniciar2D(); const { H2 } = C;
+window.DURACION = 3.5;
+const FONT = '800 120px "Montserrat","Arial Black",system-ui,sans-serif';
+window.render = (t) => {
+  C.papel(ctx);
+  // 唐 a trazos 0–1,6 s
+  H2.kanji(ctx, '唐', 540, 860, 560, { prog: U.clamp(U.prog(t, 0, 1.6)), color: C.ROJO });
+  // «China» bajo el kanji
+  const a = U.clamp(U.prog(t, 1.2, 1.5));
+  if (a > 0) { ctx.save(); ctx.globalAlpha = a; ctx.font = '900 120px "Montserrat","Arial Black",system-ui,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = C.TINTA; ctx.fillText('China', 540, 1250 + (1 - a) * 20); ctx.restore(); }
+  // onda de «kara» desde el kanji a partir de 1,7 s
+  for (let i = 0; i < 4; i++) {
+    const p = (t - 1.7 - i * 0.28) / 1.2; if (p <= 0 || p >= 1) continue;
+    ctx.save(); ctx.globalAlpha = 0.55 * (1 - p); ctx.strokeStyle = C.TINTA; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(540, 860, 260 + p * 520, 0, 6.2832); ctx.stroke(); ctx.restore();
+  }
+  // «kara» fijo (idéntico en plano 4)
+  const k = U.clamp(U.prog(t, 1.7, 2.0));
+  if (k > 0) { ctx.save(); ctx.globalAlpha = k; ctx.font = '900 120px "Montserrat","Arial Black",system-ui,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = C.TINTA; ctx.fillText('kara', 540, 1390); ctx.restore(); }
+  C.tarjeta(ctx, t, ['[r]唐[/r] = China'], { t0: 0.1, y: 330 });
+};
+</script></body></html>

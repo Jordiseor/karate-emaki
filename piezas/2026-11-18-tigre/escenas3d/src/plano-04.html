@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre · plano 04</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 3.0;
+// PLANO 4 (0–3,0): la cubierta al fondo a la izquierda; el tigre 'acecho' se asoma por detrás (se dibuja antes, la cubierta lo tapa); silueta 2D del pintor a la izquierda y flecha roja hacia el tigre.
+function silueta(c, x, y, h, a) { // pintor de pie, sin rasgos (2D simple, tinta)
+  c.save(); c.globalAlpha = a; c.fillStyle = C.TINTA; c.translate(x, y);
+  c.beginPath(); c.arc(0, -h * 0.9, h * 0.085, 0, 6.2832); c.fill();
+  c.beginPath(); c.moveTo(-h * 0.04, -h * 0.82); c.lineTo(h * 0.04, -h * 0.82); c.quadraticCurveTo(h * 0.19, -h * 0.78, h * 0.17, -h * 0.55); c.lineTo(h * 0.15, -h * 0.4); c.lineTo(h * 0.24, 0); c.lineTo(-h * 0.24, 0); c.lineTo(-h * 0.15, -h * 0.4); c.lineTo(-h * 0.17, -h * 0.55); c.quadraticCurveTo(-h * 0.19, -h * 0.78, -h * 0.04, -h * 0.82); c.closePath(); c.fill();
+  c.restore();
+}
+window.render = (t) => {
+  C.papel(ctx);
+  const rise = 1 - U.easeOut(U.prog(t, 0.2, 1.4));
+  T.tigre(ctx, 'acecho', U.prog(t, 0.3, 1.7), 750, 1500 + rise * 60, 0.72, { espejo: true });
+  T.cubierta(ctx, { x: 400, y: 1230, w: 400, h: 560, aparece: U.prog(t, 0, 0.5), rot: 0.02 });
+  silueta(ctx, 100, 1500, 360, U.easeOut(U.prog(t, 0.2, 0.7)));
+  // flecha roja: del pintor, por encima de la cubierta, hasta el tigre
+  const pf = U.prog(t, 1.7, 2.4), pts = [[100, 1150], [120, 900], [420, 830], [740, 930], [900, 1150]];
+  T.trazo(ctx, pts, pf, { w: 16, color: C.ROJO, perfil: 'liso', seco: false });
+  if (pf >= 0.95) { const a = U.easeOut(U.prog(pf, 0.95, 1)); ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.ROJO; ctx.translate(900, 1150); ctx.rotate(Math.atan2(1150 - 930, 900 - 740)); ctx.beginPath(); ctx.moveTo(34, 0); ctx.lineTo(-22, -28); ctx.lineTo(-22, 28); ctx.closePath(); ctx.fill(); ctx.restore(); }
+  C.tarjeta(ctx, t, ['Y diseñó', 'el tigre'], { t0: 0.1, y: 300 });
+  C.etiqueta(ctx, t, 'DATO', { t0: 0.4, y: 520 });
+};
+</script></body></html>

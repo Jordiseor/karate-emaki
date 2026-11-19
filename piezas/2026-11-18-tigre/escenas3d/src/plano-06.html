@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre · plano 06</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 3.0;
+// PLANO 6 (0–3,0): (sin etiqueta aparte: el sello SE DICE ya es la marca; evita triple rojo) el rollo se desenrolla (0–1,2 s), el sello rojo SE DICE cae a 1,0 s y el tigre original (acecho, pequeño) se dibuja junto al rollo.
+const rollo = C.crearRollo();
+window.render = (t) => {
+  C.papel(ctx);
+  rollo.dibujar(ctx, { abierto: U.easeInOut(U.prog(t, 0, 1.3)), escala: 0.62, y: 330, x: 0, centrar: 1 });
+  T.tigre(ctx, 'acecho', U.prog(t, 1.2, 2.4), 480, 1440, 0.5);
+  T.sello(ctx, U.prog(t, 1.0, 1.6), 700, 1020, 190, { texto: 'SE DICE' });
+  C.tarjeta(ctx, t, ['Un juego', 'de palabras'], { t0: 0.1, y: 300 });
+};
+</script></body></html>
