@@ -1,0 +1,11 @@
+Locución tigre (30 s, voz Kokoro em_santa). Formato: inicio en s | texto en pantalla | texto para la voz (grafía adaptada: Hōan→Hoan). Texto de voz = el del storyboard sin cambios.
+0.0 | Lo dibujó un pintor | El tigre del Shotokan lo dibujó un pintor.
+3.2 | Kosugi Hōan, pintor | Kosugi Hoan, pintor y amigo de Funakoshi.
+6.2 | Cubierta de su libro · 1922 | Diseñó la cubierta de su primer libro.
+9.2 | Y diseñó el tigre | Es conocido como el diseñador del tigre.
+12.2 | ¿Por qué un tigre? | ¿Por qué un tigre?
+14.2 | Se dice: juego de palabras | Dicen que es un juego de palabras.
+17.2 | tora no maki: libro maestro | Tora no maki es el libro maestro.
+20.2 | Escrito: «rollo del tigre» | Pero escrito, significa rollo del tigre.
+23.0 | LEYENDA | Cuentan que el tigre nunca duerme.
+26.0 | ¿Qué ves tú en el tigre? | ¿Lo sabías? ¿Qué ves tú en el tigre?
