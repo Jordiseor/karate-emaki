@@ -9,3 +9,4 @@
 - Último fotograma enlaza con el plano 1 (bucle; comprobado: pincelada igual).
 - Licencia del fondo: obra propia del estudio, capas sintetizadas de animacion/musica/ (pulso-vivo, ambiente, golpe, golpe-cifra, golpe-caida); sin muestras de terceros. Voz: Kokoro-82M v1.0 (Apache 2.0) + sherpa-onnx 1.12.15 (Apache 2.0).
 - Discrepancias plano vs storyboard, NO tocadas (decide el Sensei): p6 tarjeta «Un juego de palabras» (storyboard: «Se dice: juego de palabras»; el sello SE DICE sí está); p7 cartela «libro de secretos» (storyboard: «libro maestro», que es lo que dice la voz) y etiqueta DATO (storyboard: SE DICE); p8 etiqueta DATO (plan de escenas lo da por confirmado).
+- Retoques 23 nov: plano 7 sin la cartela «libro de secretos» (la tarjeta ya dice «libro maestro»); solo se sustituyen los 90 fotogramas del plano 7, resto de vídeo y audio idénticos. reel.mp4 30,0 s, -16,1 LUFS, pico real -1,3 dBFS. hoja.png regenerada.

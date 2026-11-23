@@ -10,17 +10,17 @@ window.DURACION = 3.2;
 const f = MV.crearFunakoshi(), libro = MV.crearLibro({ texto: '唐手' });
 esc.escena.add(f.raiz, libro.raiz);
 f.colocar(0, 0, 0).aplicarPose(P.recibir);
-libro.raiz.scale.set(1.25, 1.25, 1.25);
+libro.raiz.scale.set(0.96, 0.96, 0.96);
 window.render = (t) => {
   libro.escribir(U.clamp(U.prog(t, 0.15, 0.9)));
   // el libro se alza ante el pecho a mitad (1,6 s)
   const s = U.easeInOut(U.clamp(U.prog(t, 1.5, 2.3)));
-  libro.entre(f.punto('manoI'), f.punto('manoD'), { rumbo: 0, sube: 0.0 + 0.1 * s });
+  libro.entre(f.punto('manoI'), f.punto('manoD'), { rumbo: 0, sube: -0.07 + 0.1 * s });
   libro.raiz.rotation.x = -0.25;
-  const d = U.lerp(5.2, 3.7, s), cy = U.lerp(1.1, 1.5, s);
+  const d = U.lerp(5.2, 3.7, s), cy = U.lerp(1.3, 1.5, s);
   esc.orbita({ centro: [0, cy, 0], distancia: d, azimut: 0, elevacion: 8, fov: 30 });
   esc.dibujar(ctx);
-  C.fecha(ctx, '1922', U.clamp(U.prog(t, 0.8, 1.3)), { y: 1520, size: 100 });
+  C.fecha(ctx, '1922', U.clamp(U.prog(t, 0.8, 1.3)), { y: 1555, size: 100 });
   C.tarjeta(ctx, t, ['1922: [r]唐手[/r],', 'mano china'], { t0: 0.1, y: 330 });
 };
 </script></body></html>

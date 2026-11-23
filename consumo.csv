@@ -135,3 +135,14 @@ fecha,agente,pieza,modelo,tokens,usos_herramientas,minutos
 2026-11-23,investigador,2026-11-23-notas-movil (dosier),sonnet,35136,17,6.5
 2026-11-23,investigador,2026-11-23-puntua-o-no (dosier),sonnet,30312,8,6.5
 2026-11-23,sensei,reunión de ideas 23 nov (buzón; elegir; oficina),opus,70000,25,20
+2026-11-23,guionista,2026-11-23-ascensor (storyboard),sonnet,68676,10,1.9
+2026-11-23,guionista,2026-11-23-dojo-1945 (storyboard),sonnet,62680,8,1.3
+2026-11-23,guionista,2026-11-23-notas-movil (storyboard),sonnet,65780,10,1.5
+2026-11-23,guionista,2026-11-23-puntua-o-no (storyboard),sonnet,82213,16,2.3
+2026-11-23,modelador-3d,2026-11-19-cadera (cadena cinética),sonnet,63775,19,2.3
+2026-11-23,editor,2026-11-18-tigre + 2026-11-18-mano-vacia (retoques),sonnet,127288,60,12.4
+2026-11-23,animador,2026-11-19-cadera (jefe + plano 1),sonnet,77714,22,2.5
+2026-11-23,animador,2026-11-19-cadera (tramo A),sonnet→opus,40711,13,6.2
+2026-11-23,animador,2026-11-19-cadera (tramo B + reencuadre),sonnet→opus,85000,30,8
+2026-11-23,animador,2026-11-19-cadera (tramo C + reencuadre),sonnet→opus,48000,18,7
+2026-11-23,sensei,producción 23 nov (Metricool; métricas; revisión; oficina),opus,90000,40,95

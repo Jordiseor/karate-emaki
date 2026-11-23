@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cadera · plano 03</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const S = C.iniciar(); const { ctx, esc, P, k, d, cad, U } = S;
+window.DURACION = 2.5;
+const F0 = 0, F1 = 0.12, PICOS = [0.2, 0.4, 0.6, 0.8];
+const CAJA = { x: 150, y: 1000, w: 780, h: 380 };
+cad.mostrar();
+window.render = (t) => {
+  const f = F0 + (F1 - F0) * U.prog(t, 0, window.DURACION);
+  k.colocar(0, 0, 90); k.aplicarPose(C.poseCadena(P, f)); k.cara({ parpadeo: U.parpadeo(t, [1.2]), cejas: 0 });
+  const e = PICOS.map((pk) => 1 - Math.min(1, Math.abs(f - pk) / 0.12));
+  e.fill(0);
+  cad.actualizar([e[0], e[1], e[2], e[3], e[3]], { estela: { pose: (tt) => C.poseCadena(P, tt), t: f, dur: 0.3 } });
+  d.limpiar(); C.camPerfil(esc); esc.sombraEn(0, 0);
+  esc.dibujar(ctx); d.dibujar2D && d.dibujar2D(ctx);
+  C.K.ejes(ctx, CAJA, { etiquetaX: 'tiempo', etiquetaY: 'velocidad', prog: U.prog(t, 0.2, 1.2), alfa: U.prog(t, 0.2, 0.8) });
+  C.etiquetaEsquema(ctx);
+  C.tarjeta(ctx, t, ['Medido en 10 karatekas'], { t0: 0.1, y: 380, size: 70 });
+  C.letraPequena(ctx, ['Kim, Kim, Kim 2020 · 10 atletas', 'puñetazo directo (choku-tsuki)']);
+};
+</script></body></html>

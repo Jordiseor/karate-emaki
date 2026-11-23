@@ -7,17 +7,11 @@
 import * as C from "./comun.js";
 const ctx = C.ctx2d(), { U, T } = C;
 window.DURACION = 3.0;
-// PLANO 7 (DATO): en el rollo abierto se escribe 'tora no maki' a pincel (0,2–1,4) y a 1,5 s aparece la cartela «libro de secretos».
+// PLANO 7 (DATO): en el rollo abierto se escribe 'tora no maki' a pincel (0,2–1,4) la tarjeta superior ya dice «libro maestro» (cartela pequeña «libro de secretos» retirada el 23 nov por redundante).
 const rollo = C.crearRollo();
 let tt = 0;
 const vineta = (c) => {
   T.rotulo(c, 'tora no maki', 540, 880, 96, U.prog(tt, 0.2, 1.4));
-  const a = U.easeOut(U.prog(tt, 1.5, 1.8)); if (a <= 0) return;
-  c.save(); c.globalAlpha = a; c.translate(0, (1 - a) * 18);
-  c.font = '800 72px "Montserrat","Arial Black",system-ui,sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle';
-  const w = c.measureText('libro de secretos').width + 90;
-  c.fillStyle = C.PAPEL; c.strokeStyle = C.TINTA; c.lineWidth = 6; c.beginPath(); c.roundRect(540 - w / 2, 990, w, 124, 16); c.fill(); c.stroke();
-  c.fillStyle = C.TINTA; c.fillText('libro de secretos', 540, 1052); c.restore();
 };
 window.render = (t) => {
   tt = t; C.papel(ctx);

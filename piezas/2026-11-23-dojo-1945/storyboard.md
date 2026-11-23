@@ -1,0 +1,36 @@
+# Storyboard: El dōjō Shōtōkan que duró seis años
+Duración total: 34,3 s · Pilar: Historia · Formato: 1080×1920 (3D con siluetas + capa 2D de kanji, `animacion/3d/`)
+12 planos de 2,3–3,6 s (los de más de 3 s llevan un cambio visual interno a mitad, así hay cambio cada 1,5–3 s) · Locución 75 palabras (≈ 2,2 palabras/s, ningún plano pasa de 2,3; voz de sempai) · Tono papel #F4EFE6, tinta #1A1A1A. Rojo #C8102E solo para 松濤館 / 松濤, años y fuego. Texto en pantalla ≥ 48 px, máx. 5 palabras por tarjeta. Publicación prevista: mié 9 dic. Tono sobrio y respetuoso: sin aviones, explosiones, cifras de víctimas ni escenas de personas en peligro.
+
+## Gancho
+Plano 1, segundo 0: la casa-dōjō ya está en pantalla, a contraluz de atardecer, con 松濤館 escrito en rojo sobre la puerta y pinos alrededor; tarjeta «Seis años» ya visible (t0 < 0). Sin título ni logo. La voz dice el gancho del dosier: «Seis años. Eso duró el dōjō Shōtōkan.» y el plano 2 cierra con «Ardió en abril de 1945.» (el «una noche» del encargo no se usa: va solo como cielo oscuro, nunca como dato).
+
+## Escenas
+| # | Tiempo | Lo que se ve (animación 3D) | Texto en pantalla | Locución | Nota para el animador |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0,0–3,2 | Casa-dōjō con 松濤館 rojo, a contraluz, entre pinos. Cámara empuja despacio hacia la puerta; a 1,6 s la tarjeta «Seis años» pasa de tinta a rojo. | Seis años | «Seis años. Eso duró el dōjō Shōtōkan.» | Fotograma 0 con rótulo ya escrito (`escribirRotulo` prog 1) y tarjeta visible. `ambiente('atardecer')`, `crearColina` + `crearCasa`. |
+| 2 | 3,2–5,5 | Corte seco a cielo oscuro: la misma casa con la luz interior apagándose y un resplandor rojo que sube desde los bordes; pavesas. | Abril de 1945 | «Ardió en abril de 1945.» | `ambiente('noche')` (cambia de golpe: corte o `H2.velo`). `casa.arder(p)` + `H2.resplandor` + `H2.pavesas`. Sin llamas ni aviones. «1945» en rojo. |
+| 3 | 5,5–8,7 | Vuelta atrás, calle de casas bajas con la casa-dōjō nueva: el rótulo se escribe y la puerta se abre con luz cálida; tres alumnos pequeños se saludan ante ella. A mitad aparece el rótulo del lugar. | 29 ene 1939 · Zōshigaya, Tokio | «Se inauguró en enero de 1939, en Zōshigaya.» | `ambiente('calle')`, `crearCalle` + `casa.puerta(f)` + `luzInterior`. Dos tarjetas seguidas (fecha, 0–1,6 s; lugar, 1,6–3,2 s) de ≤ 3 palabras. Fecha en rojo. |
+| 4 | 8,7–11,0 | Cámara se acerca al rótulo; 松濤館 se escribe a trazos grande y el carácter 館 entra de golpe. | 松濤館 = casa de Shōtō | «Shōtōkan: la casa de Shōtō.» | `H2.kanji` + `H2.kanjiGolpe(館)`. Primera vez que sale «Shōtōkan»: traducción en tarjeta. |
+| 5 | 11,0–13,3 | Mar de pinos visto desde arriba; las copas se ondulan y viran a ola con crestas de espuma (pino ↔ ola). Sobre ello, 松濤 a trazos en rojo. | 松濤 = olas de pino | «Shōtō significa "olas de pino".» | `crearMarDePinos` + `mar.actualizar(t, { olas: 0→1 })`. Es el plano más bonito: darle aire. |
+| 6 | 13,3–15,6 | Silueta del maestro de espaldas, en seiza en la colina, escribe 松濤 en una mesita. Contraluz. | Seudónimo de Funakoshi | «Era el seudónimo de Funakoshi.» | Funakoshi SIEMPRE silueta y de espaldas: `crearMaestro({ silueta: '#1A1A1A' })` + `maestro-seiza-pincel` + `crearMesita({ texto: '松濤' })`. Ni retrato ni primer plano. |
+| 7 | 15,6–18,8 | Tokio de noche, calle de casas bajas oscura; en el horizonte crece un resplandor rojo y la ceniza cae. A mitad la cámara sube y se ve todo el barrio teñido. | Tokio, 1945 | «En 1945, los bombardeos aéreos arrasaban Toshima.» | `ambiente('noche')` + `crearCalle`; `H2.resplandor` (p 0→0,5) + `H2.pavesas({ color: H2.CENIZA, sube: false })`. Sin aviones, sin cifras. «Toshima» solo en voz (el dosier lo da como contexto, no como dato del dōjō). |
+| 8 | 18,8–22,0 | La casa-dōjō en la noche: se apaga la luz, arde (resplandor rojo, pavesas) y, ya cubierta por el rojo, pasa a contorno gris ceniza. En la mitad, letra pequeña. | Día exacto: sin confirmar | «El dōjō ardió, probablemente en esas incursiones.» | `casa.arder(p)` → `modo('fantasma')` + `contorno({ color: '#8A847A' })` mientras el rojo lo cubre todo (límite conocido de `opacidad`). Letra pequeña con `overlay.letraPequena`. NO poner 13 ni 29 de abril. |
+| 9 | 22,0–24,3 | Colina de pinos al atardecer: la silueta de Funakoshi, de espaldas y quieta, ante el contorno gris de la casa. El rótulo 松濤館 flota en gris. | Nunca nombró su estilo | «Funakoshi nunca nombró su estilo.» | `MV.crearFunakoshi()` (silueta con hakama) o maestro en silueta. Casa en `fantasma` gris. |
+| 10 | 24,3–27,5 | Fila de 12 alumnos de gi blanco saluda en ola (rei) ante la casa fantasma; a mitad brota un cartel de madera «SHOTOKAN» junto a la fila. | Lo llamaron como la casa | «El mundo lo llamó como aquella casa.» | `crearFila` (n 12, `columnas: 4`) + `crearCartel({ texto: 'SHOTOKAN', tipo: 'madera' })` `.pop`. Ejemplo copiable: `prueba/historia/fila.html`. Fila ya pesa ≈ 3,3 s/fotograma. |
+| 11 | 27,5–31,1 | Karateka con cinturón negro, plano medio frontal, dice la frase con sonrisa serena; detrás, el contorno gris de la casa. A mitad el rótulo 松濤館 se enciende en rojo y entra la tarjeta final. | Seis años: 1939–1945 | «Cada vez que dices Shotokan, nombras aquella casa.» | `k.cara({ sonrisa: 0.6 })`. Tarjeta de cierre con 1939 y 1945 en rojo (el espectador hace la cuenta). Karateka de gi, no silueta: es el personaje de la cuenta, no una persona real. |
+| 12 | 31,1–34,3 | El karateka mira a cámara, cejas alzadas; la cámara retrocede y vuelve la casa del plano 1, con 松濤館 rojo (bucle). | ¿Sabías que era una casa? | «¿Sabías que el Shotokan era una casa?» | `k.cara({ cejas: 0.5, sonrisa: 0.5 })`. Último fotograma = fotograma 0 del plano 1 (misma casa, rótulo, contraluz). |
+
+## Cierre y llamada a comentar
+Pregunta fácil de responder: «¿Sabías que el Shotokan era una casa?». Invita a comentar si lo sabían y cuál era el primer dōjō donde entrenaron. El plano final enlaza con el 1 (casa con 松濤館).
+
+## Datos usados (todos deben estar en el dosier)
+- Dōjō Shōtōkan inaugurado el 29 ene 1939 en Zōshigaya, Toshima-ku, Tokio (dosier: datos verificados, fila 1; fuente Shōtōkai EN).
+- Ardió en abril de 1945, durante los bombardeos aéreos sobre Tokio; el día exacto es dudoso (13 o 29 abr) y no se da (fila 2 y «Lo que NO se puede afirmar», 1 y 6).
+- 松濤 (Shōtō, «olas de pino») era el seudónimo de Funakoshi; 館 (kan) = «casa»; Funakoshi nunca nombró su estilo (fila 4).
+- Contexto de Toshima en 1945: los bombardeos arrasaron gran parte del distrito (fila 6), solo en voz y sin cifras.
+- Seis años = de 1939 a 1945 (fila 8, aritmética).
+- NO se usa: «primer dōjō», «una noche» como dato, 1936 como apertura, día exacto, cifras de víctimas (778, 2.459, 161.661), «nunca se reconstruyó» / «ya no existe», quién lo pagó, la muerte de Yoshitaka, la edad de Funakoshi (70 años, descartada por tiempo), que Funakoshi lo viera arder. Aviones y escenas gráficas: ninguno.
+
+## Faltan en animacion/3d/
+Nada imprescindible: todo sale de `historia3d.js`, `historia2d.js`, `manovacia.js` (`crearFunakoshi`) y `overlay2d.js`. A comprobar, no a crear: que `crearCalle` y `casa.arder` convivan en `ambiente('noche')` (planos 7–8; el README prueba la casa ardiendo en `noche.html` sin calle).

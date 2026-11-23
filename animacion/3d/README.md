@@ -128,6 +128,7 @@ Mide ≈ 1,82 m (cabeza grande de juguete); pie 0,243 m. Ejes: +Z delante, +Y ar
 | `P['brazos-arriba']` | Manos abiertas arriba (≈1,84 m) para colgar/levantar un rótulo |
 | `P['maestro-seiza-pincel']`, `P['maestro-pie-escribiendo']`, `P['maestro-manos-atras']` | Solo con `crearMaestro()` (la de seiza necesita su altura; `maestro.pose()` lo hace) |
 | `P['choku-zuki-kiai']` | Kiai con puñetazo recto desde yoi: **mismas piernas que `yoi`** (no deslizan al mezclar), puño derecho al frente chūdan, palma abajo, hikite izquierdo. `mezclar(P.yoi, P['choku-zuki-kiai'], f)` |
+| `P['gyaku-zuki-hanmi']` | Hanmi: mismas piernas que `gyaku-zuki-kiai`, cadera 45° y tronco +5° de giro (hombro derecho atrás), puño derecho en hikite, brazo izquierdo delante. Lleva `piernasFijas` (las piernas no siguen el giro de la cadera) |
 | `P['gyaku-zuki-kiai']` | Gyaku-zuki (puño derecho) en hidari zenkutsu-dachi, mismas piernas que `zenkutsu-dachi` |
 
 - `mezclar(a, b, f)`: interpola dos poses. `f` número o `{ piernas, brazos, tronco, cabeza }` (cada parte a su ritmo).
@@ -674,3 +675,12 @@ Import: `import * as MV from '.../animacion/3d/manovacia.js'`. Prueba en `prueba
 - `MV.crearFunakoshi()` (hakama, alto) y `MV.crearHanashiro()` (más bajo, ancho, casquete): siluetas sin rostro.
 - `MV.crearMesaNueve(esc)` 9 siluetas en seiza + periódico: `.pose(P, { t, alzan:[0,2], f })`, `.mirarse(P, t)`. `MV.crearEdificioNaha({ rotulo:'Naha' })` `.ventana(f)` (esquemático).
 - Cámara de la mesa: `orbita({ centro:[0,0.7,0], distancia:11, elevacion:30 })`; con escala 0,5 `esc.escena.fog.far = 90`. Las siluetas salen marrón oscuro por la luz.
+
+## Cadena cinética — `cadera3d.js` + `mezclarCadena` (pieza `2026-11-19-cadera`)
+Prueba: `prueba/cadera-2026-11-23.html` (hoja `prueba/cadera-2026-11-23.png`). `import * as CD from '.../cadera3d.js'`.
+- Pose `P['gyaku-zuki-hanmi']` → `P['gyaku-zuki-kiai']`. `mezclarCadena(a, b, { cadera, tronco, hombro, codo, mano, piernas, cabeza })` (karateka3d.js): cada eslabón con su f 0–1 (hombro → brazoI/D, codo → codoI/D, mano → muñeca y puño; sin indicar = 0). Pone `piernasFijas`: los pies no se mueven aunque la cadera gire. Ejemplo de escalonado en la hoja: `cadera s(0,.4) · tronco s(.15,.55) · hombro s(.3,.7) · codo/mano s(.45,.85)`.
+- `k.punto('caderaI' | 'caderaD')`: articulación de cada cadera; `d.linea(k.punto('caderaI'), k.punto('caderaD'), { grosor: 0.03 })` (grosor en metros) dibuja la barra de la cadera. Llamar a `k.colocar` ANTES de `k.aplicarPose`.
+- `const cad = CD.crearCadena(esc, k)`: 5 esferas (cadera, pecho, hombroD, codoD, manoD). Tras `aplicarPose`: `cad.actualizar([e0..e4], { estela: { pose: (tt) => pose, t, dur: 0.3, n: 6 } })`; `e` 0 = apagada (tinta), 1 = en su pico (rojo y mayor). `cad.ocultar()/mostrar()`.
+- `const fan = CD.crearFantasma(esc)`: `fan.poner(vector3, alfa, { radio })` esfera gris + aro discontinuo quieto (el puño que se queda atrás: `fan.poner(k.punto('manoD'), 1)` con la pose inicial y no volver a llamarlo con otro punto).
+- 2D `CD.picos(ctx, caja, { prog, t, activo: i|'todas', picos, alturas, etiquetas })`: cuatro campanas con pico escalonado (cadera, tronco, hombro, puño); la del cursor `t` sale en rojo. Dibuja antes `C.ejes(ctx, caja, { etiquetaY: 'velocidad' })`. Esquema, no datos: rotular «ESQUEMA, NO ESCALA» con `overlay`.
+- Límites: `crearCadena` y `fan` se dibujan por encima del cuerpo (sin oclusión). La estela re-aplica la pose n veces (coste menor). Tras `actualizar` con estela la pose queda en `e.pose(e.t)` (con `e.op` si usabas ancla).

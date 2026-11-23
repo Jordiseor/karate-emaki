@@ -543,6 +543,8 @@ export class Karateka3D {
       this.partes['puno' + L].visible = !abierta; this.partes['abierta' + L].visible = abierta;
       const q = p['pierna' + L] || {};
       j['pierna' + L].rotation.set(-r(q.adelante), s * r(q.gira), s * r(q.abre), 'XZY');
+      // piernasFijas: las piernas NO siguen el giro de la cadera (hanmi: la pelvis gira, los pies se quedan)
+      if (p.piernasFijas && p.cadera && p.cadera.giro) j['pierna' + L].quaternion.premultiply(new THREE.Quaternion().setFromAxisAngle(V3(0, 1, 0), -r(p.cadera.giro)));
       j['rodilla' + L].rotation.set(r(p['rodilla' + L]), 0, 0);
       const tb = typeof p['tobillo' + L] === 'number' ? { flex: p['tobillo' + L] } : (p['tobillo' + L] || {});
       j['tobillo' + L].rotation.set(-r(tb.flex), 0, s * r(tb.ladeo), 'XZY');
@@ -701,6 +703,7 @@ export class Karateka3D {
   punto(nombre) {
     const j = this.j, w = (g, x = 0, y = 0, z = 0) => V3(x, y, z).applyMatrix4(g.matrixWorld);
     const L = nombre.slice(-1);
+    if (nombre === 'caderaI' || nombre === 'caderaD') return w(j['pierna' + L]); // articulación de cada cadera (barra de la cadera)
     switch (nombre.replace(/[ID]$/, '')) {
       case 'cabeza': return w(j.cabeza, 0, M.cabezaCentro, 0);
       case 'pecho': return w(j.tronco, 0, 0.26, 0.12);
@@ -765,8 +768,22 @@ export function mezclar(a, b, f) {
   const out = {};
   for (const k of new Set([...Object.keys(a), ...Object.keys(b)])) {
     if (['nombre', 'descripcion', 'tecnica', 'medidas'].includes(k)) continue;
+    if (k === 'piernasFijas') continue;
     out[k] = mix(a[k] ?? (esObj(b[k]) ? {} : 0), b[k] ?? (esObj(a[k]) ? {} : 0), fde(k));
   }
+  if (a.piernasFijas || b.piernasFijas) out.piernasFijas = true;
+  return out;
+}
+// Mezcla por eslabones: cada eslabón de la cadena cinética con su propio f (0–1). e = { cadera, tronco, hombro, codo, mano, piernas, cabeza }.
+// Reparto: cadera→ pose.cadera; tronco→ pose.tronco; hombro→ brazoI/D; codo→ codoI/D; mano→ munecaI/D y manoI/D. Lo no indicado = 0 (piernas = `piernas ?? 0`).
+export function mezclarCadena(a, b, e) {
+  const g = (k) => (e[k] ?? 0);
+  const porClave = { cadera: g('piernas'), piernaI: g('piernas'), piernaD: g('piernas'), rodillaI: g('piernas'), rodillaD: g('piernas'), tobilloI: g('piernas'), tobilloD: g('piernas') };
+  porClave.cadera = e.cadera ?? 0; porClave.tronco = g('tronco'); porClave.cabeza = g('cabeza');
+  for (const L of ['I', 'D']) { porClave['brazo' + L] = g('hombro'); porClave['codo' + L] = g('codo'); porClave['muneca' + L] = e.mano ?? g('codo'); porClave['mano' + L] = e.mano ?? g('codo'); }
+  const out = {};
+  for (const k in porClave) Object.assign(out, mezclar({ [k]: a[k] ?? (esObj(b[k]) ? {} : 0) }, { [k]: b[k] ?? (esObj(a[k]) ? {} : 0) }, porClave[k]));
+  out.piernasFijas = true;
   return out;
 }
 // Copia de una pose en espejo (izquierda ↔ derecha): para pasar de hidari a migi.
@@ -780,7 +797,7 @@ export function espejo(p) {
   return o;
 }
 // Carga las poses 3D. render.mjs las inyecta en window.EMAKI_POSES3D; si no (navegador normal), las pide por XHR.
-export function cargarPoses(nombres = ['yoi', 'kamae', 'zenkutsu-dachi', 'zenkutsu-bajo', 'pies-juntos', 'gedan-barai-prep', 'zenkutsu-bajo-misma-base', 'rei', 'cargar-viga', 'brazos-arriba', 'maestro-seiza-pincel', 'maestro-pie-escribiendo', 'maestro-manos-atras', 'choku-zuki-kiai', 'gyaku-zuki-kiai', 'hikite-medio', 'agarre-brazo', 'tiron-cadera', 'rival-brazo-extendido', 'mano-hara', 'atar-cinturon', 'pasar-objeto', 'recibir', 'mawashi-geri-jodan', 'mawashi-geri-prep', 'mae-geri-chudan', 'mae-geri-prep', 'kumite-esquiva', 'espalda-tras-patada', 'seiza', 'empuje-recto', 'encoge-hombros', 'seiza-alto', 'en-cuclillas-medio', 'manos-rodillas', 'levantarse-vacilando']) {
+export function cargarPoses(nombres = ['yoi', 'kamae', 'zenkutsu-dachi', 'zenkutsu-bajo', 'pies-juntos', 'gedan-barai-prep', 'zenkutsu-bajo-misma-base', 'rei', 'cargar-viga', 'brazos-arriba', 'maestro-seiza-pincel', 'maestro-pie-escribiendo', 'maestro-manos-atras', 'choku-zuki-kiai', 'gyaku-zuki-kiai', 'gyaku-zuki-hanmi', 'hikite-medio', 'agarre-brazo', 'tiron-cadera', 'rival-brazo-extendido', 'mano-hara', 'atar-cinturon', 'pasar-objeto', 'recibir', 'mawashi-geri-jodan', 'mawashi-geri-prep', 'mae-geri-chudan', 'mae-geri-prep', 'kumite-esquiva', 'espalda-tras-patada', 'seiza', 'empuje-recto', 'encoge-hombros', 'seiza-alto', 'en-cuclillas-medio', 'manos-rodillas', 'levantarse-vacilando']) {
   const P = Object.assign({}, (typeof window !== 'undefined' && window.EMAKI_POSES3D) || {});
   for (const n of nombres) if (!P[n] && typeof XMLHttpRequest !== 'undefined') {
     try { const x = new XMLHttpRequest(); x.open('GET', new URL('./poses/' + n + '.json', import.meta.url).href, false); x.send(); if (x.status === 200 || x.status === 0) P[n] = JSON.parse(x.responseText); } catch (e) { console.warn('pose 3D no encontrada', n); }

@@ -1,0 +1,54 @@
+{
+ "nombre": "gyaku-zuki-hanmi",
+ "descripcion": "Hanmi (de medio lado) en hidari zenkutsu-dachi: mismas piernas que gyaku-zuki-kiai; cadera y tronco girados 45 grados hacia atras (hombro derecho atras), puno derecho en hikite, brazo izquierdo delante. Origen de gyaku-zuki: mezclarCadena(hanmi, kiai, ...).",
+ "cadera": {
+  "giro": 45
+ },
+ "piernaI": {
+  "adelante": 50,
+  "abre": 0,
+  "gira": 0
+ },
+ "rodillaI": 50,
+ "tobilloI": {
+  "flex": 0,
+  "ladeo": 0
+ },
+ "piernaD": {
+  "adelante": -34.6,
+  "abre": 3.2,
+  "gira": 36.5
+ },
+ "rodillaD": 0,
+ "tobilloD": {
+  "flex": 27.6,
+  "ladeo": -22
+ },
+ "tronco": {
+  "giro": 5
+ },
+ "cabeza": {
+  "inclina": -4
+ },
+ "manoI": 0,
+ "manoD": 0,
+ "brazoI": {
+  "adelante": 70,
+  "abre": 8,
+  "gira": 0
+ },
+ "codoI": 20,
+ "munecaI": {
+  "gira": -60
+ },
+ "munecaD": {
+  "gira": 94
+ },
+ "codoD": 115,
+ "brazoD": {
+  "adelante": -59,
+  "abre": 5.6,
+  "gira": -0.4
+ },
+ "piernasFijas": true
+}

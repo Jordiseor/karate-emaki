@@ -17,12 +17,12 @@ window.render = (t) => {
   const resp = Math.sin(t * 1.6) * 0.5 + 0.5;
   f.aplicarPose(mezclar(P.yoi, P.yoi, 0)); // base
   f.aplicarPose(mezclar(P.yoi, P['brazos-arriba'], { brazos: 0.22 * ab, resto: 0 }));
-  esc.orbita({ centro: [0, 1.54, 0], distancia: 11, elevacion: 3, fov: 28, azimut: 14 - 8 * U.prog(t, 0, 3.5) });
+  esc.orbita({ centro: [0, 1.80, 0], distancia: 11, elevacion: 3, fov: 28, azimut: 14 - 8 * U.prog(t, 0, 3.5) });
   esc.dibujar(ctx);
   // halo suave tras el kanji
   const ph = U.clamp(U.prog(t, 1.7, 2.7));
-  if (ph > 0) { const g = ctx.createRadialGradient(540, 660, 40, 540, 660, 330); g.addColorStop(0, `rgba(244,239,230,${0.85 * ph})`); g.addColorStop(1, 'rgba(244,239,230,0)'); ctx.fillStyle = g; ctx.fillRect(0, 330, 1080, 700); }
-  if (t >= 1.7) H2.kanji(ctx, '空', 540, 680, 360, { prog: U.clamp(U.prog(t, 1.7, 2.9)), color: C.ROJO });
+  if (ph > 0) { const g = ctx.createRadialGradient(540, 650, 40, 540, 650, 330); g.addColorStop(0, `rgba(244,239,230,${0.85 * ph})`); g.addColorStop(1, 'rgba(244,239,230,0)'); ctx.fillStyle = g; ctx.fillRect(0, 330, 1080, 700); }
+  if (t >= 1.7) H2.kanji(ctx, '空', 540, 665, 340, { prog: U.clamp(U.prog(t, 1.7, 2.9)), color: C.ROJO });
   C.tarjeta(ctx, t, ['Sin armas.', 'Sin vanidad.'], { t0: 0.1, y: 330 });
 };
 </script></body></html>

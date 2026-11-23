@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cadera · plano 12</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, P, k, d, fan, U } = S;
+window.DURACION = 3.0;
+// PLANO 12 (3,0) bucle: guardia hanmi -> en el último fotograma = plano 1 en t = 0 (poseGancho, fantasma, flecha, tarjeta del 1).
+k.colocar(0, 0, 90); k.aplicarPose(P['gyaku-zuki-hanmi']);
+const FANTASMA = k.punto('manoD').clone();
+const g0 = C.gancho(0);
+window.render = (t) => {
+  const e = U.easeInOut(U.prog(t, 1.2, 2.8));
+  k.colocar(0, 0, 90);
+  k.aplicarPose(C.mezclarCadena(P['gyaku-zuki-hanmi'], P['gyaku-zuki-kiai'], { cadera: g0.cadera * e, tronco: g0.tronco * e }));
+  k.cara({ parpadeo: U.parpadeo(t, [0.8]), cejas: -0.1 });
+  fan.poner(FANTASMA, 1);
+  d.limpiar();
+  const c = k.punto('cadera');
+  d.flecha({ desde: [c.x + 0.2, c.y - 0.1, c.z + 0.3], hacia: [c.x + 0.55, c.y - 0.1, c.z + 0.3], crecer: 0.55 * U.easeOut(U.prog(t, 1.2, 2.4)), grosor: 0.03 });
+  C.camPerfil(esc); esc.sombraEn(0, 0);
+  esc.dibujar(ctx); d.dibujar2D && d.dibujar2D(ctx);
+  const x = U.prog(t, 2.4, 2.8);   // relevo de tarjetas: la pregunta se va y entra la del plano 1 (ya visible en su t = 0)
+  ctx.save(); ctx.globalAlpha = 1 - x; if (x < 1) C.tarjeta(ctx, t, ['¿Mueves la cadera…', 'o solo el brazo?'], { t0: 0.1, y: 300 }); ctx.restore();
+  ctx.save(); ctx.globalAlpha = x; if (x > 0) C.tarjeta(ctx, t, ['El puño es lo', 'último en moverse'], { t0: -1, y: 300 }); ctx.restore();
+};
+</script></body></html>

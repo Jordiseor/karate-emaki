@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cadera · plano 10</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar({ rumbo: 0 }); const { ctx, esc, P, k, d, U } = S;
+window.DURACION = 3.0;
+// PLANO 10 (3,0) frontal: hanmi -> shomen, todos los eslabones con el MISMO s (puño y cadera a la vez).
+const dur = 3.0;
+window.render = (t) => {
+  const s = U.easeInOut(U.prog(t, 0.5, 2.5));
+  k.colocar(0, 0, 0); k.aplicarPose(C.mezclarCadena(P['gyaku-zuki-hanmi'], P['gyaku-zuki-kiai'], { cadera: s, tronco: s, hombro: s, codo: s, mano: s }));
+  k.cara({ parpadeo: U.parpadeo(t, [2.2]) });
+  d.limpiar();
+  C.camPerfil(esc, { centro: [0, 0.95, 0], distancia: 6.5, azimut: 0 }); esc.sombraEn(0, 0);
+  esc.dibujar(ctx); d.dibujar2D && d.dibujar2D(ctx);
+  C.tarjeta(ctx, t, ['Ni antes', 'ni después'], { t0: 0.1, y: 300 });
+  const a = t < 1.5 ? 1 : 0, b = 1 - a;
+  C.overlay.texto(ctx, { lineas: 'hanmi: de medio lado', size: 56, y: 1330, alpha: a });
+  C.overlay.texto(ctx, { lineas: '[r]shōmen[/r]: de frente', size: 56, y: 1330, alpha: b });
+  C.letraPequena(ctx, ['Tsutomu Ohshima (SKA), práctica de 2007', 'transcripción libre']);
+};
+</script></body></html>

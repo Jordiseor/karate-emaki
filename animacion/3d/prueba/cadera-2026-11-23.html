@@ -1,0 +1,33 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../marca.js"></script>
+<script type="module">
+// Hoja de prueba de la tanda cadera (2026-11-23). t entero: 0 hanmi (3/4) + barra cadera + fantasma · 1,2,3 mezcla por eslabones · 4 gráfica de picos · 5 kiai (referencia)
+import { crearEscenario } from '../escenario.js';
+import { Karateka3D, cargarPoses, mezclarCadena } from '../karateka3d.js';
+import { Diagrama3D } from '../diagrama3d.js';
+import * as CD from '../cadera3d.js';
+import * as C from '../ciencia2d.js';
+import { overlay } from '../overlay2d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5, fondo: 'degradado' }), P = cargarPoses();
+const k = new Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz); k.colocar(0, 0, 90);
+const d = new Diagrama3D(esc, k), cad = CD.crearCadena(esc, k), fan = CD.crearFantasma(esc);
+const H = P['gyaku-zuki-hanmi'], K = P['gyaku-zuki-kiai'];
+// tiempos propios: cadera primero, luego tronco, hombro, codo/mano (f = progreso global 0..1)
+const esl = (f) => { const s = (a, b) => Math.min(1, Math.max(0, (f - a) / (b - a))); return { cadera: s(0, 0.4), tronco: s(0.15, 0.55), hombro: s(0.3, 0.7), codo: s(0.45, 0.85), mano: s(0.45, 0.85) }; };
+const pose = (f) => mezclarCadena(H, K, esl(f));
+const picoF = [0.2, 0.4, 0.6, 0.8];
+const cam = () => esc.orbita({ centro: [0.1, 0.95, 0], distancia: 7.2, azimut: 0, elevacion: 3, fov: 26 });
+window.DURACION = 6;
+window.render = (t) => {
+  const s = Math.floor(t); window.EMAKI.fondoPapel(ctx);
+  d.limpiar(); cad.ocultar(); fan.poner(k.punto('cabeza'), 0);
+  if (s === 4) { C.ejes(ctx, { x: 150, y: 600, w: 780, h: 700 }, { etiquetaX: 'tiempo', etiquetaY: 'velocidad' }); CD.picos(ctx, { x: 150, y: 600, w: 780, h: 700 }, { t: 0.6 }); return; }
+  if (s === 0) { k.colocar(0, 0, 60); k.aplicarPose(H); esc.orbita({ centro: [0, 0.95, 0], distancia: 7.2, elevacion: 22, fov: 26 }); fan.poner(k.punto('manoD'), 1);
+    d.linea(k.punto('caderaI'), k.punto('caderaD'), { color: '#C8102E', grosor: 0.03 }); }
+  else if (s >= 1 && s <= 3) { k.colocar(0, 0, 90); const ff = [0.2, 0.5, 0.8][s - 1]; k.aplicarPose(pose(ff)); cam();
+    cad.mostrar(); cad.actualizar([0.15, 0.3, 0.5, 0.65, 0.8].map((p) => 1 - Math.min(1, Math.abs(ff - p) / 0.12)), { estela: { pose, t: ff, dur: 0.3 } }); }
+  else { k.colocar(0, 0, 90); k.aplicarPose(K); cam(); }
+  esc.dibujar(ctx); d.dibujar2D && d.dibujar2D(ctx);
+};
+</script></body></html>

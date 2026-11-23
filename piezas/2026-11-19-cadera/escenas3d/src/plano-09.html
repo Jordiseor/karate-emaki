@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cadera · plano 09</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar({ rumbo: 0 }); const { ctx, esc, P, k, d, U } = S;
+window.DURACION = 3.0;
+// PLANO 9 (18,5–21,5): frontal, se encoge de hombros; tres «%» de tinta con «?» (2D).
+const SIGNOS = [[-340, -40, -0.2], [350, -110, 0.18], [-330, 190, 0.1]];
+window.render = (t) => {
+  const f = U.easeBack(U.prog(t, 0.2, 1.2));
+  k.colocar(0, 0, 0); k.aplicarPose(C.mezclar(P.neutra, P['encoge-hombros'], f)); k.cara({ parpadeo: U.parpadeo(t, [2.2]), cejas: 0.5, sonrisa: 0.15, torcida: 0.4 });
+  d.limpiar();
+  esc.orbita({ centro: [0, 0.95, 0], distancia: 7, azimut: 0, elevacion: 3, fov: 26 }); esc.sombraEn(0, 0);
+  esc.dibujar(ctx);
+  const c = esc.proyectar(k.punto('cabeza'));
+  SIGNOS.forEach(([dx, dy, rot], i) => {
+    const a = U.easeOut(U.prog(t, 0.9 + i * 0.25, 1.4 + i * 0.25));
+    ctx.save(); ctx.globalAlpha = a; ctx.translate(c.x + dx, c.y + dy + (1 - a) * 30); ctx.rotate(rot);
+    ctx.font = '900 130px "Montserrat","Arial Black",system-ui,sans-serif'; ctx.fillStyle = C.TINTA; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('% ?', 0, 0); ctx.restore();
+  });
+  C.tarjeta(ctx, t, ['Porcentajes: sin medir'], { t0: 0.1, y: 300 });
+  C.letraPequena(ctx, ['No se ha encontrado ningún estudio', 'de karate que lo cuantifique']);
+};
+</script></body></html>

@@ -19,7 +19,11 @@ window.render = (t) => {
   esc.orbita({ centro: [0, U.lerp(1.05, 1.0, s), 0], distancia: U.lerp(5.2, 4.4, s), azimut: 0, elevacion: 8, fov: 30 });
   esc.dibujar(ctx);
   C.fecha(ctx, '1905', U.clamp(U.prog(t, 1.7, 2.2)), { y: 1290 });
-  C.aviso(ctx, t, 'Según él y un historiador', { t0: 1.7 });
+  { const a = U.clamp(U.prog(t, 1.7, 1.9)); if (a > 0) { // placa de papel, letra roja 56 px
+    ctx.save(); ctx.globalAlpha = a; ctx.font = '800 56px "Montserrat","Arial Black",system-ui,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    const w = ctx.measureText('Según él y un historiador').width + 56;
+    ctx.fillStyle = C.PAPEL; ctx.strokeStyle = C.ROJO; ctx.lineWidth = 4; ctx.beginPath(); ctx.roundRect(540 - w / 2, 1458, w, 84, 14); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = C.ROJO; ctx.fillText('Según él y un historiador', 540, 1502); ctx.restore(); } }
   C.tarjeta(ctx, t, ['1905: [r]Hanashiro[/r]'], { t0: 0.1, y: 330 });
 };
 </script></body></html>

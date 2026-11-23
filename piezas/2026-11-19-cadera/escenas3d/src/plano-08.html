@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cadera · plano 08</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, U } = S;
+window.DURACION = 2.5;
+// PLANO 8 (16,0–18,5): fondo papel, sin 3D. Cuatro columnas crecen de izquierda a derecha; la última en rojo. Cifras del storyboard (Suwarganda et al.).
+const BARRAS = [['cadera', 2.4, '≈ 2,4'], ['hombro', 4.3, '≈ 4,3'], ['codo', 7, '≈ 7'], ['muñeca', 7.3, '≈ 7,3']];
+window.render = (t) => {
+  EMAKI.fondoPapel(ctx);
+  C.K.columnas(ctx, { caja: { x: 110, y: 760, w: 860, h: 520 }, max: 7.3, grosor: 0.7, barras: BARRAS.map(([et, v, tx], i) => ({
+    valor: v, etiqueta: et, texto: tx, tam: 60, prog: U.prog(t, 0.2 + i * 0.35, 0.9 + i * 0.35), color: i === 3 ? C.ROJO : C.TINTA })) });
+  ctx.save(); ctx.font = '800 56px "Montserrat","Arial Black",system-ui,sans-serif'; ctx.fillStyle = C.TINTA; ctx.textAlign = 'left'; ctx.fillText('velocidad en m/s', 110, 700); ctx.restore();
+  C.tarjeta(ctx, t, ['Cada eslabón,', 'más rápido'], { t0: 0.1, y: 300 });
+  C.letraPequena(ctx, ['Según un estudio de gyaku-zuki', 'Suwarganda et al., ISBS', 'velocidad lineal de marcadores']);
+};
+</script></body></html>

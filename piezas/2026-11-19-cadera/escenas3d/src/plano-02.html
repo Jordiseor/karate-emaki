@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cadera · plano 02</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const S = C.iniciar(); const { ctx, esc, P, k, d, cad, U } = S;
+window.DURACION = 2.5;
+// PLANO 2 (2,5): cámara 3/4 que rodea; la cadera termina de girar, el brazo NO se extiende; «?» de tinta sobre el brazo.
+window.render = (t) => {
+  const p = U.easeInOut(U.prog(t, 0, 2.5));
+  k.colocar(0, 0, 90);
+  k.aplicarPose(C.mezclarCadena(P['gyaku-zuki-hanmi'], P['gyaku-zuki-kiai'], { cadera: 0.46 + (0.9 - 0.46) * p, tronco: C.gancho(2.5).tronco + (0.25 - C.gancho(2.5).tronco) * p, hombro: 0, codo: 0, mano: 0 }));
+  k.cara({ parpadeo: U.parpadeo(t, [1.9]), cejas: 0.3 });
+  d.limpiar();
+  esc.orbita({ ...C.CAM.perfil, azimut: 40 * p }); esc.sombraEn(0, 0);
+  esc.dibujar(ctx); d.dibujar2D && d.dibujar2D(ctx);
+  // «?» sobre el brazo
+  const q = esc.proyectar(k.punto('codoD')), a = U.easeOut(U.prog(t, 0.5, 1.1)), b = Math.sin(t * 5) * 6;
+  ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.TINTA; ctx.font = '900 190px "Montserrat","Arial Black",sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('?', q.x, q.y - 150 - 30 * (1 - a) + b); ctx.restore();
+  C.tarjeta(ctx, t, ['¿Quién arranca', 'el golpe?'], { t0: 0.1, y: 300 });
+};
+</script></body></html>
