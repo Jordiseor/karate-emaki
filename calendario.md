@@ -1,4 +1,4 @@
-# Calendario KARATE EMAKI: 14 de noviembre al 13 de diciembre de 2026
+# Calendario KARATE EMAKI: 14 de noviembre al 27 de diciembre de 2026
 
 Hora de Madrid. Ritmo desde el 18 nov (Jorge): 3 reels por semana, lunes, miércoles y sábado a las 19:30. Un interactivo cada 2 semanas. Nunca dos piezas de humor seguidas.
 
@@ -9,7 +9,7 @@ Hora de Madrid. Ritmo desde el 18 nov (Jorge): 3 reels por semana, lunes, miérc
 | Lun 16 nov | 12:47 | Shotokan no es un estilo: es una casa (`2026-11-09-nombre-shotokan`) | Historia | Publicada (adelantada por Jorge) |
 | Mar 17 nov | 18:17 | Hikite: el brazo que vuelve también golpea (`2026-11-12-hikite`) | Técnica | Publicada (Instagram) |
 | Mié 18 nov | 19:30 | El kiai gallo (`2026-11-12-kiai-gallo`) | Anécdotas y humor del dōjō | Publicada (Instagram), adelantada por Jorge |
-| Sáb 21 nov | 19:30 | El cinturón negro que le prestó el judo (`2026-11-16-cinturon-judo`) | Curiosidades | Programada (Metricool 435308666) |
+| Sáb 21 nov | 19:30 | El cinturón negro que le prestó el judo (`2026-11-16-cinturon-judo`) | Curiosidades | Publicada (Instagram) |
 | Lun 23 nov | 19:30 | Cómo se puntúa un combate de kumite WKF (`2026-11-16-kumite-puntos`) | Competición | Programada (Metricool 435309243) |
 | Mié 25 nov | 19:30 | Mismo puño, distinto golpe: el tiempo de contacto (`2026-11-17-tiempo-contacto`) | Ciencia | Programada (Metricool 435309271) |
 | Sáb 28 nov | 19:30 | Seiza: minuto 1 contra minuto 10 (`2026-11-17-seiza`) | Anécdotas y humor del dōjō | Programada (Metricool 435309309) |
@@ -18,8 +18,13 @@ Hora de Madrid. Ritmo desde el 18 nov (Jorge): 3 reels por semana, lunes, miérc
 | Mié 2 dic | 19:30 | De «mano china» a «mano vacía» (`2026-11-18-mano-vacia`) | Historia | Revisión (montado: 34 s, voz Kokoro) |
 | Sáb 5 dic | 19:30 | La cadera no es un adorno (`2026-11-19-cadera`) | Ciencia | Storyboard (30 s, 12 planos) |
 | Quincena 30 nov–13 dic | — | Interactivo: Embusen de Heian Shodan (`2026-11-16-embusen`) | Técnica | Aprobada por Jorge, copy listo; sin programar hasta tener enlace público (propuesto jue 10 dic 19:30); pasos 18–21 «a confirmar» |
+| Lun 7 dic | 19:30 | El error del ascensor: tu cabeza no debería subir (`2026-11-23-ascensor`) | Técnica | Storyboard (dosier hecho) |
+| Mié 9 dic | 19:30 | El dōjō Shōtōkan que duró seis años (`2026-11-23-dojo-1945`) | Historia | Storyboard (dosier hecho) |
+| Sáb 12 dic | 19:30 | Notas del móvil de un cinturón blanco (`2026-11-23-notas-movil`) | Anécdotas y humor del dōjō | Storyboard (dosier hecho) |
+| Quincena 14–27 dic | — | Interactivo: ¿Eres juez de kumite? ¿Puntúa o no? (`2026-11-23-puntua-o-no`) | Competición | Storyboard (dosier hecho) |
 
 Notas:
+- 23 nov (reunión de ideas, Sensei): cinturón publicado. Semana del 7 dic cubierta: ascensor (lun 7), dōjō 1939–1945 (mié 9), notas del móvil (sáb 12); interactivo ¿puntúa o no? en la quincena 14–27 dic. Sin huecos hasta el 13 dic.
 - 20 nov (producción, Sensei): Jorge aprueba las 6 piezas. Cinturón (sáb 21), kumite (lun 23), tiempo de contacto (mié 25) y seiza (sáb 28) programadas en Metricool. Los dos anuncios de interactivo esperan un enlace público; se proponen en jueves para no romper el ritmo lun/mié/sáb. Sin huecos en 2 semanas.
 - 19 nov (producción, Sensei): kiai gallo publicado. Sáb 5 dic cubierto con la cadera (Ciencia, candidata «gusta»). Tigre y mano vacía animados, a montaje.
 - 18 nov (Sensei): Jorge sube el ritmo a 3 reels por semana (lun, mié, sáb). Cinturón al sáb 21, kumite al lun 23, tiempo de contacto al mié 25, seiza sigue el sáb 28; nuevas: tigre lun 30 y mano vacía mié 2 dic. Seis piezas montadas van a aprobación a la vez.

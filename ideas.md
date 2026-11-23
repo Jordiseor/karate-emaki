@@ -46,6 +46,20 @@ Mano vacía ya no espera: va diez días después del anuncio de la línea tempor
 
 Candidata «gusta». Empata con «POV: tu primer día con el cinturón» (gusta, 17): gana por viabilidad y porque el sáb 28 ya es humor. Quedan 4 candidatas: POV cinturón, notas del móvil, podio olímpico y ¿puntúa o no?
 
+## Elegidas — reunión del 23 nov 2026
+
+Calendario cubierto hasta el sáb 5 dic. Estas piezas son para la semana del 7 dic y el interactivo de la quincena 14–27 dic. Reparto actual: Ciencia ya lleva 3 reels (zenkutsu, tiempo de contacto, cadera) y Técnica solo 1 (hikite, el más visto: 22.500 visualizaciones), así que esta semana no va Ciencia.
+
+| Pieza | Pilar | Formato | Puntos (gancho+Shotokan+animable+valor) | Hueco | Por qué |
+| --- | --- | --- | --- | --- | --- |
+| 2026-11-23-ascensor · El error del ascensor: tu cabeza no debería subir | Técnica | Reel 30–35 s | 5+5+5+5 = 20 | lun 7 dic | Error común que cambia cómo entrenas, como hikite. Las cifras de energía (34 J) son hipótesis: solo salen si el Investigador las respalda |
+| 2026-11-23-dojo-1945 · El dōjō Shotokan que duró seis años | Historia | Reel 35 s | 5+5+4+4 = 18 | mié 9 dic | Gancho fuerte y poco conocido; Historia va por debajo de su 25 %. Riesgo: fecha de apertura (1936 o 1939). Si no se cierra, el reel no da la cifra de años; si no hay pieza, entra el podio olímpico |
+| 2026-11-23-notas-movil · Notas del móvil de un cinturón blanco | Anécdotas y humor | Reel 15–20 s | 17 (candidata «gusta») | sáb 12 dic | Candidata «gusta» de Jorge; empata con tatami helado (17) y gana por el voto. El humor anterior es el sáb 28 |
+| 2026-11-23-puntua-o-no · ¿Eres juez de kumite? ¿Puntúa o no? | Competición (interactivo) | Interactivo (quiz) | 17 (candidata «gusta») | quincena 14–27 dic | Candidata «gusta»; reutiliza aka/ao y el reglamento WKF 2026 ya verificado del reel de kumite (lun 23) |
+
+Mejor no elegida: «Gyaku-zuki: el hombro que se adelanta te delata» (19), fuera solo para no poner dos de Técnica seguidas; primera candidata para la semana del 14 dic.
+Candidatas en la oficina tras la reunión: gyaku-zuki y hombro (19), corrige al karateka (interactivo, 18), tatami helado (17), el minuto antes del examen (17), estas katas se llamaban de otra forma (interactivo, 17), age-uke como desvío (17), más las que ya estaban: podio olímpico y POV cinturón.
+
 ## Descartadas
 
 | Idea | Pilar | Descartada por | Fecha |
@@ -283,3 +297,227 @@ Fuentes: https://blog.mean.ceo/instagram-trends-november-2026/ · https://fluxno
 - Por qué funciona: Humaniza al "crack" del dōjō y consuela al que se compara con él.
 - Animación: Dos figuras 3D de cinturón distinto; el compañero ejecuta cada kata en un sello rojo con su nombre y la protagonista lo mira con ojos como platos.
 - Dato a verificar: número de katas que incluye el currículo Shotokan (se citan 26 en la JKA, pero depende de la escuela; si no se verifica, cambiar el gancho a "todas las katas").
+
+## Propuestas — 2026-11-23 — Historia
+
+> Nota para el Sensei y el Investigador: todo lo que sigue sale de 6 búsquedas web y 4 lecturas rápidas (Wikipedia y shotokai.jp) y está **a verificar**. Nada sale en pantalla sin dosier. Evito lo ya hecho o en producción (nombre Shotokan, línea temporal, cinturón del judo, tigre, mano china/vacía, embusen, seiza) y lo ya en el banco (primer ataque, carta de 1908, cuatro maestros a Europa, España, quiz dato/leyenda, hitotsu, Shuri/Naha/Tomari). Ideas con vocación de guardar o compartir: 2, 4 y 7.
+
+### El hijo de Funakoshi que cambió el Shotokan
+- Pilar: Historia
+- Formato: reel (40 s)
+- Gancho (primeros 3 s): «El Shotokan que entrenas lo moldeó un hombre que murió a los 39 años.»
+- De qué va: Gigō (Yoshitaka) Funakoshi, tercer hijo de Gichin, enfermó de tuberculosis de niño, empezó karate para mejorar la salud y en Tokio llevó a la técnica más patadas altas, posiciones más largas y kumite libre. Su padre se centró en el «camino»; él definió buena parte de la técnica que hoy reconocemos. Murió en 1945.
+- Por qué funciona: pone una persona y una emoción detrás de la técnica de cada día, y cada karateka reconoce lo que le debe (mawashi-geri, kiba-dachi).
+- Animación: dos siluetas, padre e hijo, en tinta; las posiciones cortas del padre se «alargan» en las del hijo mientras aparecen en rojo las patadas que se añaden.
+- Dato a verificar: años de vida (1906–24 nov 1945, según Wikipedia en inglés); causa de la muerte (tuberculosis); qué cambios se le atribuyen de verdad (Wikipedia dice que sustituyó shiko-dachi por kiba-dachi y neko-ashi por kokutsu-dachi, y añadió patadas como mawashi-geri y yoko-geri kekomi, pero con una sola fuente: contrastar con historiadores del Shotokan); alumnos suyos (Kase, Mas Oyama).
+
+### El dōjō Shotokan que duró seis años
+- Pilar: Historia
+- Formato: reel (35 s)
+- Gancho (primeros 3 s): «El primer dōjō que se llamó Shōtōkan existió solo seis años. Lo borró una noche de abril.»
+- De qué va: según shotokai.jp, el dōjō de Zōshigaya (Tokio) se inauguró el 29 de enero de 1939 y quedó destruido el 29 de abril de 1945 en un gran bombardeo aéreo. Se cuenta qué pasó con el karate sin edificio: la fundación del nombre sobrevivió a la sala.
+- Por qué funciona: un dato muy concreto («seis años») con final dramático, que da perspectiva a un nombre que todos pronuncian sin saber que fue un edificio.
+- Animación: un dōjō de madera en sumi-e con rótulo de pincel; fuego estilizado en rojo en las cuatro esquinas y, al final, el rótulo con el nombre flotando sobre el solar vacío.
+- Dato a verificar: fechas exactas (otras fuentes dan 1936 para la construcción; shotokai.jp da 1939), lugar (Zōshigaya, Toshima), si fue en el bombardeo de abril de 1945 y si Funakoshi estaba allí. Nombre de la placa y su caligrafía solo si hay fuente. Cuidado con el tono: respetar a las víctimas, sin dramatizar.
+
+### Estas katas se llamaban de otra forma
+- Pilar: Curiosidades
+- Formato: interactivo (emparejar nombres antiguos y modernos)
+- Gancho (primeros 3 s): «Heian, Tekki, Kankū... ¿cómo se llamaban antes de llegar a Japón? Arrastra cada nombre a su pareja.»
+- De qué va: tarjetas con el nombre okinawense (Pinan, Naihanchi, Kushanku, Seisan, Chinto...) y las que llevan el nombre moderno del Shotokan (Heian, Tekki, Kankū, Hangetsu, Gankaku...). Al acertar, se abre una ficha corta con el significado (Heian: «paz y tranquilidad») y quién la creó o adaptó (Itosu y las Pinan).
+- Por qué funciona: se guarda como chuleta de katas y se comparte con el compañero del dōjō que sigue llamándolas por el nombre viejo.
+- Animación: tarjetas tipo pergamino que se emparejan con un sello rojo; el cinturón de progreso cambia de color al acertar.
+- Dato a verificar: el listado correcto de nombres antiguos y modernos (cada pareja necesita fuente; hay variantes); Wikipedia dice que Itosu adaptó las Pinan en la década de 1880 a partir de Kusanku y Channan y que Funakoshi las rebautizó Heian (misma escritura, lectura on'yomi), «paz y seguridad»; cuándo y por qué se renombraron las katas (la reforma de nombres de los años 30, a confirmar). Otras escuelas conservan los nombres antiguos: decirlo con respeto.
+
+### Gojūshiho: la kata cuyo nombre cambia según la escuela
+- Pilar: Curiosidades
+- Formato: reel (30 s)
+- Gancho (primeros 3 s): «Hay dos katas que, según la organización, intercambian el nombre. Y no hay un villano en esta historia.»
+- De qué va: Gojūshiho (五十四歩, «54 pasos») viene de una kata de Matsumura; en el Shotokan hay una versión «dai» y otra «shō», y según Wikipedia, Kanazawa afirma que cambió los nombres al formar su organización porque «shō» le parecía más adecuado a la más pequeña y difícil. Se cuenta el nombre, la curiosidad del número y por qué dos dōjō no se ponen de acuerdo sin decir que unos tengan razón.
+- Por qué funciona: resuelve esa duda de «a mí me enseñaron al revés» que todos hemos tenido, sin polémica.
+- Animación: dos cartelitos «dai» y «shō» que se cruzan como en un baile, y un contador de pasos en rojo.
+- Dato a verificar: significado literal (54 pasos); origen en Matsumura (Wikipedia); la versión de Kanazawa sobre el cambio de nombres (Wikipedia la cita) y que la historia del «error en un torneo JKA» es «sin fundamento» según la misma página; cuántos pasos tiene realmente la kata (no lo he encontrado). No tomar partido entre organizaciones (marca.md).
+
+### ¿Y si el karate no nació de una prohibición de armas?
+- Pilar: Curiosidades
+- Formato: reel (40 s)
+- Gancho (primeros 3 s): «Te han contado que el karate nació porque Satsuma prohibió las armas en Okinawa. Los historiadores lo discuten.»
+- De qué va: la historia popular dice que, tras la invasión de 1609, los okinawenses practicaron la mano vacía en secreto porque no podían tener armas. Se cuenta como leyenda: qué dicen las fuentes que la apoyan, qué dicen las que la ponen en duda y qué se sabe del tode antes de 1609.
+- Por qué funciona: derriba una creencia que casi todos han oído y que se comparte como «¿lo sabías?».
+- Animación: un rollo (emaki) que se despliega con la versión popular y, encima, un sello rojo que dice «LEYENDA» mientras aparece una segunda escena con fuentes en tinta.
+- Dato a verificar: la invasión de 1609 y si hubo prohibición de armas con consecuencias reales (ver ryukyu-bugei.com «The Weapons Ban Theories» y «Perception of the Weapons Ban Under Satsuma»; artículo de Asia-Pacific Journal «Examining the Myth of Ryukyuan Pacifism»); qué dicen los historiadores del karate; presentar el resultado con matices, no como «mentira».
+
+### Funakoshi nunca vio un campeonato de Shotokan
+- Pilar: Historia
+- Formato: reel (35 s)
+- Gancho (primeros 3 s): «El fundador del Shotokan no llegó a ver el primer campeonato de su estilo.»
+- De qué va: Funakoshi (Tokio, 1868–1957) murió en 1957; el primer campeonato All Japan de la JKA se disputó ese mismo año, según algunas fuentes meses después de su muerte. Se cuenta la tensión entre un maestro centrado en el «camino» y una nueva generación que apostaba por el kumite deportivo, sin juzgar a ninguno.
+- Por qué funciona: engancha a quienes siguen la competición y a quienes la miran con recelo, y cierra la historia de la quincena (1922–1958).
+- Animación: un tatami vacío con la silueta del maestro a un lado; el cartel del campeonato se enciende en rojo al otro lado, con una línea de pincel que nunca llega a juntarlos.
+- Dato a verificar: PRIORITARIO. Fecha de la muerte de Funakoshi (26 abr 1957, a confirmar) y fecha del primer All Japan de la JKA (1957, mes sin confirmar; ver jka.or.jp); qué pensaba Funakoshi de los campeonatos (no inventar: citar solo lo que esté documentado). Si las fechas no cuadran, descartar la idea.
+
+### ¿De qué maestro desciende tu dōjō? El árbol de linaje
+- Pilar: Historia
+- Formato: interactivo (árbol que se despliega al tocar)
+- Gancho (primeros 3 s): «Toca el nombre de tu maestro. Te mostramos de quién viene tu karate.»
+- De qué va: árbol en el que cada nodo es un maestro (Matsumura, Asato, Itosu, Funakoshi, Gigō, Nakayama, Kase, Enoeda, Shirai, Kanazawa...) con una línea de «a quién enseñó». Al tocar, se abre una tarjeta de 20 palabras y se marca con un trazo rojo el camino hasta el nodo elegido, con espacio para añadir ramas de España.
+- Por qué funciona: cualquiera puede buscarse en el árbol, lo compartirá («mira de dónde viene mi dōjō») y lo guardará para volver.
+- Animación: un árbol de tinta en tono papel que echa ramas, con nodos en forma de sello; la rama seleccionada se ilumina en rojo.
+- Dato a verificar: toda la cadena de maestro a alumno: Matsumura–Itosu y Asato–Funakoshi (a confirmar); Funakoshi–Gigō/Nakayama; Kase, Enoeda, Shirai y Kanazawa como instructores de la JKA (algunos datos ya en el banco, a verificar). Solo incluir enlaces con dos fuentes. Aviso de que hay otras ramas y estilos.
+
+---
+
+Pistas web (no verificadas): en.wikipedia.org (Gigō Funakoshi, Pinan, Gojūshiho, Gichin Funakoshi, JKA); shotokai.jp/en_about/en_history; ryukyu-bugei.com (prohibición de armas); apjjf.org / cambridge.org («Myth of Ryukyuan pacifism»); jka.or.jp (historia).
+
+## Propuestas — 2026-11-23 — Técnica
+
+> Nota para el Sensei y el Investigador: todo lo numérico son hipótesis de cálculo propio (Python, orden de magnitud) y está **a verificar**. Dos búsquedas web rápidas (de 8 permitidas) no dieron cifras citables; las referencias candidatas están en cada «Dato a verificar». Evito lo ya hecho o en banco (zenkutsu, hikite, puntuación WKF, tiempo de contacto, cadera, embusen, ¿puntúa o no?, podio, kata WKF 2026, mawashi-geri, empuja el suelo, kiba-dachi rodillas). Patrón buscado: el del hikite, «error común + física sencilla + detalle que cambia cómo entrenas».
+
+### El error del ascensor: tu cabeza no debería subir
+- Pilar: Técnica
+- Formato: reel (35 s)
+- Gancho (primeros 3 s): «Si tu cabeza sube y baja al avanzar, estás tirando energía a la basura.»
+- De qué va: Oi-zuki visto de lado, correcto frente a incorrecto. En el incorrecto el centro de masas sube y baja (efecto ascensor); en el correcto la cadera viaja en horizontal. Una barra de energía muestra cuánto se gasta en subir.
+- Por qué funciona: Error muy común, se corrige sin material y lleva a un «grábalo y compárate» que la gente guarda.
+- Animación: Dos karatekas 3D lado a lado, cámara lateral, una línea roja traza la trayectoria de la cabeza (recta contra ola) y un contador de julios.
+- Dato a verificar: Hipótesis de cálculo: 70 kg subiendo 5 cm = m·g·h ≈ 34 J, del mismo orden que la energía cinética de un puño (masa efectiva 1-3 kg a ~6 m/s = 18-54 J). Verificar velocidad del puño en gyaku/oi-zuki (p. ej. Kinematics of self-initiated and reactive karate punches, PubMed 24749243) y que la «cabeza estable» es criterio de enseñanza JKA/Shotokan.
+
+### Age-uke no es un muro: es un desvío
+- Pilar: Ciencia
+- Formato: reel (30 s)
+- Gancho (primeros 3 s): «Bloquear con fuerza es de principiante. El cinturón negro desvía.»
+- De qué va: Con vectores, un golpe que llega de frente necesita mucha fuerza para pararse, pero solo una pequeña fuerza lateral para desviarlo unos centímetros si se aplica pronto. Se explica por qué age-uke sube y gira el antebrazo en diagonal en lugar de empujar hacia atrás.
+- Por qué funciona: Cambia la idea de «bloqueo» con una imagen de física que se entiende a la primera.
+- Animación: Vista cenital: un puño rojo avanza en línea; el antebrazo lo toca en ángulo y la trayectoria se curva. Se compara con el bloqueo plano, que lo frena de golpe y el karateka retrocede.
+- Dato a verificar: Cálculo aproximado (masa del brazo atacante ~2 kg a 6 m/s, desvío de 15 cm en 0,1 s) para fijar la fuerza lateral; confirmar el ángulo del antebrazo y la función de desvío de uke-waza en un texto de referencia (Nakayama, Dynamic Karate, o JKA).
+
+### Interactivo: ¿Llegas a bloquear? Tu reacción contra su puño
+- Pilar: Ciencia
+- Formato: interactivo
+- Gancho (primeros 3 s): «Un puño tarda menos en llegar que tú en reaccionar. ¿Entonces cómo se bloquea?»
+- De qué va: Simulador con deslizadores de distancia (ma-ai, el «intervalo de combate»), velocidad del puño y tiempo de reacción. Muestra en una línea de tiempo si llegas a bloquear viendo el golpe o si hay que leer la intención (inicio del hombro, mirada).
+- Por qué funciona: Interactivo que se juega con el dedo y deja la sensación de «ahora entiendo por qué se entrena la distancia».
+- Animación: Línea de tiempo horizontal con dos barras (reacción del defensor, viaje del puño) y un karateka 3D que cambia de distancia al mover el deslizador.
+- Dato a verificar: Tiempo de reacción visual simple (~200-250 ms, hipótesis) y velocidades de puño en karatekas; tiempo de viaje del puño a 0,6 m y 6 m/s ≈ 0,1 s (cálculo mío). Buscar estudios de reacción en karate de competición.
+
+### Mae-geri: keage y kekomi, el mismo pie con dos físicas
+- Pilar: Técnica
+- Formato: reel (40 s)
+- Gancho (primeros 3 s): «Dos mae-geri que parecen iguales y hacen cosas opuestas.»
+- De qué va: Keage (patada de chasquido, el pie rebota) frente a kekomi (patada de empuje, la cadera acompaña). Se muestra con vectores por qué una es rápida y ligera, y la otra, lenta y penetrante.
+- Por qué funciona: Aclara una duda real de cinturones de color y se puede aplicar en el siguiente entrenamiento.
+- Animación: Vista lateral en cámara lenta, trayectoria del pie en dos colores, flecha roja de fuerza y marca de la cadera (se queda atrás en keage, avanza en kekomi).
+- Dato a verificar: Definiciones de keage y kekomi y a qué zona se golpea (koshi, la base de los dedos del pie) en una fuente de referencia (JKA, Nakayama). Evitar comparaciones numéricas sin estudio.
+
+### Por qué rebotan los competidores de kumite
+- Pilar: Competición
+- Formato: reel (35 s)
+- Gancho (primeros 3 s): «¿Por qué los de competición no paran quietos? No es nerviosismo: es física.»
+- De qué va: El rebote mantiene el cuerpo ya «cargado» (el músculo y el tendón almacenan energía elástica) y evita tener que vencer la inercia desde parado. Se compara el primer paso desde quieto con el primero desde el rebote.
+- Por qué funciona: Responde a una pregunta que se hace cualquier aficionado al ver un combate y gusta a competidores.
+- Animación: Dos combatientes 3D de perfil, uno parado y otro rebotando; resorte dibujado en la pierna y reloj que marca el instante de salida.
+- Dato a verificar: Que el ciclo estiramiento-acortamiento y el ahorro de tiempo de salida tienen respaldo en estudios de kumite (buscar «karate kumite footwork bouncing stretch-shortening» y publicaciones WKF). No dar milisegundos sin fuente.
+
+### La mirada del kumite: dónde mira quien gana
+- Pilar: Competición
+- Formato: reel (30 s)
+- Gancho (primeros 3 s): «Los mejores del mundo no miran el puño. Miran esto.»
+- De qué va: Resumen de lo que se sabe de la mirada en combate (campo visual amplio, pecho y hombros, sin fijar el puño). Se anima con un punto de mirada que salta al puño contra otro que se queda en el centro.
+- Por qué funciona: Detalle que cambia cómo entrenas, sin material y con imagen potente de «cómo ve un campeón».
+- Animación: Vista subjetiva (POV) del competidor con círculo de visión nítida y borde difuminado; el atacante entra y se ve qué parte de su cuerpo anticipa el golpe.
+- Dato a verificar: Estudios de seguimiento ocular en karate (expertos frente a novatos: «visual search» y «gaze» en kumite). Si no hay evidencia fuerte, convertirlo en «lo que dicen los entrenadores» y no presentarlo como ciencia.
+
+### Gyaku-zuki: el hombro que se adelanta te delata
+- Pilar: Técnica
+- Formato: reel (30 s)
+- Gancho (primeros 3 s): «Tu gyaku-zuki avisa antes de salir. Mira el hombro.»
+- De qué va: Error de «telegrafiar»: el hombro adelantado, el codo hacia fuera o el cuerpo que se echa atrás anuncian el golpe. Se anima con una cámara frontal que resalta el movimiento previo y la versión limpia, en la que el hombro apenas se mueve hasta el final.
+- Por qué funciona: Error muy reconocible, vale para todos los cinturones, y enlaza con el éxito del hikite sin repetirlo.
+- Animación: Vista frontal de dos karatekas con puntos rojos en hombro y codo; flechas de movimiento previo y reloj de «aviso» en fracciones de segundo.
+- Dato a verificar: Que «telegrafiar» (movimiento anticipatorio) se enseña así en kumite y si hay datos de tiempo de aviso; no inventar milisegundos. Comprobar con fuentes que el hombro sale al final en la técnica base.
+
+### Interactivo: Corrige al karateka (tres errores, tres toques)
+- Pilar: Técnica
+- Formato: interactivo
+- Gancho (primeros 3 s): «Hay tres errores en este oi-zuki. Encuentra el primero.»
+- De qué va: Un oi-zuki 3D que se puede girar con el dedo; el usuario toca la cabeza (ascensor), el hombro (telegrafía) o el pie trasero (talón levantado) y recibe la explicación con física sencilla. Cierra con «guarda esto para tu próximo entrenamiento».
+- Por qué funciona: Combina «error común» y «guardar para entrenar», lo que más funcionó en hikite, con la gracia de jugar.
+- Animación: Modelo 3D rotable con puntos calientes y flechas rojas que aparecen al tocar el fallo.
+- Dato a verificar: Que los tres errores elegidos son los habituales en los manuales (Nakayama / JKA) y que no se contradicen con las piezas del ascensor y la telegrafía; coordinar con Modelador 3D para la pose incorrecta.
+
+## Propuestas — 2026-11-23 — Humor
+
+Formatos que he mirado (23 nov 2026). Todo es pista, no fuente verificada.
+
+- **Remix de formatos ganadores** (coger la estructura de un formato que ya funciona y ejecutarla con voz propia): fluxnote.io, «State of Short-Form Video 2026». Es la base de todas las ideas: tomamos la estructura, no el audio.
+- **Rankings tier-list**: según la misma fuente, los que más comentarios generan. Ya tenemos uno en el banco (ranking de dolores), así que hoy no lo repito.
+- **Texto sobre audio de tendencia**: la misma fuente dice que dura unos cinco días. No lo seguimos: cada pieza lleva sonido propio, sintetizado por Sonido (pasos en tatami, palmadas, un gong suave, silencio con remate en texto), o la biblioteca de la red si el Editor lo decide. Nunca el audio de moda con derechos.
+- **Bucles de 8-15 s**: el último fotograma enlaza con el primero para que se vea dos veces. Me apoyo en lo ya anotado el 16 nov (menos de 15 s retiene mejor al inicio, dato de fluxnote.io sin fuente clara). Las búsquedas no me dieron una cifra fiable de bucles; es criterio nuestro, a medir en `metricas.csv` tras publicar.
+- Un artículo de Metricool (6 millones de vídeos) confirma solo que Instagram lidera en comentarios y engagement; no habla de formatos. Pista débil.
+
+Fuentes: https://fluxnote.io/blog/state-of-short-form-video-2026 · https://metricool.com/es/tendencias-video-corto-redes-sociales/
+
+No repito: kiai gallo, seiza, notas del móvil, POV cinturón, ranking de dolores, lo que dice el sensei, el que vuelve tras tres meses, relájate con kime, el compañero de todas las katas, contar en japonés (descartada).
+
+### Tipos de alumnos en la cena de fin de año del club
+- Pilar: Anécdotas y humor
+- Formato: reel (18-20 s), «tipos de alumnos» (remix del formato de personajes)
+- Gancho (primeros 3 s): «Tipos de alumnos en la cena de Navidad del dōjō:»
+- De qué va: Cuatro figuras 3D en una mesa larga: la que llega la primera y coloca a todos por cinturón, el que se sienta con el karategi puesto «por si acaso», el que pide la ración más grande «porque mañana entreno» y la que hace el brindis perfecto. Remate: todos levantan el vaso y el texto dice «Kanpai (乾杯): brindis, literalmente "copa seca"».
+- Por qué funciona: Todo club tiene su cena y cada espectador se reconoce en un tipo y etiqueta al otro.
+- Animación: Mesa cenital con cuatro figuras y una etiqueta roja sobre cada una que aparece con un «pop»; sin música, solo ruido de platos sintetizado.
+- Dato a verificar: significado de kanpai (乾杯) y que se usa en Japón para brindar; no afirmar que sea costumbre de los clubes de karate en España (aquí es solo un guiño).
+
+### Tatami helado: el baile del descalzo
+- Pilar: Anécdotas y humor
+- Formato: reel (10 s, bucle)
+- Gancho (primeros 3 s): «Diciembre. El tatami. Tú, sin calcetines.»
+- De qué va: La figura entra al dōjō y pisa el tatami frío: da saltitos, camina de puntillas y vuelve a su sitio, y en el último fotograma vuelve a entrar para empezar otra vez (bucle). Texto final: «Se entrena descalzo: el pie siente el suelo y el tatami se mantiene limpio».
+- Por qué funciona: Cualquiera que entrene en invierno lo ha sufrido, y un bucle corto se reproduce dos veces seguidas.
+- Animación: Pies 3D en primer plano con escarcha azul en las plantas y un termómetro que baja; el bucle cierra con el mismo plano de entrada.
+- Dato a verificar: que la costumbre de entrenar descalzo se explique así (limpieza y contacto con el suelo); buscar fuente y no afirmar beneficios médicos. Sin aviso de seguridad no hace falta, pero que Técnica confirme el calentamiento mencionado, si sale.
+
+### Última vez, de verdad: el contador del sensei
+- Pilar: Anécdotas y humor
+- Formato: reel (12-15 s, bucle infinito)
+- Gancho (primeros 3 s): «Sensei: "Última vez."»
+- De qué va: Un contador en pantalla marca «última vez» y salta a «otra vez, una más», luego «de verdad la última» y vuelve a empezar. La figura repite el mismo oi-zuki cada vez un poco mejor y, en el último bucle, el sensei (silueta) asiente sin decir nada. Texto final: «Mō ichido (もう一度): otra vez».
+- Por qué funciona: Todo el que ha pasado por el dōjō conoce el «otra vez» y el bucle hace sentir la repetición.
+- Animación: Contador rojo que sube sin fin y la figura 3D repitiendo el golpe mientras su postura mejora; la última escena enlaza con la primera.
+- Dato a verificar: que «mō ichido» (もう一度) significa «una vez más» y se usa así en un dōjō (a veces se oye «mō ichi do» o «mō ikkai»).
+
+### Zapatos en fila: lo que ve el sensei al entrar
+- Pilar: Anécdotas y humor
+- Formato: reel (12-15 s), expectativa vs realidad
+- Gancho (primeros 3 s): «Así deja los zapatos un cinturón blanco. Así los deja uno negro.»
+- De qué va: Dos entradas de dōjō lado a lado: a la izquierda, zapatillas y chanclas esparcidas; a la derecha, un par ordenado con las punteras hacia fuera, y una mano que endereza el de la izquierda sin decir nada. Remate: «Quien ordena la entrada, ya ha empezado a entrenar».
+- Por qué funciona: Es un detalle de etiqueta que todos han visto y que enseña una costumbre sin sermón.
+- Animación: Pantalla dividida con dos entradas 3D de madera cálida; el zapato rebelde se mueve solo a su sitio con un «clac» sintetizado.
+- Dato a verificar: que colocar el calzado ordenado (punteras hacia fuera) es costumbre extendida en el dōjō y en Japón; no afirmar que sea regla universal ni que la tradición de la frase final venga del dōjō kun (esa frase es nuestra, no una cita).
+
+### El minuto antes de que te llamen al examen
+- Pilar: Anécdotas y humor
+- Formato: reel (15-18 s), voz interior en texto
+- Gancho (primeros 3 s): «Tu cabeza, un minuto antes del examen de cinturón:»
+- De qué va: Pensamientos en burbujas sobre la figura sentada en seiza: «¿Cuál era el primer paso?», «¿Y si me olvido del kiai?», «Tengo sed». Suena el nombre, la figura se levanta, hace el saludo (rei) y la kata sale sola: las burbujas se apagan una a una. Texto final: «Por eso se repite mil veces: para que el cuerpo sepa cuando la cabeza no».
+- Por qué funciona: Mucho público se examina en diciembre y ve su propio nervio con humor y consuelo.
+- Animación: Burbujas de pensamiento rojas sobre la figura 3D que explotan una a una al empezar el movimiento, con silencio total salvo el kiai.
+- Dato a verificar: que «rei» (礼) es el saludo (inclinación) y se hace antes y después de la kata; no incluir ninguna cifra de aprobados ni reglas de examen concretas (varían por federación).
+
+### Carta a los Reyes Magos de un karateka
+- Pilar: Anécdotas y humor
+- Formato: reel (15-20 s), lista cómica (remix de «mi lista de deseos»)
+- Gancho (primeros 3 s): «Querido Rey Mago: este año solo quiero…»
+- De qué va: Una carta en papel con cinco peticiones tachadas una a una por la realidad: «un karategi que no se arrugue», «que el cinturón se ate solo», «un día sin agujetas», «que mi kiai suene a kiai», «una hora más de entrenamiento». El Rey Mago responde con un único regalo: un cinturón nuevo, todavía sin estrenar. Remate: «El karategi (空手着) se lleva limpio y planchado; es una forma de respeto».
+- Por qué funciona: Es la pieza estacional de la semana del 5 de enero y se comparte como felicitación divertida.
+- Animación: Carta en tono papel con la figura 3D leyendo en voz alta; cada deseo se arruga y se lanza a una papelera con un golpe rojo sintético.
+- Dato a verificar: que el karategi debe llevarse limpio como norma de etiqueta (muy habitual, confirmar en un manual o en el dōjō kun de la escuela); evitar el mito de «no lavar el cinturón», que va al quiz de mitos. Si se publica antes del 6 de enero, ajustar el texto.
+
+### El timbre de la vuelta: el último entreno del año
+- Pilar: Anécdotas y humor
+- Formato: reel (15 s), mini escena con giro tierno
+- Gancho (primeros 3 s): «Último entreno del año. El sensei dice: "Hoy, solo kihon."»
+- De qué va: Los alumnos esperaban un día fácil y descubren que «solo kihon» son cien golpes seguidos. Al final, el sensei los despide con un saludo y cada uno sale con una sonrisa cansada. Texto final: «Kihon (基本): los fundamentos. Se repiten siempre, incluso el último día del año».
+- Por qué funciona: Cierra el año con cariño y el chiste «solo» es de los más reconocibles del dōjō.
+- Animación: Fila de figuras 3D con un contador de golpes en rojo que sube y una cara que se arruga más con cada decena, y un plano final cálido con nieve fuera de la ventana.
+- Dato a verificar: que kihon (基本) significa «fundamentos» y es la parte básica de la práctica; no inventar la cifra de cien golpes como costumbre (es exageración cómica y se presenta como tal).

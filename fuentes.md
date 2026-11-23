@@ -77,3 +77,34 @@
 | Jin et al. 2025, Frontiers in Physiology 1607933 | Cadena cinética en el puñetazo | Media |
 | Tajibaev et al. 2026, Acta Bioeng. Biomech. 28(2) | Cinemática del puñetazo | Media |
 | Diccionario JMdict (vía nihongomaster.com, entrada 虎の巻) | tora no maki = libro de secretos / manual; lit. «rollo del tigre» (pieza tigre, plano 8) | Media-alta |
+
+## Error del ascensor (23 nov 2026)
+| Fuente | Qué respalda | Fiabilidad |
+| --- | --- | --- |
+| JKA Technical Division, *Technical Manual for the Instructor* (1 oct 2008) — https://karate.sites.yale.edu/sites/default/files/files/tech_manual_instructor.pdf | Oi-zuki / jun-zuki: «el nivel de la cadera no debe cambiar al moverse»; cadera paralela al suelo al avanzar; tronco sin inclinar; altura del centro de gravedad igual en todas las posiciones; zenkutsu 6:4 | Alta |
+| Loczi, «Biomechanics of the oi-tsuki in zenkutsu-dachi», ISBS — https://ojs.ub.uni-konstanz.de/cpa/article/view/1457/1341 | Oi-tsuki, 4 karatekas; puño 5,7–9,8 m/s según literatura citada; expertos concentran picos de velocidad; sin datos verticales | Media |
+| Stull y Barham, «Movement Patterns Utilized by Different Styles in the Karate Reverse Punch in Front Stance» — https://ojs.ub.uni-konstanz.de/cpa/article/view/1805/1678 | Gyaku-zuki en zenkutsu, 4 estilos; solo velocidades horizontales (útil para decir qué NO está medido) | Media-baja |
+| Martinez de Quel y Bennett, RQES 85(1):117-123, 2014 (ficha LJMU) — https://researchonline.ljmu.ac.uk/id/eprint/1533/ | Gyaku-zuki: velocidad pico mayor en karatekas que en no karatekas (sin cifras en el resumen) | Media (solo ficha) |
+
+## Dōjō Shōtōkan 1939–1945 (23 nov 2026)
+| Fuente | Qué respalda | Fiabilidad |
+| --- | --- | --- |
+| Fedman y Karacas, «Perdition: A Forgotten Tokyo Firebombing Raid», APJ Japan Focus — https://apjjf.org/?p=17098 | Incursión nocturna del 13–14 abr 1945 (22:57–02:36) sobre Toshima; tres cuartas partes de Toshima arrasadas; 778 muertos en Toshima | Alta (contexto) |
+| Shōtōkai EN, History — https://www.shotokai.jp/en_about/en_history/ (reconfirmado) | Dōjō 29 ene 1939; «arde» 1945 (el día, dudoso: 13 o 29 abr) | Alta (día: baja) |
+
+## Notas del móvil (23 nov 2026)
+| Fuente | Qué respalda | Fiabilidad |
+| --- | --- | --- |
+| Wikipedia «Oss (greeting)» — https://en.wikipedia.org/wiki/Oss_(greeting) | Osu 押忍 = ateji; varias teorías de origen; contracción de «ohayō gozaimasu» | Media (pista) |
+| gojuryu.net, Understanding Osu 押忍 (2024) | Origen debatido (onegai shimasu, oshi shinobu, ohayō gozaimasu); uso moderado; connotación en Okinawa | Media |
+| Wikipedia «Sensei» — https://en.wikipedia.org/wiki/Sensei | 先生 = «nacido antes»; sempai 先輩 | Media-alta |
+| Wikipedia «Senpai and kōhai» — https://en.wikipedia.org/wiki/Senpai_and_kōhai | 先輩 / 後輩 = senior / junior | Media-alta |
+| Wikipedia «Kiai» — https://en.wikipedia.org/wiki/Kiai | 気合: ki + ai; sale del hara | Media |
+| Wikipedia «Keikogi» — https://en.wikipedia.org/wiki/Keikogi | 稽古着, 道着, 空手着; Kanō; Funakoshi adopta uniforme | Media |
+| Columbia JKA, japanese terms — https://columbia.edu/cu/jka/japanese_terms.html | rei = bow; sempai, kohai, kiai, dōjō, kata, kumite (sin kanji) | Media |
+
+## ¿Puntúa o no? (interactivo) (23 nov 2026)
+| Fuente | Qué respalda | Fiabilidad |
+| --- | --- | --- |
+| WKF Kumite Competition Rules 2024 (copia Karateliitto) — https://karateliitto.fi/app/uploads/2024/02/WKF_Kumite_Competition_Rules_2024.pdf | Arts. 8.1–8.12 (2024): invalidez tras yame, jōgai, espalda, contacto excesivo; ausencia de cláusula de simultáneas; 9.1.1 garganta. Numeración de 2024 = la de 2026 +1 desde 8.9 | Alta (versión anterior; cotejar con 2026) |
+| WKF Kumite Questions, Dic 2025 (Karateliitto) — https://karateliitto.fi/app/uploads/2026/02/KumiteQuestions_English_Dec2025.pdf | Preguntas de examen de árbitros sin clave; casos de tras yame, contacto, tiempo cumplido; contiene contradicciones internas | Media (solo apoyo) |
