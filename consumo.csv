@@ -146,3 +146,9 @@ fecha,agente,pieza,modelo,tokens,usos_herramientas,minutos
 2026-11-23,animador,2026-11-19-cadera (tramo B + reencuadre),sonnet→opus,85000,30,8
 2026-11-23,animador,2026-11-19-cadera (tramo C + reencuadre),sonnet→opus,48000,18,7
 2026-11-23,sensei,producción 23 nov (Metricool; métricas; revisión; oficina),opus,90000,40,95
+2026-11-24,investigador,2026-11-16-kumite-puntos (zonas WKF),sonnet,27600,7,1.6
+2026-11-24,modelador-3d,kumite v2 (patadas),sonnet,104313,30,7.5
+2026-11-24,animador,2026-11-16-kumite-puntos (v2 6 planos),sonnet,73103,22,6.2
+2026-11-24,marketing,2026-11-16-kumite-puntos (copy v2),haiku,23799,7,0.4
+2026-11-24,editor,2026-11-16-kumite-puntos (montaje v2),sonnet,39302,17,2.5
+2026-11-24,sensei,kumite v2 (storyboard; revisión; Metricool),opus,60000,30,20

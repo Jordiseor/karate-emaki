@@ -10,7 +10,8 @@ Hora de Madrid. Ritmo desde el 18 nov (Jorge): 3 reels por semana, lunes, miérc
 | Mar 17 nov | 18:17 | Hikite: el brazo que vuelve también golpea (`2026-11-12-hikite`) | Técnica | Publicada (Instagram) |
 | Mié 18 nov | 19:30 | El kiai gallo (`2026-11-12-kiai-gallo`) | Anécdotas y humor del dōjō | Publicada (Instagram), adelantada por Jorge |
 | Sáb 21 nov | 19:30 | El cinturón negro que le prestó el judo (`2026-11-16-cinturon-judo`) | Curiosidades | Publicada (Instagram) |
-| Lun 23 nov | 19:30 | Cómo se puntúa un combate de kumite WKF (`2026-11-16-kumite-puntos`) | Competición | Programada (Metricool 435309243) |
+| Lun 23 nov | 19:30 | Cómo se puntúa un combate de kumite WKF (`2026-11-16-kumite-puntos`) | Competición | Publicada y borrada por Jorge (error: patada a la espalda) |
+| Mar 24 nov | 10:15 | Kumite v2: ¿cuánto vale cada golpe? (`2026-11-16-kumite-puntos`) | Competición | Programada (Metricool 439973917), pedido por Jorge |
 | Mié 25 nov | 19:30 | Mismo puño, distinto golpe: el tiempo de contacto (`2026-11-17-tiempo-contacto`) | Ciencia | Programada (Metricool 435309271) |
 | Sáb 28 nov | 19:30 | Seiza: minuto 1 contra minuto 10 (`2026-11-17-seiza`) | Anécdotas y humor del dōjō | Programada (Metricool 435309309) |
 | Quincena 16–29 nov | — | Interactivo: De Okinawa a Tokio en 36 años (`2026-11-12-linea-temporal`) | Historia | Aprobada por Jorge, copy listo; sin programar hasta tener enlace público del interactivo (propuesto jue 26 nov 19:30) |
