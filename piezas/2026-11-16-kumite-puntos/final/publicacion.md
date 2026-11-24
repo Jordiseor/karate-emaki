@@ -6,3 +6,4 @@
 - Metricool: id 439973917 · uuid 812235822786301814 · pendiente al programar
 - Planificador: https://app.metricool.com/planner/calendar?blogId=8028366&openWithPostUuid=812235822786301814
 - Texto: copy.md (Instagram + hashtags); primer comentario: «Comentario fijado»
+- Publicada el 24 nov 10:15: https://www.instagram.com/reel/DgHnFJlCTmc/
