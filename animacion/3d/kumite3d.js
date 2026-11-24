@@ -31,7 +31,12 @@ export function crearPareja(esc, o = {}) {
     // pone `ao` donde le toca a la técnica de `aka` (ya con su pose aplicada y ao con la suya): el pie/puño se detiene a `hueco` m de la superficie.
     // tecnica: 'mawashi-geri-jodan' (cabeza) | 'mawashi-geri-chudan' (costado) | 'mawashi-geri-espalda' (espalda) | 'mae-geri-chudan' (pecho) | 'gyaku-zuki-chudan' (pecho, puño)
     // Devuelve la distancia final (m); par.contacto = { zona, normal } (normal = coseno entre la dirección de contacto y la normal esperada: <0,5 = mal ángulo).
-    alinear(tecnica, { hueco = 0.03, pose = null } = {}) { const d = alinearRival(aka, ao, tecnica, { hueco, pose }); par.contacto = alinearRival.ultimo; return d; }
+    // v3 (2026-11-24): + 'gyaku-zuki-jodan' (cara) | 'garganta' | 'union-brazo-hombro' (hombro más cercano al puño) | 'puno-remate-bajo' (pecho de un caído).
+    // Opciones: `atacante: 'ao'` (ao golpea a aka; aka es el rival) y `aplicar: (rival) => …` (cómo re-poner al rival en cada tanteo; con tumbar(): `(r) => tumbar(r, P, { f: 1 })`).
+    alinear(tecnica, { hueco = 0.03, pose = null, atacante = 'aka', aplicar = null } = {}) {
+      const [A, R] = atacante === 'ao' ? [ao, aka] : [aka, ao];
+      const d = alinearRival(A, R, tecnica, { hueco, pose, aplicar }); par.contacto = alinearRival.ultimo; return d;
+    }
   };
   return par.colocar(o.distancia);
 }
@@ -43,10 +48,16 @@ const ZONAS = {
   'mawashi-geri-chudan': { forma: 'tronco', normal: [1, 0, 0], ini: [0.2, 0] },
   'mawashi-geri-espalda': { forma: 'tronco', normal: [0, 0, -1], ini: [0.2, 0] },
   'mae-geri-chudan': { forma: 'tronco', normal: [0, 0, 1], ini: [0, 0.2] },
-  'gyaku-zuki-chudan': { forma: 'tronco', normal: [0, 0, 1], ini: [0, 0.2], mano: true }
+  'gyaku-zuki-chudan': { forma: 'tronco', normal: [0, 0, 1], ini: [0, 0.2], mano: true },
+  'gyaku-zuki-jodan': { forma: 'cabeza', normal: null, ini: [0, 0.25], mano: true },
+  // zonas puntuales: esfera de radio r en centro(rival, puntoDelAtaque)
+  'garganta': { forma: 'punto', centro: (r) => r.punto('cabeza').add(V3(0, -0.2, 0)), r: 0.08, ini: [0, 0.2], mano: true },
+  'union-brazo-hombro': { forma: 'punto', centro: (r, p) => { const a = r.punto('hombroI'), b = r.punto('hombroD'); return a.distanceTo(p) < b.distanceTo(p) ? a : b; }, r: 0.09, ini: [0, 0.2], mano: true },
+  'puno-remate-bajo': { forma: 'punto', centro: (r) => r.punto('pecho'), r: 0.125, ini: [0, 0], mano: true }
 };
 // distancia con signo (m) de un punto del mundo a la zona de ao (negativa = dentro) y dirección horizontal «de la zona hacia el punto»
 function distZona(ao, zona, p) {
+  if (zona.forma === 'punto') { const c = zona.centro(ao, p), v = p.clone().sub(c); return { d: v.length() - zona.r, v, c }; }
   if (zona.forma === 'cabeza') {
     const c = ao.punto('cabeza'), v = p.clone().sub(c); return { d: v.length() - 0.19, v, c };
   }
@@ -58,14 +69,14 @@ function distZona(ao, zona, p) {
 }
 
 // Mueve `ao` (rígido, en el suelo) para que la técnica de `aka` termine a `hueco` m de su cuerpo. Llámalo después de aplicarPose a los dos y antes de dibujar.
-export function alinearRival(aka, ao, tecnica, { hueco = 0.03, pose = null } = {}) {
+export function alinearRival(aka, ao, tecnica, { hueco = 0.03, pose = null, aplicar = null } = {}) {
   const Z = ZONAS[tecnica]; if (!Z) throw new Error('técnica sin zona: ' + tecnica);
   const a = aka.base.rumbo * D2R, fw = V3(Math.sin(a), 0, Math.cos(a)), lat = V3(Math.cos(a), 0, -Math.sin(a));
   const muestras = () => (Z.mano ? [[aka.punto('manoD'), 0.05]] : [[aka.punto('tobilloD'), 0.05], [aka.punto('puntaD'), 0.04], [aka.punto('talonD'), 0.045],
     [aka.punto('tobilloD').lerp(aka.punto('puntaD'), 0.5), 0.045]]);
-  const puesta = (dx, dz) => { const b = ao.base; ao.colocar(b.x + dx, b.z + dz, b.rumbo); if (pose) ao.aplicarPose(pose); else if (ao.pose) ao.aplicarPose(ao.pose); };
+  const puesta = (dx, dz) => { const b = ao.base; ao.colocar(b.x + dx, b.z + dz, b.rumbo); if (aplicar) aplicar(ao); else if (pose) ao.aplicarPose(pose); else if (ao.pose) ao.aplicarPose(ao.pose); };
   // 1. punto de partida: centro de la zona al lado/delante de la muestra principal
-  const F = muestras()[0][0], R = Z.forma === 'cabeza' ? ao.punto('cabeza') : ao.punto('cadera');
+  const F = muestras()[0][0], R = Z.forma === 'cabeza' ? ao.punto('cabeza') : Z.forma === 'punto' ? Z.centro(ao, F) : ao.punto('cadera');
   const obj = F.clone().addScaledVector(lat, Z.ini[0]).addScaledVector(fw, Z.ini[1]);
   puesta(obj.x - R.x, obj.z - R.z);
   // 2. refinamiento: desplaza a ao en horizontal hasta que la muestra más cercana quede a `hueco`
@@ -79,7 +90,7 @@ export function alinearRival(aka, ao, tecnica, { hueco = 0.03, pose = null } = {
   }
   let normal = 1;
   if (Z.normal && mejor.q) { const n = V3(...Z.normal), v = mejor.q.clone(); v.y = 0; normal = v.lengthSq() ? v.normalize().dot(n) : 0; }
-  alinearRival.ultimo = { zona: tecnica, normal: +normal.toFixed(2) };
+  alinearRival.ultimo = { zona: tecnica, normal: +normal.toFixed(2), hueco: +mejor.d.toFixed(3) };
   return +mejor.d.toFixed(3);
 }
 
@@ -95,11 +106,17 @@ export const TECNICAS = {
   'mawashi-geri-espalda': { prep: 'mawashi-geri-prep', golpe: 'mawashi-geri-chudan', zona: 'mawashi-geri-espalda', ao: 'ao-de-espaldas', rumboAo: 65, camara: { azimut: -90, distancia: 10.5, elevacion: 3, fov: 26, centro: [0, 1.05, 0] } },
   'mawashi-geri-jodan': { prep: 'mawashi-geri-prep', golpe: 'mawashi-geri-jodan', zona: 'mawashi-geri-jodan', ao: 'kamae', rumboAo: 180, camara: { azimut: -90, distancia: 10.5, elevacion: 3, fov: 26, centro: [0, 1.15, 0] } },
   'mae-geri-chudan': { prep: 'mae-geri-prep', golpe: 'mae-geri-chudan', zona: 'mae-geri-chudan', ao: 'ao-guardia-alta', rumboAo: 180, camara: { azimut: -90, distancia: 10.5, elevacion: 3, fov: 26, centro: [0, 1.05, 0] } },
-  'gyaku-zuki-chudan': { prep: 'gyaku-zuki-hanmi', golpe: 'gyaku-zuki-kiai', zona: 'gyaku-zuki-chudan', ao: 'ao-guardia-alta', rumboAo: 180, cadena: true, camara: { azimut: 90, distancia: 10.5, elevacion: 3, fov: 26, centro: [0, 1.05, 0] } }
+  'gyaku-zuki-chudan': { prep: 'gyaku-zuki-hanmi', golpe: 'gyaku-zuki-kiai', zona: 'gyaku-zuki-chudan', ao: 'ao-guardia-alta', rumboAo: 180, cadena: true, camara: { azimut: -90, distancia: 10.5, elevacion: 3, fov: 26, centro: [0, 1.05, 0] } },
+  'gyaku-zuki-jodan': { prep: 'gyaku-zuki-hanmi', golpe: 'gyaku-zuki-jodan', zona: 'gyaku-zuki-jodan', ao: 'kamae', rumboAo: 180, cadena: true, camara: { azimut: -90, distancia: 10.5, elevacion: 3, fov: 26, centro: [0, 1.2, 0] } },
+  'gyaku-zuki-garganta': { prep: 'gyaku-zuki-hanmi', golpe: 'gyaku-zuki-jodan', zona: 'garganta', ao: 'kamae', rumboAo: 180, cadena: true, camara: { azimut: -90, distancia: 10.5, elevacion: 3, fov: 26, centro: [0, 1.2, 0] } },
+  'gyaku-zuki-union': { prep: 'gyaku-zuki-hanmi', golpe: 'gyaku-zuki-jodan', zona: 'union-brazo-hombro', ao: 'kamae', rumboAo: 180, cadena: true, camara: { azimut: -90, distancia: 10.5, elevacion: 3, fov: 26, centro: [0, 1.2, 0] } }
 };
+// crearTecnica(par, P, nombre, { atacante: 'ao' }): ao golpea y aka recibe (cámara espejada: azimut +90).
 export function crearTecnica(par, P, nombre, o = {}) {
   const T = TECNICAS[nombre]; if (!T) throw new Error('técnica desconocida: ' + nombre);
-  const { aka, ao } = par, avance = o.avance ?? 0.4, cl = (x) => Math.min(1, Math.max(0, x));
+  const atk = o.atacante === 'ao', aka = atk ? par.ao : par.aka, ao = atk ? par.aka : par.ao;
+  const camara = atk ? { ...T.camara, azimut: -T.camara.azimut } : T.camara;
+  const avance = o.avance ?? 0.4, cl = (x) => Math.min(1, Math.max(0, x));
   const eio = (x) => { x = cl(x); return x * x * (3 - 2 * x); }, eo = (x) => 1 - (1 - cl(x)) ** 3;
   const b0 = { x: aka.base.x, z: aka.base.z, r: aka.base.rumbo };
   const fw = V3(Math.sin(b0.r * D2R), 0, Math.cos(b0.r * D2R));
@@ -107,14 +124,14 @@ export function crearTecnica(par, P, nombre, o = {}) {
   const t0 = aka.punto('tobilloI'), ancla0 = { pie: 'I', x: t0.x, z: t0.z };
   // posición final de ao: con la pose de golpe y el pie de apoyo anclado
   aka.aplicarPose(P[T.golpe], { ancla: ancla0 });
-  ao.colocar(ao.base.x, ao.base.z, o.rumboAo ?? T.rumboAo); ao.aplicarPose(P[T.ao]);
-  par.alinear(T.zona, { hueco: o.hueco ?? 0.03 });
+  ao.colocar(ao.base.x, ao.base.z, ((o.rumboAo ?? T.rumboAo) + b0.r) % 360); ao.aplicarPose(P[T.ao]);
+  par.alinear(T.zona, { hueco: o.hueco ?? 0.03, atacante: atk ? 'ao' : 'aka' });
   const contacto = par.contacto, fin = { x: ao.base.x, z: ao.base.z, r: ao.base.rumbo };
   const golpe = (f) => (T.cadena
     ? mezclarCadena(P[T.prep], P[T.golpe], { piernas: eo(f), cadera: eo(f * 1.4), tronco: eo(f * 1.3 - 0.1), hombro: eo(f * 1.4 - 0.2), codo: eo(f * 1.5 - 0.3), mano: eo(f * 2 - 1) })
     : mezclar(P[T.prep], P[T.golpe], eo(f)));
   return {
-    dur: TIEMPOS.total, impacto: TIEMPOS.impacto, camara: T.camara, contacto, fin,
+    dur: TIEMPOS.total, impacto: TIEMPOS.impacto, camara, contacto, fin,
     pose(t) {
       if (t < TIEMPOS.prep) return mezclar(P.kamae, P[T.prep], eio(t / TIEMPOS.prep));
       if (t < TIEMPOS.prep + TIEMPOS.golpe) return golpe((t - TIEMPOS.prep) / TIEMPOS.golpe);
@@ -153,4 +170,33 @@ export function crearAreaWKF(esc, o = {}) {
   plano.rotation.x = -Math.PI / 2; plano.position.set(o.centro[0], 0.006, o.centro[1]); plano.receiveShadow = true; plano.renderOrder = 1;
   const raiz = new THREE.Group(); raiz.add(plano); esc.escena.add(raiz);
   return { raiz, plano, ocultar() { raiz.visible = false; }, mostrar() { raiz.visible = true; } };
+}
+
+// ======================================================================
+// Caído (2026-11-24): tumbar(k, P, { x, z, rumbo, f }) pone a `k` tendido de espaldas en el tatami usando P['caido-de-espaldas'].
+// f 0 → 1 = caída hacia atrás (0° → 90°, pivote en el talón trasero) y la espalda se apoya en el suelo. Sin x/z/rumbo conserva su colocación actual.
+// Con aplicar: alinearRival/par.alinear('puno-remate-bajo', { aplicar: (r) => tumbar(r, P) }).
+// ======================================================================
+export function tumbar(k, P, { x, z, rumbo, f = 1 } = {}) {
+  const b = k.base; k.colocar(x ?? b.x, z ?? b.z, rumbo ?? b.rumbo);
+  const g = 90 * Math.min(1, Math.max(0, f)); k.aplicarPose(P['caido-de-espaldas'], { suelo: f < 1 ? true : false });
+  if (f >= 1) {
+    k.aplicarPose(P['caido-de-espaldas'], { inclinar: -g, suelo: false });
+    // apoya la espalda: el eje del pecho queda a 0,125 m del suelo (semieje del tronco)
+    k.raiz.position.y += 0.125 - k.punto('pecho').y; k.raiz.updateMatrixWorld(true);
+  } else k.aplicarPose(P['caido-de-espaldas'], { inclinar: -g });
+  return k;
+}
+
+// ======================================================================
+// Cámara 4:5 de la pareja para web (780×900): CAM.pareja45 y formato45(esc).
+// formato45(esc) pasa el escenario a 780×900 (cámara aspect 0,8): esc.dibujar(ctx) dibuja en un <canvas width="780" height="900"> sin viñeta ni grano.
+// Render: node animacion/render.mjs escena.html --t 0.7 --png web.png   (el canvas manda el tamaño; para vídeo 4:5 hay que ajustar el --w/--h de render.mjs: pendiente).
+// ======================================================================
+export const CAM = { pareja45: { azimut: -90, distancia: 8.6, elevacion: 3, fov: 24, centro: [0, 1.0, 0] } };
+export function formato45(esc, { ancho = 780, alto = 900, escala = 0.5 } = {}) {
+  const w = Math.round(ancho * escala), h = Math.round(alto * escala);
+  esc.renderer.setSize(w, h, false); esc.camara.aspect = ancho / alto; esc.camara.updateProjectionMatrix();
+  esc.dibujar = (ctx) => { esc.renderer.render(esc.escena, esc.camara); ctx.save(); ctx.imageSmoothingQuality = 'high'; ctx.drawImage(esc.lienzoGL, 0, 0, ancho, alto); ctx.restore(); return esc; };
+  return esc;
 }

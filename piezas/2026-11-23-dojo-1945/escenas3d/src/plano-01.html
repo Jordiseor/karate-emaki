@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Dojo 1945 · plano 01</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, casa, U } = C.iniciar('atardecer');
+window.DURACION = 3.2;
+// PLANO 1 (0,0–3,2): casa a contraluz con 松濤館 ya escrito en t = 0; empuje lento; «Seis años» pasa de tinta a rojo a 1,6 s.
+casa.escribirRotulo('松濤館', 1);
+window.render = (t) => {
+  C.camEmpuje(esc, U.prog(t, 0, 3.2), { d0: 30, d1: 22 });
+  esc.dibujar(ctx);
+  C.tarjetaCambio(ctx, t, 1.6, 'Seis años', '[r]Seis años[/r]', { t0: -1, y: 300 });
+};
+</script></body></html>

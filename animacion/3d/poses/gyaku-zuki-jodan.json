@@ -1,0 +1,67 @@
+{
+ "nombre": "gyaku-zuki-jodan",
+ "descripcion": "Gyaku-zuki jōdan frenado: mismas piernas que gyaku-zuki-kiai (hidari zenkutsu), puño derecho al frente a la altura de la cara (y 1,50 m, 0,56 m delante del pie de apoyo), hikite izquierdo. Prep: gyaku-zuki-hanmi. Alinear con par.alinear('gyaku-zuki-jodan') (o 'garganta').",
+ "cadera": {},
+ "piernaI": {
+  "adelante": 50,
+  "abre": 0,
+  "gira": 0
+ },
+ "rodillaI": 50,
+ "tobilloI": {
+  "flex": 0,
+  "ladeo": 0
+ },
+ "piernaD": {
+  "adelante": -34.6,
+  "abre": 3.2,
+  "gira": 36.5
+ },
+ "rodillaD": 0,
+ "tobilloD": {
+  "flex": 27.6,
+  "ladeo": -22
+ },
+ "tronco": {},
+ "cabeza": {
+  "inclina": -2
+ },
+ "manoI": 0,
+ "manoD": 0,
+ "brazoI": {
+  "adelante": -59,
+  "abre": 5.6,
+  "gira": -0.4
+ },
+ "codoI": 115,
+ "munecaI": {
+  "gira": 94
+ },
+ "munecaD": {
+  "gira": -92
+ },
+ "codoD": 0,
+ "brazoD": {
+  "adelante": 120,
+  "abre": -10.9,
+  "gira": 0
+ },
+ "medidas": {
+  "puno_D": [
+   -0.051,
+   1.454,
+   0.48
+  ],
+  "tobillo_I": [
+   0.092,
+   0.075,
+   0.314
+  ],
+  "tobillo_D": [
+   -0.138,
+   0.075,
+   -0.465
+  ],
+  "altura_cadera_m": 0.809
+ }
+}

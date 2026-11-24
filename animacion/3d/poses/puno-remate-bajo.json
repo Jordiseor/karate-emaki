@@ -1,0 +1,69 @@
+{
+ "nombre": "puno-remate-bajo",
+ "descripcion": "Puño de remate hacia un rival caído: zenkutsu bajo, tronco inclinado hacia delante, puño derecho controlado hacia abajo (mano en (-0,10; 0,33; 0,62) respecto al pie de apoyo), hikite izquierdo. Alinear con par.alinear('puno-remate-bajo', { aplicar }) sobre ao caído.",
+ "cadera": {},
+ "tronco": {
+  "inclina": 80
+ },
+ "cabeza": {
+  "inclina": -64
+ },
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {
+  "gira": 94
+ },
+ "munecaD": {
+  "gira": -86
+ },
+ "piernaI": {
+  "adelante": 70,
+  "abre": 0,
+  "gira": 0
+ },
+ "rodillaI": 70,
+ "tobilloI": {
+  "flex": 0,
+  "ladeo": 0
+ },
+ "piernaD": {
+  "adelante": -47.8,
+  "abre": 3.2,
+  "gira": 42.6
+ },
+ "rodillaD": 0,
+ "tobilloD": {
+  "flex": 37.8,
+  "ladeo": -31.9
+ },
+ "brazoI": {
+  "adelante": -59,
+  "abre": 5.6,
+  "gira": -0.4
+ },
+ "brazoD": {
+  "adelante": 103.1,
+  "abre": -6.1,
+  "gira": 0
+ },
+ "codoD": 20.1,
+ "codoI": 115,
+ "medidas": {
+  "puno_D": [
+   -0.1,
+   0.33,
+   0.62
+  ],
+  "tobillo_I": [
+   0.092,
+   0.075,
+   0.385
+  ],
+  "tobillo_D": [
+   -0.138,
+   0.075,
+   -0.607
+  ],
+  "altura_cadera_m": 0.685
+ }
+}

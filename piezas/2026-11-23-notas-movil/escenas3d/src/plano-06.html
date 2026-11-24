@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>notas-movil · plano 06</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { U, N } = C;
+const S = C.iniciar({ rumbo: 0 }), { ctx, esc, P, k } = S;
+window.DURACION = C.DUR[5];   // 1,8 s
+const ARAB = (t) => 0; 
+window.render = (t) => {
+  k.colocar(0, 0, 0);
+  const pose = C.mezclar(P.yoi, P['mano-hara'], U.easeInOut(U.prog(t, 0.0, 0.5)));
+  k.aplicarPose(pose);
+  // cara: toma aire (ojos grandes), kiai 0,5-1,3, relaja
+  const aire = U.prog(t, 0.0, 0.5), grito = U.easeOut(U.prog(t, 0.5, 0.6)) * (1 - U.prog(t, 1.3, 1.6));
+  const base = { ojos: 0.8 * aire, cejas: 0.4 * aire, sonrisa: 0.1 };
+  const cara = C.mezclarCara(base, { ...C.CARAS.kiai, grito: 0.8 }, grito);
+  k.cara(cara);
+  C.cam(esc, 'cara', { distancia: 3.2 - 0.4 * U.prog(t, 0, 1.8) });
+  esc.sombraEn(0, 0);
+  esc.dibujar(ctx, { vineta: true });
+  // 2D: ondita roja desde y 1500 hacia arriba (abdomen), a partir de 0,5 s
+  if (t > 0.5) for (let i = 0; i < 4; i++) {
+    const u = ((t - 0.5) * 1.1 + i / 4) % 1, a = Math.sin(Math.PI * u) * U.prog(t, 0.5, 0.7);
+    ctx.save(); ctx.globalAlpha = a * 0.9; ctx.strokeStyle = C.ROJO; ctx.lineWidth = 14; ctx.lineCap = 'round';
+    const y = 1430 - 170 * u, r = 150 + 90 * u; ctx.beginPath(); ctx.ellipse(540, y, r, r * 0.28, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+  }
+  const hoja = N.marco(ctx, {});
+  N.escribirLineas(ctx, hoja, ['Kiai: abdomen,', 'no garganta.'], { p: 1, y: 140, paso: 110, size: 72 });
+  N.bocadillo(ctx, '¡Ki-ai-…!', { x: 540, y: 1255, p: U.prog(t, 0.55, 0.8), size: 96, cola: 'abajo', quiebre: U.prog(t, 1.0, 1.4) });
+  C.etiqueta(ctx, t, { pre: 'Kiai (', jp: '気合', post: '): ki = energía', t0: 0.3, y: 1520 });
+};
+</script></body></html>

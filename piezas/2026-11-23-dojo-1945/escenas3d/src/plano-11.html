@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Dojo 1945 · plano 11</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { ctx, esc, casa, P, U, H2 } = C.iniciar('atardecer', { casa: { rotulo: '' }, poses: true, colina: { pinos: 7, sinPinosEn: [[0, -2, 9], [0, -9, 8]] } });
+window.DURACION = 3.6;
+casa.modo('fantasma').contorno({ color: C.GRIS }).colocar(0, -9.5);
+esc.escena.fog.near = 12; esc.escena.fog.far = 45;
+const k = new C.Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz);
+window.render = (t) => {
+  k.colocar(0, 0.6, 0).aplicarPose(C.mezclar(P['pies-juntos'], P.yoi, 0)); k.cara({ sonrisa: 0.6 });
+  esc.orbita({ centro: [0, 1.25, 0], distancia: 6.4 - 0.6 * U.prog(t, 0, 3.6), azimut: 0, elevacion: 4, fov: 34 });
+  esc.dibujar(ctx);
+  const a = U.prog(t, 1.8, 2.3);
+  if (a > 0) { ctx.save(); ctx.globalAlpha = a; H2.kanji(ctx, '松濤館', 540, 1380, 190, { color: C.ROJO, halo: 0.7 }); ctx.restore(); }
+  C.tarjeta(ctx, t, ['Seis años:', '[r]1939[/r]–[r]1945[/r]'], { t0: 1.8, y: 300 });
+};
+</script></body></html>

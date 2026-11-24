@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Dojo 1945 · plano 10</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { ctx, esc, casa, P, U, H3, H2 } = C.iniciar('atardecer', { casa: { rotulo: '' }, poses: true, colina: { pinos: 7, sinPinosEn: [[0, -2, 9], [0, -9, 8]] } });
+window.DURACION = 3.2;
+casa.modo('fantasma').contorno({ color: C.GRIS }).colocar(0, -9.5);
+esc.escena.fog.near = 12; esc.escena.fog.far = 45;
+const fila = H3.crearFila(esc, { n: 12, columnas: 4, origen: [0, -1.6], iguales: true });
+const cartel = H3.crearCartel({ texto: 'SHOTOKAN', tipo: 'madera' }).colocar(2.0, 0.3, -12); esc.escena.add(cartel.raiz);
+window.render = (t) => {
+  fila.pose(P, (i) => C.mezclar(P['pies-juntos'], P.rei, U.clamp(Math.sin((t - i * 0.06) * 3.2 - 0.6) * 0.6 + 0.5)));
+  cartel.pop(U.prog(t, 1.4, 2.1));
+  esc.orbita({ centro: [0, 2.4, -3], distancia: 13, azimut: 0, elevacion: 9, fov: 34 });
+  esc.dibujar(ctx);
+  C.tarjeta(ctx, t, ['Lo llamaron', 'como la casa'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

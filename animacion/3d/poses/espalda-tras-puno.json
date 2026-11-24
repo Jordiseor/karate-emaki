@@ -1,0 +1,73 @@
+{
+ "nombre": "espalda-tras-puno",
+ "descripcion": "Giro de espaldas tras un puñetazo: parte de gyaku-zuki-kiai (piernas de zenkutsu), cadera 80° + tronco 80° (espalda al rival), cabeza mirando por encima del hombro, brazos recogidos (como espalda-tras-patada). mezclar(P['gyaku-zuki-kiai'], P['espalda-tras-puno'], f) con ao colocado a rumbo 180 + giro; sin piernasFijas: las piernas giran con la cadera.",
+ "cadera": {
+  "giro": 80
+ },
+ "piernaI": {
+  "adelante": 50,
+  "abre": 0,
+  "gira": 0
+ },
+ "rodillaI": 50,
+ "tobilloI": {
+  "flex": 0,
+  "ladeo": 0
+ },
+ "piernaD": {
+  "adelante": -34.6,
+  "abre": 3.2,
+  "gira": 36.5
+ },
+ "rodillaD": 0,
+ "tobilloD": {
+  "flex": 27.6,
+  "ladeo": -22
+ },
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {
+  "gira": -20
+ },
+ "munecaD": {
+  "gira": -20
+ },
+ "brazoI": {
+  "adelante": 20,
+  "abre": 22,
+  "gira": 0
+ },
+ "brazoD": {
+  "adelante": 20,
+  "abre": 22,
+  "gira": 0
+ },
+ "codoI": 45,
+ "codoD": 45,
+ "tronco": {
+  "giro": 80,
+  "inclina": 2
+ },
+ "cabeza": {
+  "giro": -150,
+  "inclina": 4
+ },
+ "medidas": {
+  "puno_D": [
+   0.435,
+   0.819,
+   -0.21
+  ],
+  "tobillo_I": [
+   0.325,
+   0.075,
+   -0.036
+  ],
+  "tobillo_D": [
+   -0.482,
+   0.075,
+   0.055
+  ],
+  "altura_cadera_m": 0.809
+ }
+}

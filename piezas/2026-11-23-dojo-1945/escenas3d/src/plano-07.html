@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Dojo 1945 · plano 07</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { ctx, esc, casa, U } = C.iniciar('noche', { calle: true });
+window.DURACION = 3.2;
+// PLANO 7: Tokio de noche, cámara baja que sube; resplandor al horizonte (≤ 0,5) y ceniza. Casa sin arder, luz apagada.
+casa.modo('solido').luzInterior(0);
+window.render = (t) => {
+  const e = U.easeInOut(U.prog(t, 1.2, 2.4));
+  C.camCalle(esc, { desde: [7, 3.6 + 5.4 * e, 24] });
+  esc.dibujar(ctx);
+  C.fuego(ctx, t, 0.4 * U.prog(t, 0, 3.2), { centro: [540, 700], n: 40, intensidad: 0.4 });
+  C.ceniza(ctx, t, { n: 30, intensidad: 0.6 });
+  C.tarjeta(ctx, t, ['Tokio, [r]1945[/r]'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

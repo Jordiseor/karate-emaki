@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>notas-movil · plano 1</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { U, N } = C;
+const S = C.iniciar({ rumbo: 0 }), { ctx, esc, P, k } = S;
+window.DURACION = C.DUR[0];   // 2,6 s
+const TIT = ['Notas del móvil', 'de un cinturón', 'blanco:'];
+
+window.render = (t) => {
+  // 3D: neutra con móvil, cabeza gacha, cara de sorpresa → alivio, parpadeo lento
+  k.colocar(0, 0, 0);
+  const resp = Math.sin(t * 2.2) * 0.02;
+  k.aplicarPose(C.poseMovil(P, 1 - 0.1 * resp));
+  const cara = C.mezclarCara(C.CARAS_SEIZA.sorpresa, C.CARAS_SEIZA.alivio, U.prog(t, 0.9, 2.2));
+  k.cara({ ...cara, parpadeo: Math.max(cara.parpadeo || 0, U.parpadeo(t, [1.0, 2.2], 0.5)) });
+  C.cam(esc, 'frontal');
+  esc.sombraEn(0, 0);
+  esc.dibujar(ctx, { vineta: true });
+  // 2D: marco con la hoja, título ya escrito en t = 0 («de golpe») y «1.» con cursor al final
+  const hoja = N.marco(ctx, { escala: 1 + 0.004 * Math.sin(t * 1.5) });
+  N.escribirLineas(ctx, hoja, TIT, { p: 1, y: 140, paso: 100, size: 76 });
+  const a1 = U.prog(t, 1.9, 2.1);
+  N.escribir(ctx, hoja, '1.', { y: 140 + 3 * 100 + 20, size: 76, p: 1, alfa: a1, cursor: a1, t: t - 1.9, x: hoja.margenX });
+};
+</script></body></html>

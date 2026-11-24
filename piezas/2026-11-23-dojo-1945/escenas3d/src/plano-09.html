@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Dojo 1945 · plano 09</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { ctx, esc, casa, U, H2, H3, P } = C.iniciar('atardecer', { casa: { rotulo: '' }, poses: true });
+window.DURACION = 2.3;
+// PLANO 9: casa fantasma gris, 松濤館 flotando en gris, Funakoshi (silueta) de espaldas y quieto.
+casa.modo('fantasma').contorno({ color: C.GRIS });
+const m = H3.anadirMaestro(esc, H3.crearMaestro({ silueta: '#1A1A1A' }));
+window.render = (t) => {
+  m.colocar(0, 6.5, 180).pose(P, 'maestro-manos-atras');
+  esc.orbita({ centro: [0, 2.0, 2], distancia: 20 - 2 * U.prog(t, 0, 2.3), azimut: 8, elevacion: 6, fov: 34 });
+  esc.dibujar(ctx);
+  H2.kanji(ctx, '松濤館', 540, 720, 200, { prog: U.prog(t, 0, 1.0), color: C.GRIS, halo: 0.5 });
+  C.tarjeta(ctx, t, ['Nunca nombró', 'su estilo'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

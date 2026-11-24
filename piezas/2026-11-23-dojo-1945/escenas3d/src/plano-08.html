@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Dojo 1945 · plano 08</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { ctx, esc, casa, U } = C.iniciar('noche', { calle: true });
+window.DURACION = 3.2;
+// PLANO 8: luz apagándose, arde, bajo el rojo pasa a contorno fantasma gris; el rojo se retira. «Día exacto: sin confirmar» (letra pequeña).
+window.render = (t) => {
+  const luz = 1 - U.prog(t, 0, 1), arde = 0.45 * U.prog(t, 1, 2);
+  const fant = t >= 2.0;
+  if (fant) casa.modo('fantasma').contorno({ color: C.GRIS });
+  else casa.modo('solido').arder(arde).luzInterior(luz);
+  esc.orbita(C.CAM.casaFrente);
+  esc.dibujar(ctx);
+  const rojo = t < 2 ? 0.5 * U.prog(t, 1, 2) : 0.5 * (1 - U.prog(t, 2, 3));
+  C.fuego(ctx, t, rojo, { n: 50 });
+  if (t >= 1.6) {
+    const txt = 'Día exacto: sin confirmar'; ctx.save(); ctx.font = '700 48px Inter, "Noto Sans", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    const w = ctx.measureText(txt).width + 80, x = 540 - w / 2, y = 1470, h = 92;
+    ctx.globalAlpha = U.prog(t, 1.6, 1.85); ctx.fillStyle = C.PAPEL; ctx.strokeStyle = C.TINTA; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.roundRect(x, y, w, h, 18); ctx.fill(); ctx.stroke(); ctx.fillStyle = C.TINTA; ctx.fillText(txt, 540, y + h / 2 + 2); ctx.restore();
+  }
+};
+</script></body></html>

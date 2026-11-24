@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Dojo 1945 · plano 03</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { ctx, esc, casa, U, H3, P } = C.iniciar('calle', { calle: true, poses: true });
+window.DURACION = 3.2;
+// PLANO 3: calle de día, la casa abre; tres alumnos pequeños se saludan ante ella.
+const al = [-1.6, 0, 1.6].map((x, i) => { const k = H3.crearAlumno(i); k.colocar(x, 6.5, [135, 180, 225][i]); esc.escena.add(k.raiz); return k; });
+window.render = (t) => {
+  casa.escribirRotulo('松濤館', U.prog(t, 0.2, 1.4));
+  casa.puerta(U.prog(t, 1.2, 2.2)).luzInterior(U.prog(t, 1.2, 2.2));
+  const f = Math.sin(Math.PI * U.clamp((t - 0.9) / 1.8)); // inclinación y vuelta
+  al.forEach((k, i) => k.aplicarPose(C.mezclar(P['pies-juntos'], P['rei'], f)));
+  const q = U.prog(t, 0, 3.2);
+  C.camCalle(esc, { desde: [7 - 1.5 * q, 3.6, 24 - 3 * q] });
+  esc.dibujar(ctx);
+  if (t < 1.6) C.tarjeta(ctx, t, ['[r]29 ene 1939[/r]'], { t0: 0.05, t1: 1.6, y: 300 });
+  else C.tarjeta(ctx, t, ['Zōshigaya, Tokio'], { t0: 1.6, t1: 3.2, y: 300 });
+};
+</script></body></html>

@@ -1,0 +1,69 @@
+{
+ "nombre": "caido-de-espaldas",
+ "descripcion": "Ao tendido de espaldas en el tatami: de pie con las piernas algo sueltas y brazos abiertos, la cabeza levantada. NO se usa sola: kumite3d.tumbar(ao, P, { f }) la tumba (f 0 → 1 = caída de 0° a 90° hacia atrás, apoyando la espalda en el suelo). La cabeza cae hacia atrás del rumbo.",
+ "cadera": {},
+ "tronco": {
+  "inclina": 0
+ },
+ "cabeza": {
+  "inclina": 22
+ },
+ "manoI": 1,
+ "manoD": 0,
+ "munecaI": {},
+ "munecaD": {},
+ "piernaI": {
+  "adelante": 20,
+  "abre": 10,
+  "gira": 10
+ },
+ "rodillaI": 30,
+ "tobilloI": {
+  "flex": -15,
+  "ladeo": 0
+ },
+ "piernaD": {
+  "adelante": 14,
+  "abre": 12,
+  "gira": 10
+ },
+ "rodillaD": 18,
+ "tobilloD": {
+  "flex": -10,
+  "ladeo": 0
+ },
+ "brazoI": {
+  "adelante": -10,
+  "abre": 25,
+  "gira": 0
+ },
+ "codoI": 15,
+ "brazoD": {
+  "adelante": -5,
+  "abre": 30,
+  "gira": 0
+ },
+ "codoD": 10,
+ "aplicar": {
+  "inclinar": -90,
+  "suelo": false
+ },
+ "medidas": {
+  "puno_D": [
+   -0.438,
+   0.021,
+   -0.847
+  ],
+  "tobillo_I": [
+   0.19,
+   0.082,
+   -0.124
+  ],
+  "tobillo_D": [
+   -0.237,
+   0.081,
+   -0.113
+  ],
+  "altura_cadera_m": 0.012
+ }
+}

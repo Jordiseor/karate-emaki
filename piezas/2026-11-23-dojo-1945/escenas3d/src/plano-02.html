@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Dojo 1945 · plano 02</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { ctx, esc, casa, U } = C.iniciar('noche', { colina: false });
+window.DURACION = 2.3;
+// PLANO 2: noche, la casa arde despacio (luz interior se apaga); «Abril de 1945».
+casa.escribirRotulo('松濤館', 1);
+window.render = (t) => {
+  const p = U.prog(t, 0.3, 2.3);
+  casa.modo('solido').arder(0.3 * p).luzInterior(1 - p);
+  esc.orbita(C.CAM.casaFrente);
+  esc.dibujar(ctx);
+  C.H2.resplandor(ctx, 0.6 * p, t, { centro: [540, 1000], alfa: 0.6 });
+  C.H2.pavesas(ctx, t, { n: 60, intensidad: Math.min(1, 0.3 + p) });
+  C.velo(ctx, '#000000', 0.8 * C.pico(t, 0, 0.1));
+  C.tarjeta(ctx, t, ['Abril de [r]1945[/r]'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

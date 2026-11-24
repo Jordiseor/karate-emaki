@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>notas-movil · plano 03</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { U, N } = C;
+const CAJA = { x: 90, y: 260, w: 900, h: 300 };
+const nota = (ctx, lineas, p) => { const h = N.marco(ctx, { caja: CAJA }); lineas.forEach((l, i) => N.escribir(ctx, h, l, { y: 120 + i * 100, size: 72, p: i === 0 ? p * 2 : p * 2 - 1 })); return h; };
+const S = C.iniciar({ rumbo: 180 }), { ctx, esc, P, k } = S;
+window.DURACION = C.DUR[2];
+window.render = (t) => {
+  const f = U.easeInOut(U.prog(t, 0.1, 0.6)) * (1 - U.easeInOut(U.prog(t, 0.75, 1.1)));
+  const g = 40 * (U.easeInOut(U.prog(t, 0.9, 1.1)) - 2 * U.easeInOut(U.prog(t, 1.1, 1.35)) + U.easeInOut(U.prog(t, 1.35, 1.6)));
+  k.colocar(0, 0, 180);
+  const p = C.mezclar(P['pies-juntos'], P.rei, f);
+  k.aplicarPose({ ...p, cabeza: { ...(p.cabeza || {}), giro: g } });
+  k.cara({ cejas: 0.4, parpadeo: U.parpadeo(t, [0.7], 0.4) });
+  esc.orbita({ ...C.CAM.media, centro: [0, 1.5, 0], distancia: 8.5, azimut: 25 });
+  esc.sombraEn(0, 0); esc.dibujar(ctx, { vineta: true });
+  nota(ctx, ['Saludar.', '¿A quién?'], U.prog(t, 0, 0.3));
+  const q0 = esc.proyectar({ x: 0, y: 2.6, z: -3 }), q = { x: 800, y: 690 }, a = U.prog(t, 0.2, 0.5), r = 1 + 0.06 * Math.sin(t * 6);
+  ctx.save(); ctx.globalAlpha = a; ctx.translate(q.x, q.y); ctx.scale(r * (0.6 + 0.4 * U.easeOut(a)), r * (0.6 + 0.4 * U.easeOut(a)));
+  ctx.font = '900 200px Inter, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = C.TINTA; ctx.fillText('?', 0, 0); ctx.restore();
+};
+</script></body></html>

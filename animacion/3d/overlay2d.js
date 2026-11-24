@@ -41,4 +41,43 @@ export const overlay = {
   // Guía de zona segura (solo para revisar): franjas rojas translúcidas.
   zona(ctx) { E().dibujarZona(ctx); }
 };
+
+// ---------- pictogramas 2D (tinta sobre papel; rojo SOLO en las flechas) ----------
+const _TINTA = '#1A1A1A', _GRIS = '#8A847A', _ROJO = '#C8102E';
+const _flecha = (c, x, y, dir, L, w, color) => { // flecha vertical dir = −1 (arriba) | 1 (abajo)
+  c.strokeStyle = color; c.fillStyle = color; c.lineWidth = w; c.lineCap = 'round'; c.lineJoin = 'round';
+  c.beginPath(); c.moveTo(x, y); c.lineTo(x, y + dir * L); c.stroke();
+  const p = y + dir * L; c.beginPath(); c.moveTo(x, p + dir * w * 1.2); c.lineTo(x - w * 2, p - dir * w * 0.8); c.lineTo(x + w * 2, p - dir * w * 0.8); c.closePath(); c.fill();
+};
+// Ascensor: cabina de frente con puertas y dos flechas rojas (↑ y ↓) a su lado. (x, y) = centro de la cabina.
+// o: { size: 360 (alto de la cabina), alfa: 1, puertas: 0..1 (abiertas), flechas: 0..1 (aparición), mover: −1…1 (flechas hacia un lado: 0 = ↑↓ fijas) }
+overlay.ascensor = (ctx, x, y, o = {}) => {
+  const h = o.size ?? 360, w = h * 0.62, lw = Math.max(5, h * 0.025), ab = o.puertas ?? 0, fl = o.flechas ?? 1;
+  ctx.save(); ctx.globalAlpha = o.alfa ?? 1; ctx.translate(x, y);
+  ctx.fillStyle = '#F4EFE6'; ctx.strokeStyle = _TINTA; ctx.lineWidth = lw; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.rect(-w / 2, -h / 2, w, h); ctx.fill(); ctx.stroke();
+  const pw = w / 2 - lw, hueco = pw * ab; // puertas correderas
+  ctx.fillStyle = '#E3DACB';
+  for (const s of [-1, 1]) { const x0 = s < 0 ? -w / 2 + lw / 2 - hueco : lw / 2 + hueco; ctx.beginPath(); ctx.rect(Math.max(-w / 2 + lw / 2, Math.min(w / 2 - lw / 2 - pw, x0)), -h / 2 + h * 0.14, pw, h * 0.84 - lw / 2); ctx.fill(); ctx.stroke(); }
+  ctx.beginPath(); ctx.moveTo(-w / 2, -h / 2 + h * 0.14); ctx.lineTo(w / 2, -h / 2 + h * 0.14); ctx.stroke(); // dintel
+  ctx.fillStyle = _TINTA; ctx.beginPath(); ctx.moveTo(0, -h / 2 + h * 0.035); ctx.lineTo(-h * 0.035, -h / 2 + h * 0.105); ctx.lineTo(h * 0.035, -h / 2 + h * 0.105); ctx.closePath(); ctx.fill(); // indicador de piso
+  if (fl > 0) { ctx.globalAlpha *= fl; const fx = w / 2 + h * 0.2 + (o.mover || 0) * 0, L = h * 0.2, aw = lw * 1.3;
+    _flecha(ctx, fx, -h * 0.04, -1, L, aw, _ROJO); _flecha(ctx, fx, h * 0.04, 1, L, aw, _ROJO); }
+  ctx.restore();
+};
+// Móvil en trípode grabando, visto de lado (mira hacia la derecha). (x, y) = punto del suelo bajo el trípode. size = alto total (≈ 1 m de trípode).
+// o: { size: 420, alfa: 1, cono: 0..1 (campo de visión en trazos grises, mira a +x) }
+overlay.movilTripode = (ctx, x, y, o = {}) => {
+  const h = o.size ?? 420, lw = Math.max(5, h * 0.022), cono = o.cono ?? 1;
+  ctx.save(); ctx.globalAlpha = o.alfa ?? 1; ctx.translate(x, y); ctx.strokeStyle = _TINTA; ctx.fillStyle = '#F4EFE6'; ctx.lineWidth = lw; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const hub = [0, -h * 0.62];
+  for (const [dx, dy] of [[-h * 0.2, 0], [h * 0.17, 0], [h * 0.02, h * 0.03]]) { ctx.beginPath(); ctx.moveTo(hub[0], hub[1]); ctx.lineTo(dx, dy); ctx.stroke(); }
+  ctx.beginPath(); ctx.moveTo(hub[0], hub[1]); ctx.lineTo(hub[0], hub[1] - h * 0.1); ctx.stroke();           // columna
+  const px = hub[0] - h * 0.025, py = hub[1] - h * 0.1 - h * 0.3;                                              // móvil: placa fina de lado
+  ctx.beginPath(); ctx.roundRect(px, py, h * 0.05, h * 0.3, h * 0.015); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = _TINTA; ctx.beginPath(); ctx.arc(px + h * 0.05 + lw * 0.4, py + h * 0.05, lw * 0.9, 0, 6.2832); ctx.fill(); // objetivo
+  if (cono > 0) { ctx.globalAlpha *= cono; ctx.strokeStyle = _GRIS; ctx.setLineDash([lw * 1.6, lw * 1.6]); const ox = px + h * 0.1, oy = py + h * 0.05, L = h * 0.7;
+    ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(ox + L, oy - L * 0.36); ctx.moveTo(ox, oy); ctx.lineTo(ox + L, oy + L * 0.36); ctx.stroke(); }
+  ctx.restore();
+};
 export default overlay;

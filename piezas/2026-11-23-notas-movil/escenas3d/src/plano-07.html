@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>notas-movil · plano 07</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { U, N } = C;
+import { cronometroSeiza, gotaSudor } from '../../../../animacion/3d/seiza2d.js';
+const S = C.iniciar({ rumbo: 0 }), { ctx, esc, P, k } = S;
+window.DURACION = C.DUR[6];   // 1,8 s
+window.render = (t) => {
+  k.colocar(0, 0, 0);
+  C.ponerPose(k, C.temblar(P.seiza, t, 1));
+  k.cara(C.CARAS_SEIZA.aguantando);
+  C.cam(esc, 'media');
+  esc.sombraEn(0, 0);
+  esc.dibujar(ctx, { vineta: true });
+  const hoja = N.marco(ctx, { caja: { x: 90, y: 270, w: 900, h: 440 } });
+  N.escribirLineas(ctx, hoja, ['De rodillas,', 'minuto 10.'], { p: 1, y: 140, paso: 110, size: 76 });
+  N.escribir(ctx, hoja, '¡Ayuda!', { y: 140 + 2 * 110, size: 76, p: U.prog(t, 0.5, 1.1), cursor: 1, t, color: C.TINTA });
+  gotaSudor(ctx, 700, 1000, t, { size: 90, doble: true });
+  cronometroSeiza(ctx, { minutos: 10, rojo: true, t, y: 1430 });
+};
+</script></body></html>

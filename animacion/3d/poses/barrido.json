@@ -1,0 +1,74 @@
+{
+ "nombre": "barrido",
+ "descripcion": "Barrido (ashi-barai): apoyo en pierna izquierda flexionada, pierna derecha casi extendida barriendo a ras del tatami (tobillo derecho en (-0,05; 0,11; 0,62) respecto al pie de apoyo), tronco algo ladeado, brazos de kamae. Ver README (kumite).",
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {
+  "gira": -70
+ },
+ "munecaD": {
+  "gira": -80
+ },
+ "brazoI": {
+  "adelante": 32.9,
+  "abre": 30.5,
+  "gira": 21.8
+ },
+ "codoI": 108.9,
+ "brazoD": {
+  "adelante": 22.2,
+  "abre": -11.1,
+  "gira": -66.7
+ },
+ "codoD": 98.1,
+ "cadera": {
+  "giro": 35
+ },
+ "tronco": {
+  "giro": 0,
+  "ladeo": 0,
+  "inclina": 0
+ },
+ "cabeza": {
+  "giro": 3,
+  "inclina": 4
+ },
+ "piernaD": {
+  "adelante": 38.5,
+  "abre": 21.6,
+  "gira": 0
+ },
+ "rodillaD": 0,
+ "tobilloD": {
+  "flex": 21.3,
+  "ladeo": 0
+ },
+ "piernaI": {
+  "adelante": 36,
+  "abre": 17.9,
+  "gira": 14
+ },
+ "rodillaI": 76.5,
+ "tobilloI": {
+  "flex": 37.2,
+  "ladeo": 49.1
+ },
+ "medidas": {
+  "puno_D": [
+   0.221,
+   1.024,
+   0.055
+  ],
+  "tobillo_I": [
+   0.12,
+   0.072,
+   -0.1
+  ],
+  "tobillo_D": [
+   -0.05,
+   0.116,
+   0.615
+  ],
+  "altura_cadera_m": 0.772
+ }
+}

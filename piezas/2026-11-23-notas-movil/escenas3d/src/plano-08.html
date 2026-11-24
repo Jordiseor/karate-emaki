@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>notas-movil · plano 08</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { U, N } = C;
+const S = C.iniciar({ rumbo: 0 }), { ctx, esc, P, k } = S;
+window.DURACION = C.DUR[7];   // 1,6 s
+window.render = (t) => {
+  k.colocar(0, 0, 0);
+  k.aplicarPose(P.yoi);
+  k.cara(C.CARAS_SEIZA.tranquilo);
+  C.cam(esc, 'frontal');
+  esc.sombraEn(0, 0);
+  esc.dibujar(ctx, { vineta: true });
+  const plie = U.prog(t, 1.0, 1.6), alfa = 1 - 0.8 * U.prog(t, 1.2, 1.6);
+  const caja = N.MARCO, cx = caja.x + caja.w / 2, cy = caja.y + caja.h / 2;
+  const sy = 1 - 0.9 * plie ** 3, sx = 1 - 0.35 * plie ** 3;
+  const hoja = N.marco(ctx, { pliegue: plie, alfa });
+  ctx.save(); ctx.globalAlpha = alfa; ctx.translate(cx, cy); ctx.scale(sx, sy); ctx.translate(-cx, -cy);   // el texto se aplasta con la hoja
+  const gris = N.COLOR.GRIS;
+  N.escribir(ctx, hoja, '6. ———', { y: 130, size: 72, color: gris });
+  N.escribir(ctx, hoja, '7. ———', { y: 240, size: 72, color: gris });
+  N.escribir(ctx, hoja, '8. Próxima clase:', { y: 350, size: 72, p: U.prog(t, 0, 0.3), x: 96 + 24 });
+  N.escribir(ctx, hoja, 'osu.', { y: 460, size: 72, p: U.prog(t, 0.25, 0.4), x: 96 + 24 });
+  N.visto(ctx, hoja, U.prog(t, 0.5, 1.0), { dx: 230, dy: -110, size: 230, grosor: 44 });
+  ctx.restore();
+};
+</script></body></html>

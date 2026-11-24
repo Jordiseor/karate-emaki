@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Kumite 2026-11-24</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../marca.js"></script>
+<script type="module">
+// Hoja: pareja en gyaku-zuki (chūdan, jōdan, garganta, unión), ao atacante, caído + remate, rastro de cabeza y pictogramas. t = índice.
+import { crearEscenario, util as U } from '../escenario.js';
+import { cargarPoses, mezclar, Karateka3D } from '../karateka3d.js';
+import { crearPareja, crearAreaWKF, crearTecnica, tumbar } from '../kumite3d.js';
+import { Diagrama3D } from '../diagrama3d.js';
+import { overlay } from '../overlay2d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5, suelo: 'tatami' }); esc.escena.fog.near = 16; esc.escena.fog.far = 60;
+const P = cargarPoses();
+const par = crearPareja(esc, { distancia: 2 }); crearAreaWKF(esc);
+const { aka, ao } = par;
+const k = new Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz); k.raiz.visible = false;
+const d = new Diagrama3D(esc, k);
+const VISTAS = [['gyaku-zuki chudan', 'gyaku-zuki-chudan'], ['gyaku-zuki jodan', 'gyaku-zuki-jodan'], ['garganta', 'gyaku-zuki-garganta'], ['union brazo-hombro', 'gyaku-zuki-union'],
+  ['ao ataca (jodan)', 'gyaku-zuki-jodan', 'ao'], ['caido + remate', 'remate'], ['rastro cabeza', 'rastro'], ['pictogramas', 'picto']];
+window.DURACION = VISTAS.length;
+const cabeza = (tau) => {
+  const f1 = U.easeInOut(U.prog(tau, 0.3, 1.2)), f2 = U.easeInOut(U.prog(tau, 1.2, 2.0)), f3 = U.easeInOut(U.prog(tau, 2.0, 2.8));
+  const p = mezclar(mezclar(mezclar(P['oi-zuki-migi'], P['paso-nivel'], f1), P['paso-alto'], f2), P['oi-zuki-migi'], f3);
+  k.aplicarPose(p, { ancla: { pie: 'D', x: 0.1, z: 0 } }); return k.punto('cabeza');
+};
+window.render = (t) => {
+  const [rot, tec, quien] = VISTAS[Math.min(VISTAS.length - 1, Math.floor(t))];
+  EMAKI.fondoPapel(ctx);
+  par.aka.raiz.visible = par.ao.raiz.visible = !(tec === 'rastro' || tec === 'picto'); k.raiz.visible = tec === 'rastro';
+  d.limpiar(); let info = '';
+  if (tec === 'picto') {
+    overlay.ascensor(ctx, 540, 700, { size: 520, puertas: 0.25 });
+    overlay.movilTripode(ctx, 330, 1500, { size: 520 });
+    EMAKI.texto(ctx, { lineas: rot, size: 60, y: 300 }); return;
+  }
+  if (tec === 'rastro') {
+    k.colocar(0, 0, 90); cabeza(2.2); d.rastro(cabeza, { t: 2.2, ventana: 2.2, muestras: 44 }); cabeza(2.2);
+    esc.sombraEn(0, 0); esc.orbita({ centro: [0, 1.0, 0], distancia: 7, azimut: 0, elevacion: 3, fov: 26 }); esc.dibujar(ctx, {}); EMAKI.texto(ctx, { lineas: rot, size: 60, y: 120 }); return;
+  }
+  if (tec === 'remate') {
+    par.colocar(2); ao.colocar(0, 0, 90); aka.colocar(0, -0.75, 0);
+    aka.aplicarPose(P['puno-remate-bajo']); tumbar(ao, P, { f: 1 });
+    const dd = par.alinear('puno-remate-bajo', { aplicar: (r) => tumbar(r, P, { f: 1 }) });
+    info = 'hueco ' + (dd * 100).toFixed(1) + ' cm · normal ' + par.contacto.normal;
+    aka.cara({ cejas: -0.5 }); ao.cara({ ojos: 0.6, sonrisa: 0.1 });
+    esc.sombraEn(0, -0.3); esc.orbita({ centro: [0, 0.65, -0.3], distancia: 6, azimut: 0, elevacion: 8, fov: 26 }); esc.dibujar(ctx, {});
+    EMAKI.texto(ctx, { lineas: [rot, info], size: 48, y: 120 }); return;
+  }
+  par.colocar(1.6);
+  const X = crearTecnica(par, P, tec, { atacante: quien }); X.poner(0.7);
+  info = 'hueco ' + (Math.hypot(0) + 0).toFixed(0) + ' n=' + X.contacto.normal;
+  aka.cara({ cejas: -0.5 }); ao.cara({ ojos: 0.6, cejas: 0.5 });
+  const c = X.camara, [cx, cz] = par.centro(); esc.sombraEn(cx, cz);
+  esc.orbita({ ...c, centro: [cx + c.centro[0], c.centro[1], cz] }); esc.dibujar(ctx, {});
+  EMAKI.texto(ctx, { lineas: [rot, 'normal ' + X.contacto.normal + ' · hueco ' + (X.contacto.hueco * 100).toFixed(1) + ' cm'], size: 48, y: 120 });
+};
+</script></body></html>

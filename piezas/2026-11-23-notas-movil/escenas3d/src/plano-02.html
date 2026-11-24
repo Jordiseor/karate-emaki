@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>notas-movil · plano 02</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { U, N } = C;
+const CAJA = { x: 90, y: 260, w: 900, h: 300 };
+const nota = (ctx, lineas, p, t) => { const h = N.marco(ctx, { caja: CAJA }); lineas.forEach((l, i) => N.escribir(ctx, h, l, { y: 120 + i * 100, size: 72, p: i === 0 ? p * 2 : p * 2 - 1 })); return h; };
+const S = C.iniciar({ rumbo: 0 }), { ctx, esc, P, k } = S;
+window.DURACION = C.DUR[1];
+const POS = [[210, 1220, "der"], [850, 1040, "izq"], [230, 990, "der"], [540, 685, "izq"]], SZ = [84, 120, 150, 170];
+window.render = (t) => {
+  k.colocar(0, 0, 0);
+  const n = Math.max(0, Math.min(3, Math.floor((t - 0.2) / 0.35)));
+  const ult = t < 0.2 ? 0 : 1;
+  const dir = [1, -1, 1, -1][n];
+  const giro = ult * dir * 25 * U.easeOut(U.prog(t, 0.2 + n * 0.35, 0.2 + n * 0.35 + 0.15));
+  k.aplicarPose({ ...P.yoi, cabeza: { ...(P.yoi.cabeza || {}), giro } });
+  k.cara({ sonrisa: 0.9, parpadeo: U.parpadeo(t, [1.3], 0.5) });
+  C.cam(esc, "media", { centro: [0, 1.5, 0], distancia: 8.5 }); esc.sombraEn(0, 0); esc.dibujar(ctx, { vineta: true });
+  nota(ctx, ['Decir «osu»', 'a todo.'], U.prog(t, 0, 0.3), t);
+  POS.forEach(([x, y, c], i) => N.bocadillo(ctx, '¡Osu!', { x, y, cola: c, size: SZ[i], p: U.prog(t, 0.2 + i * 0.35, 0.45 + i * 0.35) }));
+  C.etiqueta(ctx, t, { pre: 'Osu: origen discutido', t0: 0.3 });
+};
+</script></body></html>

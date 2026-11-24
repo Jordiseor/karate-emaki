@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Dojo 1945 · plano 06</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { ctx, esc, U, H3, P } = C.iniciar('atardecer', { casa: false, poses: true });
+window.DURACION = 2.3;
+// PLANO 6: Funakoshi (silueta, de espaldas) escribe 松濤; cámara abre ligeramente.
+const m = H3.anadirMaestro(esc, H3.crearMaestro({ silueta: '#1A1A1A' }));
+const mesa = H3.crearMesita({ texto: '松濤' }); esc.escena.add(mesa.raiz);
+window.render = (t) => {
+  m.colocar(0, 0, 180).pose(P, 'maestro-seiza-pincel', { escribir: t });
+  mesa.colocar(0, -0.55, 180).escribir(U.prog(t, 0, 1.9));
+  esc.orbita({ centro: [0, 0.75, -0.3], distancia: 3.6 + 0.5 * U.easeInOut(U.prog(t, 0, 2.3)), azimut: 12, elevacion: 14, fov: 34 });
+  esc.dibujar(ctx);
+  C.tarjeta(ctx, t, ['Seudónimo de Funakoshi'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

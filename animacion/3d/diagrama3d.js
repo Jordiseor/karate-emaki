@@ -93,6 +93,20 @@ export class Diagrama3D {
     return this;
   }
 
+  // ---------- rastro ----------
+  // Rastro de un punto en los últimos segundos: polilínea que se desvanece hacia el pasado. DETERMINISTA y sin estado:
+  // muestrea fnPunto(τ) para τ = t − ventana … t (τ < 0 se recorta a 0). fnPunto(τ) debe devolver un Vector3 o [x,y,z]
+  // (p. ej. (τ) => { k.aplicarPose(poseEn(τ), op); return k.punto('cabeza'); }). La última muestra es τ = t, así que
+  // al terminar el personaje queda en la pose de t. o: { t, ventana: 2, color: ROJO, muestras: 40, grosor: 0.012, alfa: 1, punta: true }
+  rastro(fnPunto, o = {}) {
+    const t = o.t ?? 0, ventana = o.ventana ?? 2, n = Math.max(2, o.muestras ?? 40), color = o.color || ROJO, alfa = o.alfa ?? 1, enc = o.encima ?? this.o.encima;
+    const r = (o.grosor || 0.012) * this.o.escala, pts = [];
+    for (let i = 0; i <= n; i++) pts.push(aV(fnPunto(Math.max(0, t - ventana * (1 - i / n)))));
+    for (let i = 0; i < n; i++) if (pts[i].distanceToSquared(pts[i + 1]) > 1e-10) this._barra('ras', pts[i], pts[i + 1], r * (0.4 + 0.6 * (i + 1) / n), color, alfa * Math.pow((i + 1) / n, 0.8), enc);
+    if (o.punta !== false) this._esfera('rasP', pts[n], r * 1.9, color, alfa, enc);
+    return this;
+  }
+
   // ---------- centro de masas ----------
   // Esfera roja en el CdM del personaje y vertical discontinua hasta el suelo (con una marca en el suelo).
   // o: { alfa: 1, radio: 0.045, vertical: true, color, punto: Vector3 (otro punto en vez del CdM calculado) }

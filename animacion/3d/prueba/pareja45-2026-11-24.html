@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Pareja 4:5</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="780" height="900"></canvas>
+<script src="../../marca.js"></script>
+<script type="module">
+// Prueba del encuadre web 4:5 (780×900): render.mjs --t 0.7 --png pareja45.png (el canvas manda el tamaño).
+import { crearEscenario } from '../escenario.js';
+import { cargarPoses } from '../karateka3d.js';
+import { crearPareja, crearAreaWKF, crearTecnica, formato45, CAM } from '../kumite3d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = formato45(crearEscenario({ escala: 0.5, suelo: 'tatami' })); esc.escena.fog.near = 16; esc.escena.fog.far = 60;
+const P = cargarPoses(), par = crearPareja(esc, { distancia: 1.6 }); crearAreaWKF(esc);
+const X = crearTecnica(par, P, 'gyaku-zuki-jodan');
+window.DURACION = 1.2;
+window.render = (t) => { X.poner(t); const [cx, cz] = par.centro(); esc.sombraEn(cx, cz); esc.orbita({ ...CAM.pareja45, centro: [cx, CAM.pareja45.centro[1], cz] }); esc.dibujar(ctx); };
+</script></body></html>

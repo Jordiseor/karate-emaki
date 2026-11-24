@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>notas-movil · plano 09</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { U, N } = C;
+const S = C.iniciar({ rumbo: 0 }), { ctx, esc, P, k } = S;
+window.DURACION = C.DUR[8];   // 3,0 s
+const TIT = ['Notas del móvil', 'de un cinturón', 'blanco:'];
+// PENDIENTE (plan.md): pulgar arriba definido aquí (brazoD al frente-alto, codo doblado, mano cerrada)
+const pulgar = (f) => { const n = P.neutra; return { ...n, brazoD: { ...n.brazoD, adelante: 55 * f, abre: 28 * f, gira: 0 }, codoD: 100 * f, manoD: 1, cabeza: { ...(n.cabeza || {}), inclina: 0 } }; };
+window.render = (t) => {
+  k.colocar(0, 0, 0);
+  const vuelta = U.easeInOut(U.prog(t, 2.2, 3.0));   // 2,2–3,0: de pulgar arriba a la pose del plano 1
+  const resp = Math.sin(t * 2.2) * 0.02;
+  const pose = C.mezclar(pulgar(U.easeOut(U.prog(t, 0.1, 0.6))), C.poseMovil(P, 1 - 0.1 * resp), vuelta);
+  k.aplicarPose(pose);
+  const cara = C.mezclarCara(C.CARAS_SEIZA.alivio, C.CARAS_SEIZA.alivio, 0);
+  k.cara({ ...cara, parpadeo: Math.max(cara.parpadeo || 0, U.parpadeo(t, [1.2], 0.5)) });
+  C.cam(esc, 'frontal');
+  esc.sombraEn(0, 0);
+  esc.dibujar(ctx, { vineta: true });
+  const hoja = N.marco(ctx, { escala: 1 + 0.004 * Math.sin(t * 1.5) });
+  const fuera = 1 - U.prog(t, 2.4, 3.0);   // la nota nueva se funde a vacío
+  N.escribirLineas(ctx, hoja, ['¿Cuál fue', 'tu primera', 'nota?'], { p: 1, y: 130, paso: 110, size: 84, alfa: fuera });
+  N.escribir(ctx, hoja, '', { y: 130 + 3 * 110, size: 84, p: 1, cursor: fuera, t, alfa: fuera });
+  N.escribirLineas(ctx, hoja, TIT, { p: 1, y: 140, paso: 100, size: 76, alfa: 1 - fuera });
+};
+</script></body></html>

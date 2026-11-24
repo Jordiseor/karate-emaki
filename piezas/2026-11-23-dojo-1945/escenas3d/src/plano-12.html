@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Dojo 1945 · plano 12</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { ctx, esc, casa, P, U } = C.iniciar('atardecer', { poses: true });
+window.DURACION = 3.2;
+casa.escribirRotulo('松濤館', 1);
+const k = new C.Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz);
+window.render = (t) => {
+  const p = U.prog(t, 0, 3.2), e = U.easeInOut(p);
+  k.colocar(0, 5, 0).aplicarPose(P['pies-juntos']); k.cara({ cejas: 0.5, sonrisa: 0.5 });
+  const s = 1 - U.prog(t, 2.6, 3.0); k.raiz.visible = s > 0.01; k.raiz.scale.setScalar(Math.max(s, 0.01));
+  const d = 6 + 24 * e;   // 6 → 30 (final = plano 1, fotograma 0)
+  esc.orbita({ centro: [0, 1.4 + 0.8 * e, 5 * (1 - e)], distancia: d, azimut: 14 * e, elevacion: 3 + 4 * e, fov: 34 });
+  esc.dibujar(ctx);
+  if (t < 2.8) C.tarjeta(ctx, t, ['¿Sabías que', 'era una casa?'], { t0: 0.1, y: 300 });
+  else C.tarjeta(ctx, t, 'Seis años', { t0: -1, y: 300 });
+};
+</script></body></html>

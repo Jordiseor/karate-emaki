@@ -1,0 +1,65 @@
+{
+ "nombre": "paso-nivel",
+ "descripcion": "Paso de enlace a nivel (ascensor, versión correcta): los dos pies planos a 0,23 m en lateral, el pie trasero (derecho, 7 cm por detrás del izquierdo) pasando junto al delantero, rodillas dobladas, tronco vertical, cadera a 0,81 m (= zenkutsu-dachi). Brazos como oi-zuki-migi (puño derecho al frente, hikite izquierdo) para mezclar sin saltos: mezclar(P['oi-zuki-migi'], P['paso-nivel'], f).",
+ "manoI": 0,
+ "manoD": 0,
+ "brazoI": {
+  "adelante": -59,
+  "abre": 5.6,
+  "gira": -0.4
+ },
+ "codoI": 115,
+ "munecaI": {
+  "gira": 94
+ },
+ "munecaD": {
+  "gira": -92
+ },
+ "codoD": 4,
+ "brazoD": {
+  "adelante": 78.4,
+  "abre": -12.8,
+  "gira": 0
+ },
+ "cadera": {},
+ "tronco": {},
+ "cabeza": {},
+ "piernaI": {
+  "adelante": 38.9,
+  "abre": 2.4,
+  "gira": 0
+ },
+ "rodillaI": 69.2,
+ "tobilloI": {
+  "flex": 30.3,
+  "ladeo": 0
+ },
+ "piernaD": {
+  "adelante": 28.5,
+  "abre": 2.4,
+  "gira": 0
+ },
+ "rodillaD": 68.7,
+ "tobilloD": {
+  "flex": 40.3,
+  "ladeo": 0
+ },
+ "medidas": {
+  "puno_D": [
+   -0.033,
+   1.087,
+   0.543
+  ],
+  "tobillo_I": [
+   0.115,
+   0.076,
+   0.05
+  ],
+  "tobillo_D": [
+   -0.115,
+   0.076,
+   -0.069
+  ],
+  "altura_cadera_m": 0.809
+ }
+}

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>notas-movil · plano 04</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { U, N } = C;
+const CAJA = { x: 90, y: 260, w: 900, h: 300 };
+const nota = (ctx, lineas, p) => { const h = N.marco(ctx, { caja: CAJA }); lineas.forEach((l, i) => N.escribir(ctx, h, l, { y: 120 + i * 100, size: 72, p: i === 0 ? p * 2 : p * 2 - 1 })); return h; };
+const S = C.iniciar({ rumbo: 0, extras: [{ cinturon: 'negro' }] }), { ctx, esc, P, k, otros } = S, n = otros[0];
+window.DURACION = C.DUR[3];
+window.render = (t) => {
+  n.colocar(0.6, -1.8, 0); n.aplicarPose(P.yoi); n.cara({ sonrisa: 0 });
+  const f = U.easeBack(U.prog(t, 0.1, 0.6)), as = Math.sin(t * 9) * 6 * U.prog(t, 0.6, 0.8);
+  k.colocar(-0.45, 0, 0);
+  const p = C.mezclar(P.neutra, P['encoge-hombros'], f);
+  k.aplicarPose({ ...p, cabeza: { ...(p.cabeza || {}), inclina: (p.cabeza?.inclina || 0) + as } });
+  k.cara({ cejas: 0.5, sonrisa: 0.5, torcida: 0.3, parpadeo: U.parpadeo(t, [1.2], 0.4) });
+  esc.orbita({ centro: [0, 1.5, -0.9], distancia: 9.5, azimut: 0, elevacion: 0, fov: 26 });
+  esc.sombraEn(0, 0); esc.dibujar(ctx, { vineta: true });
+  nota(ctx, ['Sensei:', 'ese de ahí.'], U.prog(t, 0, 0.3));
+  C.etiqueta(ctx, t, { pre: 'Sensei (', jp: '先生', post: '): el nacido antes', t0: 0.3 });
+};
+</script></body></html>

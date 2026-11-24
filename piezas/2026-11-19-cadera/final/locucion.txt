@@ -1,0 +1,13 @@
+Locución cadera (30 s, voz Kokoro em_santa). Formato: inicio en s | texto en pantalla | texto para la voz (= storyboard sin cambios; velocidad x1,1 solo en los planos 8 y 9).
+0.0 | El puño es lo último en moverse | El puño es lo último en moverse.
+2.5 | ¿Quién arranca el golpe? | Entonces, ¿quién arranca el puñetazo?
+5.0 | Medido en 10 karatekas | Lo midieron en karatekas de élite.
+7.5 | Primero la cadera | Primero, la pelvis.
+9.5 | Luego el tronco | Luego, el tronco.
+11.5 | Después el hombro | Después, el hombro.
+13.5 | El puño, el último | Y el puño llega el último.
+16.0 | Cada eslabón, más rápido | Cada eslabón, más rápido que el anterior.
+18.5 | Porcentajes: sin medir | Cuánto pone cada parte, no está medido.
+21.5 | Ni antes ni después | Shotokan: ni antes, ni después de la cadera.
+24.5 | La cadera abre la cadena | La cadera abre la cadena.
+27.0 | ¿Mueves la cadera o solo el brazo? | ¿Mueves la cadera… o solo el brazo?
