@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Kumite v2 · 2026-11-24</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../marca.js"></script>
+<script type="module">
+// Hoja de revisión kumite v2: cada técnica en su instante de impacto con la cámara recomendada. t = índice de vista.
+import { crearEscenario, util as U } from '../escenario.js';
+import { cargarPoses, mezclar } from '../karateka3d.js';
+import { crearPareja, crearAreaWKF, crearTecnica } from '../kumite3d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = crearEscenario({ escala: 0.5, suelo: 'tatami' });
+esc.escena.fog.near = 16; esc.escena.fog.far = 60;
+const P = cargarPoses();
+const par = crearPareja(esc, { distancia: 2 }); crearAreaWKF(esc);
+const { aka, ao } = par;
+// [rótulo, técnica, t]  (t = instante dentro de la técnica de 1,2 s; I = impacto 0,7)
+const VISTAS = window.VISTAS = [
+  ['mawashi chudan', 'mawashi-geri-chudan', 0.7], ['mawashi a la espalda', 'mawashi-geri-espalda', 0.7],
+  ['mawashi jodan', 'mawashi-geri-jodan', 0.7], ['gyaku-zuki chudan', 'gyaku-zuki-chudan', 0.7],
+  ['chudan t=0.2', 'mawashi-geri-chudan', 0.2], ['chudan t=0.4', 'mawashi-geri-chudan', 0.4], ['chudan t=0.55', 'mawashi-geri-chudan', 0.55], ['chudan t=1.1', 'mawashi-geri-chudan', 1.1],
+  ['jodan t=0.4', 'mawashi-geri-jodan', 0.4], ['jodan t=0.55', 'mawashi-geri-jodan', 0.55], ['espalda t=0.55', 'mawashi-geri-espalda', 0.55], ['zuki t=0.55', 'gyaku-zuki-chudan', 0.55],
+  ['mae-geri chudan', 'mae-geri-chudan', 0.7],
+];
+window.DURACION = VISTAS.length;
+const X = {};
+window.render = (t) => {
+  const [rot, tec, ti] = VISTAS[Math.min(VISTAS.length - 1, Math.floor(t))];
+  par.colocar(window.DIST || 1.6);
+  const x = X[tec] || (X[tec] = crearTecnica(par, P, tec));
+  par.colocar(window.DIST || 1.6); const x2 = crearTecnica(par, P, tec); x2.poner(ti);
+  aka.cara({ cejas: -0.5, parpadeo: 0 }); ao.cara({ ojos: 0.6, cejas: 0.5, parpadeo: 0 });
+  const c = x2.camara, [cx, cz] = par.centro(); esc.sombraEn(cx, cz);
+  esc.orbita({ ...c, centro: [cx + c.centro[0], c.centro[1], cz] });
+  esc.dibujar(ctx, {});
+  EMAKI.texto(ctx, { lineas: [rot, 'n=' + x2.contacto.normal + ' d(aka-ao)=' + Math.hypot(ao.base.x - aka.base.x, ao.base.z - aka.base.z).toFixed(2)], size: 48, y: 120 });
+};
+</script></body></html>

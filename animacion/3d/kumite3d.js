@@ -2,7 +2,7 @@
 // pareja aka (cinturón rojo) / ao (cinturón azul), alineación del rival para patadas con control, tatami con área y jōgai.
 // El rojo del cinturón aka es el de reglamento (permitido aquí); el rojo de marca #C8102E sigue siendo solo para golpes/datos.
 import * as THREE from './lib/three.module.min.js';
-import { Karateka3D, CINTURONES } from './karateka3d.js';
+import { Karateka3D, CINTURONES, mezclar, mezclarCadena } from './karateka3d.js';
 
 export { THREE };
 const V3 = (x, y, z) => new THREE.Vector3(x, y, z);
@@ -28,27 +28,107 @@ export function crearPareja(esc, o = {}) {
     },
     // punto medio entre los dos (para centrar la cámara): [x, z]
     centro() { return [(aka.base.x + ao.base.x) / 2, (aka.base.z + ao.base.z) / 2]; },
-    // pone `ao` donde le toca a la patada de `aka` (ya con su pose aplicada): el pie se detiene a `hueco` m de la zona
-    // tecnica: 'mawashi-geri-jodan' (cabeza) | 'mae-geri-chudan' (pecho). La pose de ao debe estar ya aplicada (kumite-esquiva / kamae).
-    alinear(tecnica, { hueco = 0.05, pose = null } = {}) { return alinearRival(aka, ao, tecnica, { hueco, pose }); }
+    // pone `ao` donde le toca a la técnica de `aka` (ya con su pose aplicada y ao con la suya): el pie/puño se detiene a `hueco` m de la superficie.
+    // tecnica: 'mawashi-geri-jodan' (cabeza) | 'mawashi-geri-chudan' (costado) | 'mawashi-geri-espalda' (espalda) | 'mae-geri-chudan' (pecho) | 'gyaku-zuki-chudan' (pecho, puño)
+    // Devuelve la distancia final (m); par.contacto = { zona, normal } (normal = coseno entre la dirección de contacto y la normal esperada: <0,5 = mal ángulo).
+    alinear(tecnica, { hueco = 0.03, pose = null } = {}) { const d = alinearRival(aka, ao, tecnica, { hueco, pose }); par.contacto = alinearRival.ultimo; return d; }
   };
   return par.colocar(o.distancia);
 }
 
-// Mueve `ao` (rígido, en el suelo) para que la patada de `aka` termine a `hueco` m de su cabeza (jōdan) o pecho (chūdan).
-// Devuelve la distancia final entre el tobillo de aka y la zona. Llámalo después de aplicarPose a los dos y antes de dibujar.
-export function alinearRival(aka, ao, tecnica, { hueco = 0.05, pose = null } = {}) {
-  const jodan = /jodan/.test(tecnica);
-  const F = aka.punto('tobilloD'), ref = () => (jodan ? ao.punto('cabeza') : ao.punto('pecho'));
-  // aka: marco local (x lateral, z hacia delante)
+// Zonas de impacto de `ao`: elipsoide-cilindro del tronco (radios 0,155 × 0,125, de y −0,05 a 0,38 en el marco del tronco) o esfera de la cabeza (r 0,19).
+// `normal`: dirección local (marco del tronco) por la que se espera el contacto: costado izq. = +x, espalda = −z, pecho = +z.
+const ZONAS = {
+  'mawashi-geri-jodan': { forma: 'cabeza', normal: null, ini: [0.21, 0] },
+  'mawashi-geri-chudan': { forma: 'tronco', normal: [1, 0, 0], ini: [0.2, 0] },
+  'mawashi-geri-espalda': { forma: 'tronco', normal: [0, 0, -1], ini: [0.2, 0] },
+  'mae-geri-chudan': { forma: 'tronco', normal: [0, 0, 1], ini: [0, 0.2] },
+  'gyaku-zuki-chudan': { forma: 'tronco', normal: [0, 0, 1], ini: [0, 0.2], mano: true }
+};
+// distancia con signo (m) de un punto del mundo a la zona de ao (negativa = dentro) y dirección horizontal «de la zona hacia el punto»
+function distZona(ao, zona, p) {
+  if (zona.forma === 'cabeza') {
+    const c = ao.punto('cabeza'), v = p.clone().sub(c); return { d: v.length() - 0.19, v, c };
+  }
+  const j = ao.j.tronco; j.updateWorldMatrix(true, false);
+  const q = j.worldToLocal(p.clone());
+  const qy = Math.min(0.38, Math.max(-0.05, q.y)), ex = q.x / 0.155, ez = q.z / 0.125, r = Math.hypot(ex, ez);
+  const d = (r - 1) * 0.125 + (Math.abs(q.y - qy) > 0 ? Math.abs(q.y - qy) : 0);
+  const c = V3(0, qy, 0).applyMatrix4(j.matrixWorld); return { d, v: p.clone().sub(c), c, q };
+}
+
+// Mueve `ao` (rígido, en el suelo) para que la técnica de `aka` termine a `hueco` m de su cuerpo. Llámalo después de aplicarPose a los dos y antes de dibujar.
+export function alinearRival(aka, ao, tecnica, { hueco = 0.03, pose = null } = {}) {
+  const Z = ZONAS[tecnica]; if (!Z) throw new Error('técnica sin zona: ' + tecnica);
   const a = aka.base.rumbo * D2R, fw = V3(Math.sin(a), 0, Math.cos(a)), lat = V3(Math.cos(a), 0, -Math.sin(a));
-  // desplazamiento deseado de la zona respecto del tobillo: jōdan → al lado (+x local) ≈ radio de cabeza + pie; chūdan → delante
-  const off = jodan ? { x: 0.15 + hueco, z: 0.02 } : { x: 0.0, z: 0.14 + hueco + 0.0 };
-  const obj = F.clone().addScaledVector(lat, off.x).addScaledVector(fw, off.z);
-  const R = ref();
-  const b = ao.base; ao.colocar(b.x + (obj.x - R.x), b.z + (obj.z - R.z), b.rumbo);
-  if (pose) ao.aplicarPose(pose); else if (ao.pose) ao.aplicarPose(ao.pose);
-  return +ref().distanceTo(obj).toFixed(3);
+  const muestras = () => (Z.mano ? [[aka.punto('manoD'), 0.05]] : [[aka.punto('tobilloD'), 0.05], [aka.punto('puntaD'), 0.04], [aka.punto('talonD'), 0.045],
+    [aka.punto('tobilloD').lerp(aka.punto('puntaD'), 0.5), 0.045]]);
+  const puesta = (dx, dz) => { const b = ao.base; ao.colocar(b.x + dx, b.z + dz, b.rumbo); if (pose) ao.aplicarPose(pose); else if (ao.pose) ao.aplicarPose(ao.pose); };
+  // 1. punto de partida: centro de la zona al lado/delante de la muestra principal
+  const F = muestras()[0][0], R = Z.forma === 'cabeza' ? ao.punto('cabeza') : ao.punto('cadera');
+  const obj = F.clone().addScaledVector(lat, Z.ini[0]).addScaledVector(fw, Z.ini[1]);
+  puesta(obj.x - R.x, obj.z - R.z);
+  // 2. refinamiento: desplaza a ao en horizontal hasta que la muestra más cercana quede a `hueco`
+  let mejor = null;
+  for (let it = 0; it < 60; it++) {
+    mejor = null;
+    for (const [p, g] of muestras()) { const r = distZona(ao, Z, p); r.d -= g; if (!mejor || r.d < mejor.d) mejor = r; }
+    const e = mejor.d - hueco; if (Math.abs(e) < 0.0005) break;
+    const h = V3(mejor.v.x, 0, mejor.v.z); if (h.lengthSq() < 1e-8) break; h.normalize();
+    puesta(h.x * e * 0.8, h.z * e * 0.8);
+  }
+  let normal = 1;
+  if (Z.normal && mejor.q) { const n = V3(...Z.normal), v = mejor.q.clone(); v.y = 0; normal = v.lengthSq() ? v.normalize().dot(n) : 0; }
+  alinearRival.ultimo = { zona: tecnica, normal: +normal.toFixed(2) };
+  return +mejor.d.toFixed(3);
+}
+
+// ======================================================================
+// Técnica completa en 1,2 s (v2, 2026-11-24): prep 0,4 · golpe 0,3 · pausa 0,3 · vuelta a kamae 0,2.
+// const X = crearTecnica(par, P, 'mawashi-geri-chudan');  →  en render:  X.poner(t)  (t en s desde el inicio de la técnica, 0…X.dur)
+// El impacto cae en t = X.impacto (0,7 s). Los dos empiezan en kamae; aka entra `avance` m durante la prep y ao no se mueve.
+// Cámara recomendada en X.camara (pasa a esc.orbita con centro sumado a par.centro()).
+// ======================================================================
+export const TIEMPOS = { prep: 0.4, golpe: 0.3, pausa: 0.3, vuelta: 0.2, impacto: 0.7, total: 1.2 };
+export const TECNICAS = {
+  'mawashi-geri-chudan': { prep: 'mawashi-geri-prep', golpe: 'mawashi-geri-chudan', zona: 'mawashi-geri-chudan', ao: 'kamae', rumboAo: 180, camara: { azimut: -90, distancia: 10.5, elevacion: 3, fov: 26, centro: [0, 1.05, 0] } },
+  'mawashi-geri-espalda': { prep: 'mawashi-geri-prep', golpe: 'mawashi-geri-chudan', zona: 'mawashi-geri-espalda', ao: 'ao-de-espaldas', rumboAo: 65, camara: { azimut: -90, distancia: 10.5, elevacion: 3, fov: 26, centro: [0, 1.05, 0] } },
+  'mawashi-geri-jodan': { prep: 'mawashi-geri-prep', golpe: 'mawashi-geri-jodan', zona: 'mawashi-geri-jodan', ao: 'kamae', rumboAo: 180, camara: { azimut: -90, distancia: 10.5, elevacion: 3, fov: 26, centro: [0, 1.15, 0] } },
+  'mae-geri-chudan': { prep: 'mae-geri-prep', golpe: 'mae-geri-chudan', zona: 'mae-geri-chudan', ao: 'ao-guardia-alta', rumboAo: 180, camara: { azimut: -90, distancia: 10.5, elevacion: 3, fov: 26, centro: [0, 1.05, 0] } },
+  'gyaku-zuki-chudan': { prep: 'gyaku-zuki-hanmi', golpe: 'gyaku-zuki-kiai', zona: 'gyaku-zuki-chudan', ao: 'ao-guardia-alta', rumboAo: 180, cadena: true, camara: { azimut: 90, distancia: 10.5, elevacion: 3, fov: 26, centro: [0, 1.05, 0] } }
+};
+export function crearTecnica(par, P, nombre, o = {}) {
+  const T = TECNICAS[nombre]; if (!T) throw new Error('técnica desconocida: ' + nombre);
+  const { aka, ao } = par, avance = o.avance ?? 0.4, cl = (x) => Math.min(1, Math.max(0, x));
+  const eio = (x) => { x = cl(x); return x * x * (3 - 2 * x); }, eo = (x) => 1 - (1 - cl(x)) ** 3;
+  const b0 = { x: aka.base.x, z: aka.base.z, r: aka.base.rumbo };
+  const fw = V3(Math.sin(b0.r * D2R), 0, Math.cos(b0.r * D2R));
+  aka.colocar(b0.x, b0.z, b0.r); aka.aplicarPose(P.kamae);
+  const t0 = aka.punto('tobilloI'), ancla0 = { pie: 'I', x: t0.x, z: t0.z };
+  // posición final de ao: con la pose de golpe y el pie de apoyo anclado
+  aka.aplicarPose(P[T.golpe], { ancla: ancla0 });
+  ao.colocar(ao.base.x, ao.base.z, o.rumboAo ?? T.rumboAo); ao.aplicarPose(P[T.ao]);
+  par.alinear(T.zona, { hueco: o.hueco ?? 0.03 });
+  const contacto = par.contacto, fin = { x: ao.base.x, z: ao.base.z, r: ao.base.rumbo };
+  const golpe = (f) => (T.cadena
+    ? mezclarCadena(P[T.prep], P[T.golpe], { piernas: eo(f), cadera: eo(f * 1.4), tronco: eo(f * 1.3 - 0.1), hombro: eo(f * 1.4 - 0.2), codo: eo(f * 1.5 - 0.3), mano: eo(f * 2 - 1) })
+    : mezclar(P[T.prep], P[T.golpe], eo(f)));
+  return {
+    dur: TIEMPOS.total, impacto: TIEMPOS.impacto, camara: T.camara, contacto, fin,
+    pose(t) {
+      if (t < TIEMPOS.prep) return mezclar(P.kamae, P[T.prep], eio(t / TIEMPOS.prep));
+      if (t < TIEMPOS.prep + TIEMPOS.golpe) return golpe((t - TIEMPOS.prep) / TIEMPOS.golpe);
+      if (t < TIEMPOS.prep + TIEMPOS.golpe + TIEMPOS.pausa) return P[T.golpe];
+      return mezclar(P[T.golpe], P.kamae, eio((t - 1.0) / TIEMPOS.vuelta));
+    },
+    poner(t) {
+      const e = 1 - eio(t / 0.6);                    // 1 al inicio → 0 a los 0,6 s (aka entra casi hasta el golpe)
+      aka.colocar(b0.x, b0.z, b0.r);
+      aka.aplicarPose(this.pose(t), { ancla: { pie: 'I', x: ancla0.x - fw.x * avance * e, z: ancla0.z - fw.z * avance * e } });
+      ao.colocar(fin.x, fin.z, fin.r); ao.aplicarPose(P[T.ao]);
+      return this;
+    }
+  };
 }
 
 // ======================================================================

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Kumite v2 · plano 05</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, aka, ao, par, P } = S; const U = C.U;
+window.DURACION = 3.5;
+const X = C.crearTecnica(par, P, 'mawashi-geri-jodan');
+window.render = (t) => {
+  X.poner(t - C.T0);
+  aka.cara({ cejas: -0.5, parpadeo: 0 }); ao.cara({ ojos: 0.6, cejas: 0.5, parpadeo: 0 });
+  C.cam(S, X.camara);
+  esc.dibujar(ctx, {});
+  C.impacto(S, t, 3, ["cabeza"], 'tobilloD');
+  C.tarjeta(ctx, t, ["Patada a la cabeza: [r]3[/r]"], ["ippon"]);
+};
+</script></body></html>

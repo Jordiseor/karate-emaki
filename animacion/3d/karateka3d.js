@@ -707,6 +707,8 @@ export class Karateka3D {
     switch (nombre.replace(/[ID]$/, '')) {
       case 'cabeza': return w(j.cabeza, 0, M.cabezaCentro, 0);
       case 'pecho': return w(j.tronco, 0, 0.26, 0.12);
+      case 'espalda': return w(j.tronco, 0, 0.2, -0.1);   // superficie de la espalda (entre omóplatos)
+      case 'flanco': return w(j.tronco, L === 'I' ? 0.155 : -0.155, 0.12, 0); // costado (I = el izquierdo del propio karateka)
       case 'cadera': return w(j.cadera);
       case 'nudo': return w(j.cadera, 0, 0.05, 0.17);
       case 'mano': return w(j['muneca' + L], 0, -0.05, 0);
@@ -797,7 +799,7 @@ export function espejo(p) {
   return o;
 }
 // Carga las poses 3D. render.mjs las inyecta en window.EMAKI_POSES3D; si no (navegador normal), las pide por XHR.
-export function cargarPoses(nombres = ['yoi', 'kamae', 'zenkutsu-dachi', 'zenkutsu-bajo', 'pies-juntos', 'gedan-barai-prep', 'zenkutsu-bajo-misma-base', 'rei', 'cargar-viga', 'brazos-arriba', 'maestro-seiza-pincel', 'maestro-pie-escribiendo', 'maestro-manos-atras', 'choku-zuki-kiai', 'gyaku-zuki-kiai', 'gyaku-zuki-hanmi', 'hikite-medio', 'agarre-brazo', 'tiron-cadera', 'rival-brazo-extendido', 'mano-hara', 'atar-cinturon', 'pasar-objeto', 'recibir', 'mawashi-geri-jodan', 'mawashi-geri-prep', 'mae-geri-chudan', 'mae-geri-prep', 'kumite-esquiva', 'espalda-tras-patada', 'seiza', 'empuje-recto', 'encoge-hombros', 'seiza-alto', 'en-cuclillas-medio', 'manos-rodillas', 'levantarse-vacilando']) {
+export function cargarPoses(nombres = ['yoi', 'kamae', 'zenkutsu-dachi', 'zenkutsu-bajo', 'pies-juntos', 'gedan-barai-prep', 'zenkutsu-bajo-misma-base', 'rei', 'cargar-viga', 'brazos-arriba', 'maestro-seiza-pincel', 'maestro-pie-escribiendo', 'maestro-manos-atras', 'choku-zuki-kiai', 'gyaku-zuki-kiai', 'gyaku-zuki-hanmi', 'hikite-medio', 'agarre-brazo', 'tiron-cadera', 'rival-brazo-extendido', 'mano-hara', 'atar-cinturon', 'pasar-objeto', 'recibir', 'mawashi-geri-jodan', 'mawashi-geri-prep', 'mae-geri-chudan', 'mae-geri-prep', 'kumite-esquiva', 'espalda-tras-patada', 'mawashi-geri-chudan', 'ao-de-espaldas', 'ao-guardia-alta', 'seiza', 'empuje-recto', 'encoge-hombros', 'seiza-alto', 'en-cuclillas-medio', 'manos-rodillas', 'levantarse-vacilando']) {
   const P = Object.assign({}, (typeof window !== 'undefined' && window.EMAKI_POSES3D) || {});
   for (const n of nombres) if (!P[n] && typeof XMLHttpRequest !== 'undefined') {
     try { const x = new XMLHttpRequest(); x.open('GET', new URL('./poses/' + n + '.json', import.meta.url).href, false); x.send(); if (x.status === 200 || x.status === 0) P[n] = JSON.parse(x.responseText); } catch (e) { console.warn('pose 3D no encontrada', n); }

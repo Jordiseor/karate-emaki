@@ -1,6 +1,6 @@
 {
  "nombre": "mawashi-geri-prep",
- "descripcion": "Preparación del mawashi-geri: la rodilla derecha sube de lado (muslo 55° al frente y 55° abierto, rodilla a 105°), antes de extender la pierna. Mezclar con mawashi-geri-jodan para la patada.",
+ "descripcion": "Preparación del mawashi-geri (v2): rodilla derecha arriba y de lado a la altura de la cadera (muslo 78° al frente y 52° abierto, rodilla a 112°), espinilla colgando y pie recogido; cadera ya girada ≈ 75 %. Mezclar con mawashi-geri-chudan o mawashi-geri-jodan.",
  "brazoI": {
   "adelante": 32.9,
   "abre": 30.5,
@@ -22,53 +22,53 @@
   "gira": -80
  },
  "cadera": {
-  "giro": -3.1
+  "giro": 13.7
  },
  "tronco": {
-  "giro": 15.3,
-  "ladeo": 17.2,
-  "inclina": 4.9
+  "giro": -11.1,
+  "ladeo": 2.2,
+  "inclina": -8.2
  },
  "cabeza": {
-  "giro": -20.9,
-  "inclina": 6
+  "giro": -2.5,
+  "inclina": 4
  },
  "piernaD": {
-  "adelante": 55,
-  "abre": 55,
-  "gira": 25
+  "adelante": 78,
+  "abre": 52,
+  "gira": 20
  },
- "rodillaD": 105,
+ "rodillaD": 112,
  "tobilloD": {
-  "flex": 15,
+  "flex": 20,
   "ladeo": 0
  },
  "piernaI": {
-  "adelante": -1.1,
-  "abre": 2.1,
-  "gira": 43
+  "adelante": 2.3,
+  "abre": 30.8,
+  "gira": 41.1
  },
- "rodillaI": 0.6,
+ "rodillaI": 40.2,
  "tobilloI": {
-  "flex": -12.1,
-  "ladeo": -2.4
+  "flex": 16.1,
+  "ladeo": -15.1
  },
  "medidas": {
   "puno_D": [
-   0.237,
-   1.175,
-   0.137
+   0.163,
+   1.126,
+   0.135
   ],
   "puno_I": [
-   0.484,
-   1.278,
-   0.194
+   0.359,
+   1.306,
+   0.2
   ],
   "tobillo_D": [
-   -0.247,
-   0.459,
-   0.036
+   -0.165,
+   0.394,
+   0.226
   ],
-  "altura_cadera_m": 0.991
+  "altura_cadera_m": 0.858
  }
 }

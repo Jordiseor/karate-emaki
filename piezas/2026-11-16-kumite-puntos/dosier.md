@@ -44,3 +44,22 @@ Empezar con el gancho del encargo («una patada a la cabeza vale el triple que u
 - [Alta, a banco] WKF, Kumite Competition Rules 2026 (Rules Version 2026.01, V13 FINAL) — https://www.wkf.net/files/pdf/documents/WKF_2026_Kumite_Competition_Rules_MASTER_COPY_V13FINAL.pdf (nota: leído mediante extracción por herramienta, dos consultas, hasta ~100.000 de 109.413 caracteres)
 - [Media, a banco como pista] karate.news, «WKF 2026 Rules Update» — https://karate.news/en/articles/wkf-2026-rules-update-whats-changing-on-january-1st (distancias de contacto erróneas respecto al PDF)
 - Intento fallido: PDF WKF «MASTER COPY_V8» (error del servidor).
+
+## Verificación 24 nov: zonas (espalda)
+Abiertos: PDF 2026.01 (V13 FINAL, leído hasta ~100.000 de 109.413 caracteres), PDF 2024 (Karateliitto, hasta ~100.000 de 107.073) y PDF 2020 (archivo USA Karate, hasta ~100.000 de 159.637). Aviso: la herramienta devuelve resumen, no el PDF literal.
+
+**Hallazgo clave:** el reglamento 2026 (y el 2024) NO enumera «espalda» ni «costado». Define solo chūdan = «cuerpo por encima de la pelvis hasta la clavícula incluida» y jōdan = «por encima de la clavícula» (art. 8.4). La lista explícita «cabeza, cara, cuello, abdomen, pecho, espalda, costado» y «chūdan = abdomen, pecho, espalda y costado» es del reglamento antiguo (2020, art. 6). Por tanto: espalda y costado entran en chūdan por la definición geométrica y por no haber exclusión, no por mención expresa en 2026.
+
+| Dato | Fuente | Fiabilidad |
+| --- | --- | --- |
+| Zonas de puntuación 2026: chūdan = cuerpo por encima de la pelvis hasta la clavícula incluida (excluida la unión brazo-hombro); jōdan = por encima de la clavícula. No nombra espalda ni costado (art. 8.4) | WKF 2026.01 PDF | Alta |
+| Misma definición en 2024 (art. 8.4); ningún artículo define espalda/costado como zona o como zona excluida | WKF 2024 (Karateliitto) | Alta |
+| Reglamento antiguo (2020, art. 6): lista cabeza, cara, cuello, abdomen, pecho, espalda y costado; «chūdan = abdomen, pecho, espalda y costado»; un golpe en los omóplatos puede puntuar | WKF 2020 (copia USA Karate) | Alta (versión antigua, solo contexto) |
+| Yūko 1 = tsuki/uchi a zona de puntuación; waza-ari 2 = patadas chūdan; ippon 3 = patadas jōdan o cualquier técnica legal contra rival con una parte del cuerpo que no sean los pies tocando el tatami, salvo hiza-gamae (art. 8.6) | WKF 2026.01 y 2024 | Alta |
+| Patada a espalda/costado = chūdan = waza-ari 2: deducción de 8.4 + 8.6 (no hay frase literal «patada a la espalda») | Deducción sobre WKF 2026 art. 8.4 y 8.6 | Media-alta |
+| Restricción de espalda: no hay ninguna prohibición de golpear la espalda en el art. 9. Lo que invalida es que quien ataca dé la espalda al rival tras su técnica (art. 8.11 e en 2026; 8.12 e en 2024). Garganta: sin contacto (arts. 8.8 y 9.1.1 punto 1). No hay prohibición específica de «nuca/cuello» en 2026 | WKF 2026.01 y 2024 | Alta (nuca: ausencia de prohibición, sin frase literal) |
+| Que el rival se gire no es requisito para puntuar en la espalda: no aparece ese requisito | Ausencia en 2026/2024 | Media-alta (ausencia) |
+
+**Lo que NO se puede afirmar:** que el reglamento 2026 diga «espalda» o «costado»; que haya una regla escrita «espalda al rival: no puntúa» (lo que existe es invalidez si el atacante da la espalda tras la técnica); cómo aplican los árbitros la práctica en casos límite (p. ej. patada a la espalda de un rival que se gira para cubrirse: riesgo de mubōbi/auto-exposición, 10.4.14 en 2024). Recomiendo en pantalla: «Patada al cuerpo (chūdan) = 2», sin tarjeta de «espalda».
+
+Fuentes abiertas (a banco): WKF 2026.01 PDF (ya en banco); WKF 2024 Karateliitto (ya en banco); WKF 2020, https://archive.teamusa.com/usa-karate/officials-and-coaches/-/media/wkf_competition%20rules_2020_en.pdf (Alta, versión antigua, para la lista espalda/costado).

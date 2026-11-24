@@ -1,0 +1,74 @@
+{
+ "nombre": "ao-guardia-alta",
+ "descripcion": "Ao recibe un golpe al cuerpo (gyaku-zuki chūdan, mae-geri): como kumite-esquiva pero con las dos manos pegadas a la cara (codos doblados 140°) para dejar el pecho y el vientre libres; el puño o el pie de aka no atraviesan la guardia. Rumbo 180.",
+ "cadera": {
+  "giro": -35,
+  "ladeo": 0
+ },
+ "tronco": {
+  "giro": -5,
+  "inclina": -12
+ },
+ "cabeza": {
+  "giro": 38,
+  "inclina": 6
+ },
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {
+  "gira": -70
+ },
+ "munecaD": {
+  "gira": -80
+ },
+ "piernaI": {
+  "adelante": 19.9,
+  "abre": 16.3,
+  "gira": 35.9
+ },
+ "rodillaI": 30,
+ "tobilloI": {
+  "flex": -1.5,
+  "ladeo": -0.9
+ },
+ "piernaD": {
+  "adelante": -1.4,
+  "abre": 11.9,
+  "gira": 10.1
+ },
+ "rodillaD": 34,
+ "tobilloD": {
+  "flex": 19.3,
+  "ladeo": -11.9
+ },
+ "brazoI": {
+  "adelante": 12,
+  "abre": 40,
+  "gira": 20
+ },
+ "codoI": 140,
+ "brazoD": {
+  "adelante": 8,
+  "abre": 4,
+  "gira": -60
+ },
+ "codoD": 140,
+ "medidas": {
+  "puno_D": [
+   -0.025,
+   1.274,
+   0.034
+  ],
+  "puno_I": [
+   0.121,
+   1.373,
+   0.223
+  ],
+  "tobillo_D": [
+   -0.03,
+   0.136,
+   -0.319
+  ],
+  "altura_cadera_m": 0.933
+ }
+}

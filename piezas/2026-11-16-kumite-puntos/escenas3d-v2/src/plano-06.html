@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Kumite v2 · plano 06</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, aka, ao, par, P } = S; const U = C.U;
+window.DURACION = 4.0;
+const pose = (t) => {
+  const bajar = U.easeInOut(U.prog(t, 0.6, 1.2)), subir = U.easeInOut(U.prog(t, 1.9, 2.5)), kam = U.easeInOut(U.prog(t, 2.7, 3.5));
+  const base = C_mez(P.yoi, P.rei, bajar - subir);
+  return C_mez(base, P.kamae, kam);
+};
+const C_mez = (a, b, f) => C.mezclar(a, b, Math.max(0, Math.min(1, f)));
+window.render = (t) => {
+  aka.aplicarPose(pose(t)); ao.aplicarPose(pose(t));
+  aka.cara({ cejas: -0.2, parpadeo: 0 }); ao.cara({ ojos: 0.6, cejas: 0.3, parpadeo: 0 });
+  C.cam(S, C.CAM_BASE);
+  esc.dibujar(ctx, {});
+  C.overlay.tarjeta(ctx, t, { lineas: ['[r]1 · 2 · 3[/r]'], t0: 0.1, size: 110, y: 270 });
+  C.overlay.tarjeta(ctx, t, { lineas: ['¿Tu primer ippon?'], t0: 0.5, size: 84, y: 420 });
+  C.overlay.letraPequena(ctx, 'Reglamento WKF 2026');
+};
+</script></body></html>

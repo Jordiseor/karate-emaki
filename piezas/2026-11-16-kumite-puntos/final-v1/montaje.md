@@ -1,0 +1,8 @@
+# Montaje · kumite-puntos
+
+- Entrada: escenas3d/plano-01..13.mp4 con corte seco (36,0 s, 30 fps, 1080x1920; 3,0/2,5x7/3,0x4/3,5 s, como el storyboard). reel-sin-voz.mp4 y reel.mp4: H.264 veryfast, AAC 192 kbps, 36,0 s. Sin subtítulos quemados (cada plano ya lleva tarjeta).
+- Música (obra propia, licencia en animacion/musica/fondo-*.txt): pulso-vivo x0,5 + ambiente x0,2 (30 s en bucle hasta 36) + golpe.wav a 0,15 / 5,8 / 8,3 / 10,8 s (patada, gyaku-zuki, mae-geri, ippon) + golpe-cifra a 22,0 y golpe-caida a 21,5 s (cruz del plano 9); +6,7 dB y limitador; fundido 34-36 s. reel-sin-voz: -14,4 LUFS (más alto que otras piezas; el ducking lo baja con voz).
+- Voz: Kokoro em_santa (sid 53), velocidades por frase 1,0/1,0/1,25/1,3/1,05/1,35/1,4/1,1/1,4/1,4/1,3/1,05/1,2. Desfases máx. +0,06 s; la voz acaba en 35,52 s. reel.mp4: -16,1 LUFS, pico real -1,3 dBFS.
+- Locución acortada respecto al storyboard (no cabía a x1,4): f06 sin «la técnica debe cumplir»; f09 «Conciencia del rival, el sanshin. De espaldas, no cuenta.»; f10 «Patada a la cabeza: a cinco centímetros. A la garganta, nunca.» (5 cm solo patadas, art. 8.8; sin «unos» ni «se controla»); f13 «Reglamento WKF. ¿Tu primer ippon?» (sin «de 2026» ni «Cuéntalo»). Datos y letra pequeña (adultos, senior, WKF 2026.01) siguen en tarjetas. Grafías: yūko→yuko, waza-ari→wasa ari, jōdan→yodan, zanshin→sanshin, senshu→sénshu. Revisar de oído.
+- Portada: fotograma del plano 1 (0,3 s) con placa papel «KUMITE / ¿cómo se puntúa?» (3 palabras, tinta y rojo #C8102E), y250-540. hoja.png: 13 fotogramas (t=1 s de cada plano).
+- Último fotograma (plano 13) enlaza con el plano 1 (bucle). Mirados inicio, 18 s y final: texto legible.

@@ -1,0 +1,74 @@
+{
+ "nombre": "mawashi-geri-chudan",
+ "descripcion": "Mawashi-geri chūdan (patada circular al costado/abdomen) con la pierna derecha desde kamae hidari: cadera y pie de apoyo giran, el muslo sale de lado con la rodilla por fuera y la espinilla barre de derecha a izquierda; el tobillo derecho queda en (-0,22; 1,02; 0,66) respecto al pie de apoyo, a la altura del cinturón de ao (empeine ≈ 0,1 m más allá). Preparación: mawashi-geri-prep. Alinear al rival con par.alinear('mawashi-geri-chudan') o ('mawashi-geri-espalda').",
+ "brazoI": {
+  "adelante": 32.9,
+  "abre": 30.5,
+  "gira": 21.8
+ },
+ "brazoD": {
+  "adelante": 22.2,
+  "abre": -11.1,
+  "gira": -66.7
+ },
+ "codoI": 108.9,
+ "codoD": 98.1,
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {
+  "gira": -70
+ },
+ "munecaD": {
+  "gira": -80
+ },
+ "cadera": {
+  "giro": 18.2
+ },
+ "tronco": {
+  "giro": -18.5,
+  "ladeo": 4.4,
+  "inclina": -16.5
+ },
+ "cabeza": {
+  "giro": 0.3,
+  "inclina": 6
+ },
+ "piernaD": {
+  "adelante": 111.3,
+  "abre": 59.6,
+  "gira": 90.3
+ },
+ "rodillaD": 62.7,
+ "tobilloD": {
+  "flex": -24.9,
+  "ladeo": 0
+ },
+ "piernaI": {
+  "adelante": 2.3,
+  "abre": 30.8,
+  "gira": 41.1
+ },
+ "rodillaI": 40.2,
+ "tobilloI": {
+  "flex": 16.1,
+  "ladeo": -15.1
+ },
+ "medidas": {
+  "puno_D": [
+   0.164,
+   1.139,
+   0.112
+  ],
+  "puno_I": [
+   0.363,
+   1.32,
+   0.162
+  ],
+  "tobillo_D": [
+   -0.223,
+   1.023,
+   0.678
+  ],
+  "altura_cadera_m": 0.858
+ }
+}

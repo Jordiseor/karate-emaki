@@ -1,0 +1,73 @@
+{
+ "nombre": "ao-de-espaldas",
+ "descripcion": "Ao de medio lado / de espaldas: kamae con las rodillas algo flexionadas, el tronco girado 22° y la cabeza mirando de reojo al rival por encima del hombro izquierdo (70°). Ponerlo con ao.colocar(x, z, rumbo) y rumbo ≈ 45 (mira a la izquierda de aka y le enseña la espalda; 0 = de espaldas puro). par.alinear('mawashi-geri-espalda') lo coloca solo.",
+ "cadera": {
+  "giro": -35
+ },
+ "tronco": {
+  "giro": 22,
+  "inclina": 4
+ },
+ "cabeza": {
+  "giro": 70,
+  "inclina": 4
+ },
+ "manoI": 0,
+ "manoD": 0,
+ "munecaI": {
+  "gira": -70
+ },
+ "munecaD": {
+  "gira": -80
+ },
+ "piernaI": {
+  "adelante": 19.9,
+  "abre": 16.3,
+  "gira": 35.9
+ },
+ "rodillaI": 24,
+ "tobilloI": {
+  "flex": -1.5,
+  "ladeo": -0.9
+ },
+ "piernaD": {
+  "adelante": -1.4,
+  "abre": 11.9,
+  "gira": 10.1
+ },
+ "rodillaD": 28,
+ "tobilloD": {
+  "flex": 19.3,
+  "ladeo": -11.9
+ },
+ "brazoI": {
+  "adelante": 32.9,
+  "abre": 30.5,
+  "gira": 21.8
+ },
+ "codoI": 108.9,
+ "brazoD": {
+  "adelante": 22.2,
+  "abre": -11.1,
+  "gira": -66.7
+ },
+ "codoD": 98.1,
+ "medidas": {
+  "puno_D": [
+   0.104,
+   1.156,
+   0.215
+  ],
+  "puno_I": [
+   0.261,
+   1.324,
+   0.364
+  ],
+  "tobillo_D": [
+   -0.059,
+   0.099,
+   -0.296
+  ],
+  "altura_cadera_m": 0.917
+ }
+}

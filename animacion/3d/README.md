@@ -534,7 +534,7 @@ si prefieres el de marca, `par.aka.cinturon('rojo')`) y `par.ao` (`CINTURON_AO` 
 | Método | Uso |
 | --- | --- |
 | `par.colocar(d, x, z, rumbo)` | Enfrentados a `d` m, centrados en (x, z). Aka mira a +Z con rumbo 0 y ao a −Z |
-| `par.alinear('mawashi-geri-jodan' \| 'mae-geri-chudan', { hueco: 0.05 })` | Tras `aplicarPose` a los dos: mueve a ao para que el pie de aka acabe a `hueco` m de su cabeza (jōdan) o pecho (chūdan). Llamarlo cada fotograma que aka esté en la pose |
+| `par.alinear(tecnica, { hueco: 0.03 })` | (ver «Kumite v2» más abajo) Tras `aplicarPose` a los dos: mueve a ao para que el pie/puño de aka acabe a `hueco` m de su cabeza, costado, espalda o pecho. Llamarlo cada fotograma que aka esté en la pose |
 | `par.centro()` | `[x, z]` del punto medio, para centrar la cámara |
 
 Cámara de 2 personas en 9:16: `esc.orbita({ centro:[cx, 1.1, cz], distancia: 10.5, azimut: ±75…90, elevacion: 3, fov: 26 })`; con `distancia 7,5` no cabe aka entero.
@@ -545,6 +545,40 @@ La patada derecha se ve de frente desde `azimut −75` (aka a la izquierda, ao a
 
 Lámina sobre el tatami: línea blanca del área (8 × 8 m), zona de seguridad (jōgai) algo más oscura fuera, y dos marcas de salida (roja y azul) a 2 m. Decorativa: no pongas cifras de medidas en pantalla.
 `.ocultar()` / `.mostrar()`. Marcador, regla de seis casillas, cronómetro 3:00 y bandera senshu son 2D (`overlay2d.js`), los hace el animador. Las protecciones (guantes, espinilleras) no están hechas: los cinturones bastan.
+
+### Kumite v2 (2026-11-24): técnicas limpias de perfil, 1,2 s cada una
+
+Rehecho tras el rechazo del primer reel (pareja pegada, pierna atravesando a ao). Escena de ejemplo copiable: `prueba/kumite-v2-2026-11-24.html` (hoja: `prueba/kumite-v2-2026-11-24.png`, cada técnica en su impacto).
+Poses nuevas (`herramientas/disenar-poses-2026-11-24.mjs`): `mawashi-geri-chudan` (tobillo en (−0,22; 1,02; 0,66), rodilla por fuera, espinilla horizontal), `mawashi-geri-jodan` (rehecha: tronco 24° ladeado, empeine a la altura de la oreja de ao, tobillo en (−0,18; 1,41; 0,72)),
+`mawashi-geri-prep` (rehecha: rodilla a la altura de la cadera, 112°), `ao-de-espaldas` (kamae con tronco girado y cabeza de reojo; ponerlo con rumbo ≈ 65), `ao-guardia-alta` (manos pegadas a la cara, pecho y vientre libres: para recibir gyaku-zuki o mae-geri).
+Punto nuevo en `k.punto(...)`: `'espalda'` y `'flancoI'`/`'flancoD'`.
+
+**Lo fácil: `crearTecnica`** (prep 0,4 · golpe 0,3 · pausa 0,3 · vuelta a kamae 0,2 = 1,2 s; impacto en t = 0,7 s)
+
+```js
+import { crearPareja, crearTecnica } from '.../kumite3d.js';
+const par = crearPareja(esc, { distancia: 1.6 }); const P = cargarPoses();
+const X = crearTecnica(par, P, 'mawashi-geri-chudan');   // calcula dónde queda ao; llámalo UNA vez antes de render
+// en render(t):  X.poner(t - t0);   // t en s desde el inicio de la técnica (0…1,2; fuera de rango se queda en kamae/pausa)
+const c = X.camara; const [cx, cz] = par.centro(); esc.sombraEn(cx, cz);
+esc.orbita({ ...c, centro: [cx + c.centro[0], c.centro[1], cz] });
+```
+
+| Técnica | Qué ve el público | `ao` | Cámara (azimut) |
+| --- | --- | --- | --- |
+| `'mawashi-geri-chudan'` | empeine de aka en el costado izquierdo de ao, a 3 cm | `kamae`, rumbo 180 | **−90** (aka a la izquierda, pierna en primer plano) |
+| `'mawashi-geri-espalda'` | el mismo golpe en la espalda de ao (medio lado, cabeza de reojo; no puntúa) | `ao-de-espaldas`, rumbo 65 | **−90** (se ve la espalda de ao y el pie tocando) |
+| `'mawashi-geri-jodan'` | empeine a la altura de la oreja de ao a 3 cm; aka echada atrás, sin solaparse cabezas | `kamae`, rumbo 180 | **−90** (centro y 1,15) |
+| `'gyaku-zuki-chudan'` | puño derecho de aka al pecho de ao (prep = hanmi, golpe = kiai por cadena cinética) | `ao-guardia-alta` | **+90** |
+| `'mae-geri-chudan'` | pie al vientre de ao | `ao-guardia-alta` | **−90** |
+
+Opciones: `crearTecnica(par, P, nombre, { avance: 0.4, hueco: 0.03, rumboAo })` (`avance` = metros que aka entra durante los primeros 0,6 s; ao no se mueve). Resultado: `X.dur` (1,2), `X.impacto` (0,7), `X.camara`, `X.fin` (dónde queda ao), `X.contacto`.
+Distancia en el impacto entre cuerpos: 1,0–1,35 m entre bases (chūdan 1,17; jōdan 1,02; zuki 0,67 con el golpe largo). Para los planos de preparación, `par.colocar(1.6)` antes de `crearTecnica`.
+Pie visible: con azimut −90 la pierna derecha de aka queda del lado de la cámara y el pie contacta en el borde de la silueta de ao. Con +90 la cabeza de ao tapa el pie (solo para el puñetazo).
+
+**`par.alinear(tecnica, { hueco: 0.03 })`** ampliado: `'mawashi-geri-jodan'` (cabeza) · `'mawashi-geri-chudan'` (costado) · `'mawashi-geri-espalda'` (espalda) · `'mae-geri-chudan'` (pecho) · `'gyaku-zuki-chudan'` (pecho, mide con el puño `manoD`).
+Ahora mide la distancia real entre el pie (tobillo, empeine, talón y medio) y un modelo de la zona (esfera de la cabeza r 0,19 / cilindro elíptico del tronco), y desplaza a ao hasta `hueco` m. Devuelve la distancia; `par.contacto.normal` (coseno 0…1) dice si el contacto es por la cara esperada (espalda ≈ 0,76; < 0,5 = mal ángulo: cambia el rumbo de ao).
+Los poses sueltos (sin `crearTecnica`) se mezclan a mano: `mezclar(P.kamae, P['mawashi-geri-prep'], f)` → `mezclar(P['mawashi-geri-prep'], P['mawashi-geri-chudan'], f)`, con `aka.aplicarPose(p, { ancla: { pie: 'I', x, z } })`.
 
 ### Tiempos y límites (judo y kumite)
 
