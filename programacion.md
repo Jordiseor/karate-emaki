@@ -4,7 +4,7 @@ Cada tarea arranca una sesión nueva sin memoria. Por eso todas empiezan igual: 
 
 | Tarea | Cuándo (hora de Madrid) | Qué hace |
 | --- | --- | --- |
-| Reunión de ideas | Lunes 8:45 | Lee el buzón, lanza los 3 agentes de ideas a la vez y elige las piezas de la semana según `marca.md` |
+| Reunión de ideas | Lunes 8:45 | Lee el buzón, lanza primero a Tendencias (informe en `informes/tendencias-*.md`), después los 3 agentes de ideas a la vez con ese informe y elige las piezas de la semana según `marca.md` |
 | Producción | Lunes a viernes 10:15 | Avanza cada pieza un estado, repartiendo el trabajo largo entre varios agentes |
 | Cierre de semana | Viernes 17:45 | Resumen para Jorge, el Intendente archiva y escribe el informe de consumo |
 | Informe de métricas | Día 1 de cada mes 9:10 | Marketing analiza `metricas.csv` y deja recomendaciones para la reunión de ideas |
@@ -52,3 +52,8 @@ Si en las próximas 2 semanas de `calendario.md` hay un hueco sin pieza (o falta
 2. Añade a `bitacora.md` y a `bitacora/registro` lo que ha pasado (en la oficina, solo las últimas 20 entradas).
 3. Apunta cada encargo en `consumo.csv`.
 4. Commit y push al repositorio. Nunca respondas comentarios ni toques el perfil.
+
+## Tendencias y ChatGPT (desde el 25 nov 2026, pedido por Jorge)
+
+- **Tendencias:** cada lunes, en la reunión de ideas, el Sensei lanza primero al agente `tendencias` (sonnet). Los 3 agentes de ideas leen su informe, y sus 6 ideas entran en el banco como propuestas que el Sensei puntúa igual que las demás. Primer informe: `informes/tendencias-2026-11-25.md`.
+- **ChatGPT (en pruebas):** el agente `chatgpt` llama a la API de OpenAI con `herramientas/chatgpt.py`. Claude dirige y ChatGPT es un trabajador más, solo para encargos creativos cerrados (ganchos, copys A/B, humor, segunda opinión); sus datos no salen sin el Investigador. Necesita dos cosas que hace Jorge: una clave de API de OpenAI en la variable `OPENAI_API_KEY` del entorno de la nube y permitir el dominio `api.openai.com` en la red. Hasta entonces no se usa. Alternativa más grande, a valorar: PAL MCP Server (BeehiveInnovations/pal-mcp-server, ≈ 11.800 estrellas en GitHub), que conecta Claude Code con OpenAI, Gemini y otros modelos para consultas, consenso y revisión.

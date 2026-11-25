@@ -21,6 +21,8 @@ Antes de hacer cualquier cosa, lee `marca.md` (la biblia de marca). Manda sobre 
 | Editor | `.claude/agents/editor.md` | Monta escenas, voz, música, subtítulos, portada |
 | Marketing | `.claude/agents/marketing.md` | Copys, hashtags, calendario, métricas |
 | Intendente | `.claude/agents/intendente.md` | Ahorro de tokens: modelo por tarea, límites, consumo |
+| Tendencias | `.claude/agents/tendencias.md` | Qué se mueve en karate y en redes; informe semanal antes de la reunión de ideas |
+| ChatGPT (en pruebas) | `.claude/agents/chatgpt.md` | Puente con ChatGPT: ganchos, variantes de copy, segunda opinión (`herramientas/chatgpt.py`) |
 
 ## Dónde vive cada cosa
 

@@ -14,6 +14,8 @@
 | Voz y mezcla | sonido | sonnet | Sin búsquedas; `herramientas/instalar-voz.sh` al empezar |
 | Montaje (2D y 3D) | editor | sonnet | Sin búsquedas; el Sensei no monta, revisa |
 | Copys y calendario | marketing | haiku | 3 búsquedas de hashtags; copys agrupados por tanda |
+| Informe de tendencias | tendencias | sonnet | 10 búsquedas, 8 páginas; un informe por semana |
+| Encargo a ChatGPT | chatgpt (+ OpenAI) | haiku + gpt-5-mini | Encargo cerrado, ≤ 4.000 tokens de salida; apuntar tokens de OpenAI en consumo.csv |
 | Bitácora, tablero, archivo | sensei / intendente | haiku | — |
 | Revisión final | sensei | opus | Solo dosier + storyboard + capturas |
 

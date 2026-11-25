@@ -15,9 +15,9 @@ Hora de Madrid. Ritmo desde el 18 nov (Jorge): 3 reels por semana, lunes, miérc
 | Mié 25 nov | 19:30 | Mismo puño, distinto golpe: el tiempo de contacto (`2026-11-17-tiempo-contacto`) | Ciencia | Programada (Metricool 435309271) |
 | Sáb 28 nov | 19:30 | Seiza: minuto 1 contra minuto 10 (`2026-11-17-seiza`) | Anécdotas y humor del dōjō | Programada (Metricool 435309309) |
 | Quincena 16–29 nov | — | Interactivo: De Okinawa a Tokio en 36 años (`2026-11-12-linea-temporal`) | Historia | Aprobada por Jorge, copy listo; sin programar hasta tener enlace público del interactivo (propuesto jue 26 nov 19:30) |
-| Lun 30 nov | 19:30 | El tigre del Shotokan es un juego de palabras (`2026-11-18-tigre`) | Curiosidades | Aprobación de Jorge (montado: 30 s, voz Kokoro) |
-| Mié 2 dic | 19:30 | De «mano china» a «mano vacía» (`2026-11-18-mano-vacia`) | Historia | Aprobación de Jorge (montado: 34 s, voz Kokoro) |
-| Sáb 5 dic | 19:30 | La cadera no es un adorno (`2026-11-19-cadera`) | Ciencia | Aprobación de Jorge (montada: 30 s, voz Kokoro) |
+| Lun 30 nov | 19:30 | El tigre del Shotokan es un juego de palabras (`2026-11-18-tigre`) | Curiosidades | Programada (Metricool 441501882) |
+| Mié 2 dic | 19:30 | De «mano china» a «mano vacía» (`2026-11-18-mano-vacia`) | Historia | Programada (Metricool 441502227) |
+| Sáb 5 dic | 19:30 | La cadera no es un adorno (`2026-11-19-cadera`) | Ciencia | Programada (Metricool 441502254) |
 | Quincena 30 nov–13 dic | — | Interactivo: Embusen de Heian Shodan (`2026-11-16-embusen`) | Técnica | Aprobada por Jorge, copy listo; sin programar hasta tener enlace público (propuesto jue 10 dic 19:30); pasos 18–21 «a confirmar» |
 | Lun 7 dic | 19:30 | El error del ascensor: tu cabeza no debería subir (`2026-11-23-ascensor`) | Técnica | Animada (33,4 s, 12 clips; plano 7 a corregir) |
 | Mié 9 dic | 19:30 | El dōjō Shōtōkan que duró seis años (`2026-11-23-dojo-1945`) | Historia | Montada (34,3 s, voz Kokoro) |
@@ -25,6 +25,7 @@ Hora de Madrid. Ritmo desde el 18 nov (Jorge): 3 reels por semana, lunes, miérc
 | Quincena 14–27 dic | — | Interactivo: ¿Eres juez de kumite? ¿Puntúa o no? (`2026-11-23-puntua-o-no`) | Competición | Animada (quiz de 5 vistas, 12 imágenes, anuncio 14 s) |
 
 Notas:
+- 25 nov (Sensei): Jorge aprueba tigre, mano vacía y cadera; programadas en Metricool (lun 30, mié 2, sáb 5, 19:30).
 - 25 nov (producción, Sensei): cadera a aprobación; dōjō y notas del móvil montadas; ascensor y ¿puntúa o no? animados. Sin huecos hasta el 13 dic.
 - 24 nov (producción, Sensei): kumite v2 publicado; cadera montada; dōjō y notas del móvil animados; poses de ascensor y ¿puntúa o no? listas. Sin huecos hasta el 13 dic.
 - 23 nov (producción, Sensei): tigre y mano vacía a aprobación de Jorge; cadera animada; storyboards de las 4 piezas de la semana del 7 dic. Sin huecos hasta el 13 dic.
