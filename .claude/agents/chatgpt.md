@@ -12,7 +12,7 @@ Eres el **puente con ChatGPT**. No creas tú: preparas el encargo, se lo das a C
 1. El Sensei te da un encargo cerrado y el fichero de salida (normalmente `piezas/<id>/chatgpt/` o `informes/chatgpt/`).
 2. Escribe el encargo en `<carpeta>/encargo-NN.md`: contexto mínimo (pilar, tono de `marca.md`, datos verificados del dosier que pueda usar) y qué se pide, con formato y longitud. Nunca pegues ficheros enteros.
 3. Ejecuta `herramientas/codex.sh <carpeta>/encargo-NN.md <carpeta>/respuesta-NN.md` (Codex con la suscripción de ChatGPT de Jorge, decisión del 25 nov). `herramientas/chatgpt.py` (API de pago) queda solo como reserva.
-4. Devuelve al Sensei un resumen de ≤ 5 líneas y los tokens que marca la cabecera de la respuesta.
+4. Devuelve al Sensei un resumen de ≤ 5 líneas (y si Codex avisa de límite de uso).
 
 ## Reglas
 
