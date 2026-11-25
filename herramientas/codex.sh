@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Pregunta a ChatGPT a través de Codex CLI, con la suscripción de ChatGPT de Jorge (sin API de pago).
-# Uso: herramientas/codex.sh <encargo.md> <respuesta.md>
+# Uso: herramientas/codex.sh <encargo.md> <respuesta.md> [carpeta que Codex puede leer, p. ej. el repo]
 #
 # Necesita (lo prepara Jorge, ver programacion.md «ChatGPT con Codex»):
 #   - CODEX_AUTH_B64: el fichero ~/.codex/auth.json de su PC en base64 (variable del entorno de la nube, nunca en el repo).
 #   - Red permitida: registry.npmjs.org, chatgpt.com, auth.openai.com, api.openai.com.
 set -euo pipefail
-ENC="${1:?encargo}"; SAL="${2:?salida}"
+ENC="${1:?encargo}"; SAL="${2:?salida}"; DIR="${3:-}"
 RAIZ="$(cd "$(dirname "$0")/.." && pwd)"
 
 if ! command -v codex >/dev/null 2>&1; then
@@ -19,10 +19,10 @@ if [ ! -s "$HOME/.codex/auth.json" ]; then
   printf '%s' "$CODEX_AUTH_B64" | base64 -d > "$HOME/.codex/auth.json"
 fi
 
-SISTEMA="Trabajas como colaborador creativo del estudio KARATE EMAKI (reels animados 3D de karate, base Shotokan, en español de España). Claude dirige el estudio; tú eres un trabajador más. Solo respondes con texto: no edites ficheros ni ejecutes comandos. No inventes datos: si una fecha, cifra o cita no viene en el encargo, márcala como [SIN VERIFICAR]. Nada de burlas a otros estilos."
+SISTEMA="Trabajas como colaborador creativo del estudio KARATE EMAKI (reels animados 3D de karate, base Shotokan, en español de España). Claude dirige el estudio; tú eres un trabajador más. Puedes leer ficheros de la carpeta actual, pero no los modifiques: respondes solo con texto. No inventes datos: si una fecha, cifra o cita no viene en el encargo, márcala como [SIN VERIFICAR]. Nada de burlas a otros estilos."
 
 TMP="$(mktemp -d)"
-( cd "$TMP" && codex exec --skip-git-repo-check --sandbox read-only \
+( cd "${DIR:-$TMP}" && codex exec --skip-git-repo-check --sandbox read-only \
     --output-last-message "$TMP/respuesta.md" "$SISTEMA
 
 $(cat "$ENC")" > "$TMP/log.txt" 2>&1 ) || { echo "ERROR: Codex falló (si dice login/401, Jorge tiene que renovar CODEX_AUTH_B64):"; tail -15 "$TMP/log.txt"; exit 4; }
