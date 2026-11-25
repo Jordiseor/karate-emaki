@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Ascensor · plano 10</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, P, A, B, dA, dB, U } = C.iniciar();
+window.DURACION = 3.2;
+// PLANO 10 (26,6–29,8): B de frente, encoge los hombros; «?» rojo sobre el puño. Nadie lo ha medido (sin comparar nada).
+A.raiz.visible = false;
+B.colocar(0, 0, 0);                        // rumbo 0: mira a +Z, hacia la cámara
+window.render = (t) => {
+  EMAKI.fondoPapel(ctx);
+  const f = U.easeInOut(U.prog(t, 0.2, 0.9));
+  B.aplicarPose(C.mezclar(P['oi-zuki-migi'], P['encoge-hombros'], f));
+  B.cara({ cejas: 0.5, sonrisa: 0.15, torcida: 0.4, parpadeo: U.parpadeo(t, [1.5]) });
+  B.raiz.updateMatrixWorld(true);
+  esc.orbita({ centro: [0, 0.95, 0], distancia: 8, azimut: 0, elevacion: 3, fov: 22 });
+  esc.dibujar(ctx, {});
+  // «?» rojo sobre el puño (mano que queda más adelante: la más alta/lejana de las dos), con balanceo suave
+  const m = B.punto('manoD'), pm = esc.proyectar(m);
+  const a = U.prog(t, 0.6, 1.0), bal = Math.sin(t * 5) * 0.12 * a;
+  ctx.save(); ctx.translate(pm.x, pm.y - 170); ctx.rotate(bal);
+  ctx.globalAlpha = a; ctx.font = '900 220px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+  ctx.lineWidth = 22; ctx.strokeStyle = C.PAPEL; ctx.strokeText('?', 0, 0); ctx.fillStyle = C.ROJO; ctx.fillText('?', 0, 0); ctx.restore();
+  C.tarjeta(ctx, t, ['Efecto en el puño:', 'sin medir'], { t0: 0.1 });
+  C.letraPequena(ctx, ['No se ha encontrado ningún', 'estudio que lo cuantifique']);
+};
+</script></body></html>

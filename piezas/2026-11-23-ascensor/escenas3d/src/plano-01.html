@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Ascensor · plano 01</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, P, A, B, dA, dB, U } = C.iniciar();
+window.DURACION = 3.0;
+// PLANO 1 (0,0–3,0): pantalla partida. A arriba (recta), B abajo (ascensor). Ya en movimiento en t = 0; rastros rojos desde el fotograma 0. Cierre de cámara a 1,5 s.
+const PRE = 0.55;   // s de movimiento ya hecho en t = 0 (la pose; el rastro nace en t = 0)
+window.render = (t) => {
+  EMAKI.fondoPapel(ctx);
+  const zoom = 1 + 0.06 * U.easeInOut(U.prog(t, 1.4, 2.6));
+  const tau = t + PRE;
+  for (const q of ['A', 'B']) {
+    const k = q === 'A' ? A : B, d = q === 'A' ? dA : dB;
+    dA.limpiar(); dB.limpiar();
+    C.poner(k, q, P, tau);
+    d.rastro((s) => C.cabeza(k, q, P, s + PRE), { t, ventana: 2, color: C.ROJO, muestras: 44, grosor: 0.016 });
+    C.poner(k, q, P, tau);
+    C.dibujarBanda(ctx, esc, q, C.X0[q] + C.VEL * tau + 0.15, { zoom, ocultar: [q === 'A' ? B : A] });
+  }
+  C.separador(ctx);
+  C.tarjeta(ctx, t, 'Tu cabeza sube y baja', { t0: -1 });
+};
+</script></body></html>

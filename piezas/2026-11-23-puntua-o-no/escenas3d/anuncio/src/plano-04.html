@@ -1,0 +1,48 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 4 (3 s): móvil dibujado (maqueta de la vista de respuesta); un dedo toca «No puntúa»; sale ✗ y «Art. 8.11». 2D sobre papel.
+import * as C from './comun.js';
+const ctx = document.getElementById('c').getContext('2d'), U = C.U;
+const F = (s, p = 900) => `${p} ${s}px Inter, "Noto Sans CJK JP", sans-serif`;
+const rr = (x, y, w, h, r) => { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); };
+window.DURACION = 3;
+window.render = (t) => {
+  window.EMAKI.fondoPapel(ctx);
+  const px = 190, py = 480, pw = 700, ph = 930;                 // móvil
+  ctx.fillStyle = 'rgba(0,0,0,0.18)'; rr(px + 10, py + 14, pw, ph, 56); ctx.fill();
+  ctx.fillStyle = C.TINTA; rr(px, py, pw, ph, 56); ctx.fill();
+  ctx.fillStyle = C.PAPEL; rr(px + 22, py + 22, pw - 44, ph - 44, 40); ctx.fill();
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillStyle = C.TINTA; ctx.font = F(52); ctx.fillText('¿Puntúa o no?', 540, py + 100);
+  // figura: dos siluetas simples (ao de espaldas)
+  ctx.fillStyle = '#E3DACB'; rr(px + 70, py + 170, pw - 140, 290, 24); ctx.fill();
+  ctx.fillStyle = C.AZUL; ctx.beginPath(); ctx.arc(420, py + 300, 46, 0, 7); ctx.fill(); ctx.fillRect(386, py + 345, 68, 100);
+  ctx.fillStyle = '#B01620'; ctx.beginPath(); ctx.arc(660, py + 300, 46, 0, 7); ctx.fill(); ctx.fillRect(626, py + 345, 68, 100);
+  // botones
+  const bx = px + 70, bw = pw - 140, by1 = py + 480, by2 = py + 625, bh = 120;
+  const tap = U.prog(t, 1.0, 1.25), resp = U.prog(t, 1.35, 1.7);
+  ctx.fillStyle = C.PAPEL; ctx.strokeStyle = C.TINTA; ctx.lineWidth = 6;
+  rr(bx, by1, bw, bh, 28); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = tap > 0.3 ? '#E3DACB' : C.PAPEL; rr(bx, by2, bw, bh, 28); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = C.TINTA; ctx.font = F(56); ctx.fillText('Puntúa', 540, by1 + bh / 2 + 2); ctx.fillText('No puntúa', 540, by2 + bh / 2 + 2);
+  // resultado
+  if (resp > 0) {
+    const k = U.easeBack(resp); ctx.save(); ctx.globalAlpha = U.clamp(resp * 2); ctx.translate(380, py + 815); ctx.scale(k, k);
+    ctx.strokeStyle = C.ROJO; ctx.lineWidth = 22; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(-44, -44); ctx.lineTo(44, 44); ctx.moveTo(44, -44); ctx.lineTo(-44, 44); ctx.stroke(); ctx.restore();
+    ctx.save(); ctx.globalAlpha = U.clamp(resp * 2); ctx.fillStyle = C.ROJO; ctx.font = F(64); ctx.textAlign = 'left'; ctx.fillText('Art. 8.11', 450, py + 817); ctx.restore();
+  }
+  // dedo: llega desde abajo-derecha, toca y se retira
+  const ent = U.easeInOut(U.prog(t, 0.4, 1.0)), sal = U.easeInOut(U.prog(t, 1.5, 1.9)), pr = Math.sin(Math.PI * U.clamp((t - 1.0) / 0.3));
+  const fx = 740 + (1 - ent) * 220 + sal * 260, fy = by2 + 70 + (1 - ent) * 320 + sal * 300 + pr * 12;
+  if (t > 0.4 && sal < 1) {
+    ctx.save(); ctx.translate(fx, fy); ctx.rotate(-0.25); ctx.fillStyle = '#F0C9A4'; ctx.strokeStyle = C.TINTA; ctx.lineWidth = 6; ctx.lineJoin = 'round';
+    rr(-34, -20, 68, 330, 34); ctx.fill(); ctx.stroke(); ctx.restore();
+    if (pr > 0.2) { ctx.save(); ctx.strokeStyle = C.TINTA; ctx.globalAlpha = pr; ctx.lineWidth = 6; ctx.beginPath(); ctx.arc(fx, fy, 50 + 20 * pr, 0, 7); ctx.stroke(); ctx.restore(); }
+  }
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  C.tarjeta(ctx, t, ['Sí o no.', '¿Cuántas aciertas?'], { size: 76, y: 270, t0: 0 });
+  C.aviso(ctx);
+};
+</script></body></html>

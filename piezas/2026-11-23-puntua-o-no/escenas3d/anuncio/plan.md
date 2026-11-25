@@ -1,0 +1,4 @@
+# Anuncio 14 s · ¿Puntúa o no? · estado: HECHO (revisar hoja.png)
+Planos (1080×1920, 30 fps, escala 0,5, sin audio): 01 gancho 3 s (gyaku-zuki-jodan de ao a aka, impacto en t=0, rastro rojo, marcador 1, «¿Punto?», un solo reencuadre: cámara se abre) · 02 3 s (ao se separa y gira de espaldas, marcador 1→0 con cruz, «Espalda al rival: cero») · 03 3 s (3 tarjetas de 1 s: patada jodan, puño garganta, puño hombro; «10 situaciones» / «Tú eres el juez») · 04 3 s (móvil 2D, dedo, ✗ «Art. 8.11» sin letra) · 05 2 s (rei y «Enlace en el perfil»).
+Aviso «Adultos, reglamento WKF 2026. Animación controlada, sin contacto real.» en todos los planos. Sin «zanshin».
+Pendiente / defectos: garganta y hombro se ven casi iguales (misma pose, README); en plano 3 el rótulo roza los pies; el marco de papel del plano 3 es un borde, no tarjetas separadas. Sin pedir nada a animacion/.

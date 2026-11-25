@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>¿Eres juez de kumite? ¿Puntúa o no? · KARATE EMAKI</title>
+<meta name="description" content="10 situaciones de kumite. ¿Puntúa o no? Reglamento WKF 2026, adultos.">
+<style>
+:root{--p:#F4EFE6;--t:#1A1A1A;--r:#C8102E;--b:#1F4E9E;--t2:#4a4640}
+*{box-sizing:border-box;margin:0}
+html,body{background:var(--p);color:var(--t);overflow-x:hidden}
+body{font:400 18px/1.4 "Noto Sans","Segoe UI",system-ui,Arial,sans-serif;-webkit-text-size-adjust:100%;padding-bottom:64px}
+h1,h2,.big{font-family:"Archivo Black","Arial Black",Impact,sans-serif;font-weight:400;line-height:1.08}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--r);outline-offset:2px}
+.view{display:none;max-width:480px;margin:0 auto;padding:12px 16px 16px}
+.view.on{display:block}
+.red{color:var(--r)}
+.btn{display:block;width:100%;min-height:56px;padding:0 20px;margin-top:10px;border:3px solid var(--t);background:var(--t);color:var(--p);font-family:"Archivo Black","Arial Black",Arial,sans-serif;font-size:19px;border-radius:6px}
+.btn.alt{background:transparent;color:var(--t)}
+.btn.row3{display:inline-block;width:calc(33.3% - 7px);margin-right:6px}
+.btn.row3:last-child{margin-right:0}
+.btns3{display:flex;gap:8px}.btns3 .btn{flex:1;padding:0}
+.img{position:relative;width:100%;aspect-ratio:780/900;max-height:46dvh;margin:0 auto;background:var(--p);border:3px solid var(--t);border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.img.peq{max-height:36dvh}
+.img .ph{font-family:"Archivo Black","Arial Black",Arial,sans-serif;font-size:96px;color:var(--t);opacity:.18}
+.img img,.img video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.corner{position:absolute;top:8px;padding:2px 10px;background:var(--p);border:2px solid currentColor;border-radius:4px;font-weight:700;font-size:18px;z-index:2}
+.corner.aka{left:8px;color:var(--r)}.corner.ao{right:8px;color:var(--b)}
+.fx{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);z-index:2;padding:6px 16px;border:3px solid var(--t);border-radius:8px;background:var(--p);font-family:"Archivo Black","Arial Black",Arial,sans-serif;font-size:28px;white-space:nowrap;animation:pop .35s ease-out}
+.fx.ok{color:var(--r);border-color:var(--r)}
+@keyframes pop{from{transform:translateX(-50%) scale(.6);opacity:0}to{transform:translateX(-50%) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.top{display:flex;justify-content:space-between;align-items:baseline;min-height:32px}
+.top b{font-family:"Archivo Black","Arial Black",Arial,sans-serif;font-weight:400;font-size:20px}
+.bar{height:6px;background:#1a1a1a22;border-radius:3px;margin:4px 0 10px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--r);width:0}
+.enun{font-size:20px;line-height:1.3;margin:12px 0 4px}
+.preg{font-family:"Archivo Black","Arial Black",Arial,sans-serif;font-size:22px;margin:6px 0 2px}
+.chip{display:inline-block;min-height:32px;padding:3px 12px;border:2px solid var(--t);border-radius:16px;font-weight:700;font-size:18px}
+.chip.pend{border-style:dashed}
+.franja{margin-top:12px;padding:8px 12px;border:3px solid var(--t);border-radius:6px;font-weight:700;font-size:20px}
+.franja.ok{border-color:var(--r);color:var(--r)}
+.ver{font-size:30px;margin:8px 0 4px}
+.expl{margin:6px 0 10px}
+.sml{font-size:18px;color:var(--t2)}
+#v1 h1{font-size:clamp(36px,11vw,50px);margin:16px 0 8px}
+.marcador{font-family:"Archivo Black","Arial Black",Arial,sans-serif;position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:2;background:var(--t);color:var(--p);padding:4px 18px;border-radius:6px;font-size:32px;animation:pop .6s ease-out}
+.score{font-size:clamp(72px,24vw,110px);color:var(--r);margin-top:8px}
+.tit{font-size:28px;margin-bottom:10px}
+ul.fail{list-style:none;padding:0;margin:8px 0}
+ul.fail button{display:block;width:100%;min-height:48px;text-align:left;padding:8px 12px;margin-bottom:8px;border:2px solid var(--t);border-radius:6px;background:transparent}
+.tarjeta{border:3px solid var(--t);border-radius:10px;padding:14px;text-align:center;background:#fbf8f1;margin:10px 0}
+.aviso{position:fixed;left:0;right:0;bottom:0;z-index:9;background:var(--t);color:var(--p);font-size:14px;line-height:1.3;padding:8px 14px;text-align:center}
+.toast{min-height:28px;font-weight:700;color:var(--r)}
+.vh{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<section class="view on" id="v1" aria-label="Portada">
+ <div class="img"><span class="ph">0–0</span><img src="img/portada.webp" alt="Aka y ao en kamae sobre el tatami" onerror="this.remove()"><div class="marcador" aria-hidden="true">0 – 0</div></div>
+ <h1>¿Eres <span class="red">juez</span> de kumite?</h1>
+ <p class="enun">10 situaciones. ¿Puntúa o no?</p>
+ <button class="btn" id="empezar">Empezar</button>
+ <p class="sml" style="margin-top:10px">Adultos, reglamento WKF 2026.</p>
+</section>
+
+<section class="view" id="v2" aria-label="Situación">
+ <div class="top"><b id="num"></b></div>
+ <div class="bar"><i id="prog"></i></div>
+ <div class="img" id="imgbox"></div>
+ <p class="enun" id="enun"></p>
+ <div id="acc">
+  <p class="preg" id="preg">¿Puntúa o no?</p>
+  <div id="botones"></div>
+ </div>
+ <div id="resp" hidden></div>
+</section>
+
+<section class="view" id="v4" aria-label="Resultado">
+ <div class="img"><span class="ph">礼</span><img src="img/rei.webp" alt="Aka y ao se saludan (rei)" onerror="this.remove()"></div>
+ <p class="score big" id="score"></p>
+ <h2 class="tit" id="titulo"></h2>
+ <div id="fallos"></div>
+ <button class="btn" id="compartir">Compartir</button>
+ <button class="btn alt" id="repetir">Repetir</button>
+ <button class="btn alt" id="inicio">Volver al inicio</button>
+</section>
+
+<section class="view" id="v5" aria-label="Compartir y cierre">
+ <div class="tarjeta"><div class="big" style="font-size:56px;color:var(--r)" id="tscore"></div><div class="big" style="font-size:22px" id="ttit"></div><p class="sml">¿Eres juez de kumite? · KARATE EMAKI</p></div>
+ <button class="btn" id="share">Compartir mi resultado</button>
+ <p class="toast" id="toast" role="status" aria-live="polite"></p>
+ <h2 style="font-size:24px;margin:10px 0">¿Qué situación te ha costado más? Cuéntalo en los comentarios.</h2>
+ <p class="sml" style="margin-bottom:8px">Fuente: WKF Kumite Competition Rules 2026.01. Los árbitros deciden en el tatami.</p>
+ <button class="btn alt" id="repetir2">Repetir</button>
+ <button class="btn alt" id="inicio2">Volver al inicio</button>
+</section>
+
+<div class="aviso" role="note">Adultos, reglamento WKF 2026. Animación controlada, sin contacto real.</div>
+<div class="vh" id="live" aria-live="polite"></div>
+
+<script id="datos" type="application/json">{"aviso": "Adultos, reglamento WKF 2026. Animación controlada, sin contacto real.", "fuente": "Fuente: WKF Kumite Competition Rules 2026.01. Los árbitros deciden en el tatami.", "situaciones": [{"id": "01", "orden": 1, "activa": true, "tipo": "puntos", "enunciado": "Aka mete un gyaku-zuki (puñetazo de la mano contraria) limpio al abdomen.", "puntua": true, "puntos": 1, "veredicto": "1 punto (yūko)", "explicacion": "Un puñetazo a zona válida vale 1 punto: yūko.", "articulo": "Art. 8.6", "imagen": "img/sit-01.webp", "clip": null}, {"id": "02", "orden": 2, "activa": true, "tipo": "puntos", "enunciado": "Ao clava un mawashi-geri (patada circular) al abdomen, controlado.", "puntua": true, "puntos": 2, "veredicto": "2 puntos (waza-ari)", "explicacion": "Toda patada al cuerpo (chūdan) vale 2 puntos: waza-ari.", "articulo": "Art. 8.6", "imagen": "img/sit-02.webp", "clip": null}, {"id": "03", "orden": 3, "activa": true, "tipo": "puntos", "enunciado": "Aka patea a la cabeza y se detiene a 5 cm.", "puntua": true, "puntos": 3, "veredicto": "3 puntos (ippon)", "explicacion": "Una patada a la cabeza vale 3 puntos: ippon. En adultos se admite hasta 5 cm o un roce ligero.", "articulo": "Arts. 8.6 y 8.8", "imagen": "img/sit-03.webp", "clip": null}, {"id": "04", "orden": 4, "activa": true, "tipo": "puntos", "enunciado": "Ao entra con un puñetazo válido justo al sonar el final.", "puntua": true, "puntos": 1, "veredicto": "1 punto (yūko)", "explicacion": "Una técnica válida lanzada al agotarse el tiempo cuenta.", "articulo": "Art. 8.10", "imagen": "img/sit-04.webp", "clip": null}, {"id": "05", "orden": 5, "activa": true, "tipo": "puntos", "enunciado": "Aka barre a ao, que cae de espaldas, y remata con un puñetazo controlado.", "puntua": true, "puntos": 3, "veredicto": "3 puntos (ippon)", "explicacion": "Una técnica legal contra un rival con otra parte del cuerpo que no sean los pies en el suelo vale 3 puntos.", "articulo": "Art. 8.6", "imagen": "img/sit-05.webp", "clip": null}, {"id": "06", "orden": 6, "activa": true, "tipo": "puntos", "enunciado": "Ao conecta un puñetazo perfecto y se da la vuelta.", "puntua": false, "puntos": 0, "veredicto": "0 puntos", "explicacion": "Dar la espalda tras la técnica la anula: falta conciencia del rival.", "articulo": "Art. 8.11 e", "imagen": "img/sit-06.webp", "clip": null}, {"id": "07", "orden": 7, "activa": true, "tipo": "puntos", "pendiente": true, "enunciado": "Aka golpea limpio justo después del «yame» (parar).", "puntua": false, "puntos": 0, "veredicto": "0 puntos", "explicacion": "Lo hecho tras yame no cuenta, y puede haber sanción.", "articulo": "Art. 8.11", "imagen": "img/sit-07.webp", "clip": null}, {"id": "08", "orden": 8, "activa": true, "tipo": "puntos", "pendiente": true, "enunciado": "Aka golpea a la cabeza y ao se tambalea por el contacto.", "puntua": false, "puntos": 0, "veredicto": "0 puntos", "explicacion": "En la cabeza el contacto debe ser ligero (2 cm con la mano, o roce). Un contacto excesivo anula y puede sancionarse.", "articulo": "Arts. 8.8 y 8.11", "imagen": "img/sit-08.webp", "clip": null}, {"id": "09", "orden": 9, "activa": true, "tipo": "puntos", "enunciado": "Ao lanza un puñetazo a la cara y toca la garganta.", "puntua": false, "puntos": 0, "veredicto": "0 puntos", "explicacion": "En la garganta no hay punto.", "articulo": "Art. 8.8", "imagen": "img/sit-09.webp", "clip": null}, {"id": "10", "orden": 10, "activa": true, "tipo": "puntos", "enunciado": "Ao toca con el puño la unión del brazo y el hombro de aka.", "puntua": false, "puntos": 0, "veredicto": "0 puntos", "explicacion": "La unión brazo-hombro no es zona válida: el chūdan llega hasta la clavícula incluida.", "articulo": "Art. 8.4", "imagen": "img/sit-10.webp", "clip": null}, {"id": "S1", "orden": 7, "activa": false, "sustituye": ["07", "08"], "tipo": "puntos", "enunciado": "Aka lanza un puñetazo a la cara y para a 2 cm.", "puntua": true, "puntos": 1, "veredicto": "1 punto (yūko)", "explicacion": "En la cabeza se admite hasta 2 cm con la mano, o un roce ligero. Puñetazo a zona válida: 1 punto.", "articulo": "Arts. 8.6 y 8.8", "imagen": "img/s1.webp", "clip": null}, {"id": "S2", "orden": 8, "activa": false, "sustituye": ["07", "08"], "tipo": "senshu", "enunciado": "Aka y ao puntúan a la vez, antes de la señal. ¿Quién tiene senshu (primera ventaja)?", "opciones": ["Aka", "Ao", "Nadie"], "correcta": "Nadie", "veredicto": "Nadie tiene senshu", "explicacion": "Si los dos puntúan antes de la señal, el senshu no es para nadie.", "articulo": "Art. 12.2.2", "imagen": "img/s2.webp", "clip": null}]}</script>
+<script>
+(function(){
+var D=JSON.parse(document.getElementById('datos').textContent);
+// Para usar situaciones.json externo (servidor): fetch('situaciones.json').then(...) ; la copia embebida vale al abrir como fichero.
+var S=D.situaciones.filter(function(s){return s.activa}).sort(function(a,b){return a.orden-b.orden});
+var N=S.length,i=0,aciertos=0,fallos=[],paso='',decision=null;
+var $=function(id){return document.getElementById(id)};
+var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function ver(id){['v1','v2','v4','v5'].forEach(function(v){$(v).classList.toggle('on',v===id)});window.scrollTo(0,0);var h=$(id).querySelector('h1,h2,.score,.top b');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function imagen(s,fx){
+ var b=$('imgbox');b.classList.toggle('peq',!!fx);
+ var h='<span class="ph" aria-hidden="true">'+(s.id.length>2?s.id:parseInt(s.id,10))+'</span>';
+ if(s.clip&&!reduce)h+='<video src="'+s.clip+'" poster="'+s.imagen+'" muted loop autoplay playsinline onerror="this.remove()"></video>';
+ else h+='<img src="'+s.imagen+'" alt="Ilustración 3D de la situación: '+esc(s.enunciado)+'" onerror="this.remove()">';
+ h+='<span class="corner aka">Aka</span><span class="corner ao">Ao</span>';
+ if(fx)h+=fx;
+ b.innerHTML=h;
+}
+function situacion(){
+ var s=S[i];paso='';decision=null;
+ $('num').textContent='Situación '+(i+1)+' / '+N;
+ $('prog').style.width=(i/N*100)+'%';
+ imagen(s);
+ $('enun').textContent=s.enunciado;
+ $('resp').hidden=true;$('acc').hidden=false;
+ pintaBotones();
+ ver('v2');
+}
+function pintaBotones(){
+ var s=S[i],b=$('botones');
+ if(s.tipo==='senshu'){
+  $('preg').textContent='¿Quién tiene senshu?';
+  b.innerHTML='<div class="btns3">'+s.opciones.map(function(o){return '<button class="btn" data-o="'+o+'">'+o+'</button>'}).join('')+'</div>';
+  b.querySelectorAll('button').forEach(function(x){x.onclick=function(){evaluar(x.dataset.o===s.correcta,x.dataset.o)}});
+  return;
+ }
+ $('preg').textContent='¿Puntúa o no?';
+ b.innerHTML='<button class="btn" id="si">Sí, puntúa</button><button class="btn alt" id="no">No puntúa</button>';
+ $('si').onclick=function(){
+  if(s.puntua){cuantos()}else{evaluar(false,'Sí')}
+ };
+ $('no').onclick=function(){evaluar(!s.puntua,'No')};
+}
+function cuantos(){
+ var s=S[i];
+ $('preg').textContent='¿Cuántos puntos?';
+ $('botones').innerHTML='<div class="btns3"><button class="btn" data-n="1">1</button><button class="btn" data-n="2">2</button><button class="btn" data-n="3">3</button></div>';
+ $('botones').querySelectorAll('button').forEach(function(x){x.onclick=function(){evaluar(+x.dataset.n===s.puntos,'Sí, '+x.dataset.n)}});
+ $('botones').querySelector('button').focus();
+}
+function evaluar(ok,dado){
+ var s=S[i];
+ if(ok)aciertos++;else fallos.push(i);
+ var fx=s.tipo==='senshu'?'':(s.puntua?'<span class="fx ok">+'+s.puntos+'</span>':'<span class="fx">✗ 0</span>');
+ imagen(s,fx);
+ $('acc').hidden=true;
+ var last=i===N-1;
+ $('resp').innerHTML=respHTML(s,ok)+'<button class="btn" id="sig">'+(last?'Ver mi resultado':'Siguiente ›')+'</button>';
+ $('resp').hidden=false;
+ $('sig').onclick=function(){last?resultado():(i++,situacion())};
+ $('sig').focus();
+ $('live').textContent=(ok?'Correcto. ':'No era así. ')+s.veredicto+'. '+s.explicacion;
+ $('prog').style.width=((i+1)/N*100)+'%';
+}
+function respHTML(s,ok){
+ var pend=s.pendiente?' pend':'';
+ return '<div class="franja '+(ok?'ok':'')+'">'+(ok?'✓ Correcto':'✗ No era así')+'</div>'+
+  '<p class="ver big">'+esc(s.veredicto)+'</p>'+
+  '<p class="expl">'+esc(s.explicacion)+'</p>'+
+  '<span class="chip'+pend+'">'+esc(s.articulo)+'</span>';
+}
+function titulo(n){return n===10?'Juez de kumite sin dudas':n>=7?'Juez de kumite':n>=4?'Juez en prácticas':'Espectador de grada'}
+function resultado(){
+ $('prog').style.width='100%';
+ $('score').textContent=aciertos+' / '+N;
+ $('titulo').textContent=titulo(aciertos);
+ var f=$('fallos');
+ if(fallos.length){
+  f.innerHTML='<p class="sml">Las que has fallado (toca para ver la explicación):</p><ul class="fail">'+fallos.map(function(k){return '<li><button data-k="'+k+'">✗ '+(k+1)+'. '+esc(S[k].enunciado)+'</button><div id="d'+k+'" hidden></div></li>'}).join('')+'</ul>';
+  f.querySelectorAll('button').forEach(function(b){b.onclick=function(){var k=+b.dataset.k,d=$('d'+k);d.hidden=!d.hidden;d.innerHTML=d.hidden?'':'<p class="expl"><b>'+esc(S[k].veredicto)+'.</b> '+esc(S[k].explicacion)+' <span class="chip">'+esc(S[k].articulo)+'</span></p>'}});
+ }else f.innerHTML='<p class="sml">✓ Sin ningún fallo.</p>';
+ ver('v4');
+}
+function reiniciar(){i=0;aciertos=0;fallos=[];situacion()}
+function texto(){return 'He sacado '+aciertos+'/'+N+' como juez de kumite. ¿Puntúa o no? ¿Aciertas más que yo? '+location.href}
+function compartir(){
+ var t=texto(),toast=$('toast');
+ if(navigator.share){navigator.share({text:t}).catch(function(){})}
+ else if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){toast.textContent='Copiado'},function(){toast.textContent='No se pudo copiar: '+t})}
+ else toast.textContent=t;
+}
+$('empezar').onclick=function(){reiniciar()};
+$('repetir').onclick=$('repetir2').onclick=reiniciar;
+$('inicio').onclick=$('inicio2').onclick=function(){ver('v1')};
+$('compartir').onclick=function(){$('tscore').textContent=aciertos+' / '+N;$('ttit').textContent=titulo(aciertos);$('toast').textContent='';ver('v5')};
+$('share').onclick=compartir;
+})();
+</script>
+</body>
+</html>

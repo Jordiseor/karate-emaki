@@ -1,0 +1,10 @@
+# Montaje · notas-movil
+
+- Entrada: escenas3d/plano-01..09.mp4 con corte seco (18,0 s, 30 fps, 1080x1920; 2,6/1,8x6/1,6/3,0 s, como el storyboard). reel.mp4 y reel-sin-voz.mp4: H.264 veryfast, AAC 192 kbps 48 kHz; vídeo y audio 18,000 s (ffprobe). Escenas sin tocar.
+- Música (obra propia, sintetizada con numpy): bajo y arpegio pizzicato en do mayor, 120 bpm, I-IV-V-I, melodía corta, eco ligero, fundido 16,5-18 s. Fichero: final/fondo-notas.wav; reel-sin-voz: -16,8 LUFS. Sin muestras de terceros.
+- Voz: Kokoro em_santa (sid 53) con herramientas/voz-kokoro.py --locucion final/locucion.txt, velocidad x1,0, fondo -7 dB, ducking (fondo -9,5 dB bajo la voz; voz 17,7 dB sobre el fondo). reel.mp4: -16,1 LUFS, pico real -1,4 dBFS. Texto = storyboard íntegro (33 palabras), sin datos añadidos. Kokoro: motor Apache 2.0 + sherpa-onnx 1.12.15 (Apache 2.0), bajados a /tmp/kokoro.
+- Pronunciación (grafía de la 3.ª columna de locucion.txt; sin poder escuchar, revisar de oído): osu = «osu» tal cual (o-su); sensei = «sénsei»; sempai = «sempái»; kiai = «kiái». «Rei», «keikogi» y «seiza» no se dicen en la locución. Si «osu» suena a «o-zu», probar «osú» o «oss».
+- Desfases voz/plano: p1 +0,12 s; p2 +0,25 s; p9 +0,14 s; resto +0,06 s. La voz acaba en 16,52 s (el reel, 18,0 s; el plano 9 queda 1,5 s sin voz, con música). Ninguna frase invade el plano siguiente (la 1 acaba en 2,73 s; el plano 2 empieza a 2,6 s: solape de 0,13 s, es su cola con la entrada de «Osu», aceptable).
+- Sin subtítulos añadidos: cada plano ya lleva tarjeta (>=72 px) y etiqueta (>=48 px). Revisados 3 fotogramas (0,1 s, 9 s, 17,9 s) y la hoja de 9 fotogramas.
+- Portada: fotograma del plano 1 (1,2 s) con placa papel «NOTAS DE UN CINTURÓN BLANCO» (5 palabras, 96 px, tinta #1A1A1A sobre #F4EFE6) y «KARATE EMAKI» (52 px). hoja.png: 9 fotogramas.
+- Observaciones: la locución del plano 5 dice «el veterano», la tarjeta «veterano. Imitarle.» (storyboard). Último fotograma: fundido de la tarjeta final con el título (bucle); el texto «¿Cuál fue tu primera nota?» se solapa con el título en 17,9 s y se lee a medias; menor. Sin SFX (tecleo, bip, ding) por no haber audios de efectos en el encargo.

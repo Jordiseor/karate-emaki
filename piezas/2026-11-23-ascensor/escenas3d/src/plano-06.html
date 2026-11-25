@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Ascensor · plano 06</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { ctx, esc, P, A, B, dA, dB, U } = C.iniciar();
+A.raiz.visible = false;
+// Helper local (plan: pendiente): B a pantalla completa, a la izquierda del cuadro, cámara que lo sigue. 620 px/m aprox.
+const vista = (tau, off = 0.25) => { C.poner(B, "B", P, tau); const x = C.VEL * tau; esc.orbita({ centro: [x + off, 0.95, 0], distancia: 9, azimut: 0, elevacion: 3, fov: 22 }); esc.sombraEn(x, 0); return x; };
+const px = (p) => esc.proyectar(p);
+window.DURACION = 3.2;
+// PLANO 6: supuestos del modelo. B lento a la izquierda; regla esquemática y «70 kg».
+window.render = (t) => {
+  EMAKI.fondoPapel(ctx);
+  const tau = 0.2 + 0.25 * t, x = vista(tau);
+  dB.limpiar();
+  const pie = (y) => [x + 0.62, y, 0];
+  const y0 = 0.35, L = 1.1;                       // regla ESQUEMÁTICA (no a escala)
+  const a = U.prog(t, 0.1, 0.6);
+  dB.linea(pie(y0), pie(y0 + L * a), { color: C.ROJO, grosor: 0.012 });
+  for (let i = 0; i <= 5; i++) if (a > i / 5) dB.linea([x + 0.56, y0 + L * i / 5, 0], [x + 0.68, y0 + L * i / 5, 0], { color: C.ROJO, grosor: 0.01 });
+  dB.linea([x + 0.2, y0 + L, 0], pie(y0 + L), { color: C.ROJO, discontinua: true, grosor: 0.008, alfa: a });
+  esc.dibujar(ctx, {});
+  const pr = px(B.punto('pecho'));
+  C.etiqueta(ctx, '70 kg', pr.x, pr.y - 20, { size: 64, color: C.ROJO, alpha: U.prog(t, 0.3, 0.6) });
+  const pq = px(B.punto('cadera').clone().set(x + 0.62, y0 + L * 0.5, 0));
+  C.etiqueta(ctx, '5 cm', Math.min(pq.x + 170, 960), pq.y, { size: 64, alpha: a });
+  C.etiqueta(ctx, 'esquema', Math.min(pq.x + 170, 960), pq.y + 60, { size: 48, color: C.GRIS, alpha: a });
+  if (t < 1.6) C.tarjeta(ctx, t, 'Modelo simplificado', { t0: 0.05, t1: 1.45, size: 80 });
+  else C.tarjeta(ctx, t, ['Supuestos:', '70 kg y 5 cm'], { t0: 1.6 });
+  C.letraPequena(ctx, 'Cuenta propia, no es un dato medido');
+};
+</script></body></html>

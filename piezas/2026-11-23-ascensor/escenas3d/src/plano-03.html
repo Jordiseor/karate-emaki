@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Ascensor · plano 03</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, P, A, B, dA, dB, U } = C.iniciar();
+window.DURACION = 2.5;
+// PLANO 3 (5,5–8,0): solo B a pantalla completa, cámara lenta (tau = 0,3 t + 0,55). La cabina del ascensor (derecha) sube y baja con su cabeza (×2).
+const hMed = (C.cabeza(B, 'B', P, 0).y + C.cabeza(B, 'B', P, 0.55).y) / 2;
+window.render = (t) => {
+  EMAKI.fondoPapel(ctx);
+  const tau = 0.3 * t + 0.55;
+  dA.limpiar(); dB.limpiar();
+  A.raiz.visible = false;
+  const h = C.cabeza(B, 'B', P, tau).y; C.poner(B, 'B', P, tau);
+  const xB = C.VEL * tau;
+  esc.orbita({ centro: [xB + 0.3, 1.0, 0], distancia: 8, azimut: 0, elevacion: 3, fov: 22 });
+  esc.sombraEn(xB, 0); esc.dibujar(ctx, {});
+  const dy = (h - hMed) * 300 * 2;
+  C.overlay.ascensor(ctx, 870, 760 - dy, { size: 300, flechas: 1 });
+  C.tarjeta(ctx, t, ['El error', 'del ascensor'], { t0: 0.05 });
+};
+</script></body></html>

@@ -1,0 +1,10 @@
+Locución notas-movil (18 s, voz Kokoro em_santa). Formato: inicio en s | texto en pantalla | texto para la voz (grafía adaptada a la pronunciación).
+0.0 | Notas del móvil de un cinturón blanco: | Notas de un cinturón blanco, primera clase.
+2.6 | Decir «osu» a todo. | Osu a todo.
+4.4 | Saludar. ¿A quién? | Saludar. ¿A quién?
+6.2 | Sensei: ese de ahí. | Sénsei: el nacido antes.
+8.0 | Sempai: el veterano. Imitarle. | Sempái: el veterano.
+9.8 | Kiai: abdomen, no garganta. | Kiái: del abdomen.
+11.6 | De rodillas, minuto 10. Ayuda. | Rodillas: minuto diez.
+13.4 | Próxima clase: osu. | Próxima clase: osu.
+15.0 | ¿Cuál fue tu primera nota? | ¿Y tu primera nota?

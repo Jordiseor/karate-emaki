@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Ascensor · plano 02</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, P, A, B, dA, dB, U } = C.iniciar();
+window.DURACION = 2.5;
+// PLANO 2 (3,0–5,5): continúa el plano 1 (tau0 = 3,55 s), el avance se frena y se queda en el pico de B (tau = 4,95 = 4,5 pasos). Rastros enteros, líneas de altura inicial, etiquetas.
+const TAU0 = 3.55;
+// pico de B = instante de máxima altura de cabeza entre tau 4,3 y 5,5 (se busca; la pose pico hace la ola evidente)
+let TAUF = 4.9, hm = -1; for (let s = 4.3; s <= 5.5; s += 0.02) { const h = C.cabeza(B, 'B', P, s).y; if (h > hm) { hm = h; TAUF = s; } }
+const X_CAM = (tau) => C.VEL * tau + 0.15;
+window.render = (t) => {
+  EMAKI.fondoPapel(ctx);
+  const tau = TAU0 + (TAUF - TAU0) * U.easeOut(U.prog(t, 0, 0.8));
+  const xc = X_CAM(tau) - 0.9 * U.easeInOut(U.prog(t, 0.3, 1.1));
+  const zoom = 1.06 - 0.2 * U.easeInOut(U.prog(t, 0.3, 1.1));
+  for (const q of ['A', 'B']) {
+    const k = q === 'A' ? A : B, d = q === 'A' ? dA : dB;
+    dA.limpiar(); dB.limpiar();
+    const y0 = C.cabeza(k, q, P, 0).y;
+    d.linea([xc - 2.4, y0, 0], [xc + 2.4, y0, 0], { discontinua: true, color: C.GRIS, grosor: 0.008 });
+    d.rastro((s) => C.cabeza(k, q, P, s), { t: tau, ventana: 3.5, color: C.ROJO, muestras: 70, grosor: 0.016, punta: false });
+    C.poner(k, q, P, tau);
+    C.dibujarBanda(ctx, esc, q, xc, { zoom, ocultar: [q === 'A' ? B : A] });
+  }
+  C.separador(ctx);
+  const al = U.prog(t, 0.6, 0.9);
+  C.etiqueta(ctx, 'Recta', 200, 430, { alpha: al });
+  C.etiqueta(ctx, 'Ola', 200, 1040, { alpha: al });
+  C.tarjeta(ctx, t, 'Recta · Ola', { t0: -1 });
+};
+</script></body></html>

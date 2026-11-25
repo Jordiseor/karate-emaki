@@ -1,0 +1,26 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 3 (3 s): tres tarjetas de papel, 1 s cada una, corte seco: patada a la cabeza, puño a la garganta, puño al hombro. Sin respuestas.
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, par, P } = S, U = C.U;
+const mk = (n) => { par.colocar(1.6); return C.crearTecnica(par, P, n); };
+const XS = [mk('mawashi-geri-jodan'), mk('gyaku-zuki-garganta'), mk('gyaku-zuki-union')];
+const ROT = ['Patada a la cabeza', 'Puño a la garganta', 'Puño al hombro'];
+window.DURACION = 3;
+window.render = (t) => {
+  const i = Math.min(2, Math.floor(t)), u = t - i, X = XS[i];
+  X.poner(0.5 + 0.22 * u);                          // llega al impacto y se queda a ≈3 cm
+  S.aka.cara({ cejas: -0.5, parpadeo: 0 }); S.ao.cara({ ojos: 0.6, cejas: 0.5, parpadeo: 0 });
+  C.cam(S, { ...X.camara, centro: [X.camara.centro[0], 0.95, 0], distancia: 9.6 });
+  esc.dibujar(ctx, {});
+  // marco de papel (tarjeta)
+  ctx.save(); ctx.fillStyle = C.PAPEL; const m = 46;
+  ctx.fillRect(0, 0, 1080, m); ctx.fillRect(0, 0, m, 1920); ctx.fillRect(1080 - m, 0, m, 1920); ctx.fillRect(0, 1920 - m, 1080, m);
+  ctx.strokeStyle = C.TINTA; ctx.lineWidth = 6; ctx.strokeRect(m, m, 1080 - 2 * m, 1920 - 2 * m); ctx.restore();
+  C.tarjeta(ctx, t, ['¿Puntúa o no?'], { size: 84, y: 300, t0: -1 });
+  C.overlay.tarjeta(ctx, 5, { lineas: [ROT[i]], t0: -1, size: 64, y: 1210 });
+  C.overlay.tarjeta(ctx, t, { lineas: [t < 2 ? '10 situaciones' : 'Tú eres el juez'], size: 64, y: 1320, t0: -1 });
+  C.aviso(ctx);
+};
+</script></body></html>

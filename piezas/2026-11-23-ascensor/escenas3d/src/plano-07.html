@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Ascensor · plano 07</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { ctx, esc, P, A, B, dA, dB, U } = C.iniciar();
+A.raiz.visible = false;
+// Helper local (plan: pendiente): B a pantalla completa, a la izquierda del cuadro, cámara que lo sigue. 620 px/m aprox.
+const vista = (tau, off = 0.25) => { C.poner(B, "B", P, tau); const x = C.VEL * tau; esc.orbita({ centro: [x + off, 0.95, 0], distancia: 9, azimut: 0, elevacion: 3, fov: 22 }); esc.sombraEn(x, 0); return x; };
+const px = (p) => esc.proyectar(p);
+window.DURACION = 3.2;
+// PLANO 7: B sube en cámara lenta; la cifra cuenta 0→34 J (trabajo para subir).
+window.render = (t) => {
+  const tau = Math.min(t, 2.6) * 0.55 / 2.6;      // 0 (abajo) → 0,55 s (arriba del todo)
+  const x = vista(tau);
+  dB.limpiar();
+  const h = B.punto('cabeza');
+  dB.flecha({ desde: [x - 0.4, 0.9, 0], hacia: [x - 0.4, 1.5, 0], crecer: U.prog(t, 0.1, 0.6), alpha: 1 });
+  esc.dibujar(ctx, {});
+  const n = Math.round(34 * U.easeOut(U.prog(t, 0.3, 2.6)));
+  C.overlay.cifra(ctx, 790, 1060, n + ' J', { size: 200 });
+  C.etiqueta(ctx, 'trabajo para subir', 790, 1220, { size: 56, alpha: U.prog(t, 0.4, 0.8) });
+  C.tarjeta(ctx, t, '70 kg × 5 cm ≈ 34 J', { t0: 0.05, size: 68 });
+  C.letraPequena(ctx, ['m·g·h = 70 · 9,81 · 0,05 ≈ 34 J', 'modelo simplificado']);
+};
+</script></body></html>

@@ -1,0 +1,24 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 5 (2 s): cierre. Aka y ao se saludan (rei) a 2 m; botón de papel «Enlace en el perfil».
+import * as C from './comun.js';
+const S = C.iniciar(1.9); const { ctx, esc, par, P, aka, ao } = S, U = C.U;
+window.DURACION = 2;
+window.render = (t) => {
+  const f = U.easeInOut(U.prog(t, 0.25, 0.8)) * (1 - U.easeInOut(U.prog(t, 1.35, 1.8)));
+  const p = C.mezclar(P['pies-juntos'], P.rei, f);
+  aka.aplicarPose(p); ao.aplicarPose(p);
+  aka.cara({ sonrisa: 0.3, parpadeo: 0 }); ao.cara({ sonrisa: 0.3, parpadeo: 0 });
+  C.cam(S, { azimut: -90, distancia: 10.5, elevacion: 3, fov: 26, centro: [0, 0.8, 0] });
+  esc.dibujar(ctx, {});
+  // botón de papel
+  const a = U.clamp(U.prog(t, 0.2, 0.5)), y = 330 + (1 - U.easeOut(a)) * 40, w = 800, h = 150;
+  ctx.save(); ctx.globalAlpha = a;
+  ctx.fillStyle = 'rgba(0,0,0,0.25)'; ctx.beginPath(); ctx.roundRect(540 - w / 2 + 6, y + 10, w, h, 40); ctx.fill();
+  ctx.fillStyle = C.PAPEL; ctx.strokeStyle = C.TINTA; ctx.lineWidth = 6; ctx.beginPath(); ctx.roundRect(540 - w / 2, y, w, h, 40); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = C.TINTA; ctx.font = '900 68px Inter, "Noto Sans CJK JP", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('Enlace en el perfil', 540, y + h / 2 + 2);
+  ctx.restore(); ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  C.aviso(ctx);
+};
+</script></body></html>

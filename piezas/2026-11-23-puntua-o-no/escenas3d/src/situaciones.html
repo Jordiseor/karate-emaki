@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Situaciones quiz 4:5</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="780" height="900"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Una imagen por situación: render.mjs situaciones.html --t <índice> --png sit.png   (t = índice 0…11; sin vídeo)
+// Índices: 0…9 = situaciones 1…10 · 10 = S1 · 11 = S2. Sin ✓/✗ ni puntos: solo la situación.
+import { crearEscenario } from '../../../../animacion/3d/escenario.js';
+import { cargarPoses, mezclar } from '../../../../animacion/3d/karateka3d.js';
+import { crearPareja, crearAreaWKF, crearTecnica, tumbar, formato45, CAM } from '../../../../animacion/3d/kumite3d.js';
+import { Diagrama3D } from '../../../../animacion/3d/diagrama3d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = formato45(crearEscenario({ escala: 0.5, suelo: 'tatami' })); esc.escena.fog.near = 16; esc.escena.fog.far = 60;
+const P = cargarPoses(), par = crearPareja(esc, { distancia: 1.6 }); crearAreaWKF(esc);
+const { aka, ao } = par; const d = new Diagrama3D(esc, aka);
+const ROJO = '#C8102E', TINTA = '#1A1A1A', FUENTE = (window.EMAKI && window.EMAKI.marca.fuente.titulo) || 'sans-serif';
+window.DURACION = 12;
+const px = (v) => { const p = esc.proyectar(v); return { x: p.x * 780 / 1080 * 1, y: p.y }; };   // se corrige abajo
+// esc.proyectar da píxeles del vídeo 1080×1920; aquí el lienzo es 780×900: se calcula con la cámara
+const proy = (v) => { const q = v.clone().project(esc.camara); return { x: (q.x + 1) / 2 * 780, y: (1 - q.y) / 2 * 900 }; };
+const V = (o) => o.clone();
+const T = (txt, x, y, s, col = TINTA, al = 'center', peso = 800) => { ctx.save(); ctx.font = `${peso} ${s}px ${FUENTE}`; ctx.textAlign = al; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round'; ctx.lineWidth = s * 0.28; ctx.strokeStyle = 'rgba(244,239,230,0.95)'; ctx.strokeText(txt, x, y); ctx.fillStyle = col; ctx.fillText(txt, x, y); ctx.restore(); };
+const halo = (c, r) => { ctx.save(); ctx.strokeStyle = ROJO; ctx.lineWidth = 7; ctx.beginPath(); ctx.arc(c.x, c.y, r, 0, 6.2832); ctx.stroke(); ctx.globalAlpha = 0.18; ctx.fillStyle = ROJO; ctx.fill(); ctx.restore(); };
+// regla: corchete rojo entre dos puntos 3D + etiqueta
+const regla = (a, b, txt, dy = -90) => { const A = proy(a), B = proy(b), mx = (A.x + B.x) / 2, my = (A.y + B.y) / 2 + dy; ctx.save(); ctx.strokeStyle = ROJO; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(A.x, A.y - 14); ctx.lineTo(A.x, A.y + 14); ctx.moveTo(B.x, B.y - 14); ctx.lineTo(B.x, B.y + 14); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.stroke();
+  ctx.setLineDash([6, 6]); ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(mx, (A.y + B.y) / 2 - 18); ctx.lineTo(mx, my + 26); ctx.stroke(); ctx.restore(); T(txt, mx, my, 54, ROJO); };
+
+// ---- situaciones: {tec, atacante, hueco, rastro: 'manoD'|'tobilloD', extra(X)} ----
+const S = [
+  { tec: 'gyaku-zuki-chudan', rastro: 'manoD', ven: 0.45 },                           // 1
+  { tec: 'mawashi-geri-chudan', atk: 'ao', rastro: 'tobilloD', ven: 0.5 },             // 2
+  { tec: 'mawashi-geri-jodan', hueco: 0.05, rastro: 'tobilloD', ven: 0.5, post: (X) => regla(aka.punto('tobilloD'), ao.punto('cabeza'), '5 cm') }, // 3
+  { tec: 'gyaku-zuki-chudan', atk: 'ao', rastro: 'manoD', ven: 0.45, post: () => cron() },   // 4
+  { remate: true },                                                                    // 5
+  { tec: 'gyaku-zuki-chudan', atk: 'ao', espalda: true },                              // 6
+  { tec: 'gyaku-zuki-chudan', rastro: 'manoD', ven: 0.45, rival: 'neutra', post: () => yame() }, // 7
+  { tec: 'gyaku-zuki-jodan', rastro: 'manoD', ven: 0.45, tambalea: true },             // 8
+  { tec: 'gyaku-zuki-garganta', atk: 'ao', rastro: 'manoD', ven: 0.45, post: () => { const g = aka.punto('cabeza'); g.y -= 0.2; halo(proy(g), 34); } }, // 9
+  { tec: 'gyaku-zuki-union', atk: 'ao', rastro: 'manoD', ven: 0.45, post: () => { const a = aka.punto('hombroI'), b = aka.punto('hombroD'); halo(proy(a.distanceTo(ao.punto('manoD')) < b.distanceTo(ao.punto('manoD')) ? a : b), 36); } }, // 10
+  { tec: 'gyaku-zuki-jodan', hueco: 0.02, rastro: 'manoD', ven: 0.45, post: () => regla(aka.punto('manoD'), ao.punto('cabeza'), '2 cm') }, // S1
+  { simultaneo: true }                                                                 // S2
+];
+function cron() { ctx.save(); ctx.fillStyle = 'rgba(244,239,230,0.96)'; ctx.strokeStyle = TINTA; ctx.lineWidth = 6; ctx.beginPath(); ctx.roundRect(250, 36, 280, 120, 18); ctx.fill(); ctx.stroke(); ctx.restore(); T('0:00', 390, 98, 96, ROJO, 'center', 900); }
+function yame() { ctx.save(); ctx.fillStyle = TINTA; ctx.beginPath(); ctx.roundRect(190, 40, 400, 120, 18); ctx.fill(); ctx.restore(); T('YAME', 390, 100, 96, '#F4EFE6', 'center', 900); ctx.save(); ctx.font = `800 96px ${FUENTE}`; ctx.restore(); }
+// "YAME" sobre fondo oscuro: sin contorno claro
+function yame2() { ctx.save(); ctx.fillStyle = TINTA; ctx.beginPath(); ctx.roundRect(190, 40, 400, 120, 18); ctx.fill(); ctx.font = `900 92px ${FUENTE}`; ctx.fillStyle = '#F4EFE6'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('YAME', 390, 100); ctx.restore(); }
+S[6].post = yame2;
+function marcadorS2() { ctx.save(); ctx.fillStyle = 'rgba(244,239,230,0.96)'; ctx.strokeStyle = TINTA; ctx.lineWidth = 6; ctx.beginPath(); ctx.roundRect(190, 36, 400, 124, 18); ctx.fill(); ctx.stroke(); ctx.restore(); T('1 – 1', 390, 100, 100, TINTA, 'center', 900);
+  // bandera senshu tachada
+  const x = 80, y = 700; ctx.save(); ctx.fillStyle = 'rgba(244,239,230,0.96)'; ctx.strokeStyle = TINTA; ctx.lineWidth = 6; ctx.beginPath(); ctx.roundRect(x - 50, y - 70, 250, 140, 16); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = TINTA; ctx.lineWidth = 7; ctx.beginPath(); ctx.moveTo(x - 10, y - 50); ctx.lineTo(x - 10, y + 50); ctx.stroke(); ctx.fillStyle = '#7A7468'; ctx.beginPath(); ctx.moveTo(x - 10, y - 50); ctx.lineTo(x + 70, y - 28); ctx.lineTo(x - 10, y - 6); ctx.closePath(); ctx.fill();
+  ctx.font = `800 40px ${FUENTE}`; ctx.fillStyle = TINTA; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText('SENSHU', x + 76, y + 8);
+  ctx.strokeStyle = ROJO; ctx.lineWidth = 11; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(x - 36, y + 54); ctx.lineTo(x + 176, y - 54); ctx.stroke(); ctx.restore(); }
+
+window.render = (t) => {
+  const i = Math.min(S.length - 1, Math.round(t)), c = S[i];
+  ctx.clearRect(0, 0, 780, 900); d.limpiar();
+  let cam = { ...CAM.pareja45 }, X = null, [cx, cz] = [0, 0];
+  par.colocar(1.6);
+  if (c.remate) {
+    par.colocar(2); ao.colocar(0, 0, 90); aka.colocar(0, -0.75, 0);
+    aka.aplicarPose(P['puno-remate-bajo']); tumbar(ao, P, { f: 1 });
+    par.alinear('puno-remate-bajo', { aplicar: (r) => tumbar(r, P, { f: 1 }) });
+    cx = 0; cz = -0.3; cam = { azimut: 0, distancia: 7.2, elevacion: 8, fov: 24, centro: [0, 0.8, 0] };
+  } else if (c.simultaneo) {
+    par.colocar(1.4); par.aka.aplicarPose(P['gyaku-zuki-kiai']); par.ao.aplicarPose(P['gyaku-zuki-kiai']);
+    [cx, cz] = par.centro(); cam.centro[1] = 1.0;
+  } else {
+    X = crearTecnica(par, P, c.tec, { atacante: c.atk, hueco: c.hueco }); X.poner(0.7);
+    [cx, cz] = par.centro();
+    const atk = c.atk === 'ao'; if (atk) cam.azimut = 90;
+    if (c.rival === 'neutra') { ao.aplicarPose(P.yoi || P.kamae); }
+    if (c.tambalea) { ao.inclinar(-14); }
+    if (c.espalda) { d.k = ao; const pz = (tau) => { ao.aplicarPose(mezclar(P['gyaku-zuki-kiai'], P['espalda-tras-puno'], Math.min(1, tau / 0.7))); return ao.punto('manoD'); }; d.rastro(pz, { t: 0.7, ventana: 0.7, muestras: 24 }); pz(0.7); }
+    if (c.rastro) { const kk = atk ? ao : aka; d.k = kk; d.rastro((tau) => { X.poner(tau); return kk.punto(c.rastro); }, { t: 0.7, ventana: c.ven, muestras: 24 }); X.poner(0.7); if (c.tambalea) ao.inclinar(-14); if (c.rival === 'neutra') ao.aplicarPose(P.yoi || P.kamae); }
+  }
+  aka.cara({ cejas: -0.5 }); ao.cara({ ojos: 0.6, cejas: 0.5 });
+  esc.sombraEn(cx, cz); esc.orbita({ ...cam, centro: [cx + cam.centro[0], cam.centro[1], cz] });
+  esc.dibujar(ctx);
+  if (c.post) c.post(X); if (c.simultaneo) marcadorS2();
+};
+</script></body></html>

@@ -1,0 +1,26 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 2 (3 s): ao se retira del golpe y gira hasta quedar de espaldas a aka. Marcador 1 -> 0 con cruz roja.
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, par, P, aka, ao } = S, U = C.U;
+const X = C.crearTecnica(par, P, 'gyaku-zuki-jodan', { atacante: 'ao' });   // solo para colocar a los dos y la cámara
+const k = ao;
+X.poner(0.7); const b = { x: ao.base.x, z: ao.base.z, r: ao.base.rumbo }; const dx = ao.base.x - aka.base.x, dz = ao.base.z - aka.base.z, dl = Math.hypot(dx, dz);
+window.DURACION = 3;
+window.render = (t) => {
+  const f = U.easeInOut(U.prog(t, 0.2, 1.8));
+  const sep = U.easeInOut(U.prog(t, 0, 0.9)) * 0.55;          // ao se echa atrás para no rozar a aka al girar
+  aka.aplicarPose(P.kamae); aka.aplicarPose(P.kamae);
+  ao.colocar(b.x + dx / dl * sep, b.z + dz / dl * sep, b.r + (window.GIRO ?? 60) * f);
+  const pose = C.mezclar(P['gyaku-zuki-jodan'], P['espalda-tras-puno'], f);
+  ao.aplicarPose(pose);
+  aka.cara({ ojos: 0.8, cejas: 0.5, parpadeo: 0 }); ao.cara({ cejas: 0.2, parpadeo: 0 });
+  C.cam(S, { ...X.camara, centro: [X.camara.centro[0], 0.85, 0], distancia: 10.8 });
+  esc.dibujar(ctx, {});
+  const v = t < 2.0 ? 1 : 0;
+  C.marcador(ctx, v, { y: 400, tacha: U.prog(t, 2.0, 2.5), pop: v === 0 ? Math.max(0, 1 - (t - 2.0) / 0.3) : 0 });
+  C.tarjeta(ctx, t, ['Espalda al rival: cero'], { size: 60, y: 540, t0: 1.6 });
+  C.aviso(ctx);
+};
+</script></body></html>

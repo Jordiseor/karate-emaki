@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Ascensor · plano 05</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from "./comun.js";
+const { ctx, esc, P, A, B, dA, dB, U } = C.iniciar();
+window.DURACION = 2.0;
+// PLANO 5: A (cadera tinta, cabeza roja: líneas planas) y a 1,0 s cortina lateral a B (cadera y cabeza ondulan a la vez).
+const PRE = 4.0, TT = C.TINTA;
+window.render = (t) => {
+  EMAKI.fondoPapel(ctx);
+  const tau = t + PRE, corte = U.easeOut(U.prog(t, 1.0, 1.25));
+  for (const q of ['A', 'B']) {
+    if (q === 'B' && corte <= 0) continue;
+    const k = q === 'A' ? A : B, d = q === 'A' ? dA : dB;
+    dA.limpiar(); dB.limpiar();
+    d.rastro((s) => C.caderaPt(k, q, P, s + PRE), { t, ventana: 2, color: TT, muestras: 44, grosor: 0.016, punta: false });
+    d.rastro((s) => C.cabeza(k, q, P, s + PRE), { t, ventana: 2, color: C.ROJO, muestras: 44, grosor: 0.016 });
+    C.poner(k, q, P, tau);
+    d.cdm({ punto: k.punto('cadera'), color: TT, vertical: false, radio: 0.05 });
+    ctx.save();
+    if (q === 'B') { ctx.beginPath(); ctx.rect(0, 0, 1080 * corte, 1920); ctx.clip(); }
+    C.dibujarBanda(ctx, esc, q, C.VEL * tau + 0.15, { ocultar: [q === 'A' ? B : A] });
+    ctx.restore();
+  }
+  C.separador(ctx);
+  C.tarjeta(ctx, t, 'Cadera nivelada, cabeza quieta', { t0: 0.05, size: 64 });
+  const a = U.prog(t, 0.2, 0.4), b = U.prog(t, 1.2, 1.4);
+  C.etiqueta(ctx, 'Recta', 900, 380, { alpha: a * (1 - corte * 0) });
+  C.etiqueta(ctx, 'Ola', 900, 1040, { alpha: b });
+  // aclaración: la cabeza es el indicador
+  C.etiqueta(ctx, 'rojo: cabeza', 190, 1500, { size: 48, color: C.ROJO, alpha: U.prog(t, 0.5, 0.7) });
+  C.etiqueta(ctx, 'tinta: cadera', 590, 1500, { size: 48, alpha: U.prog(t, 0.5, 0.7) });
+};
+</script></body></html>
