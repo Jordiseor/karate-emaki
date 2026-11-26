@@ -1,0 +1,13 @@
+Locución El error del ascensor (33,4 s, voz Kokoro em_santa). Formato: inicio en s | texto en pantalla | texto para la voz (= storyboard sin cambios; grafía de voz: Shotokan sin macrones).
+0.0 | Tu cabeza sube y baja | Tu cabeza sube y baja al avanzar.
+3.0 | Recta · Ola | Míralo: una recta, una ola.
+5.5 | El error del ascensor | Es el error del ascensor.
+8.0 | Manual técnico JKA | En kihon Shotokan,
+9.5 | La cadera no cambia de nivel | la cadera no cambia de nivel.
+11.8 | Cadera nivelada, cabeza quieta | Cadera nivelada, cabeza quieta.
+13.8 | Modelo simplificado · 70 kg, 5 cm | Una cuenta sencilla: setenta kilos, cinco centímetros.
+17.0 | 70 kg × 5 cm ≈ 34 J | Subirlos cuesta unos treinta y cuatro julios.
+20.2 | Parte vuelve al bajar | Parte vuelve al bajar: no se pierden.
+23.4 | No empuja hacia delante | Pero ese vaivén no empuja hacia delante.
+26.6 | Efecto en el puño: sin medir | Nadie ha medido cuánto afecta al puño.
+29.8 | ¿Sube tu cabeza? | Grábate de lado y mira tu cabeza. ¿Sube?

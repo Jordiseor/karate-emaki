@@ -1,0 +1,6 @@
+Locución anuncio ¿Puntúa o no? (14 s, voz Kokoro em_santa). Formato: inicio en s | texto en pantalla | texto para la voz (= storyboard sin cambios).
+0.0 | ¿Punto? | Puñetazo perfecto. ¿Punto?
+3.0 | Espalda al rival: cero | Pues no. Dar la espalda lo anula.
+6.0 | 10 situaciones. Tú eres el juez. | Diez situaciones de kumite. Tú eres el juez.
+9.0 | Sí o no. ¿Cuántas aciertas? | Sí o no. ¿Cuántas aciertas?
+12.0 | Enlace en el perfil | Lo tienes en el enlace del perfil.

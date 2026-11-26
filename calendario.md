@@ -19,12 +19,13 @@ Hora de Madrid. Ritmo desde el 18 nov (Jorge): 3 reels por semana, lunes, miérc
 | Mié 2 dic | 19:30 | De «mano china» a «mano vacía» (`2026-11-18-mano-vacia`) | Historia | Programada (Metricool 441502227) |
 | Sáb 5 dic | 19:30 | La cadera no es un adorno (`2026-11-19-cadera`) | Ciencia | Programada (Metricool 441502254) |
 | Quincena 30 nov–13 dic | — | Interactivo: Embusen de Heian Shodan (`2026-11-16-embusen`) | Técnica | Aprobada por Jorge, copy listo; sin programar hasta tener enlace público (propuesto jue 10 dic 19:30); pasos 18–21 «a confirmar» |
-| Lun 7 dic | 19:30 | El error del ascensor: tu cabeza no debería subir (`2026-11-23-ascensor`) | Técnica | Animada (33,4 s, 12 clips; plano 7 a corregir) |
-| Mié 9 dic | 19:30 | El dōjō Shōtōkan que duró seis años (`2026-11-23-dojo-1945`) | Historia | Montada (34,3 s, voz Kokoro) |
-| Sáb 12 dic | 19:30 | Notas del móvil de un cinturón blanco (`2026-11-23-notas-movil`) | Anécdotas y humor del dōjō | Montada (18 s, voz Kokoro) |
-| Quincena 14–27 dic | — | Interactivo: ¿Eres juez de kumite? ¿Puntúa o no? (`2026-11-23-puntua-o-no`) | Competición | Animada (quiz de 5 vistas, 12 imágenes, anuncio 14 s) |
+| Lun 7 dic | 19:30 | El error del ascensor: tu cabeza no debería subir (`2026-11-23-ascensor`) | Técnica | Montada (33,4 s, voz Kokoro) |
+| Mié 9 dic | 19:30 | El dōjō Shōtōkan que duró seis años (`2026-11-23-dojo-1945`) | Historia | En aprobación de Jorge |
+| Sáb 12 dic | 19:30 | Notas del móvil de un cinturón blanco (`2026-11-23-notas-movil`) | Anécdotas y humor del dōjō | En aprobación de Jorge |
+| Quincena 14–27 dic | — | Interactivo: ¿Eres juez de kumite? ¿Puntúa o no? (`2026-11-23-puntua-o-no`) | Competición | Montada (quiz de 5 vistas con todas las imágenes, anuncio 14 s) |
 
 Notas:
+- 26 nov (producción, Sensei): dōjō y notas del móvil a aprobación de Jorge; ascensor y anuncio de ¿puntúa o no? montados. Sin huecos hasta el 13 dic.
 - 25 nov (Sensei): Jorge aprueba tigre, mano vacía y cadera; programadas en Metricool (lun 30, mié 2, sáb 5, 19:30).
 - 25 nov (producción, Sensei): cadera a aprobación; dōjō y notas del móvil montadas; ascensor y ¿puntúa o no? animados. Sin huecos hasta el 13 dic.
 - 24 nov (producción, Sensei): kumite v2 publicado; cadera montada; dōjō y notas del móvil animados; poses de ascensor y ¿puntúa o no? listas. Sin huecos hasta el 13 dic.

@@ -66,7 +66,7 @@
 | UNC Shotokan — https://shotokankarate.web.unc.edu/dojo-etiquettes | Rutina completa de inicio y fin; tardones en seiza | Media |
 | JKA PDF 2022 — https://www.jka.or.jp/wp/wp-content/uploads/2022/06/7a361015440653956d4e9a15bfc7604c.pdf | Mokusō y dōjō kun al final de la práctica; reverencias | Alta |
 | gojuryu.net, Opening & Closing Class y Seiza Zarei | Kanji y significado de seiza, mokusō, mokusō yame | Media |
-| Wadokai Canadá, glosario — https://canadajkfwadokai.org/our-style/terminology/ | Seiza/mokusō como órdenes; «naorei» = volver a musubi-dachi y saludar | Media |
+| Wadokai Canadá, glosario — https://canadajkfwadokai.org/our-style/terminology/ | Seiza/mokusō como órdenes; «naorei» = volver a musubi-dachi y saludar; gyaku-zuki = reverse hand punch, mawashi-geri = roundhouse kick (26 nov) | Media |
 | BrainFacts / NINDS, Paresthesia | Hormigueo por presión sostenida sobre un nervio | Alta |
 | Fightingarts, Seiza | Seiza = etiqueta; piernas entumecidas en occidentales | Media |
 | Kim, Kim, Kim 2020 (koreascience.or.kr, JAKO202029660100041) | Orden pelvis → tronco → hombro → codo en choku-tsuki, 10 karatekas (pieza cadera) | Media-alta |
@@ -108,3 +108,4 @@
 | --- | --- | --- |
 | WKF Kumite Competition Rules 2024 (copia Karateliitto) — https://karateliitto.fi/app/uploads/2024/02/WKF_Kumite_Competition_Rules_2024.pdf | Arts. 8.1–8.12 (2024): invalidez tras yame, jōgai, espalda, contacto excesivo; ausencia de cláusula de simultáneas; 9.1.1 garganta. Numeración de 2024 = la de 2026 +1 desde 8.9 | Alta (versión anterior; cotejar con 2026) |
 | WKF Kumite Questions, Dic 2025 (Karateliitto) — https://karateliitto.fi/app/uploads/2026/02/KumiteQuestions_English_Dec2025.pdf | Preguntas de examen de árbitros sin clave; casos de tras yame, contacto, tiempo cumplido; contiene contradicciones internas | Media (solo apoyo) |
+| WKF Kumite Competition Rules 2026 (MASTER_COPY_V13FINAL, PDF oficial) — https://www.wkf.net/files/pdf/documents/WKF_2026_Kumite_Competition_Rules_MASTER_COPY_V13FINAL.pdf | 8.10; 8.11 a) tras yame, d) contacto excesivo, e) espalda, f) tras violación del reglamento; 9.1.1 (cotejo 26 nov, WebFetch leyó 100.000 de 109.413 caracteres) | Alta |

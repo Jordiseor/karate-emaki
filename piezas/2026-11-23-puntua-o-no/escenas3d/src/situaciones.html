@@ -34,7 +34,7 @@ const S = [
   { tec: 'mawashi-geri-jodan', hueco: 0.05, rastro: 'tobilloD', ven: 0.5, post: (X) => regla(aka.punto('tobilloD'), ao.punto('cabeza'), '5 cm') }, // 3
   { tec: 'gyaku-zuki-chudan', atk: 'ao', rastro: 'manoD', ven: 0.45, post: () => cron() },   // 4
   { remate: true },                                                                    // 5
-  { tec: 'gyaku-zuki-chudan', atk: 'ao', espalda: true },                              // 6
+  { tec: 'gyaku-zuki-chudan', atk: 'ao', espalda: true, cam: { azimut: 90 + (window.AZ6 ?? 0), distancia: 6.6, elevacion: 5, fov: 24 } },                              // 6
   { tec: 'gyaku-zuki-chudan', rastro: 'manoD', ven: 0.45, rival: 'neutra', post: () => yame() }, // 7
   { tec: 'gyaku-zuki-jodan', rastro: 'manoD', ven: 0.45, tambalea: true },             // 8
   { tec: 'gyaku-zuki-garganta', atk: 'ao', rastro: 'manoD', ven: 0.45, post: () => { const g = aka.punto('cabeza'); g.y -= 0.2; halo(proy(g), 34); } }, // 9
@@ -70,7 +70,7 @@ window.render = (t) => {
   } else {
     X = crearTecnica(par, P, c.tec, { atacante: c.atk, hueco: c.hueco }); X.poner(0.7);
     [cx, cz] = par.centro();
-    const atk = c.atk === 'ao'; if (atk) cam.azimut = 90;
+    const atk = c.atk === 'ao'; if (atk) cam.azimut = 90; if (c.cam) cam = { ...cam, ...c.cam };
     if (c.rival === 'neutra') { ao.aplicarPose(P.yoi || P.kamae); }
     if (c.tambalea) { ao.inclinar(-14); }
     if (c.espalda) { d.k = ao; const pz = (tau) => { ao.aplicarPose(mezclar(P['gyaku-zuki-kiai'], P['espalda-tras-puno'], Math.min(1, tau / 0.7))); return ao.punto('manoD'); }; d.rastro(pz, { t: 0.7, ventana: 0.7, muestras: 24 }); pz(0.7); }

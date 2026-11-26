@@ -20,9 +20,15 @@ window.render = (t) => {
   dB.flecha({ desde: [xa, 0.9, 0], hacia: [xa, 1.5, 0], alfa: 1 - U.prog(t, 0.3, 0.7), color: C.ROJO });
   dB.flecha({ desde: [xa, 1.5, 0], hacia: [xa, 0.9, 0], crecer: U.prog(t, 0.5, 1.2), color: C.GRIS });
   esc.dibujar(ctx, {});
-  const n = Math.round(34 - 14 * U.easeInOut(U.prog(t, 0.8, 2.8)));
-  C.overlay.cifra(ctx, 790, 1060, n + ' J', { size: 200 });
-  C.etiqueta(ctx, 'parte', 790, 1220, { size: 64, alpha: U.prog(t, 1.6, 2.0) });
+  C.overlay.cifra(ctx, 700, 1060, '≈ 34 J', { size: 170 });
+  // barra del trabajo (34 J se queda); una porción gris se separa y baja con la flecha gris, sin número
+  const bx = 520, bw = 380, by = 1250, bh = 40, gw = 150, k = U.easeInOut(U.prog(t, 0.8, 2.4));
+  ctx.save();
+  ctx.fillStyle = C.ROJO; ctx.fillRect(bx, by, bw - gw * k, bh);
+  ctx.fillStyle = '#8A847A'; ctx.fillRect(bx + bw - gw, by + 60 * k, gw, bh);
+  if (k < 1) { ctx.globalAlpha = 1 - k; ctx.fillStyle = C.ROJO; ctx.fillRect(bx + bw - gw, by, gw, bh); }
+  ctx.restore();
+  C.etiqueta(ctx, 'parte vuelve', 700, 1420, { size: 64, color: '#8A847A', alpha: U.prog(t, 1.4, 1.9) });
   C.tarjeta(ctx, t, ['Parte vuelve', 'al bajar'], { t0: 0.05, size: 76 });
   C.letraPequena(ctx, 'Modelo simplificado');
 };

@@ -53,6 +53,15 @@ Notas de producción:
 ## Ángulo recomendado
 Gancho en el segundo 0 con la situación 4: un puñetazo perfecto, el karateka se da la vuelta y... «¿Punto?». Respuesta: cero, por dar la espalda. Así el espectador ve de golpe que una técnica bonita no basta. El interactivo va de fácil a difícil: 1, 2 y 3 puntos (situaciones 1-3, la escalera de puntuación), después las trampas (6 gong, 9 caído) y por último las anulaciones (4, 5, 7, 8, 10). En cada tarjeta, 5-6 palabras («Espalda al rival: cero»), y la explicación de una frase tras responder, con el artículo en pequeño. Cierre con puntuación final y el título «Juez de kumite» según aciertos. El reel de 14 s enseña solo la situación 4 y la invitación a jugar.
 
+## Cotejo 8.11 (26 nov)
+El PDF oficial 2026 sí se abrió hoy: https://www.wkf.net/files/pdf/documents/WKF_2026_Kumite_Competition_Rules_MASTER_COPY_V13FINAL.pdf (Alta). Lectura vía WebFetch (extracto del art. 8; los últimos ~9 000 caracteres del documento no se leyeron).
+- 8.11: «A technique is invalid if:» a) «Executed after the time-up signal or the Referee calling "YAME".» b) tras «wakarete» antes de «tsuzukete». c) fuera del área (jōgai). **d) «Followed by a foul of excessive contact or otherwise causing injury.»** e) «One turns one's back to the opponent after a technique (lack of awareness).» f) ejecutada tras una violación del reglamento (el agente que leyó el PDF la parafraseó, no es cita literal).
+- **Confirmado:** yame = **8.11 a)**. Contacto excesivo = **8.11 d)**, **no f)**: la «f» provisional del dosier era errónea (la f es «tras una violación», p. ej. agarrar). El 8.11 e) de la espalda ya era correcto.
+- 8.10 (tiempo agotado) confirmado: «Correctly executed techniques landed at the moment the time runs out are valid.»
+- 9.1.1, punto 1: «techniques that make contact with the throat» (prohibido) y contacto excesivo según zona.
+- Interactivo actualizado: sit. 07 (yame) = «Art. 8.11 a)»; sit. 08 (contacto en cabeza) = «Arts. 8.8 y 8.11 d)»; se quitó la marca `pendiente` de ambas. (Numeración del interactivo distinta a la de la tabla de arriba.)
+- Glosas: https://canadajkfwadokai.org/our-style/terminology/ (Media): «Gyaku-zuki: Reverse hand punch» y «Mawashi-geri: Roundhouse kick». «Puñetazo de la mano contraria» y «patada circular» son correctas. Matiz: «la mano contraria» es la del lado opuesto a la pierna adelantada; vale para el quiz.
+
 ## Fuentes abiertas
 - [Alta, a banco] WKF, Kumite Competition Rules 2026.01 (PDF) — https://www.wkf.net/files/pdf/documents/WKF_2026_Kumite_Competition_Rules_MASTER_COPY_V13FINAL.pdf — **no reabierto hoy (bloqueado)**; datos tomados del dosier 2026-11-16.
 - Abierta hoy.

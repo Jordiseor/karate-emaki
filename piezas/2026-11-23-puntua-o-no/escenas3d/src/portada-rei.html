@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Situaciones quiz 4:5</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="780" height="900"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Portada y rei: render.mjs portada-rei.html --t 0 (portada) | --t 1 (rei). Antes: una imagen por situación: render.mjs situaciones.html --t <índice> --png sit.png   (t = índice 0…11; sin vídeo)
+// Índices: 0…9 = situaciones 1…10 · 10 = S1 · 11 = S2. Sin ✓/✗ ni puntos: solo la situación.
+import { crearEscenario } from '../../../../animacion/3d/escenario.js';
+import { cargarPoses, mezclar } from '../../../../animacion/3d/karateka3d.js';
+import { crearPareja, crearAreaWKF, crearTecnica, tumbar, formato45, CAM } from '../../../../animacion/3d/kumite3d.js';
+import { Diagrama3D } from '../../../../animacion/3d/diagrama3d.js';
+const ctx = document.getElementById('c').getContext('2d');
+const esc = formato45(crearEscenario({ escala: 0.5, suelo: 'tatami' })); esc.escena.fog.near = 16; esc.escena.fog.far = 60;
+const P = cargarPoses(), par = crearPareja(esc, { distancia: 1.6 }); crearAreaWKF(esc);
+const { aka, ao } = par; const d = new Diagrama3D(esc, aka);
+const ROJO = '#C8102E', TINTA = '#1A1A1A', FUENTE = (window.EMAKI && window.EMAKI.marca.fuente.titulo) || 'sans-serif';
+window.DURACION = 12;
+const px = (v) => { const p = esc.proyectar(v); return { x: p.x * 780 / 1080 * 1, y: p.y }; };   // se corrige abajo
+// esc.proyectar da píxeles del vídeo 1080×1920; aquí el lienzo es 780×900: se calcula con la cámara
+const proy = (v) => { const q = v.clone().project(esc.camara); return { x: (q.x + 1) / 2 * 780, y: (1 - q.y) / 2 * 900 }; };
+const V = (o) => o.clone();
+const T = (txt, x, y, s, col = TINTA, al = 'center', peso = 800) => { ctx.save(); ctx.font = `${peso} ${s}px ${FUENTE}`; ctx.textAlign = al; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round'; ctx.lineWidth = s * 0.28; ctx.strokeStyle = 'rgba(244,239,230,0.95)'; ctx.strokeText(txt, x, y); ctx.fillStyle = col; ctx.fillText(txt, x, y); ctx.restore(); };
+const halo = (c, r) => { ctx.save(); ctx.strokeStyle = ROJO; ctx.lineWidth = 7; ctx.beginPath(); ctx.arc(c.x, c.y, r, 0, 6.2832); ctx.stroke(); ctx.globalAlpha = 0.18; ctx.fillStyle = ROJO; ctx.fill(); ctx.restore(); };
+// regla: corchete rojo entre dos puntos 3D + etiqueta
+const regla = (a, b, txt, dy = -90) => { const A = proy(a), B = proy(b), mx = (A.x + B.x) / 2, my = (A.y + B.y) / 2 + dy; ctx.save(); ctx.strokeStyle = ROJO; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(A.x, A.y - 14); ctx.lineTo(A.x, A.y + 14); ctx.moveTo(B.x, B.y - 14); ctx.lineTo(B.x, B.y + 14); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.stroke();
+  ctx.setLineDash([6, 6]); ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(mx, (A.y + B.y) / 2 - 18); ctx.lineTo(mx, my + 26); ctx.stroke(); ctx.restore(); T(txt, mx, my, 54, ROJO); };
+
+window.render = (t) => {
+  ctx.clearRect(0, 0, 780, 900); d.limpiar();
+  const rei = Math.round(t) === 1;
+  let cam = { ...CAM.pareja45 };
+  if (rei) { par.colocar(1.5); aka.aplicarPose(P.rei); ao.aplicarPose(P.rei); cam = { azimut: -90, distancia: 7.6, elevacion: 4, fov: 24, centro: [0, 0.95, 0] }; }
+  else { par.colocar(2.4); aka.aplicarPose(P.kamae); ao.aplicarPose(P.kamae); cam = { azimut: -62, distancia: 8.2, elevacion: 4, fov: 24, centro: [0, 1.0, 0] }; }
+  aka.cara({ cejas: rei ? 0 : -0.5 }); ao.cara({ ojos: rei ? 0 : 0.6, cejas: rei ? 0 : 0.5 });
+  const [cx, cz] = par.centro();
+  esc.sombraEn(cx, cz); esc.orbita({ ...cam, centro: [cx + cam.centro[0], cam.centro[1], cz] });
+  esc.dibujar(ctx);
+};
+</script></body></html>

@@ -10,7 +10,7 @@ window.DURACION = 3.2;
 casa.modo('fantasma').contorno({ color: C.GRIS }).colocar(0, -9.5);
 esc.escena.fog.near = 12; esc.escena.fog.far = 45;
 const fila = H3.crearFila(esc, { n: 12, columnas: 4, origen: [0, -1.6], iguales: true });
-const cartel = H3.crearCartel({ texto: 'SHOTOKAN', tipo: 'madera' }).colocar(2.0, 0.3, -12); esc.escena.add(cartel.raiz);
+const cartel = H3.crearCartel({ texto: 'SHOTOKAN', tipo: 'madera', ancho: 2.2, alto: 2.9 }).colocar(0, -6, 0); esc.escena.add(cartel.raiz);
 window.render = (t) => {
   fila.pose(P, (i) => C.mezclar(P['pies-juntos'], P.rei, U.clamp(Math.sin((t - i * 0.06) * 3.2 - 0.6) * 0.6 + 0.5)));
   cartel.pop(U.prog(t, 1.4, 2.1));

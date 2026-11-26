@@ -1,6 +1,6 @@
 # Notas del interactivo (2026-11-23-puntua-o-no)
 - `index.html` autocontenido (CSS, JS y copia embebida de `situaciones.json`; sin CDN ni red ni almacenamiento). 5 vistas: portada, situación x10 (con paso «¿Cuántos?» 1-2-3 si el "Sí" es correcto), respuesta (✓/✗ + veredicto + explicación + chip de artículo, en el mismo sitio), resultado (x/10, título, fallos reabribles) y compartir/cierre (Web Share o copiar con «Copiado»). Aviso fijo en el pie, texto >= 18 px (salvo el aviso, 14 px), botones >= 48 px, `prefers-reduced-motion` (sin animaciones ni clip).
-- Imágenes: `img/sit-NN.webp`, `s1.webp`, `s2.webp` (780x900), más `img/portada.webp` y `img/rei.webp` (vistas 1 y 4; NO están en el encargo: pedirlas al Animador). Si no cargan se ve un marcador de papel con el número. Clip opcional: rellenar `"clip":"img/sit-NN.mp4"` en el JSON (y en la copia embebida).
+- Imágenes: `img/sit-NN.webp`, `s1.webp`, `s2.webp` (780x900), más `img/portada.webp` y `img/rei.webp` (vistas 1 y 4; hechas por el Animador el 26 nov). Si no cargan se ve un marcador de papel con el número. Clip opcional: rellenar `"clip":"img/sit-NN.mp4"` en el JSON (y en la copia embebida).
 - Pruebas (Playwright, Chromium, 390x844 y 1280x800): 0 errores de consola (ignorando imágenes aún ausentes), sin scroll horizontal, recorrido completo, y con S1/S2 activas. Capturas en `capturas/`.
 
 ## Activar S1 / S2

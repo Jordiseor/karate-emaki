@@ -7,5 +7,5 @@
 - Desfases: voz +0,06 s en todos los planos salvo p1 +0,12 y p3 +0,36 (la frase es larga). Fin de voz 33,07 s; ninguna frase invade el plano siguiente (p3 acaba 8,65 s, p7 18,63 s).
 - Sin subtítulos añadidos: las tarjetas ya van en pantalla. Revisados fotogramas 0,1 / 26,8 / 34,2 s y hoja.png (9 fotogramas).
 - Portada: fotograma del plano 1 (1,2 s) con placa papel «DOJO DE SEIS AÑOS» (4 palabras, 100 px, filete rojo) y «KARATE EMAKI» (48 px).
-- DEFECTO PENDIENTE (animador): el cartel SHOTOKAN del plano 10 sale cortado por el borde derecho («SH»). Un recorte/zoom no puede recuperar letra fuera de cuadro, así que no se ha tocado; hay que moverlo o reencuadrar en escenas3d/src/plano-10.html.
 - Licencia voz: Kokoro-82M v1.0 (Apache 2.0) + sherpa-onnx 1.12.15 (Apache 2.0), bajados de releases de GitHub a scratchpad.
+- Plano 10 rehecho (26-11): cartel SHOTOKAN entero. Vídeo re-montado desde escenas3d/plano-01..12; audio de reel.mp4 y reel-sin-voz.mp4 copiado sin tocar de los anteriores (wav de voz ya no disponibles). 34,300 s, reel.mp4 -16,1 LUFS; hoja.png rehecha. Sin defectos pendientes.

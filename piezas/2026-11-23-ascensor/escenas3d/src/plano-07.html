@@ -19,9 +19,9 @@ window.render = (t) => {
   const h = B.punto('cabeza');
   dB.flecha({ desde: [x - 0.4, 0.9, 0], hacia: [x - 0.4, 1.5, 0], crecer: U.prog(t, 0.1, 0.6), alpha: 1 });
   esc.dibujar(ctx, {});
-  const n = Math.round(34 * U.easeOut(U.prog(t, 0.3, 2.6)));
-  C.overlay.cifra(ctx, 790, 1060, n + ' J', { size: 200 });
-  C.etiqueta(ctx, 'trabajo para subir', 790, 1220, { size: 56, alpha: U.prog(t, 0.4, 0.8) });
+  const n = Math.round(34 * U.easeOut(U.prog(t, 0.3, 1.3)));
+  C.overlay.cifra(ctx, 700, 1060, (n >= 34 ? '≈ 34' : n) + ' J', { size: 170 });
+  C.etiqueta(ctx, 'trabajo para subir', 700, 1220, { size: 56, alpha: U.prog(t, 0.4, 0.8) });
   C.tarjeta(ctx, t, '70 kg × 5 cm ≈ 34 J', { t0: 0.05, size: 68 });
   C.letraPequena(ctx, ['m·g·h = 70 · 9,81 · 0,05 ≈ 34 J', 'modelo simplificado']);
 };
