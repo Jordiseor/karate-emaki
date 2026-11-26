@@ -65,6 +65,7 @@ Candidatas en la oficina tras la reunión: gyaku-zuki y hombro (19), corrige al 
 | Idea | Pilar | Descartada por | Fecha |
 | --- | --- | --- | --- |
 | Contar en japonés: expectativa vs realidad | Humor | Jorge (oficina) | 11 nov 2026 |
+| Mismo puño, distinto golpe: el tiempo de contacto (`2026-11-17-tiempo-contacto`, publicada y borrada) | Ciencia | Jorge: no le gustaron la animación ni el guion/ritmo | 26 nov 2026 |
 
 Propuestas del 9 nov archivadas en archivo/ideas-2026-11.md (las candidatas siguen ahí con su ficha).
 
