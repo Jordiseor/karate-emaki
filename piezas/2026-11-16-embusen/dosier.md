@@ -139,3 +139,28 @@ Partiendo del 6 (sur) tras el mov. 17 y sumando los giros de The Martial Way: 18
 Bloqueadas o sin abrir: iainabernethy.co.uk (redirección y permiso denegado), JKA/ISKF (sin resultados útiles), Fisher «3rd Turn» (solo llega al mov. 12; sin kiai ni 17–21).
 
 Consumo: 6 búsquedas, 7 páginas abiertas (más 2 bloqueadas).
+
+---
+
+## Verificación 27 nov: pasos 18–21
+
+**Resultado: NO se pueden cerrar con fuente alta.** No he encontrado texto abierto de Nakayama (Best Karate 5), JKA ni federación con los pasos 18–21. Sigue siendo «a confirmar». Lo nuevo es una relectura y un cotejo; no cambia el estado.
+
+| Fuente | Qué dice de 18–21 | Fiabilidad |
+| --- | --- | --- |
+| The Martial Way, Heian Sho-dan (releído) — https://www.themartialway.com.au/heian-shodan/ | Cuatro shuto-uke chūdan en kokutsu-dachi. 18 izda.: «pivote sobre el pie derecho llevando el izquierdo 90° a la izquierda». 19 dcha.: pivote sobre el izquierdo, derecho 45° a la derecha. 20 dcha.: «45° desde el eje anterior» a la derecha. 21 izda.: pivote sobre el derecho, izquierdo 45° a la izquierda. Kiai tras el 17; termina en yoi y «Yame» desde hachiji-dachi | Media |
+| André Bertel, mar 2022 — https://andrebertel.blogspot.com/2022/03 (releído) | Mano: izda., dcha., dcha., izda. Posición escrita entre paréntesis: migi, hidari, hidari, migi kokutsu-dachi. Sin giros ni grados. No cita Nakayama ni JKA | Media |
+| karatecoaching.com/heian-1 | Solo: «paso en ángulo de un kokutsu-dachi al siguiente con shuto-uke» (sin lados ni grados) | Media-baja |
+| belgerion.github.io (club, «Pinan Shodan», otro estilo/numeración) | Cita «turn left with knife hand guard block» y «turn 45 degrees» como pasos 20–21 de su lista; no coincide en numeración ni nombra posición. No aplicable a Shotokan | Baja (descartada) |
+| Fisher (xylenepower.com, 2nd Turn) | Solo llega al movimiento 12 | — |
+
+**Qué queda firme (2 fuentes independientes):** son cuatro shuto-uke chūdan en kokutsu-dachi, sin kiai, y las manos van izquierda, derecha, derecha, izquierda. El «45° en diagonal» de 19–21 lo respaldan The Martial Way y, de forma vaga, karatecoaching («en ángulo»).
+
+**Discrepancias:**
+- Pie delantero: The Martial Way da el pie que gira (el delantero) = mismo lado que la mano (izda., dcha., dcha., izda.). Bertel pone el kokutsu del lado contrario a la mano (mano izda. en «migi kokutsu»). Habitualmente el shuto-uke se hace del lado del pie delantero, lo cual favorece a The Martial Way, pero eso es mi conocimiento, no una fuente. Posible que Bertel anote el pie trasero o el peso. No resuelto.
+- Giro del 18: solo The Martial Way (90° izda.). Bertel no da giro.
+- Grados de 20 y 21: solo The Martial Way. shotokanfitness (135°) descartada en la 1.ª ronda.
+
+**Qué hacer:** para el interactivo, mostrar 18–21 como «4 shuto-uke en kokutsu-dachi, en diagonal» sin grados exactos ni lado del pie en pantalla. Cierre definitivo solo con Best Karate 5 en mano (Jorge) o su sensei.
+
+Fuentes abiertas en esta verificación (candidatas a `fuentes.md`, ampliar notas): The Martial Way (releída), Bertel (releída), karatecoaching.com/heian-1 (media-baja; «paso en ángulo» en el final). No sirven: belgerion.github.io, Nippon Budokan Karatedo-03 (solo kihon-gata), Ryusei PDF (no es Heian Shodan; el segundo no se abrió).
