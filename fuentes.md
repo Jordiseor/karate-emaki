@@ -109,3 +109,16 @@
 | WKF Kumite Competition Rules 2024 (copia Karateliitto) — https://karateliitto.fi/app/uploads/2024/02/WKF_Kumite_Competition_Rules_2024.pdf | Arts. 8.1–8.12 (2024): invalidez tras yame, jōgai, espalda, contacto excesivo; ausencia de cláusula de simultáneas; 9.1.1 garganta. Numeración de 2024 = la de 2026 +1 desde 8.9 | Alta (versión anterior; cotejar con 2026) |
 | WKF Kumite Questions, Dic 2025 (Karateliitto) — https://karateliitto.fi/app/uploads/2026/02/KumiteQuestions_English_Dec2025.pdf | Preguntas de examen de árbitros sin clave; casos de tras yame, contacto, tiempo cumplido; contiene contradicciones internas | Media (solo apoyo) |
 | WKF Kumite Competition Rules 2026 (MASTER_COPY_V13FINAL, PDF oficial) — https://www.wkf.net/files/pdf/documents/WKF_2026_Kumite_Competition_Rules_MASTER_COPY_V13FINAL.pdf | 8.10; 8.11 a) tras yame, d) contacto excesivo, e) espalda, f) tras violación del reglamento; 9.1.1 (cotejo 26 nov, WebFetch leyó 100.000 de 109.413 caracteres) | Alta |
+
+Añadidas el 27 nov 2026 (podio olímpico):
+
+| Fuente | Qué respalda | Fiabilidad |
+| --- | --- | --- |
+| olympics.com, highlights karate Tokyo 2020 — https://olympics.com/en/news/karate-tokyo-2020-olympic-games-highlights-review-watch | 8 pruebas (2 kata, 6 kumite); medallistas de kata con país | Alta |
+| olympics.com, «KIYUNA Ryo wins gold in men's kata» — https://olympics.com/en/news/kiyuna-ryo-wins-gold-in-men-s-kata | Final masculina: Kiyuna 28,72, Quintero 27,66 | Alta |
+| WKF, «Fabulous first day of Karate...» — https://www.wkf.net/news-center-new/fabulous-first-day-of-karate-olympic/1647 | Nippon Budokan; final femenina 28,06–27,88; fecha 5 ago; kata Chatanyara Kushanku (fuente única) | Alta (kata: media) |
+| WKF, «Karate's Olympic debut» — https://www.wkf.net/news-center/article/!/1675/karate-s-olympic-debut-unforgettable-from-start-to-finish | Competición 5–7 ago 2021; 8 oros; 82 deportistas | Alta |
+| Olympedia, kata femenino y masculino — https://www.olympedia.org/results/18000115 y https://www.olympedia.org/results/18000100 | Medallistas, marcadores, primer oro de karate; fecha 6 ago (discrepa en la femenina) | Media-alta |
+| Reuters vía nippon.com — https://www.nippon.com/en/news/reu20210805KBN2F60AV/ | Primer oro de karate de Sánchez; jueves 5 ago | Media-alta |
+| Sports Destinations — https://www.sportsdestinations.com/sports/martial-arts/kicked-curb-after-2020-karate-seeks-return-games-36389 | Exclusión de París 2024 y LA 2028; WKF busca Brisbane 2032 | Media |
+| olympics.com, LA28 cinco deportes adicionales — https://www.olympics.com/ioc/news/la28-proposes-five-additional-sports-for-olympic-games-in-2028 | Lista de deportes adicionales de LA28 sin karate (9 oct 2023) | Alta (solo por ausencia) |

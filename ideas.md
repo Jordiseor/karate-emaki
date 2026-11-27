@@ -60,6 +60,12 @@ Calendario cubierto hasta el sáb 5 dic. Estas piezas son para la semana del 7 d
 Mejor no elegida: «Gyaku-zuki: el hombro que se adelanta te delata» (19), fuera solo para no poner dos de Técnica seguidas; primera candidata para la semana del 14 dic.
 Candidatas en la oficina tras la reunión: gyaku-zuki y hombro (19), corrige al karateka (interactivo, 18), tatami helado (17), el minuto antes del examen (17), estas katas se llamaban de otra forma (interactivo, 17), age-uke como desvío (17), más las que ya estaban: podio olímpico y POV cinturón.
 
+## Elegidas — producción del 27 nov 2026 (huecos libres)
+
+| Pieza | Pilar | Puntos | Hueco | Por qué |
+| --- | --- | --- | --- | --- |
+| 2026-11-27-podio-olimpico · Dos españoles en el podio olímpico | Competición | 17 (candidata «gusta») | mié 9 dic | Jorge devolvió el dōjō 1939–1945 («No me gusta»); era el plan B previsto el 23 nov. No hay candidatas de Historia en la oficina |
+
 ## Descartadas
 
 | Idea | Pilar | Descartada por | Fecha |
@@ -67,6 +73,7 @@ Candidatas en la oficina tras la reunión: gyaku-zuki y hombro (19), corrige al 
 | Contar en japonés: expectativa vs realidad | Humor | Jorge (oficina) | 11 nov 2026 |
 | Mismo puño, distinto golpe: el tiempo de contacto (`2026-11-17-tiempo-contacto`, publicada y borrada) | Ciencia | Jorge: no le gustaron la animación ni el guion/ritmo | 26 nov 2026 |
 | Corrige al karateka: tres errores, tres toques (interactivo, 18 puntos) | Técnica | Jorge (oficina, voto del 25 nov) | 26 nov 2026 |
+| Gyaku-zuki: el hombro que se adelanta te delata (19 puntos) | Técnica | Jorge (oficina, voto del 26 nov) | 27 nov 2026 |
 
 Propuestas del 9 nov archivadas en archivo/ideas-2026-11.md (las candidatas siguen ahí con su ficha).
 
