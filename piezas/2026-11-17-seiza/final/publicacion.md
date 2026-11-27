@@ -5,3 +5,7 @@
 - Metricool: id 435309309 · uuid -7575501663176537707 · estado pendiente (comprobado el 20 nov)
 - Planificador: https://app.metricool.com/planner/calendar?blogId=8028366&openWithPostUuid=-7575501663176537707
 - Texto: copy.md (Instagram + hashtags); primer comentario: «Comentario fijado»
+
+
+## 27 nov 2026: en pausa
+Jorge pide no publicar nada hasta revisar los reels. Pasado a borrador en Metricool (id nuevo 444627672, antes 435309309; mismo uuid). Para reactivarlo: draft false.

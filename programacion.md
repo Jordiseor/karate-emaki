@@ -21,6 +21,8 @@ La voz se genera en el PC de Jorge con `herramientas/generar-voz.ps1`; los audio
 4. Mira en la oficina las piezas en `aprobacion` con `decision` puesta por Jorge: si `aprobada`, pásala a `programada` y lanza a Marketing; si `cambios`, devuélvela al estado que pida su comentario.
 5. Lee también la colección `candidatas` y aplica la sección «Huecos libres» (abajo). En la reunión de los lunes, además, sube a `candidatas` las 6 mejores ideas que no se elijan, para que Jorge vaya descartando.
 
+> **PAUSA desde el 27 nov 2026 (Jorge):** no se publica ni se programa nada, ni se reactivan los borradores de Metricool, hasta que Jorge mande sus correcciones y lo diga en la oficina o el buzón.
+
 ## Publicar con Metricool (desde el 11 nov 2026)
 
 Cuando Jorge aprueba una pieza y Marketing tiene `final/copy.md`, el Sensei la programa en Metricool (herramientas `mcp__Metricool_Social_Media_Management__*`, marca `8028366`, zona Europe/Madrid):

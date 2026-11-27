@@ -13,18 +13,19 @@ Hora de Madrid. Ritmo desde el 18 nov (Jorge): 3 reels por semana, lunes, miérc
 | Lun 23 nov | 19:30 | Cómo se puntúa un combate de kumite WKF (`2026-11-16-kumite-puntos`) | Competición | Publicada y borrada por Jorge (error: patada a la espalda) |
 | Mar 24 nov | 10:15 | Kumite v2: ¿cuánto vale cada golpe? (`2026-11-16-kumite-puntos`) | Competición | Publicada (Instagram), pedido por Jorge |
 | Mié 25 nov | 19:30 | Mismo puño, distinto golpe: el tiempo de contacto (`2026-11-17-tiempo-contacto`) | Ciencia | Publicada y borrada por Jorge el 26 nov; descartada (animación y guion/ritmo) |
-| Sáb 28 nov | 19:30 | Seiza: minuto 1 contra minuto 10 (`2026-11-17-seiza`) | Anécdotas y humor del dōjō | Programada (Metricool 435309309) |
+| Sáb 28 nov | 19:30 | Seiza: minuto 1 contra minuto 10 (`2026-11-17-seiza`) | Anécdotas y humor del dōjō | EN PAUSA por Jorge: borrador en Metricool 444627672 (no se publica) |
 | Quincena 16–29 nov | — | Interactivo: De Okinawa a Tokio en 36 años (`2026-11-12-linea-temporal`) | Historia | Aprobada por Jorge, copy listo; sin programar hasta tener enlace público del interactivo (propuesto jue 26 nov 19:30) |
-| Lun 30 nov | 19:30 | El tigre del Shotokan es un juego de palabras (`2026-11-18-tigre`) | Curiosidades | Programada (Metricool 441501882) |
-| Mié 2 dic | 19:30 | De «mano china» a «mano vacía» (`2026-11-18-mano-vacia`) | Historia | Programada (Metricool 441502227) |
-| Sáb 5 dic | 19:30 | La cadera no es un adorno (`2026-11-19-cadera`) | Ciencia | Programada (Metricool 441502254) |
+| Lun 30 nov | 19:30 | El tigre del Shotokan es un juego de palabras (`2026-11-18-tigre`) | Curiosidades | EN PAUSA por Jorge: borrador en Metricool 444627690 (no se publica) |
+| Mié 2 dic | 19:30 | De «mano china» a «mano vacía» (`2026-11-18-mano-vacia`) | Historia | EN PAUSA por Jorge: borrador en Metricool 444627702 (no se publica) |
+| Sáb 5 dic | 19:30 | La cadera no es un adorno (`2026-11-19-cadera`) | Ciencia | EN PAUSA por Jorge: borrador en Metricool 444627716 (no se publica) |
 | Quincena 30 nov–13 dic | — | Interactivo: Embusen de Heian Shodan (`2026-11-16-embusen`) | Técnica | Aprobada por Jorge, copy listo; sin programar hasta tener enlace público (propuesto jue 10 dic 19:30); pasos 18–21 «a confirmar» |
 | Lun 7 dic | 19:30 | El error del ascensor: tu cabeza no debería subir (`2026-11-23-ascensor`) | Técnica | En aprobación de Jorge |
 | Mié 9 dic | 19:30 | Dos españoles en el podio olímpico (`2026-11-27-podio-olimpico`) | Competición | Investigación hecha (dosier); sustituye al dōjō 1939–1945, que Jorge devolvió («No me gusta») |
-| Sáb 12 dic | 19:30 | Notas del móvil de un cinturón blanco (`2026-11-23-notas-movil`) | Anécdotas y humor del dōjō | Programada (Metricool 444107470) |
+| Sáb 12 dic | 19:30 | Notas del móvil de un cinturón blanco (`2026-11-23-notas-movil`) | Anécdotas y humor del dōjō | EN PAUSA por Jorge: borrador en Metricool 444627724 (no se publica) |
 | Quincena 14–27 dic | — | Interactivo: ¿Eres juez de kumite? ¿Puntúa o no? (`2026-11-23-puntua-o-no`) | Competición | En aprobación de Jorge (falta enlace público, como los otros interactivos) |
 
 Notas:
+- 27 nov (cierre, Sensei): **PAUSA — Jorge pide no publicar ningún reel hasta que los revise y mande correcciones.** Los 5 programados pasan a borrador en Metricool. Ninguna tarea programa, reactiva ni publica nada hasta que Jorge lo diga en la oficina o el buzón.
 - 27 nov (producción, Sensei): notas del móvil aprobada y programada (sáb 12 dic). Jorge devuelve el dōjō 1939–1945 sin decir qué cambiar: queda parado hasta que lo diga. El mié 9 dic lo cubre el podio olímpico (plan B previsto, candidata «gusta»). Ascensor y ¿puntúa o no? a aprobación.
 - 26 nov (producción, Sensei): dōjō y notas del móvil a aprobación de Jorge; ascensor y anuncio de ¿puntúa o no? montados. Sin huecos hasta el 13 dic.
 - 25 nov (Sensei): Jorge aprueba tigre, mano vacía y cadera; programadas en Metricool (lun 30, mié 2, sáb 5, 19:30).
