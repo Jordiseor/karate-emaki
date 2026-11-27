@@ -164,3 +164,6 @@ Consumo: 6 búsquedas, 7 páginas abiertas (más 2 bloqueadas).
 **Qué hacer:** para el interactivo, mostrar 18–21 como «4 shuto-uke en kokutsu-dachi, en diagonal» sin grados exactos ni lado del pie en pantalla. Cierre definitivo solo con Best Karate 5 en mano (Jorge) o su sensei.
 
 Fuentes abiertas en esta verificación (candidatas a `fuentes.md`, ampliar notas): The Martial Way (releída), Bertel (releída), karatecoaching.com/heian-1 (media-baja; «paso en ángulo» en el final). No sirven: belgerion.github.io, Nippon Budokan Karatedo-03 (solo kihon-gata), Ryusei PDF (no es Heian Shodan; el segundo no se abrió).
+
+### Confirmado por Jorge (27 nov 2026)
+Pasos 18–21: el pie de delante es izquierdo-derecho-derecho-izquierdo, igual que la mano de delante (coincide con The Martial Way). Los grados del giro siguen sin fuente alta: en pantalla, «4 shuto-uke en diagonal», sin cifras.

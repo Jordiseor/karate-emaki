@@ -3,7 +3,7 @@ Pilar: Técnica · 9 diapositivas (1 imagen + 6 vídeos + 2 imágenes) · 1080×
 
 Reglas de lectura: texto máx. 12 palabras por diapositiva (la etiqueta de certeza cuenta). Fondo papel #F4EFE6 en tarjetas; suelo de madera de dōjō en las escenas; rojo #C8102E solo para huellas, flechas, tramo resaltado y kiai. Karateka 3D de `animacion/3d/` (cinturón de color según la pieza), sin retratos reales. Vídeos mudos (se ven sin sonido) de 4–6 s, con texto fijo debajo; con movimiento reducido, solo el último fotograma.
 
-Presentar siempre la secuencia como «la versión habitual en Shotokan», nunca como «la oficial» ni «el dibujo exacto». Etiquetas de texto: «Según fuentes» (borde tinta) en los pasos 1–17; «A confirmar» (borde rojo discontinuo) en los 18–21.
+Presentar siempre la secuencia como «la versión habitual en Shotokan», nunca como «la oficial» ni «el dibujo exacto». Etiquetas de texto: «Según fuentes» (borde tinta) en los pasos 1–17; «confirmado por Jorge: pie y mano delante izda.-dcha.-dcha.-izda.» (borde rojo discontinuo) en los 18–21.
 
 Convención de rumbos del dibujo en planta: arriba (norte, 12) = frente al empezar; izquierda = oeste; derecha = este; abajo = sur. Rumbos de 1–17 deducidos sumando giros de las fuentes (el dosier lo avisa): no se escriben como dato, solo se dibujan como flechas.
 
@@ -43,6 +43,6 @@ Duración total de vídeos: 31 s (4 + 5 + 6 + 6 + 5 + 5). Cada uno entra en el r
 - Glosas de traducción (barrido bajo, bloqueo ascendente, canto de la mano, posición retrasada, golpe de martillo) y «embusen = la línea que la kata dibuja en el suelo» son vocabulario de karate; el dosier solo traduce hachiji-dachi. Jorge debería revisarlas.
 
 ## Para el Sensei
-- Bloqueo para publicar: el Investigador está verificando 18–21. Si llega confirmado, actualizar la diapositiva 7 (quitar «A confirmar», añadir giros y rumbo) y la 8 (tramo continuo).
+- Bloqueo para publicar: el Investigador está verificando 18–21. Si llega confirmado, actualizar la diapositiva 7 (quitar «confirmado por Jorge: pie y mano delante izda.-dcha.-dcha.-izda.», añadir giros y rumbo) y la 8 (tramo continuo).
 - Si no se confirma antes de publicar: dejar 7 y 8 como están, o publicar sin la 7 (carrusel de 8 diapositivas, y la 8 pasaría a decir «hasta el paso 17»).
 - Poses 3D necesarias en `animacion/3d/` para Heian Shodan (no he podido comprobar cuáles existen en la biblioteca): giros en zenkutsu con gedan-barai, oi-zuki, age-uke, kentsui, kokutsu-dachi con shuto-uke, y el encuadre cenital inclinado 4:5.
