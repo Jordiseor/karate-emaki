@@ -7,3 +7,6 @@
 
 ## 27 nov 2026: en pausa
 Jorge pide no publicar nada hasta revisar los reels. Pasado a borrador en Metricool (id nuevo 444627690, antes 441501882; mismo uuid). Para reactivarlo: draft false.
+
+## 28 nov 2026: v2 publicada
+Jorge pide publicar ya. reel-v2.mp4 + portada-v2.png + copy-v2.md. Metricool 445434397, sáb 28 nov 14:35, autoPublish.
