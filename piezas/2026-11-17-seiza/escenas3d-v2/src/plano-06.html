@@ -1,0 +1,22 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>html,body{margin:0}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><script src="../../../../animacion/marca.js"></script>
+<script type="module">
+// Plano 6 v2 (9,5–14,5 s): seiza serena, ladea la cabeza al preguntar; en el último 0,5 s vuelve la cara y el reloj del fotograma 0.
+import { crearToma, ctx, titulo, cronometroSeiza, CA, mezclarCara, U, CAM_FRONTAL } from '../../escenas3d/src/comun.js';
+import { ponerPose } from '../../../../animacion/3d/seiza3d.js';
+const toma = crearToma(); window.DURACION = 5.0;
+window.render = (t) => {
+  const { k, P } = toma; toma.esc.orbita(CAM_FRONTAL);
+  const l = U.easeInOut(U.prog(t, 0.2, 0.7)) * (1 - U.easeInOut(U.prog(t, 4.0, 4.5)));
+  ponerPose(k, { ...P.seiza, cabeza: { ...(P.seiza.cabeza || {}), ladeo: 9 * l } });
+  const a = U.prog(t, 4.0, 4.5);
+  k.cara({ ...mezclarCara(CA.sereno, CA.tranquilo, a), parpadeo: U.parpadeo(t, [2.2]) });
+  k.raiz.scale.y = 1 + 0.012 * Math.sin(Math.PI * U.prog(t, 0.3, 3.5)) ** 2 * (1 - a);
+  window.EMAKI.fondoPapel(ctx); toma.esc.dibujar(ctx);
+  if (t >= 4.5) { cronometroSeiza(ctx, { minutos: 1, t: 0 }); }
+  else if (t > 4.0) { cronometroSeiza(ctx, { minutos: 1, t: 0, alfa: a }); }
+  if (t < 2.3) titulo(ctx, t, '¿Te gusta hacer seiza al acabar?', 0.2, 2.3);
+  else if (t < 4.3) titulo(ctx, t, '¿Para volver a la calma?', 2.5, 4.3);
+  else { ctx.save(); ctx.globalAlpha = a; titulo(ctx, 99, 'Seiza. Minuto 1', -1, 999); ctx.restore(); }
+};
+</script></body></html>

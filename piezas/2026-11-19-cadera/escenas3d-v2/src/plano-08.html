@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cadera v2 · plano 08</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js'; import { latigo, mano } from './latigo.js';
+const S = C.iniciar(); const { ctx, U } = S;
+window.DURACION = 2.5;
+// PLANO 8 (16,0–18,5) REHECHO: látigo 2D sobre papel; la ola recorre la cuerda y la punta restalla en rojo.
+window.render = (t) => {
+  EMAKI.fondoPapel(ctx);
+  const sac = Math.sin(U.prog(t, 0.2, 0.7) * Math.PI) * 18;   // sacudida de la mano
+  const p = U.easeInOut(U.prog(t, 0.35, 1.7));
+  const r = Math.max(0, 1 - Math.abs(t - 1.8) / 0.4) * (t > 1.7 ? 1 : 0.0);
+  mano(ctx, 330, 1000 + sac);
+  latigo(ctx, { x0: 390, y0: 1000 + sac, x1: 1000, y1: 1000, p, amp: 200, grosor: 20, restalla: Math.max(0, 1 - Math.abs(t - 1.75) / 0.5) * (t > 1.55 ? 1 : 0) });
+  C.tarjeta(ctx, t, ['Como un látigo'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

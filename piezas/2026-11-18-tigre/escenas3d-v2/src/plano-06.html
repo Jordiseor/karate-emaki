@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre v2 · plano 06</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './v2.js';
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 3.0;
+const rollo = C.crearRollo();
+window.render = async (t) => { await C.listo; C.papel(ctx);
+  rollo.dibujar(ctx, { abierto: U.easeInOut(U.prog(t, 0, 1.3)), escala: 0.62, y: 330, x: 0, centrar: 1 });
+  C.foto(ctx, 330, 1290, 460, U.easeOut(U.prog(t, 0.2, 0.7)));
+  T.sello(ctx, U.prog(t, 1.0, 1.6), 790, 1290, 210, { texto: 'SE DICE' });
+  C.tarjeta(ctx, t, ['Se dice: un juego', 'de palabras'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

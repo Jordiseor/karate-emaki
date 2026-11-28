@@ -9,7 +9,7 @@ El símbolo del Shotokan es un tigre.
 
 ¿Qué simboliza? Leyenda, no dato: el tigre nunca duerme. Así se cuenta la alerta y la mente serena.
 
-Lo diseñó un pintor: Kosugi Hōan, amigo de Funakoshi, que dibujó la cubierta de su primer libro, en 1922. Es el nombre que se asocia al tigre. En qué libro salió primero, no está confirmado.
+Lo diseñó un pintor: Kosugi Hōan, amigo de Funakoshi, que dibujó la cubierta de un libro de Funakoshi en 1922. Es el nombre que se asocia al tigre. En qué libro salió primero, no está confirmado.
 
 Se dice que hay un juego de palabras: tora no maki (虎の巻) es el «libro maestro» de una materia y, escrito literalmente, significa «rollo del tigre».
 
@@ -37,7 +37,7 @@ El símbolo del Shotokan es un tigre. Según la leyenda, el tigre nunca duerme (
 
 ## Comentario fijado
 
-Fuentes y matices: la autoría de Kosugi Hōan (1881-1964) según Andreas Quast (ryukyu-bugei.com, «New Snippets on old Funakoshi»), que lo llama el diseñador más conocido del tigre del Shotokan. Quast liga a Kosugi la cubierta de un libro de Funakoshi de 1922, pero no dice que el tigre estuviera en esa portada, y ninguna fuente primaria fecha el tigre. La amistad con Funakoshi y el juego de palabras vienen de blogs de dōjō (The Martial Way; Jordaan, 2013): es la explicación habitual, no una declaración de Kosugi ni de Funakoshi. «El tigre nunca duerme» es una lectura simbólica tradicional, leyenda. «Rollo del tigre» es la lectura directa de 虎 y 巻, pendiente de confirmar en diccionario. La imagen del tigre es una fotografía real, no el emblema. Crédito de la imagen: [por rellenar cuando el Investigador entregue la licencia].
+Fuentes y matices: la autoría de Kosugi Hōan (1881-1964) según Andreas Quast (ryukyu-bugei.com, «New Snippets on old Funakoshi»), que lo llama el diseñador más conocido del tigre del Shotokan. Quast liga a Kosugi la cubierta de un libro de Funakoshi de 1922, pero no dice que el tigre estuviera en esa portada, y ninguna fuente primaria fecha el tigre. La amistad con Funakoshi y el juego de palabras vienen de blogs de dōjō (The Martial Way; Jordaan, 2013): es la explicación habitual, no una declaración de Kosugi ni de Funakoshi. «El tigre nunca duerme» es una lectura simbólica tradicional, leyenda. «Rollo del tigre» es la lectura directa de 虎 (tigre) y 巻 (rollo). La imagen es una foto de una insignia con el tigre del Shotokan.
 
 ## Día y hora
 

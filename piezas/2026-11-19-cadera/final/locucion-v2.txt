@@ -1,0 +1,14 @@
+Locución v2 2026-11-19-cadera (voz Kokoro em_santa, sid 53). Una frase por celda Locución de storyboard-v2.md. Formato: n | plano y tiempo del storyboard | inicio previsto de la voz (s) | duración wav (s) | velocidad | texto del storyboard | grafía usada
+01 | plano 1 (hasta 2.5 s) | 0.12 | 1.98 | x1.0 | El puño es lo último en moverse. | El puño es lo último en moverse.
+02 | plano 2 (hasta 5.0 s) | 2.56 | 2.13 | x1.0 | Entonces, ¿quién arranca el puñetazo? | Entonces, ¿quién arranca el puñetazo?
+03 | plano 3 (hasta 7.5 s) | 5.06 | 2.19 | x1.0 | Lo midieron en karatekas de élite. | Lo midieron en karatekas de élite.
+04 | plano 4 (hasta 9.5 s) | 7.56 | 1.28 | x1.0 | Primero, la pelvis. | Primero, la pelvis.
+05 | plano 5 (hasta 11.5 s) | 9.56 | 1.24 | x1.0 | Luego, el tronco. | Luego, el tronco.
+06 | plano 6 (hasta 13.5 s) | 11.56 | 1.24 | x1.0 | Después, el hombro. | Después, el hombro.
+07 | plano 7 (hasta 16.0 s) | 13.56 | 1.64 | x1.0 | Y el puño llega el último. | Y el puño llega el último.
+08 | plano 8 (hasta 18.5 s) | 16.06 | 1.33 | x1.0 | Piensa en un látigo. | Piensa en un látigo.
+09 | plano 9 (hasta 21.5 s) | 18.59 | 2.62 | x1.0 | Empieza la cadera. Termina el puño. | Empieza la cadera. Termina el puño.
+10 | plano 10 (hasta 24.5 s) | 21.56 | 2.56 | x1.35 | Un consejo: arranca con la cadera y deja que el brazo vaya detrás. | Un consejo: arranca con la cadera y deja que el brazo vaya detrás.
+11 | plano 11 (hasta 27.0 s) | 24.56 | 1.63 | x1.0 | La cadera abre la cadena. | La cadera abre la cadena.
+12 | plano 12 (hasta 30.0 s) | 27.06 | 1.93 | x1.0 | ¿Mueves la cadera… o solo el brazo? | ¿Mueves la cadera… o solo el brazo?
+Total voz: 21.8 s en 12 frases

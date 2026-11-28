@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre v2 · plano 08</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './v2.js';
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 3.5;
+const { esc, P } = C.iniciar3d(); esc.suelo.visible = false; esc.pared.visible = false; esc.escena.background = new esc.THREE.Color("#FFFFFF"); esc.escena.fog = null;
+const k = new C.Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz); k.colocar(0, 0, 0);
+const pinta = C.fig3d({ esc });
+window.render = async (t) => { await C.listo; C.papel(ctx);
+  const r = U.easeInOut(U.prog(t, 2.7, 3.5)), sal = 1 - r;
+  C.foto(ctx, 290 + 250 * r, 1150 - 50 * r, 440 + 340 * r);
+  if (sal > 0) { k.aplicarPose(P.yoi); k.cara({ cejas: U.prog(t, 0.5, 0.8), parpadeo: U.parpadeo(t, [1.8]) });
+    esc.orbita({ centro: [-0.62, 0.95, 0], distancia: 8, azimut: 0, elevacion: 2, fov: 26 }); pinta(ctx, U.easeOut(U.prog(t, 0, 0.5)) * sal);
+    ctx.save(); ctx.globalAlpha = sal; C.tarjeta(ctx, t, ['¿Qué ves tú', 'en el tigre?'], { t0: 0.1, y: 300 }); ctx.restore(); }
+};
+</script></body></html>

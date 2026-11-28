@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cadera v2 · plano 10</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar({ rumbo: 0 }); const { ctx, esc, P, k, d, U } = S;
+window.DURACION = 3.0;
+// PLANO 10 (21,5–24,5) REHECHO: frontal, sonriendo, giro lento en el aire; flecha roja en la cadera arranca primero, el brazo va detrás.
+window.render = (t) => {
+  const f = 0.62 * U.easeInOut(U.prog(t, 0.4, 2.8));
+  k.colocar(0, 0, 0); k.aplicarPose(C.poseCadena(P, f)); k.cara({ parpadeo: U.parpadeo(t, [2.2]), sonrisa: 0.7, cejas: 0.2 });
+  d.limpiar(); C.camPerfil(esc, { centro: [0, 0.95, 0], distancia: 6.5, azimut: 0 }); esc.sombraEn(0, 0); esc.dibujar(ctx);
+  const h = esc.proyectar(k.punto('cadera')), g = U.easeOut(U.prog(t, 0.2, 0.8)), y = h.y - 70;
+  const L = 150 * g; ctx.save(); ctx.strokeStyle = C.ROJO; ctx.fillStyle = C.ROJO; ctx.lineWidth = 16; ctx.lineCap = 'round'; ctx.globalAlpha = g;
+  ctx.beginPath(); ctx.moveTo(h.x - 110, y); ctx.lineTo(h.x - 110 + L, y); ctx.stroke();
+  if (g > 0.3) { ctx.beginPath(); ctx.moveTo(h.x - 110 + L + 40, y); ctx.lineTo(h.x - 110 + L - 10, y - 34); ctx.lineTo(h.x - 110 + L - 10, y + 34); ctx.fill(); } ctx.restore();
+  C.tarjeta(ctx, t, ['Consejo: arranca', 'con la cadera'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

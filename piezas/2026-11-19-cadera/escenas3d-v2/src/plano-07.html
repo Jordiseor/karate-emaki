@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cadera · plano 07</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, P, k, d, cad, U } = S;
+window.DURACION = 2.5;
+const CAJA = { x: 150, y: 1000, w: 780, h: 380 }, PICOS = [0.2, 0.4, 0.6, 0.8];
+const E = (f) => PICOS.map((p) => 1 - Math.min(1, Math.abs(f - p) / 0.12));
+// PLANO 7 (13,5–16,0): f 0,68 → 1 en 2,0 s y 0,5 s quieto en la pose final. Codo en f = 0,8. Misma cámara cerrada que el 6.
+cad.mostrar();
+const rastro = (f, n) => { const pts = []; const f0 = Math.max(0.6, f - 0.25); for (let i = 0; i <= n; i++) { const tt = f0 + (f - f0) * i / n; k.colocar(0, 0, 90); k.aplicarPose(C.poseCadena(P, tt)); pts.push(k.punto('manoD').clone()); } return pts; };
+window.render = (t) => {
+  const f = 0.68 + 0.32 * U.prog(t, 0, 2.0);
+  const pts = f > 0.74 ? rastro(f, 8) : null;
+  k.colocar(0, 0, 90); k.aplicarPose(C.poseCadena(P, f)); k.cara({ parpadeo: 0, cejas: 0 });
+  const e = E(f); e[3] = Math.max(e[3], U.clamp((f - 0.9) / 0.1) * 0.0); // el codo (f = 0,8) es el marcador 3
+  cad.actualizar(e, { estela: { pose: (tt) => C.poseCadena(P, tt), t: f, dur: 0.3 } });
+  d.limpiar();
+  if (pts) for (let i = 1; i < pts.length; i++) d.linea(pts[i - 1], pts[i], { color: C.ROJO, grosor: 0.026 * (0.4 + 0.6 * i / pts.length), alfa: 0.55 });
+  C.camPerfil(esc, { distancia: 6.2, centro: [0.1, 0.95, 0] }); esc.sombraEn(0, 0);
+  esc.dibujar(ctx); d.dibujar2D && d.dibujar2D(ctx);
+  C.K.ejes(ctx, CAJA, { etiquetaX: 'tiempo', etiquetaY: 'velocidad' });
+  C.CD.picos(ctx, CAJA, { prog: f, t: f, etiquetas: ['cadera', 'tronco', 'hombro', 'codo'], activo: f >= 0.97 ? 'todas' : undefined });
+  C.tarjeta(ctx, t, ['El puño, el último'], { t0: -1, y: 380 });
+  C.etiquetaEsquema(ctx);
+};
+</script></body></html>

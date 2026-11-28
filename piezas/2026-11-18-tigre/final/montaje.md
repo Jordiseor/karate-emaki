@@ -10,3 +10,10 @@
 - Licencia del fondo: obra propia del estudio, capas sintetizadas de animacion/musica/ (pulso-vivo, ambiente, golpe, golpe-cifra, golpe-caida); sin muestras de terceros. Voz: Kokoro-82M v1.0 (Apache 2.0) + sherpa-onnx 1.12.15 (Apache 2.0).
 - Discrepancias plano vs storyboard, NO tocadas (decide el Sensei): p6 tarjeta «Un juego de palabras» (storyboard: «Se dice: juego de palabras»; el sello SE DICE sí está); p7 cartela «libro de secretos» (storyboard: «libro maestro», que es lo que dice la voz) y etiqueta DATO (storyboard: SE DICE); p8 etiqueta DATO (plan de escenas lo da por confirmado).
 - Retoques 23 nov: plano 7 sin la cartela «libro de secretos» (la tarjeta ya dice «libro maestro»); solo se sustituyen los 90 fotogramas del plano 7, resto de vídeo y audio idénticos. reel.mp4 30,0 s, -16,1 LUFS, pico real -1,3 dBFS. hoja.png regenerada.
+
+## v2 (28 nov)
+
+- Vídeo: escenas3d-v2/plano-01..08.mp4 con corte seco (33,0 s, 1080x1920, 30 fps, H.264 veryfast CRF 18, yuv420p, faststart). Sin subtítulos añadidos (tarjetas en los planos).
+- Fondo (obra propia, capas de animacion/musica/): pulso-vivo x0,5 + ambiente x0,2, alargado a 33 s con fundido cruzado 27-30 s; golpe.wav a 0,15 s, golpe-cifra.wav a 14,9 s («mil novecientos veintidós», plano 4) y golpe-caida.wav a 21,6 s (plano 6, rollo); fundido final 1,5 s. Voz Kokoro em_santa: voz-v2/frase-01..08.wav en los inicios de locucion-v2.txt (0,12 ... 29,56 s); ducking ~-7 dB bajo la voz.
+- reel-v2.mp4: H.264 + AAC 48 kHz, 33,0 s, -16,0 LUFS, pico real -1,5 dBFS. Revisar de oído «Shotokan», «Hoan», «Tora no maki».
+- Portada: portada-v2.png, foto del tigre (plano 1, 2,9 s) con placa papel «EL TIGRE DEL SHOTOKAN» (4 palabras, tinta). hoja-v2.png: 8 fotogramas (1 por plano).

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre v2 · plano 05</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './v2.js';
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 4.5;
+const { esc, P } = C.iniciar3d(); esc.suelo.visible = false; esc.pared.visible = false; esc.escena.background = new esc.THREE.Color("#FFFFFF"); esc.escena.fog = null;
+const kos = C.anadirMaestro(esc, C.crearMaestro({ silueta: '#1A1A1A' }));
+const pinta = C.fig3d({ esc });
+window.render = async (t) => { await C.listo; C.papel(ctx);
+  C.foto(ctx, 290, 1050, 440);
+  kos.colocar(0, 0, 25).pose(P, 'maestro-seiza-pincel', { escribir: t });
+  esc.orbita({ centro: [-0.6, 0.95, 0], distancia: 9.4, azimut: 0, elevacion: 4, fov: 28 }); pinta(ctx);
+  C.flecha(ctx, 700, 900, 440, 900, U.easeOut(U.prog(t, 0.3, 0.9)));
+  const f = U.easeOut(U.prog(t, 2.2, 2.7));
+  if (f > 0) { ctx.save(); ctx.globalAlpha = f; ctx.translate(540, 1470 + (1 - f) * 20); ctx.fillStyle = C.ROJO; ctx.beginPath(); ctx.roundRect(-400, -70, 800, 140, 24); ctx.fill();
+    ctx.fillStyle = C.PAPEL; ctx.font = '800 72px "Montserrat","Arial Black",system-ui,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('¿libro?  ¿año?', 0, 4); ctx.restore(); }
+  C.tarjetas(ctx, t, [[0.1, ['Se le asocia', 'al tigre']], [2.2, ['¿Libro?', 'Sin confirmar']]]);
+  C.etiqueta(ctx, t, 'DATO', { t0: 0.4, y: 520 });
+};
+</script></body></html>

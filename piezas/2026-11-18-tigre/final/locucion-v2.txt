@@ -1,0 +1,10 @@
+Locución v2 2026-11-18-tigre (voz Kokoro em_santa, sid 53). Una frase por celda Locución de storyboard-v2.md. Formato: n | plano y tiempo del storyboard | inicio previsto de la voz (s) | duración wav (s) | velocidad | texto del storyboard | grafía usada
+01 | plano 1 (hasta 3.0 s) | 0.12 | 2.08 | x1.15 | El símbolo del Shotokan es un tigre. | El símbolo del Shotokan es un tigre.
+02 | plano 2 (hasta 8.0 s) | 3.06 | 4.00 | x1.15 | ¿Qué simboliza? Según la leyenda, un tigre alerta, que nunca duerme. | ¿Qué simboliza? Según la leyenda, un tigre alerta, que nunca duerme.
+03 | plano 3 (hasta 12.0 s) | 8.06 | 2.83 | x1.15 | ¿Quién lo diseñó? Un pintor: Kosugi Hōan. | ¿Quién lo diseñó? Un pintor: Kosugi Hoan.
+04 | plano 4 (hasta 17.0 s) | 12.06 | 4.70 | x1.15 | Amigo de Funakoshi, dibujó la cubierta de su primer libro, en 1922. | Amigo de Funakoshi, dibujó la cubierta de su primer libro, en mil novecientos veintidós.
+05 | plano 5 (hasta 21.5 s) | 17.06 | 3.57 | x1.15 | Se le asocia al tigre. ¿En qué libro? Sin confirmar. | Se le asocia al tigre. ¿En qué libro? Sin confirmar.
+06 | plano 6 (hasta 24.5 s) | 21.56 | 1.93 | x1.15 | Se dice que hay un juego de palabras. | Se dice que hay un juego de palabras.
+07 | plano 7 (hasta 29.5 s) | 24.56 | 3.85 | x1.15 | Tora no maki es el «libro maestro». Y escrito, «rollo del tigre». | Tora no maki es el libro maestro. Y escrito, rollo del tigre.
+08 | plano 8 (hasta 33.0 s) | 29.56 | 1.49 | x1.0 | ¿Qué ves tú en el tigre? | ¿Qué ves tú en el tigre?
+Total voz: 24.5 s en 8 frases

@@ -8,3 +8,8 @@
 - Portada: fotograma del plano 1 (1,2 s) con placa «EL ERROR DEL ASCENSOR» (4 palabras) y «KARATE EMAKI» (48 px).
 - Revisar de oído: «kihon», «Shotokan», «julios», «Míralo».
 - Licencia voz: Kokoro-82M v1.0 + sherpa-onnx 1.12.15 (Apache 2.0), descargados a scratchpad.
+
+## v2 (28 nov)
+- Vídeo: escenas3d-v2/plano-01..11 (12 clips con 04a/04b), corte seco, 33,4 s, 1080x1920, 30 fps, H.264 veryfast crf 18, yuv420p. Planos 10 y 11 rehechos. Sin subtítulos añadidos.
+- Voz: voz-v2/frase-01..12.wav en los inicios de locucion-v2.txt. Música: la misma de v1 (final/fondo-ascensor.wav, obra propia, sin derechos), -7 dB con ducking. Mezcla -16 LUFS aprox., pico real <= -1 dBFS, AAC 192 kbps 48 kHz.
+- Portada: portada.png de v1 reutilizada como portada-v2.png (plano 1 conservado). hoja-v2.png: 8 fotogramas. Revisar de oído «kihon», «julios».

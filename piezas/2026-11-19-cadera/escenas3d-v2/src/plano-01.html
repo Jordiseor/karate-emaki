@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cadera · plano 01</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, P, k, d, fan, U } = S;
+window.DURACION = 2.5;
+// PLANO 1 (0,0–2,5) gancho: perfil, cadera ya girando en t = 0, puño derecho «fantasma» quieto junto a la cadera, flecha roja corta sobre la cadera.
+k.colocar(0, 0, 90); k.aplicarPose(P['gyaku-zuki-hanmi']);
+const FANTASMA = k.punto('manoD').clone();            // dónde se queda el puño (pose inicial)
+window.render = (t) => {
+  k.colocar(0, 0, 90); k.aplicarPose(C.poseGancho(P, t)); k.cara({ parpadeo: U.parpadeo(t, [1.7]), cejas: -0.1 });
+  fan.poner(FANTASMA, 1);
+  d.limpiar();
+  const c = k.punto('cadera');
+  d.flecha({ desde: [c.x + 0.2, c.y - 0.1, c.z + 0.3], hacia: [c.x + 0.55, c.y - 0.1, c.z + 0.3], crecer: 0.55 + 0.45 * U.easeOut(U.prog(t, 0, 0.5)), grosor: 0.03 });
+  C.camPerfil(esc); esc.sombraEn(0, 0);
+  esc.dibujar(ctx); d.dibujar2D && d.dibujar2D(ctx);
+  C.tarjeta(ctx, t, ['El puño es lo', 'último en moverse'], { t0: -1, y: 300 });
+};
+</script></body></html>

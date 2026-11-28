@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Ascensor · plano 04b</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, P, A, B, dA, dB, U } = C.iniciar();
+window.DURACION = 3.2;
+// PLANO 10 v2 (26,6–29,8): A avanza en oi-zuki, bajo y estable. Cadera y cabeza rectas, paralelas a la referencia discontinua.
+window.render = (t) => {
+  EMAKI.fondoPapel(ctx);
+  const tau = 0.55 + 0.9 * t;
+  dA.limpiar(); dB.limpiar(); B.raiz.visible = false;
+  const hc = C.cabeza(A, 'A', P, tau).y;
+  dA.rastro((s) => C.cabeza(A, 'A', P, s + 0.55), { t, ventana: 2, color: C.ROJO, muestras: 40, grosor: 0.016 });
+  C.poner(A, 'A', P, tau);
+  const xc = C.VEL * tau + 0.3;
+  dA.linea([xc - 2.2, hc, 0], [xc + 2.2, hc, 0], { discontinua: true, color: C.GRIS, grosor: 0.008 });
+  A.cara({ cejas: 0.1, sonrisa: 0.3 });
+  esc.orbita({ centro: [xc - 0.15, 1.0, 0], distancia: 8, azimut: 0, elevacion: 3, fov: 22 });
+  esc.sombraEn(xc, 0); esc.dibujar(ctx, {});
+  C.tarjeta(ctx, t, ['Cadera a la', 'misma altura'], { t0: 0.05 });
+};
+</script></body></html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cadera v2 · plano 09</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js'; import { latigo } from './latigo.js';
+const S = C.iniciar(); const { ctx, esc, P, k, d, U } = S;
+window.DURACION = 3.0;
+// PLANO 9 (18,5–21,5) REHECHO: perfil; látigo en transparencia, mango en la cadera y punta en el puño; la ola roja viaja y el puño golpea al final (en el aire).
+window.render = (t) => {
+  const f = U.easeInOut(U.prog(t, 0.3, 2.4));
+  k.colocar(0, 0, 90); k.aplicarPose(C.poseCadena(P, f)); k.cara({ parpadeo: U.parpadeo(t, [1.1]) });
+  d.limpiar(); C.camPerfil(esc); esc.sombraEn(0, 0); esc.dibujar(ctx);
+  const a = esc.proyectar(k.punto('cadera')), b = esc.proyectar(k.punto('manoD'));
+  const p = U.easeInOut(U.prog(t, 0.3, 2.3)), ent = U.prog(t, 0, 0.5);
+  const pos = latigo(ctx, { x0: a.x, y0: a.y, x1: b.x, y1: b.y, p, amp: 70, alfa: 0.7 * ent, restalla: Math.max(0, 1 - Math.abs(t - 2.5) / 0.4) * (t > 2.2 ? 1 : 0), grosor: 14 });
+  ctx.save(); ctx.fillStyle = C.TINTA; ctx.beginPath(); ctx.arc(a.x, a.y, 20, 0, 7); ctx.fill(); ctx.restore();
+  C.tarjeta(ctx, t, ['Empieza la cadera,', 'termina el puño'], { t0: 0.1, y: 300 });
+};
+</script></body></html>

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre v2 · plano 01</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './v2.js';
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 3.0;
+window.render = async (t) => { await C.listo; C.papel(ctx);
+  const z = U.prog(t, 0, 3.0); C.foto(ctx, 540, 1100, 780 + 105 * z);   // x2,2 -> x2,5 lento
+  C.tarjeta(ctx, t, ['El símbolo', 'del Shotokan:', 'un tigre'], { t0: -1, y: 300 });
+  C.etiqueta(ctx, t, 'DATO', { t0: -1, y: 640 });
+};
+</script></body></html>

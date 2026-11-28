@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Ascensor · plano 04b</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const { ctx, esc, P, A, B, dA, dB, U } = C.iniciar();
+window.DURACION = 3.6;
+// PLANO 11 v2 (29,8–33,4): A en zenkutsu-dachi mira a cámara, ladea cabeza, ceja alzada. Pregunta.
+window.render = (t) => {
+  EMAKI.fondoPapel(ctx);
+  dA.limpiar(); dB.limpiar(); B.raiz.visible = false;
+  A.colocar(0, 0, 0);
+  A.aplicarPose(P['zenkutsu-dachi']);
+  A.cara({ cejas: 0.4 * U.prog(t, 0.3, 0.8), sonrisa: 0.3, parpadeo: U.parpadeo(t, [1.8]) });
+  A.raiz.updateMatrixWorld(true);
+  esc.orbita({ centro: [0, 0.95, 0], distancia: 8, azimut: 0, elevacion: 3, fov: 22 });
+  esc.dibujar(ctx, {});
+  C.tarjeta(ctx, t, ['¿Te cuesta mantenerte', 'agachado?'], { t0: 0.1, size: 72 });
+};
+</script></body></html>

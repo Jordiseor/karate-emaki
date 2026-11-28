@@ -9,3 +9,8 @@
 - Portada: fotograma del plano 1 (1,2 s) con placa papel «LA CADERA NO ES ADORNO» (5 palabras, tinta #1A1A1A sobre #F4EFE6, rojo solo en el filete, 100 px) tapando la tarjeta del plano, y «KARATE EMAKI» (48 px) abajo. hoja.png: 8 fotogramas.
 - Observaciones sobre las escenas (no tocadas): plano 3, la letra pequeña roza la etiqueta «tiempo» del eje; plano 7, las etiquetas de la gráfica (tronco/hombro) se solapan algo con la curva. Menores.
 - Licencia del fondo: obra propia del estudio, capas sintetizadas de animacion/musica/ (pulso-vivo, ambiente, golpe, golpe-cifra, golpe-caida); sin muestras de terceros. Voz: Kokoro-82M v1.0 (Apache 2.0) + sherpa-onnx 1.12.15 (Apache 2.0).
+
+## v2 (28 nov)
+- Vídeo: escenas3d-v2/plano-01..12.mp4, corte seco, 30,0 s, 1080x1920, 30 fps, H.264 veryfast crf 18, yuv420p. Sin subtítulos añadidos (tarjetas en escena).
+- Voz: voz-v2/frase-01..12.wav colocadas en los inicios de locucion-v2.txt (adelay). Música: la misma de v1 (final/fondo-cadera.wav, obra propia, sin derechos), fondo -7 dB con ducking (sidechain). Mezcla -16 LUFS aprox., pico real <= -1 dBFS, AAC 192 kbps 48 kHz. Valores exactos en ffprobe/ebur128 al montar.
+- Portada: portada.png de v1 reutilizada como portada-v2.png (plano 1 conservado). hoja-v2.png: 8 fotogramas. Revisar de oído «pelvis» y el x1,35 del plano 10.

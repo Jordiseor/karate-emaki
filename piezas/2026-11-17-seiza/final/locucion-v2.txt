@@ -1,0 +1,8 @@
+Locución v2 2026-11-17-seiza (voz Kokoro em_santa, sid 53). Una frase por celda Locución de storyboard-v2.md. Formato: n | plano y tiempo del storyboard | inicio previsto de la voz (s) | duración wav (s) | velocidad | texto del storyboard | grafía usada
+01 | plano 1 (hasta 2.0 s) | 0.12 | 1.33 | x1.0 | Seiza, minuto uno. | Séisa, minuto uno.
+02 | plano 2 (hasta 4.0 s) | 2.06 | 1.53 | x1.0 | Seiza, minuto cinco. | Séisa, minuto cinco.
+03 | plano 3 (hasta 6.0 s) | 4.06 | 1.58 | x1.4 | Seiza significa sentarse correctamente. | Séisa significa sentarse correctamente.
+04 | plano 4 (hasta 8.0 s) | 6.06 | 1.68 | x1.15 | Mokusō: meditar en silencio. | Mokusó: meditar en silencio.
+05 | plano 5 (hasta 9.5 s) | 8.06 | 1.00 | x1.0 | ¡Mokusō yame! | ¡Mokusó yamé!
+06 | plano 6 (hasta 14.5 s) | 9.70 | 3.34 | x1.2 | ¿Te gusta hacer seiza al acabar la clase para volver a la calma? | ¿Te gusta hacer séisa al acabar la clase para volver a la calma?
+Total voz: 10.5 s en 6 frases

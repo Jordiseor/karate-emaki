@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre v2 · plano 02</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './v2.js';
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 5.0;
+const { esc, P } = C.iniciar3d(); esc.suelo.visible = false; esc.pared.visible = false; esc.escena.background = new esc.THREE.Color("#FFFFFF"); esc.escena.fog = null;
+const k = new C.Karateka3D({ cinturon: 'negro' }); esc.escena.add(k.raiz); k.colocar(0, 0, -35);
+const pinta = C.fig3d({ esc });
+window.render = async (t) => { await C.listo; C.papel(ctx);
+  const r = U.easeInOut(U.prog(t, 0, 0.8));          // de grande a cuadro izquierdo
+  const d = 780 + (440 - 780) * r, cx = 540 + (290 - 540) * r, cy = 1050 + (1150 - 1050) * r;
+  const s = 1 + 0.02 * U.prog(t, 0, 5);
+  C.foto(ctx, cx, cy, d * s);
+  k.aplicarPose(P.yoi); k.cara({ cejas: U.prog(t, 0.9, 1.1), parpadeo: U.parpadeo(t, [2.2]) });
+  esc.orbita({ centro: [-0.75, 0.95, 0], distancia: 8, azimut: 0, elevacion: 2, fov: 26 }); pinta(ctx, U.easeOut(U.prog(t, 0.6, 1.1)));
+  const e = U.easeOut(U.prog(t, 2.5, 3.0)), q = 440 * s / 885;   // aro rojo sobre el ojo (sin ampliar más la foto)
+  ctx.save(); ctx.globalAlpha = e; ctx.strokeStyle = C.ROJO; ctx.lineWidth = 10; ctx.beginPath(); ctx.arc(290 - 220 * s + 307 * q, 1150 - 220 * s + 160 * q, 46 + 10 * Math.sin(t * 6) * e + 30 * (1 - e), 0, 7); ctx.stroke(); ctx.restore();
+  C.tarjetas(ctx, t, [[0.1, ['¿Qué simboliza?']], [2.6, ['Leyenda:', 'nunca duerme']]]);
+  C.etiqueta(ctx, t, 'LEYENDA', { t0: 2.8, y: 520 });
+};
+</script></body></html>

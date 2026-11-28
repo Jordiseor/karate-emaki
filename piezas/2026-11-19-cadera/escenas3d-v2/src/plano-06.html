@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Cadera · plano 06</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './comun.js';
+const S = C.iniciar(); const { ctx, esc, P, k, d, cad, U } = S;
+window.DURACION = 2.0;
+const CAJA = { x: 150, y: 1000, w: 780, h: 380 }, PICOS = [0.2, 0.4, 0.6, 0.8];
+const E = (f) => PICOS.map((p) => 1 - Math.min(1, Math.abs(f - p) / 0.12));
+// PLANO 6 (11,5–13,5): cámara cerrada; f 0,50 → 0,68 (continuo con 5 y 7); pico del hombro en f = 0,6.
+cad.mostrar();
+window.render = (t) => {
+  const f = 0.5 + 0.18 * U.prog(t, 0, 2.0);
+  k.colocar(0, 0, 90); k.aplicarPose(C.poseCadena(P, f)); k.cara({ parpadeo: 0, cejas: 0 });
+  cad.actualizar(E(f), { estela: { pose: (tt) => C.poseCadena(P, tt), t: f, dur: 0.3 } });
+  d.limpiar();
+  C.camPerfil(esc, { distancia: 6.2, centro: [0.1, 0.95, 0] }); esc.sombraEn(0, 0);
+  esc.dibujar(ctx); d.dibujar2D && d.dibujar2D(ctx);
+  C.K.ejes(ctx, CAJA, { etiquetaX: 'tiempo', etiquetaY: 'velocidad' });
+  C.CD.picos(ctx, CAJA, { prog: f, t: f, etiquetas: ['cadera', 'tronco', 'hombro', 'codo'] });
+  C.tarjeta(ctx, t, ['Después el hombro'], { t0: -1, y: 380 });
+  C.etiquetaEsquema(ctx);
+};
+</script></body></html>

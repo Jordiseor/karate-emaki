@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre v2 · plano 07</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './v2.js';
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 5.0;
+const rollo = C.crearRollo(); let tt = 0;
+const vineta = (c) => { T.rotulo(c, 'tora no maki', 540, 880, 96, U.prog(tt, 0.2, 1.4)); };
+window.render = async (t) => { await C.listo; tt = t; C.papel(ctx);
+  const a = 1 - U.easeInOut(U.prog(t, 2.4, 2.9));
+  if (a > 0) { ctx.save(); ctx.globalAlpha = a; rollo.dibujar(ctx, { abierto: 1, vinetas: [vineta], escala: 0.72, y: 185 }); ctx.restore(); }
+  const b = U.easeOut(U.prog(t, 2.6, 3.1));
+  if (b > 0) { C.foto(ctx, 540, 1010, 560, b);
+    T.kanji(ctx, '虎', 330, 1400, 200, { prog: U.prog(t, 3.0, 3.8) }); T.kanji(ctx, '巻', 750, 1400, 200, { prog: U.prog(t, 3.6, 4.4) }); }
+  C.tarjetas(ctx, t, [[0.1, ['tora no maki:', 'libro maestro']], [2.6, ['Escrito:', '«rollo del tigre»']]]);
+  if (t < 2.6) C.etiqueta(ctx, t, 'SE DICE', { t0: 0.3, y: 520 }); else C.etiqueta(ctx, t - 2.6, 'DATO', { t0: 0.3, y: 520 });
+};
+</script></body></html>

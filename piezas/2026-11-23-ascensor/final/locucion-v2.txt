@@ -1,0 +1,14 @@
+Locución v2 2026-11-23-ascensor (voz Kokoro em_santa, sid 53). Una frase por celda Locución de storyboard-v2.md. Formato: n | plano y tiempo del storyboard | inicio previsto de la voz (s) | duración wav (s) | velocidad | texto del storyboard | grafía usada
+01 | plano 1 (hasta 3.0 s) | 0.12 | 2.02 | x1.1 | Tu cabeza sube y baja al avanzar. | Tu cabeza sube y baja al avanzar.
+02 | plano 2 (hasta 5.5 s) | 3.06 | 1.72 | x1.0 | Míralo: una recta, una ola. | Míralo: una recta, una ola.
+03 | plano 3 (hasta 8.0 s) | 5.56 | 1.70 | x1.0 | Es el error del ascensor. | Es el error del ascensor.
+04 | plano 4a (hasta 9.5 s) | 8.06 | 1.36 | x1.0 | En kihon Shotokan, | En kihon Shotokan,
+05 | plano 4b (hasta 11.8 s) | 9.56 | 1.89 | x1.0 | la cadera no cambia de nivel. | la cadera no cambia de nivel.
+06 | plano 5 (hasta 13.8 s) | 11.86 | 1.82 | x1.15 | Cadera nivelada, cabeza quieta. | Cadera nivelada, cabeza quieta.
+07 | plano 6 (hasta 17.0 s) | 13.86 | 2.92 | x1.2 | Una cuenta sencilla: setenta kilos, cinco centímetros. | Una cuenta sencilla: setenta kilos, cinco centímetros.
+08 | plano 7 (hasta 20.2 s) | 17.06 | 2.73 | x1.0 | Subirlos cuesta unos treinta y cuatro julios. | Subirlos cuesta unos treinta y cuatro julios.
+09 | plano 8 (hasta 23.4 s) | 20.26 | 2.29 | x1.0 | Parte vuelve al bajar: no se pierden. | Parte vuelve al bajar: no se pierden.
+10 | plano 9 (hasta 26.6 s) | 23.46 | 2.41 | x1.0 | Pero ese vaivén no empuja hacia delante. | Pero ese vaivén no empuja hacia delante.
+11 | plano 10 (hasta 29.8 s) | 26.66 | 2.77 | x1.0 | Mantenerte a la misma altura es lo que se pide. | Mantenerte a la misma altura es lo que se pide.
+12 | plano 11 (hasta 33.4 s) | 29.86 | 2.83 | x1.0 | ¿A ti te cuesta mantenerte agachado al avanzar? | ¿A ti te cuesta mantenerte agachado al avanzar?
+Total voz: 26.4 s en 12 frases

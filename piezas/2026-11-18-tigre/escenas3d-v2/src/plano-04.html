@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tigre v2 · plano 04</title>
+<style>html,body{margin:0;background:#F4EFE6}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../animacion/marca.js"></script>
+<script type="module">
+import * as C from './v2.js';
+const ctx = C.ctx2d(), { U, T } = C;
+window.DURACION = 5.0;
+const { esc, P } = C.iniciar3d(); esc.suelo.visible = false; esc.pared.visible = false; esc.escena.background = new esc.THREE.Color("#FFFFFF"); esc.escena.fog = null;
+const kos = C.anadirMaestro(esc, C.crearMaestro({ silueta: '#1A1A1A' }));
+const fun = C.crearFunakoshi(); esc.escena.add(fun.raiz); if (fun.verRostro) fun.verRostro(false);
+const pinta = C.fig3d({ esc });
+window.render = async (t) => { await C.listo; C.papel(ctx);
+  kos.colocar(-0.42, 0, 25).pose(P, 'maestro-seiza-pincel', { escribir: t });
+  fun.colocar(0.5, 0, -20); fun.aplicarPose(P.neutra);
+  esc.orbita({ centro: [0, 0.95, 0], distancia: 9.4, azimut: 0, elevacion: 4, fov: 28 }); pinta(ctx, U.easeOut(U.prog(t, 0, 0.6)));
+  T.cubierta(ctx, { x: 540, y: 1060, aparece: U.prog(t, 1.2, 1.9), pincel: U.prog(t, 2.0, 3.2), rot: -0.03, w: 300, h: 400 });
+  const p = U.prog(t, 3.2, 3.7);
+  if (p > 0) { const e = U.easeOut(p), s = 1 + 0.25 * (1 - e); ctx.save(); ctx.globalAlpha = Math.min(1, p * 3); ctx.translate(540, 1500); ctx.scale(s, s);
+    ctx.fillStyle = C.ROJO; ctx.font = '900 150px "Montserrat","Arial Black",system-ui,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('1922', 0, 0); ctx.restore(); }
+  C.tarjetas(ctx, t, [[0.1, ['Amigo de', 'Funakoshi']], [3.0, ['Cubierta,', '[r]1922[/r]']]]);
+  if (t < 3.0) C.etiqueta(ctx, t, 'SE DICE', { t0: 0.5, y: 520 }); else C.etiqueta(ctx, t - 3.0, 'DATO', { t0: 0.3, y: 520 });
+};
+</script></body></html>
